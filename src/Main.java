@@ -6,5 +6,6 @@ public class Main {
         System.out.println("test github.com");
         System.out.println("Test branches");
         System.out.println("idk");
+        System.out.println("If you have this, this branch is good to go");
     }
 }
