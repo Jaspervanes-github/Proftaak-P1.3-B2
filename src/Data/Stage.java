@@ -1,24 +1,26 @@
+package Data;
+
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Podium {
+public class Stage {
 
-    private List<Podium> podiums;
+    private List<Stage> stages;
 
     private IntegerProperty tijd;
 
 
-    public Podium(int tijd) {
-        this.podiums = new ArrayList<>();
+    public Stage(int tijd) {
+        this.stages = new ArrayList<>();
         this.tijd = new SimpleIntegerProperty(tijd);
 
     }
 
-    public List<Podium> getPodiums() {
-        return podiums;
+    public List<Stage> getStages() {
+        return stages;
     }
 
     public int getTijd() {

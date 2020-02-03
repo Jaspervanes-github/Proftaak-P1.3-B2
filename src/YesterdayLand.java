@@ -1,3 +1,4 @@
+import GUI.GUI;
 import javafx.application.Application;
 
 public class YesterdayLand {
