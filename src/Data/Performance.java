@@ -1,41 +1,50 @@
 package Data;
 
 import Data.Person.Artist;
-import javafx.beans.property.StringProperty;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Performance {
 
-    private ArrayList<Stage> stages;
-    private ArrayList<Artist> artists;
-    private ArrayList<Performance> performances;
+    private int starttime;
+    private int endtime;
+    private Artist artist;
+    private Stage stage;
 
-    public Performance(){
-        this.artists = new ArrayList<>();
-        this.stages = new ArrayList<>();
-        this.performances = new ArrayList<>();
+    public Performance(int starttime, int endtime, Artist artist, Stage stage) {
+        this.starttime = starttime;
+        this.endtime = endtime;
+        this.artist = artist;
+        this.stage = stage;
     }
 
-    public void createStage(String genre, String hostName, String description){
-
-        stages.add(new Stage(genre, hostName, description));
-
+    public int getStarttime() {
+        return starttime;
     }
 
-    public void createArtist(String name, String description, String popularity){
-
-        artists.add(new Artist(name, description, popularity));
-
+    public void setStarttime(int starttime) {
+        this.starttime = starttime;
     }
 
-    public void createPerformance(){
-
-
-
+    public int getEndtime() {
+        return endtime;
     }
 
+    public void setEndtime(int endtime) {
+        this.endtime = endtime;
+    }
 
+    public Artist getArtist() {
+        return artist;
+    }
 
+    public void setArtist(Artist artist) {
+        this.artist = artist;
+    }
+
+    public Stage getStage() {
+        return stage;
+    }
+
+    public void setStage(Stage stage) {
+        this.stage = stage;
+    }
 }

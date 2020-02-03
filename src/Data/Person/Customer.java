@@ -1,28 +1,27 @@
 package Data.Person;
 
-public class Customer {
+import Data.Genre;
 
+public class Customer extends Person {
+
+    private Genre favoriteGenre;
     private String name;
-    private String age;
 
-    public Customer(){
-        this.name = "";
-        this.age = "";
+    public Genre getFavoriteGenre() {
+        return favoriteGenre;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFavoriteGenre(Genre favoriteGenre) {
+        this.favoriteGenre = favoriteGenre;
     }
 
+    @Override
     public String getName() {
-        return name;
+        return this.name;
     }
 
-    public void setAge(String age) {
-        this.age = age;
-    }
+    @Override
+    public void setName() {
 
-    public String getAge() {
-        return age;
     }
 }

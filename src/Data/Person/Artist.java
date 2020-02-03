@@ -1,41 +1,47 @@
 package Data.Person;
 
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import Data.Genre;
+import javafx.beans.property.IntegerProperty;
 
-public class Artist {
+public class Artist extends Person {
 
     private String name;
-    private String description;
-    private String popularity;
+    private int popularity;
+    private Genre genre;
 
-    public Artist(String name, String description, String popularity){
+    public Artist(String name, int popularity, Genre genre) {
         this.name = name;
-        this.description = description;
         this.popularity = popularity;
+        this.genre = genre;
     }
 
     public void setName(String name) {
-        this.name = name;
+        name = name;
     }
 
-    public String getName() {
-        return name;
+    public int getPopularity() {
+        return popularity;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setPopularity(String popularity) {
+    public void setPopularity(int popularity) {
         this.popularity = popularity;
     }
 
-    public String getPopularity() {
-        return popularity;
+    public Genre getGenre() {
+        return genre;
+    }
+
+    public void setGenre(Genre genre) {
+        this.genre = genre;
+    }
+
+    @Override
+    public String getName() {
+        return this.name;
+    }
+
+    @Override
+    public void setName() {
+
     }
 }
