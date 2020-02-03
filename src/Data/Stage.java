@@ -2,6 +2,8 @@ package Data;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,12 +12,12 @@ public class Stage {
 
     private List<Stage> stages;
 
-    private IntegerProperty tijd;
+    private StringProperty name;
 
 
-    public Stage(int tijd) {
+    public Stage(String name) {
         this.stages = new ArrayList<>();
-        this.tijd = new SimpleIntegerProperty(tijd);
+        this.name = new SimpleStringProperty(name);
 
     }
 
@@ -23,12 +25,8 @@ public class Stage {
         return stages;
     }
 
-    public int getTijd() {
-        return tijd.get();
-    }
-
-    public void setTijd(int tijd) {
-        this.tijd.set(tijd);
+    public String getName(){
+        return this.name.toString();
     }
 
 

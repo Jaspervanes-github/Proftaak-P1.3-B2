@@ -15,12 +15,12 @@ public class Customer extends Person {
     }
 
     @Override
-    public void getName() {
-
+    public String getName() {
+        return "";
     }
 
     @Override
-    public void setName() {
+    public void setName(String name) {
 
     }
 }

@@ -6,6 +6,6 @@ public abstract class Person  {
 
     private StringProperty name;
 
-    abstract public void getName();
-    abstract public void setName();
+    abstract public String getName();
+    abstract public void setName(String name);
 }
