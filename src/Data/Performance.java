@@ -1,37 +1,45 @@
 package Data;
 
+import Data.Person.Artist;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.StringProperty;
 
 public class Performance {
 
-    private IntegerProperty Starttime;
-    private IntegerProperty Endtime;
+    private int starttime;
+    private int endtime;
+    private Artist artist;
     private Stage stage;
 
-
-    public int getStarttime() {
-        return Starttime.get();
+    public Performance(int starttime, int endtime, Artist artist, Stage stage) {
+        this.starttime = starttime;
+        this.endtime = endtime;
+        this.artist = artist;
+        this.stage = stage;
     }
 
-    public IntegerProperty starttimeProperty() {
-        return Starttime;
+    public int getStarttime() {
+        return starttime;
     }
 
     public void setStarttime(int starttime) {
-        this.Starttime.set(starttime);
+        this.starttime = starttime;
     }
 
     public int getEndtime() {
-        return Endtime.get();
-    }
-
-    public IntegerProperty endtimeProperty() {
-        return Endtime;
+        return endtime;
     }
 
     public void setEndtime(int endtime) {
-        this.Endtime.set(endtime);
+        this.endtime = endtime;
+    }
+
+    public Artist getArtist() {
+        return artist;
+    }
+
+    public void setArtist(Artist artist) {
+        this.artist = artist;
     }
 
     public Stage getStage() {
