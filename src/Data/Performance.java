@@ -18,6 +18,10 @@ public class Performance {
         this.stage = stage;
     }
 
+    public addPerformance(int starttime, int endtime, Artist artist, Stage stage){
+        if (artist.
+    }
+
     public int getStarttime() {
         return starttime;
     }

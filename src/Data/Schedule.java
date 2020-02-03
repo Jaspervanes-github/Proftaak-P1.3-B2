@@ -6,7 +6,6 @@ public class Schedule {
 
     private ArrayList<Performance> performances;
 
-
     public void addPerformance(Performance performance){
         if (!performances.contains(performance)){
             performances.add(performance);

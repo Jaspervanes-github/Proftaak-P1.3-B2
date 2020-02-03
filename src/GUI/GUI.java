@@ -33,7 +33,7 @@ public class GUI extends Application {
             if (tijd == 25){
                 tijd = 1;
             }
-            this.addPodia(new Stage(tijd));
+//            this.addPodia(new Stage(tijd));
         }
 
 
