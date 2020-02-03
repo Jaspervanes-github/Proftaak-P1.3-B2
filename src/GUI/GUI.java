@@ -1,5 +1,6 @@
 package GUI;
 
+import Data.Performance;
 import Data.Person.Artist;
 import Data.Stage;
 import javafx.application.Application;
@@ -20,6 +21,7 @@ public class GUI extends Application {
 
     private ObservableList<Stage> stages;
     private ObservableList<Artist> artists;
+    private ObservableList<Performance> performances;
 
     private TableView tableView;
 
@@ -100,7 +102,7 @@ public class GUI extends Application {
 
         // BUG: tableView.setItems(FXCollections.observableArrayList(this.persons));
         // Let op: this.persons is een List => dus gebruik observableList!! en niet observableArrayList
-        tableView.setItems(this.stages);
+        tableView.setItems(this.performances);
 
         return tableView;
     }

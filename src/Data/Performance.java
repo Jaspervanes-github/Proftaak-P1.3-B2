@@ -1,8 +1,6 @@
 package Data;
 
 import Data.Person.Artist;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.StringProperty;
 
 public class Performance {
 
@@ -16,10 +14,6 @@ public class Performance {
         this.endtime = endtime;
         this.artist = artist;
         this.stage = stage;
-    }
-
-    public addPerformance(int starttime, int endtime, Artist artist, Stage stage){
-        if (artist.
     }
 
     public int getStarttime() {

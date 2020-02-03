@@ -12,7 +12,7 @@ public class Schedule {
         }
     }
 
-    public ArrayList<Performance> getPerformances() {
+    public ArrayList<Performance> getPerformances(){
         return performances;
     }
 
