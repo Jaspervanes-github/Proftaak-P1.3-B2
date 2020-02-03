@@ -5,18 +5,18 @@ import javafx.beans.property.IntegerProperty;
 
 public class Artist extends Person {
 
-    private String Name;
+    private String name;
     private int popularity;
     private Genre genre;
 
     public Artist(String name, int popularity, Genre genre) {
-        Name = name;
+        this.name = name;
         this.popularity = popularity;
         this.genre = genre;
     }
 
     public void setName(String name) {
-        Name = name;
+        name = name;
     }
 
     public int getPopularity() {
@@ -36,8 +36,8 @@ public class Artist extends Person {
     }
 
     @Override
-    public void getName() {
-
+    public String getName() {
+        return this.name;
     }
 
     @Override

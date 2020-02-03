@@ -1,8 +1,6 @@
 package Data;
 
 import Data.Person.Artist;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.StringProperty;
 
 public class Performance {
 
