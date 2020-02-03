@@ -1,14 +1,28 @@
 package Data.Person;
 
-public class Customer extends Person {
+public class Customer {
 
-    @Override
-    public void getName() {
+    private String name;
+    private String age;
 
+    public Customer(){
+        this.name = "";
+        this.age = "";
     }
 
-    @Override
-    public void setName() {
+    public void setName(String name) {
+        this.name = name;
+    }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
+    }
+
+    public String getAge() {
+        return age;
     }
 }

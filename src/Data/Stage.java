@@ -1,35 +1,38 @@
 package Data;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-
-import java.util.ArrayList;
-import java.util.List;
-
 public class Stage {
 
-    private List<Stage> stages;
+    private String genre;
+    private String hostName;
+    private String description;
 
-    private IntegerProperty tijd;
-
-
-    public Stage(int tijd) {
-        this.stages = new ArrayList<>();
-        this.tijd = new SimpleIntegerProperty(tijd);
-
+    public Stage(String genre, String hostName, String description){
+        this.genre = genre;
+        this.hostName = hostName;
+        this.description = description;
     }
 
-    public List<Stage> getStages() {
-        return stages;
+    public void setGenre(String genre) {
+        this.genre = genre;
     }
 
-    public int getTijd() {
-        return tijd.get();
+    public String getGenre() {
+        return genre;
     }
 
-    public void setTijd(int tijd) {
-        this.tijd.set(tijd);
+    public void setHostName(String hostName) {
+        this.hostName = hostName;
     }
 
+    public String getHostName() {
+        return hostName;
+    }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getDescription() {
+        return description;
+    }
 }
