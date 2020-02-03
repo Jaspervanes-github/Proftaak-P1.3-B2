@@ -2,34 +2,34 @@ package Data;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.StringProperty;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Stage {
 
-    private List<Stage> stages;
+    private String stageName;
+    private int size;
 
-    private IntegerProperty tijd;
-
-
-    public Stage(int tijd) {
-        this.stages = new ArrayList<>();
-        this.tijd = new SimpleIntegerProperty(tijd);
-
+    public Stage(String stageName, int size) {
+        this.stageName = stageName;
+        this.size = size;
     }
 
-    public List<Stage> getStages() {
-        return stages;
+    public String getStageName() {
+        return stageName;
     }
 
-    public int getTijd() {
-        return tijd.get();
+    public void setStageName(String stageName) {
+        this.stageName = stageName;
     }
 
-    public void setTijd(int tijd) {
-        this.tijd.set(tijd);
+    public int getSize() {
+        return size;
     }
 
-
+    public void setSize(int size) {
+        this.size = size;
+    }
 }
