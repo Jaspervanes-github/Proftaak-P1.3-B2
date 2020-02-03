@@ -42,6 +42,7 @@ public class GUI extends Application {
     public GUI() {
         this.stages = FXCollections.observableList(new ArrayList<>());
         this.artists = FXCollections.observableList(new ArrayList<>());
+        this.performances = FXCollections.observableList((new ArrayList<>()));
 
 
 
@@ -124,8 +125,10 @@ public class GUI extends Application {
             comboBoxEndingTime.setItems(options);
 
 
-            Button buttonSave = new Button("Save");
+            int startTime = 0;
+            int endTime = 0;
 
+            Button buttonSave = new Button("Save");
 
 
 
@@ -141,13 +144,41 @@ public class GUI extends Application {
             gridPane.add(comboBoxArtists, 1, 4);
             gridPane.add(new Label("Artist"), 0, 4);
 
+            gridPane.add(buttonSave, 0, 5);
+
             dialog.getDialogPane().setContent(gridPane);
 
 // Traditional way to get the response value.
+            buttonSave.setOnAction(event1 -> {
+
+                Artist artist;
+                for (Artist a : artists){
+                    if(a.getName().equals(comboBoxArtists.getValue())){
+                        artist = a;
+                        for (Stage s : stages){
+                            if (s.getStageName().equals(comboBoxStages.getValue())){
+                                this.performances.add(new Performance(startTime, endTime, artist, s));
+
+                            }
+                        }
+                    }
+
+                }
+
+                for (Performance p : performances){
+                    System.out.println(p.getArtist());
+                    System.out.println(p.getStage());
+                    System.out.println(p.getEndtime());
+                    System.out.println(p.getStarttime());
+                }
+            });
             Optional<String> result = dialog.showAndWait();
             if (result.isPresent()){
                 dialog.close();
             }
+
+
+
         });
 
 
