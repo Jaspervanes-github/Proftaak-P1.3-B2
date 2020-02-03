@@ -5,7 +5,9 @@ Welkom op de GitHub pagina van TI-studentengroep B2 in periode 1.3
 Op deze pagina is de gemaakte code van de groepsleden te vinden, onder anderen worden op deze pagina ook de portfolio's voor het individueel assessment opgeslagen.
 
 Onderstaand zijn de portfolio's te vinden van de groepsleden:
-Dave:
+
+Dave: [here](portfolio's/FP_Portfolio_Dave.md)
+
 Robin:
 Jasper:
 Bart:
