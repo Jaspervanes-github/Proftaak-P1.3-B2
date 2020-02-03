@@ -15,6 +15,7 @@ public class Artist extends Person {
         this.genre = genre;
     }
 
+
     public void setName(String name) {
         name = name;
     }
