@@ -25,7 +25,7 @@ public class GUI extends Application {
         this.podiums = FXCollections.observableList(new ArrayList<>());
 
         int tijd = 9;
-        for (int i = 0; i < 17; i++) {
+        for (int i = 0; i < 19; i++) {
             tijd += 1;
             if (tijd == 25){
                 tijd = 1;
