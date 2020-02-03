@@ -21,11 +21,18 @@ public class GUI extends Application {
     private ObservableList<Stage> stages;
     private ObservableList<Artist> artists;
 
+
     private TableView tableView;
 
 
     public GUI() {
+<<<<<<< Updated upstream:src/GUI/GUI.java
         this.stages = FXCollections.observableList(new ArrayList<>());
+=======
+        this.podiums = FXCollections.observableList(new ArrayList<>());
+        this.artiests = FXCollections.observableList(new ArrayList<>());
+
+>>>>>>> Stashed changes:src/GUI.java
 
         int tijd = 9;
         for (int i = 0; i < 19; i++) {
@@ -36,12 +43,22 @@ public class GUI extends Application {
             this.addPodia(new Stage(tijd));
         }
 
-
+        this.addArtist(new Artiest("Oliver Heldens", "NL", "9"));
+        this.addArtist(new Artiest("Netsky", "BE", "6"));
+        this.addArtist(new Artiest("Oliver Heldens", "NL", "9"));
+        this.addArtist(new Artiest("Oliver Heldens", "NL", "9"));
 
     }
 
+<<<<<<< Updated upstream:src/GUI/GUI.java
     public void addPodia(Stage stage) {
         this.stages.add(stage);
+=======
+
+
+    public void addPodia(Podium podium) {
+        this.podiums.add(podium);
+>>>>>>> Stashed changes:src/GUI.java
     }
 
     public void addArtist(Artist artist) {
@@ -57,7 +74,7 @@ public class GUI extends Application {
         bp.setCenter(getTabPane());
 
 
-        Scene scene = new Scene(bp, 1500, 900);
+        Scene scene = new Scene(bp, 1000, 650);
 
         stage.setScene(scene);
         stage.setTitle("User interface: Agenda");
@@ -85,6 +102,7 @@ public class GUI extends Application {
         //Here we make a tableview and we can add podiums and numbers
         this.tableView = new TableView();
 
+
         TableColumn tcTijd = new TableColumn("Tijd");
         TableColumn tcMainStage = new TableColumn("Mainstage");
         TableColumn tcStage1 = new TableColumn("Freedom");
@@ -98,9 +116,19 @@ public class GUI extends Application {
         tcStage1.setCellValueFactory(new PropertyValueFactory<Artist, String>("name"));
 
 
+        tcStage2.setCellValueFactory(new PropertyValueFactory<Artiest, String>("afkomst"));
+        tcStage3.setCellValueFactory(new PropertyValueFactory<Artiest, String>("populariteit"));
+
+
         // BUG: tableView.setItems(FXCollections.observableArrayList(this.persons));
         // Let op: this.persons is een List => dus gebruik observableList!! en niet observableArrayList
+<<<<<<< Updated upstream:src/GUI/GUI.java
         tableView.setItems(this.stages);
+=======
+        tableView.setItems(this.artiests);
+
+
+>>>>>>> Stashed changes:src/GUI.java
 
         return tableView;
     }
