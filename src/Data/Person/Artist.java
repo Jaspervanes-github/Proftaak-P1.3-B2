@@ -1,11 +1,13 @@
+package Data.Person;
+
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-public class Artiest {
+public class Artist extends Person {
 
     private StringProperty name;
 
-    public Artiest(String name) {
+    public Artist(String name) {
         this.name = new SimpleStringProperty(name);
     }
 
