@@ -32,9 +32,6 @@ public class GUI extends Application {
             }
             this.addPodia(new Podium(tijd));
         }
-
-
-
     }
 
     public void addPodia(Podium podium) {
