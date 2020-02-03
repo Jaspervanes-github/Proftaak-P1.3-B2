@@ -10,24 +10,31 @@ import java.util.List;
 
 public class Stage {
 
-    private List<Stage> stages;
+    private StringProperty stageName;
+    private int size;
 
-    private StringProperty name;
-
-
-    public Stage(String name) {
-        this.stages = new ArrayList<>();
-        this.name = new SimpleStringProperty(name);
-
+    public StringProperty stageNameProperty() {
+        return stageName;
     }
 
-    public List<Stage> getStages() {
-        return stages;
+    public Stage(String stageName, int size) {
+        this.stageName = new SimpleStringProperty(stageName);
+        this.size = size;
     }
 
-    public String getName(){
-        return this.name.toString();
+    public String getStageName() {
+        return stageName.get();
     }
 
+    public void setStageName(String stageName) {
+        this.stageName.set(stageName);
+    }
 
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
 }

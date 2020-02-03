@@ -45,13 +45,12 @@ public class GUI extends Application {
 
 
 
-        this.addPodia(new Stage("Heldeep"));
+        this.addPodia(new Stage("Heldeep", 200));
 
-        this.addArtist(new Artist(9, Genre.HOUSE, "Oliver Heldens"));
-        this.addArtist(new Artist(6, Genre.TECHNO, "Charlotte de Witte"));
-        this.addArtist(new Artist(7, Genre.TECHNO, "Nina Kraviz"));
-        this.addArtist(new Artist(5, Genre.HARDSTYLE, "Da Tweekaz"));
-
+        this.addArtist(new Artist("Oliver heldens", 9, Genre.HOUSE));
+        this.addArtist(new Artist("Charlotte de Witte", 7, Genre.TECHNO));
+        this.addArtist(new Artist("Nina Kraviz", 8, Genre.TECHNO));
+        this.addArtist(new Artist("Oliver heldens", 9, Genre.HOUSE));
     }
 
     public void addPodia(Stage stage) {
@@ -119,7 +118,7 @@ public class GUI extends Application {
             }
 
             for (Stage stage2 : stages){
-                comboBoxStages.getItems().add(stage2.getName());
+                comboBoxStages.getItems().add(stage2.getStageName());
             }
             comboBoxStartingTime.setItems(options);
             comboBoxEndingTime.setItems(options);
