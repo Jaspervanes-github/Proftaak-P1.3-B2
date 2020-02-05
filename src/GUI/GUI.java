@@ -47,6 +47,10 @@ public class GUI extends Application {
 
 
         this.addPodia(new Stage("Heldeep", 200));
+        this.addPodia(new Stage("Rampage", 200));
+        this.addPodia(new Stage("Boiler Room", 200));
+        this.addPodia(new Stage("Disco Snolly", 200));
+        this.addPodia(new Stage("Techy Techno", 200));
 
         this.addArtist(new Artist("Oliver heldens", 9, Genre.HOUSE));
         this.addArtist(new Artist("Charlotte de Witte", 7, Genre.TECHNO));
@@ -126,9 +130,10 @@ public class GUI extends Application {
 
 
             int startTime = 0;
-            int endTime = 0;
+            int endTime = comboBoxEndingTime.getSelectionModel().getSelectedIndex();
 
             Button buttonSave = new Button("Save");
+            Button buttonQuit = new Button("Quit");
 
 
 
@@ -145,12 +150,12 @@ public class GUI extends Application {
             gridPane.add(new Label("Artist"), 0, 4);
 
             gridPane.add(buttonSave, 0, 5);
+            gridPane.add(buttonQuit, 1, 5);
 
             dialog.getDialogPane().setContent(gridPane);
 
 // Traditional way to get the response value.
             buttonSave.setOnAction(event1 -> {
-
                 Artist artist;
                 for (Artist a : artists){
                     if(a.getName().equals(comboBoxArtists.getValue())){
@@ -172,14 +177,18 @@ public class GUI extends Application {
                     System.out.println(p.getStarttime());
                 }
             });
+
+            buttonQuit.setOnAction(event1 -> {
+                dialog.setResult(Boolean.TRUE);
+                dialog.close();
+
+            });
             Optional<String> result = dialog.showAndWait();
             if (result.isPresent()){
                 dialog.close();
-            }
 
-
-
-        });
+        }
+                });
 
 
         Scene scene = new Scene(bp, 1000, 650);
@@ -195,7 +204,7 @@ public class GUI extends Application {
 
         buttonDel = new Button("del");
         buttonEdit = new Button("edit");
-        buttonAdd = new Button("add");
+        buttonAdd = new Button("Adding a performance");
 
         fp.getChildren().addAll(buttonAdd, buttonDel, buttonEdit);
         return fp;
