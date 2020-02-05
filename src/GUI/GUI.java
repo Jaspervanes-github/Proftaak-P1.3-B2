@@ -179,9 +179,8 @@ public class GUI extends Application {
             });
 
             buttonQuit.setOnAction(event1 -> {
-                System.out.println("asghk");
-                    dialog.setResult(Boolean.TRUE);
-                    dialog.close();
+                dialog.setResult(Boolean.TRUE);
+                dialog.close();
 
             });
             Optional<String> result = dialog.showAndWait();
