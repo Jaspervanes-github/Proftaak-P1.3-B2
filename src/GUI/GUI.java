@@ -240,7 +240,11 @@ public class GUI extends Application {
         for (int i = 10; i < 26; i++) {
             tijd = i + tijd.substring(3);
             for (int j = 0; j < 2; j++) {
-                tijd = tijd.substring(0, 2) + j * 30;
+                if(j != 0) {
+                    tijd = tijd.substring(0, 2) + j * 30;
+                } else{
+                    tijd = tijd.substring(0,2) + "00";
+                }
                 options.add(Integer.parseInt(tijd));
 //                System.out.println(options);
             }
