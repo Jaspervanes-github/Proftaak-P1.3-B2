@@ -233,12 +233,12 @@ public class GUI extends Application {
         this.tableView = new TableView();
 
 
-        TableColumn tcTijd = new TableColumn("Tijd");
-        TableColumn tcMainStage = new TableColumn("Mainstage");
-        TableColumn tcStage1 = new TableColumn("Freedom");
-        TableColumn tcStage2 = new TableColumn("Sexy by nature");
-        TableColumn tcStage3 = new TableColumn("Q-Dance");
-        TableColumn tcStage4 = new TableColumn("Generation Smash");
+        TableColumn tcTijd = new TableColumn("Starting time");
+        TableColumn tcMainStage = new TableColumn("Stage");
+        TableColumn tcStage1 = new TableColumn("Artist");
+        TableColumn tcStage2 = new TableColumn("Ending time");
+        TableColumn tcStage3 = new TableColumn("Genre");
+        TableColumn tcStage4 = new TableColumn("Popularity");
 
         tableView.getColumns().addAll(tcTijd, tcMainStage, tcStage1, tcStage2, tcStage3, tcStage4);
 
