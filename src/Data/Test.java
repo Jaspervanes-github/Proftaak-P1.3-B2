@@ -16,7 +16,7 @@ public class Test {
     }
 
     public static void test(){
-        stages.add(new Stage("Test",200));
+        stages.add(new Stage("Test", 200));
 
         artists.add(new Artist("Armin van Bruuren",9,Genre.TECHNO));
         performances.add(new Performance(1500,1700,new Artist("Armin van Buuren",9,Genre.TECHNO),new Stage("Test",200)));

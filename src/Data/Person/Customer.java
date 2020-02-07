@@ -20,8 +20,10 @@ public class Customer extends Person {
         return this.name;
     }
 
+
     @Override
     public void setName() {
 
     }
+
 }
