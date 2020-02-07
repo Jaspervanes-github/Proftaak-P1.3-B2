@@ -4,8 +4,8 @@ import javafx.beans.property.StringProperty;
 
 public abstract class Person  {
 
-    private String name;
+    private StringProperty name;
 
-    abstract public String getName();
+    abstract public StringProperty getName();
     abstract public void setName();
 }

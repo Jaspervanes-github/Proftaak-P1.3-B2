@@ -1,35 +1,37 @@
 package Data;
 
 import Data.Person.Artist;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 
 public class Performance {
 
-    private int starttime;
-    private int endtime;
+    private Integer startTime;
+    private Integer endTime;
     private Artist artist;
     private Stage stage;
 
-    public Performance(int starttime, int endtime, Artist artist, Stage stage) {
-        this.starttime = starttime;
-        this.endtime = endtime;
+    public Performance(Integer startTime, Integer endTime, Artist artist, Stage stage) {
+        this.startTime = startTime;
+        this.endTime = endTime;
         this.artist = artist;
         this.stage = stage;
     }
 
-    public int getStarttime() {
-        return starttime;
+    public Integer getStartTime() {
+        return startTime;
     }
 
-    public void setStarttime(int starttime) {
-        this.starttime = starttime;
+    public void setStartTime(Integer startTime) {
+        this.startTime = startTime;
     }
 
-    public int getEndtime() {
-        return endtime;
+    public Integer getEndTime() {
+        return endTime;
     }
 
-    public void setEndtime(int endtime) {
-        this.endtime = endtime;
+    public void setEndTime(Integer endTime) {
+        this.endTime = endTime;
     }
 
     public Artist getArtist() {
