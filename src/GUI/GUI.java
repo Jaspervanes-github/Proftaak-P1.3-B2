@@ -133,8 +133,8 @@ public class GUI extends Application {
                 replacementStartTime += startTimeComboBox.substring(0, 1);
                 replacementStartTime += startTimeComboBox.substring(2);*/
 
-                Integer startTimeInt = comboBoxStartingTime.getSelectionModel().getSelectedIndex();
-                Integer endTime = comboBoxEndingTime.getSelectionModel().getSelectedIndex();
+                Integer startTimeInt = options.get(comboBoxStartingTime.getSelectionModel().getSelectedIndex());
+                Integer endTime = options.get(comboBoxEndingTime.getSelectionModel().getSelectedIndex());
 
                 Artist artist;
                 for (Artist a : artists){
