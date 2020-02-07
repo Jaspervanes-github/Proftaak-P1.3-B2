@@ -4,32 +4,32 @@ import Data.Person.Artist;
 
 public class Performance {
 
-    private int starttime;
-    private int endtime;
+    private int startTime;
+    private int endTime;
     private Artist artist;
     private Stage stage;
 
-    public Performance(int starttime, int endtime, Artist artist, Stage stage) {
-        this.starttime = starttime;
-        this.endtime = endtime;
+    public Performance(int startTime, int endTime, Artist artist, Stage stage) {
+        this.startTime = startTime;
+        this.endTime = endTime;
         this.artist = artist;
         this.stage = stage;
     }
 
-    public int getStarttime() {
-        return starttime;
+    public int getStartTime() {
+        return startTime;
     }
 
-    public void setStarttime(int starttime) {
-        this.starttime = starttime;
+    public void setStartTime(int startTime) {
+        this.startTime = startTime;
     }
 
-    public int getEndtime() {
-        return endtime;
+    public int getEndTime() {
+        return endTime;
     }
 
-    public void setEndtime(int endtime) {
-        this.endtime = endtime;
+    public void setEndTime(int endTime) {
+        this.endTime = endTime;
     }
 
     public Artist getArtist() {

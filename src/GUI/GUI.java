@@ -7,21 +7,11 @@ import Data.Stage;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.scene.text.Text;
-import javafx.stage.Modality;
-import javafx.stage.Popup;
-import sun.nio.cs.Surrogate;
 
 import java.util.ArrayList;
 import java.util.Optional;
@@ -173,8 +163,8 @@ public class GUI extends Application {
                 for (Performance p : performances){
                     System.out.println(p.getArtist());
                     System.out.println(p.getStage());
-                    System.out.println(p.getEndtime());
-                    System.out.println(p.getStarttime());
+                    System.out.println(p.getEndTime());
+                    System.out.println(p.getStartTime());
                 }
             });
 
@@ -233,28 +223,26 @@ public class GUI extends Application {
         this.tableView = new TableView();
 
 
-        TableColumn tcTijd = new TableColumn("Starting time");
-        TableColumn tcMainStage = new TableColumn("Stage");
-        TableColumn tcStage1 = new TableColumn("Artist");
-        TableColumn tcStage2 = new TableColumn("Ending time");
-        TableColumn tcStage3 = new TableColumn("Genre");
-        TableColumn tcStage4 = new TableColumn("Popularity");
+        TableColumn tcStartingTime = new TableColumn("Starting time");
+        TableColumn tcStage = new TableColumn("Stage");
+        TableColumn tcArtist = new TableColumn("Artist");
+        TableColumn tcEndingTime = new TableColumn("Ending time");
+        TableColumn tcGenre = new TableColumn("Genre");
+        TableColumn tcPopularity = new TableColumn("Popularity");
 
-        tableView.getColumns().addAll(tcTijd, tcMainStage, tcStage1, tcStage2, tcStage3, tcStage4);
+        tableView.getColumns().addAll(tcStartingTime, tcStage, tcArtist, tcEndingTime, tcGenre, tcPopularity);
 
-        tcTijd.setCellValueFactory(new PropertyValueFactory<Stage, String>("tijd"));
-
-        tcStage1.setCellValueFactory(new PropertyValueFactory<Artist, String>("name"));
-        tcStage2.setCellValueFactory(new PropertyValueFactory<Genre, String>("genre"));
-        tcStage3.setCellValueFactory(new PropertyValueFactory<Artist, String>("popularity"));
+        tcStartingTime.setCellValueFactory(new PropertyValueFactory<Performance, String>("startTime"));
+        tcStage.setCellValueFactory(new PropertyValueFactory<Stage, String>("stageName"));
+        tcArtist.setCellValueFactory(new PropertyValueFactory<Artist, String>("name"));
+        tcEndingTime.setCellValueFactory(new PropertyValueFactory<Performance, String>("genre"));
+        tcGenre.setCellValueFactory(new PropertyValueFactory<Artist, String>("popularity"));
 
 
         // BUG: tableView.setItems(FXCollections.observableArrayList(this.persons));
         // Let op: this.persons is een List => dus gebruik observableList!! en niet observableArrayList
 
-        tableView.setItems(this.stages);
-
-        tableView.setItems(this.artists);
+        tableView.setItems(this.performances);
 
 
         return tableView;
