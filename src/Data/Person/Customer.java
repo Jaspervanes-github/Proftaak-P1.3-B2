@@ -1,11 +1,12 @@
 package Data.Person;
 
 import Data.Genre;
+import javafx.beans.property.StringProperty;
 
 public class Customer extends Person {
 
     private Genre favoriteGenre;
-    private String name;
+    private StringProperty name;
 
     public Genre getFavoriteGenre() {
         return favoriteGenre;
@@ -16,7 +17,7 @@ public class Customer extends Person {
     }
 
     @Override
-    public String getName() {
+    public StringProperty getName() {
         return this.name;
     }
 

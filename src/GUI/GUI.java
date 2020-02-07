@@ -88,26 +88,12 @@ public class GUI extends Application {
             ComboBox comboBoxEndingTime = new ComboBox();
             ComboBox comboBoxStages = new ComboBox();
 
-            ObservableList<String> options =
-                    FXCollections.observableArrayList(
-                            "9:00",
-                            "9:30",
-                            "10:00",
-                            "10:30",
-                            "11:00",
-                            "11:30",
-                            "12:00",
-                            "12:30",
-                            "13:00",
-                            "13:30",
-                            "14:00",
-                            "14:30",
-                            "15:00",
-                            "15:30",
-                            "16:00",
-                            "16:30",
-                            "17:00"
-                    );
+
+
+            ObservableList<Integer> options =
+                    FXCollections.observableArrayList();
+
+            setItems(options);
 
             for (Artist artist : artists){
                 comboBoxArtists.getItems().add(artist.getName());
@@ -120,8 +106,7 @@ public class GUI extends Application {
             comboBoxEndingTime.setItems(options);
 
 
-            int startTime = 0;
-            int endTime = comboBoxEndingTime.getSelectionModel().getSelectedIndex();
+
 
             Button buttonSave = new Button("Save");
 
@@ -143,13 +128,21 @@ public class GUI extends Application {
 
 // Traditional way to get the response value.
             buttonSave.setOnAction(event1 -> {
+                /*String startTimeComboBox = comboBoxStartingTime.getSelectionModel().toString();
+                String replacementStartTime = "";
+                replacementStartTime += startTimeComboBox.substring(0, 1);
+                replacementStartTime += startTimeComboBox.substring(2);*/
+
+                Integer startTimeInt = comboBoxStartingTime.getSelectionModel().getSelectedIndex();
+                Integer endTime = comboBoxEndingTime.getSelectionModel().getSelectedIndex();
+
                 Artist artist;
                 for (Artist a : artists){
                     if(a.getName().equals(comboBoxArtists.getValue())){
                         artist = a;
                         for (Stage s : stages){
                             if (s.getStageName().equals(comboBoxStages.getValue())){
-                                this.performances.add(new Performance(startTime, endTime, artist, s));
+                                this.performances.add(new Performance(startTimeInt, endTime, artist, s));
 
                             }
                         }
@@ -227,8 +220,9 @@ public class GUI extends Application {
         tcStartingTime.setCellValueFactory(new PropertyValueFactory<Performance, String>("startTime"));
         tcStage.setCellValueFactory(new PropertyValueFactory<Stage, String>("stageName"));
         tcArtist.setCellValueFactory(new PropertyValueFactory<Artist, String>("name"));
-        tcEndingTime.setCellValueFactory(new PropertyValueFactory<Performance, String>("genre"));
-        tcGenre.setCellValueFactory(new PropertyValueFactory<Artist, String>("popularity"));
+        tcEndingTime.setCellValueFactory(new PropertyValueFactory<Performance, String>("endTime"));
+        tcGenre.setCellValueFactory(new PropertyValueFactory<Artist, String>("genre"));
+        tcPopularity.setCellValueFactory(new PropertyValueFactory<Artist, Integer>("popularity"));
 
 
         // BUG: tableView.setItems(FXCollections.observableArrayList(this.persons));
@@ -239,5 +233,20 @@ public class GUI extends Application {
 
         return tableView;
     }
+
+
+    public void setItems(ObservableList<Integer> options) {
+        String tijd = "0000";
+        for (int i = 10; i < 26; i++) {
+            tijd = i + tijd.substring(3);
+            for (int j = 0; j < 2; j++) {
+                tijd = tijd.substring(0, 2) + j * 30;
+                options.add(Integer.parseInt(tijd));
+//                System.out.println(options);
+            }
+//            System.out.println(options.toString());
+        }
+    }
+
 
 }

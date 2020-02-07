@@ -2,30 +2,36 @@ package Data.Person;
 
 import Data.Genre;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 public class Artist extends Person {
 
-    private String name;
-    private int popularity;
+    private StringProperty name;
+    private IntegerProperty popularity;
     private Genre genre;
 
     public Artist(String name, int popularity, Genre genre) {
-        this.name = name;
-        this.popularity = popularity;
+        this.name = new SimpleStringProperty(name);
+        this.popularity = new SimpleIntegerProperty(popularity);
         this.genre = genre;
     }
 
+    public StringProperty nameProperty() {
+        return name;
+    }
 
     public void setName(String name) {
         name = name;
     }
 
-    public int getPopularity() {
+    public IntegerProperty getPopularity() {
         return popularity;
     }
 
     public void setPopularity(int popularity) {
-        this.popularity = popularity;
+        this.popularity = new SimpleIntegerProperty(popularity);
     }
 
     public Genre getGenre() {
@@ -37,7 +43,7 @@ public class Artist extends Person {
     }
 
     @Override
-    public String getName() {
+    public StringProperty getName() {
         return this.name;
     }
 
