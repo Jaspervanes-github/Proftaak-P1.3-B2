@@ -69,6 +69,7 @@ public class GUI extends Application {
 
         buttonAdd.setOnAction(event -> {
             Dialog dialog = new Dialog();
+            dialog.getDialogPane().getButtonTypes().add(new ButtonType("Quit",ButtonBar.ButtonData.CANCEL_CLOSE));
 
             GridPane gridPane = new GridPane();
 
@@ -123,9 +124,6 @@ public class GUI extends Application {
             int endTime = comboBoxEndingTime.getSelectionModel().getSelectedIndex();
 
             Button buttonSave = new Button("Save");
-            Button buttonQuit = new Button("Quit");
-
-
 
             gridPane.add(comboBoxStages, 1, 1);
             gridPane.add(new Label("Stage"), 0, 1);
@@ -140,7 +138,6 @@ public class GUI extends Application {
             gridPane.add(new Label("Artist"), 0, 4);
 
             gridPane.add(buttonSave, 0, 5);
-            gridPane.add(buttonQuit, 1, 5);
 
             dialog.getDialogPane().setContent(gridPane);
 
@@ -168,11 +165,6 @@ public class GUI extends Application {
                 }
             });
 
-            buttonQuit.setOnAction(event1 -> {
-                dialog.setResult(Boolean.TRUE);
-                dialog.close();
-
-            });
             Optional<String> result = dialog.showAndWait();
             if (result.isPresent()){
                 dialog.close();
