@@ -5,6 +5,7 @@ import Data.Genre;
 public class Customer extends Person {
 
     private Genre favoriteGenre;
+    private String name;
 
     public Genre getFavoriteGenre() {
         return favoriteGenre;
@@ -15,12 +16,14 @@ public class Customer extends Person {
     }
 
     @Override
-    public void getName() {
-
+    public String getName() {
+        return this.name;
     }
+
 
     @Override
     public void setName() {
 
     }
+
 }

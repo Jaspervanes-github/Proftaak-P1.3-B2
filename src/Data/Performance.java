@@ -1,37 +1,50 @@
 package Data;
 
 import Data.Person.Artist;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
+
+import java.util.Observable;
 
 public class Performance {
 
-    private int starttime;
-    private int endtime;
+    private int startTime;
+    private int endTime;
     private Artist artist;
     private Stage stage;
+    private Time time;
 
-    public Performance(int starttime, int endtime, Artist artist, Stage stage) {
-        this.starttime = starttime;
-        this.endtime = endtime;
+    public Performance(int startTime, int endTime, Artist artist, Stage stage) {
+        this.startTime = startTime;
+        this.endTime = endTime;
         this.artist = artist;
         this.stage = stage;
+        this.time = new Time();
     }
 
-    public int getStarttime() {
-        return starttime;
+    public int getStartTime() {
+        return startTime;
     }
 
-    public void setStarttime(int starttime) {
-        this.starttime = starttime;
+    public ObservableValue<String> getObservableString(int inputInteger){
+        return new SimpleStringProperty(time.getTimeString(inputInteger));
     }
 
-    public int getEndtime() {
-        return endtime;
+    public ObservableValue<String> getObservableString(String inputString){
+        return new SimpleStringProperty(inputString);
     }
 
-    public void setEndtime(int endtime) {
-        this.endtime = endtime;
+    public void setStartTime(int startTime) {
+        this.startTime = startTime;
+    }
+
+    public int getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(int endTime) {
+        this.endTime = endTime;
     }
 
     public Artist getArtist() {
@@ -49,4 +62,5 @@ public class Performance {
     public void setStage(Stage stage) {
         this.stage = stage;
     }
+
 }
