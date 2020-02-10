@@ -46,7 +46,7 @@ public class GUI extends Application {
         this.addArtist(new Artist("Oliver heldens", 9, Genre.HOUSE));
         this.addArtist(new Artist("Charlotte de Witte", 7, Genre.TECHNO));
         this.addArtist(new Artist("Nina Kraviz", 8, Genre.TECHNO));
-        this.addArtist(new Artist("Oliver heldens", 9, Genre.HOUSE));
+        this.addArtist(new Artist("Netsky", 7, Genre.DRUM_AND_BASS));
     }
 
     public void addPodia(Stage stage) {
@@ -64,7 +64,8 @@ public class GUI extends Application {
         //This is the general Agenda.GUI.GUI lay out
         BorderPane bp = new BorderPane();
 
-        bp.setCenter(getTabPane());
+        bp.setTop(getTabPane());
+        bp.setCenter(getDiscription());
         bp.setBottom(getButton());
 
 
@@ -127,7 +128,7 @@ public class GUI extends Application {
 
             dialog.getDialogPane().setContent(gridPane);
 
-// Traditional way to get the response value.
+            // Traditional way to get the response value.
             buttonSave.setOnAction(event1 -> {
                 /*String startTimeComboBox = comboBoxStartingTime.getSelectionModel().toString();
                 String replacementStartTime = "";
@@ -173,6 +174,21 @@ public class GUI extends Application {
         stage.setScene(scene);
         stage.setTitle("User interface: Agenda");
         stage.show();
+    }
+
+    private Node getDiscription() {
+        tableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                
+                tableView.getSelectionModel().clearSelection();
+            }
+        });
+        TextArea textArea = new TextArea();
+        textArea.setText("Olivier L.J. (Oliver) Heldens (Rotterdam, 1 februari 1995) is een Nederlandse diskjockey " + "\n" +
+                "en muziekproducent in de genres Future House en Deep House. ");
+
+
+        return textArea;
     }
 
     public Node getButton() {
