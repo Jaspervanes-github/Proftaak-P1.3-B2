@@ -20,6 +20,7 @@ public class Performance {
         this.endTime = endTime;
         this.artist = artist;
         this.stage = stage;
+        this.time = new Time();
     }
 
     public int getStartTime() {
