@@ -41,6 +41,8 @@ public class File_IO implements Serializable{
             objectInputStream.close();
         } catch (EOFException e){
             System.out.println("File is empty");
+        } catch (FileNotFoundException e){
+            System.out.println("File not found, generating a new one...");
         } catch (ClassNotFoundException e){
             System.out.println("Class not found in readFile()");
             e.printStackTrace();
