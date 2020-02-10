@@ -13,6 +13,7 @@ public class Performance {
     private int endTime;
     private Artist artist;
     private Stage stage;
+    private Time time;
 
     public Performance(int startTime, int endTime, Artist artist, Stage stage) {
         this.startTime = startTime;
@@ -27,7 +28,7 @@ public class Performance {
 
     public ObservableValue<String> getObservableString(int inputInteger){
 
-        ObservableValue result = new SimpleStringProperty(getTimeString(inputInteger));
+        ObservableValue result = new SimpleStringProperty(time.getTimeString(inputInteger));
 
         return result;
     }
@@ -65,24 +66,6 @@ public class Performance {
 
     public void setStage(Stage stage) {
         this.stage = stage;
-    }
-
-    public String getTimeString(int time){
-
-        String timeString = Integer.toString(time);
-        StringBuilder stringBuilder = new StringBuilder(timeString);
-
-        if(timeString.length() == 1 || timeString.length() == 2){
-            return timeString;
-        }else if(timeString.length() == 3){
-            stringBuilder.insert(1, ":");
-        }else if(timeString.length() == 4){
-            stringBuilder.insert(2, ":");
-        }else{
-            return "Bad time friend";
-        }
-
-        return stringBuilder.toString();
     }
 
 }

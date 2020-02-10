@@ -80,11 +80,7 @@ public class GUI extends Application {
 
             GridPane gridPane = new GridPane();
 
-            TextField textFieldStage = new TextField();
-            TextField textFieldStartingTime = new TextField();
-            TextField textFieldEndTime = new TextField();
-            TextField textFieldArtist = new TextField();
-
+            dialog.getDialogPane().getButtonTypes().add(new ButtonType("Quit", ButtonBar.ButtonData.CANCEL_CLOSE));
             dialog.setTitle("Adding a new Performance");
             dialog.setHeaderText("Adding a new Performance");
             dialog.setContentText("Please enter the data: ");
@@ -95,26 +91,7 @@ public class GUI extends Application {
             ComboBox comboBoxEndingTime = new ComboBox();
             ComboBox comboBoxStages = new ComboBox();
 
-            ObservableList<String> options =
-                    FXCollections.observableArrayList(
-                            "9:00",
-                            "9:30",
-                            "10:00",
-                            "10:30",
-                            "11:00",
-                            "11:30",
-                            "12:00",
-                            "12:30",
-                            "13:00",
-                            "13:30",
-                            "14:00",
-                            "14:30",
-                            "15:00",
-                            "15:30",
-                            "16:00",
-                            "16:30",
-                            "17:00"
-                    );
+            ObservableList<String> options = FXCollections.observableList(time.LoadListOfTime());
 
             for (Artist artist : artists){
                 comboBoxArtists.getItems().add(artist.getName());
@@ -131,7 +108,7 @@ public class GUI extends Application {
            // int startTime = Integer.parseInt(comboBoxStartingTime.getValue().toString());
 
             Button buttonSave = new Button("Save");
-            Button buttonQuit = new Button("Quit");
+
 
 
 
@@ -148,7 +125,6 @@ public class GUI extends Application {
             gridPane.add(new Label("Artist"), 0, 4);
 
             gridPane.add(buttonSave, 0, 5);
-            gridPane.add(buttonQuit, 1, 5);
 
             dialog.getDialogPane().setContent(gridPane);
 
@@ -192,14 +168,9 @@ public class GUI extends Application {
                 }
             });
 
-            buttonQuit.setOnAction(event1 -> {
-                dialog.setResult(Boolean.TRUE);
-                dialog.close();
-            });
             Optional<String> result = dialog.showAndWait();
             if (result.isPresent()){
                 dialog.close();
-
         }
                 });
 
