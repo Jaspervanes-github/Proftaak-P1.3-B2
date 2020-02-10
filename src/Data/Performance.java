@@ -6,32 +6,32 @@ import javafx.beans.property.SimpleIntegerProperty;
 
 public class Performance {
 
-    private IntegerProperty startTime;
-    private IntegerProperty endTime;
+    private Integer startTime;
+    private Integer endTime;
     private Artist artist;
     private Stage stage;
 
     public Performance(Integer startTime, Integer endTime, Artist artist, Stage stage) {
-        this.startTime = new SimpleIntegerProperty(startTime);
-        this.endTime = new SimpleIntegerProperty(endTime);
+        this.startTime = startTime;
+        this.endTime = endTime;
         this.artist = artist;
         this.stage = stage;
     }
 
-    public IntegerProperty getStartTime() {
+    public Integer getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(int startTime) {
-        this.startTime = new SimpleIntegerProperty(startTime);
+    public void setStartTime(Integer startTime) {
+        this.startTime = startTime;
     }
 
-    public IntegerProperty getEndTime() {
+    public Integer getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(int endTime) {
-        this.endTime = new SimpleIntegerProperty(endTime);
+    public void setEndTime(Integer endTime) {
+        this.endTime = endTime;
     }
 
     public Artist getArtist() {

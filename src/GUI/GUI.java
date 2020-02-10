@@ -23,6 +23,7 @@ public class GUI extends Application {
     private ObservableList<Performance> performances;
 
 
+
     private TableView tableView;
     private Button buttonDel;
     private Button buttonEdit;
@@ -69,6 +70,7 @@ public class GUI extends Application {
 
         buttonAdd.setOnAction(event -> {
             Dialog dialog = new Dialog();
+            dialog.getDialogPane().getButtonTypes().add(new ButtonType("Quit",ButtonBar.ButtonData.CANCEL_CLOSE));
 
             GridPane gridPane = new GridPane();
 
@@ -108,9 +110,6 @@ public class GUI extends Application {
 
 
             Button buttonSave = new Button("Save");
-            Button buttonQuit = new Button("Quit");
-
-
 
             gridPane.add(comboBoxStages, 1, 1);
             gridPane.add(new Label("Stage"), 0, 1);
@@ -125,7 +124,6 @@ public class GUI extends Application {
             gridPane.add(new Label("Artist"), 0, 4);
 
             gridPane.add(buttonSave, 0, 5);
-            gridPane.add(buttonQuit, 1, 5);
 
             dialog.getDialogPane().setContent(gridPane);
 
@@ -136,8 +134,8 @@ public class GUI extends Application {
                 replacementStartTime += startTimeComboBox.substring(0, 1);
                 replacementStartTime += startTimeComboBox.substring(2);*/
 
-                Integer startTimeInt = comboBoxStartingTime.getSelectionModel().getSelectedIndex();
-                Integer endTime = comboBoxEndingTime.getSelectionModel().getSelectedIndex();
+                Integer startTimeInt = options.get(comboBoxStartingTime.getSelectionModel().getSelectedIndex());
+                Integer endTime = options.get(comboBoxEndingTime.getSelectionModel().getSelectedIndex());
 
                 Artist artist;
                 for (Artist a : artists){
@@ -159,13 +157,9 @@ public class GUI extends Application {
                     System.out.println(p.getEndTime());
                     System.out.println(p.getStartTime());
                 }
+                this.tableView.refresh();
             });
 
-            buttonQuit.setOnAction(event1 -> {
-                dialog.setResult(Boolean.TRUE);
-                dialog.close();
-
-            });
             Optional<String> result = dialog.showAndWait();
             if (result.isPresent()){
                 dialog.close();
@@ -248,7 +242,11 @@ public class GUI extends Application {
         for (int i = 10; i < 26; i++) {
             tijd = i + tijd.substring(3);
             for (int j = 0; j < 2; j++) {
-                tijd = tijd.substring(0, 2) + j * 30;
+                if(j != 0) {
+                    tijd = tijd.substring(0, 2) + j * 30;
+                } else{
+                    tijd = tijd.substring(0,2) + "00";
+                }
                 options.add(Integer.parseInt(tijd));
 //                System.out.println(options);
             }
