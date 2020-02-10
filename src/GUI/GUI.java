@@ -4,7 +4,12 @@ import Data.Genre;
 import Data.Performance;
 import Data.Person.Artist;
 import Data.Stage;
+import Data.Time;
 import javafx.application.Application;
+import javafx.beans.binding.Bindings;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
@@ -13,6 +18,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.*;
 
+import javax.naming.Binding;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -22,8 +28,10 @@ public class GUI extends Application {
     private ObservableList<Artist> artists;
     private ObservableList<Performance> performances;
 
+    Time time = new Time();
 
-    private TableView tableView;
+
+    private TableView<Performance> tableView;
     private Button buttonDel;
     private Button buttonEdit;
     private Button buttonAdd;
@@ -35,7 +43,7 @@ public class GUI extends Application {
         this.performances = FXCollections.observableList((new ArrayList<>()));
 
 
-
+        //Test Values
         this.addPodia(new Stage("Heldeep", 200));
         this.addPodia(new Stage("Rampage", 200));
         this.addPodia(new Stage("Boiler Room", 200));
@@ -119,8 +127,8 @@ public class GUI extends Application {
             comboBoxEndingTime.setItems(options);
 
 
-            int startTime = 0;
-            int endTime = comboBoxEndingTime.getSelectionModel().getSelectedIndex();
+           // String startTime = comboBoxStartingTime.getValue().toString();
+           // int startTime = Integer.parseInt(comboBoxStartingTime.getValue().toString());
 
             Button buttonSave = new Button("Save");
             Button buttonQuit = new Button("Quit");
@@ -150,9 +158,25 @@ public class GUI extends Application {
                 for (Artist a : artists){
                     if(a.getName().equals(comboBoxArtists.getValue())){
                         artist = a;
+
+                        System.out.println("artist:" + artist);
+                        System.out.println("getName: " + a.getName());
+                        System.out.println("artist.getName: " + artist.getName());
+
                         for (Stage s : stages){
                             if (s.getStageName().equals(comboBoxStages.getValue())){
+
+                                System.out.println("Stage: " + s);
+                                System.out.println("getStageName: " + s.getStageName());
+
+                                int startTime = time.formatTime(comboBoxStartingTime.getValue().toString());
+                                int endTime = time.formatTime(comboBoxEndingTime.getValue().toString());
+
                                 this.performances.add(new Performance(startTime, endTime, artist, s));
+                                System.out.println("Performances list: " + this.performances.size());
+                                System.out.println("cbx StartingTime: " + comboBoxStartingTime.getValue());
+                                System.out.println("cbx StartingTime.getValue.ToString: " + comboBoxStartingTime.getValue().toString());
+
 
                             }
                         }
@@ -161,9 +185,9 @@ public class GUI extends Application {
                 }
 
                 for (Performance p : performances){
-                    System.out.println(p.getArtist());
-                    System.out.println(p.getStage());
-                    System.out.println(p.getEndTime());
+//                    System.out.println(p.getArtist());
+//                    System.out.println(p.getStage());
+//                    System.out.println(p.getEndTime());
                     System.out.println(p.getStartTime());
                 }
             });
@@ -171,7 +195,6 @@ public class GUI extends Application {
             buttonQuit.setOnAction(event1 -> {
                 dialog.setResult(Boolean.TRUE);
                 dialog.close();
-
             });
             Optional<String> result = dialog.showAndWait();
             if (result.isPresent()){
@@ -222,27 +245,62 @@ public class GUI extends Application {
         //Here we make a tableview and we can add podiums and numbers
         this.tableView = new TableView();
 
+        TableColumn<Performance, String> startingTime = new TableColumn<>("Start Time");
+        TableColumn<Performance, String> endTime = new TableColumn<>("End Time");
+        TableColumn<Performance, String> stage = new TableColumn<>("Stage");
+        TableColumn<Performance, String> artistName = new TableColumn<>("Artist");
+        TableColumn<Performance, String> genre = new TableColumn<>("Genre");
+        TableColumn<Performance, String> popularity = new TableColumn<>("Popularity");
 
-        TableColumn tcStartingTime = new TableColumn("Starting time");
-        TableColumn tcStage = new TableColumn("Stage");
-        TableColumn tcArtist = new TableColumn("Artist");
-        TableColumn tcEndingTime = new TableColumn("Ending time");
-        TableColumn tcGenre = new TableColumn("Genre");
-        TableColumn tcPopularity = new TableColumn("Popularity");
+        startingTime.setCellValueFactory(performances -> performances.getValue().getObservableString(performances.getValue().getStartTime()));
+        endTime.setCellValueFactory(performances -> performances.getValue().getObservableString(performances.getValue().getEndTime()));
+        stage.setCellValueFactory(performances -> performances.getValue().getObservableString(performances.getValue().getStage().getStageName()));
+        artistName.setCellValueFactory(performances -> performances.getValue().getObservableString(performances.getValue().getArtist().getName()));
+        genre.setCellValueFactory(performances -> performances.getValue().getObservableString(performances.getValue().getArtist().getGenre().toString()));
+        popularity.setCellValueFactory(performances -> performances.getValue().getObservableString(performances.getValue().getArtist().getPopularity()));
 
-        tableView.getColumns().addAll(tcStartingTime, tcStage, tcArtist, tcEndingTime, tcGenre, tcPopularity);
 
-        tcStartingTime.setCellValueFactory(new PropertyValueFactory<Performance, String>("startTime"));
-        tcStage.setCellValueFactory(new PropertyValueFactory<Stage, String>("stageName"));
-        tcArtist.setCellValueFactory(new PropertyValueFactory<Artist, String>("name"));
-        tcEndingTime.setCellValueFactory(new PropertyValueFactory<Performance, String>("genre"));
-        tcGenre.setCellValueFactory(new PropertyValueFactory<Artist, String>("popularity"));
+        tableView.getColumns().addAll(startingTime, endTime, stage, artistName, genre, popularity);
+        tableView.setPlaceholder(new Label("No Performances"));
+        tableView.setItems(this.performances);
+
+
+//
+//        TableColumn tcStartingTime = new TableColumn("Starting time");
+//        TableColumn tcStage = new TableColumn("Stage");
+//        TableColumn tcArtist = new TableColumn("Artist");
+//        TableColumn tcEndingTime = new TableColumn("Ending time");
+//        TableColumn tcGenre = new TableColumn("Genre");
+//        TableColumn tcPopularity = new TableColumn("Popularity");
+//
+//        tableView.getColumns().addAll(tcStage, tcArtist, tcPopularity, tcGenre, tcStartingTime, tcEndingTime);
+//
+//        tableView.setItems(this.performances);
+//
+//        tcStartingTime.setCellValueFactory(new PropertyValueFactory<Performance, String>("startingTime"));
+//        tcStage.setCellValueFactory(new PropertyValueFactory<Stage, String>("stageName"));
+//        tcArtist.setCellValueFactory(new PropertyValueFactory<Artist, String>("name"));
+//        tcEndingTime.setCellValueFactory(new PropertyValueFactory<Performance, String>("genre"));
+//        tcGenre.setCellValueFactory(new PropertyValueFactory<Artist, String>("popularity"));
+
+
+
 
 
         // BUG: tableView.setItems(FXCollections.observableArrayList(this.persons));
         // Let op: this.persons is een List => dus gebruik observableList!! en niet observableArrayList
 
-        tableView.setItems(this.performances);
+        //tableView.setItems(this.performances);
+//
+//        for (Performance p : this.performances){
+//            tableView.getItems().add(p.getArtist().getName());
+//            tableView.getItems().add(p.getStage().getStageName());
+//            tableView.getItems().add(p.getArtist().getPopularity());
+//            tableView.getItems().add(p.getArtist().getGenre());
+//            tableView.getItems().add(p.getStartTime());
+//            tableView.getItems().add(p.getEndTime());
+//
+//        }
 
 
         return tableView;

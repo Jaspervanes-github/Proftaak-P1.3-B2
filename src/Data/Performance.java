@@ -1,6 +1,11 @@
 package Data;
 
 import Data.Person.Artist;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
+
+import java.util.Observable;
 
 public class Performance {
 
@@ -18,6 +23,20 @@ public class Performance {
 
     public int getStartTime() {
         return startTime;
+    }
+
+    public ObservableValue<String> getObservableString(int inputInteger){
+
+        ObservableValue result = new SimpleStringProperty(getTimeString(inputInteger));
+
+        return result;
+    }
+
+    public ObservableValue<String> getObservableString(String inputString){
+
+        ObservableValue result = new SimpleStringProperty(inputString);
+
+        return result;
     }
 
     public void setStartTime(int startTime) {
@@ -47,4 +66,23 @@ public class Performance {
     public void setStage(Stage stage) {
         this.stage = stage;
     }
+
+    public String getTimeString(int time){
+
+        String timeString = Integer.toString(time);
+        StringBuilder stringBuilder = new StringBuilder(timeString);
+
+        if(timeString.length() == 1 || timeString.length() == 2){
+            return timeString;
+        }else if(timeString.length() == 3){
+            stringBuilder.insert(1, ":");
+        }else if(timeString.length() == 4){
+            stringBuilder.insert(2, ":");
+        }else{
+            return "Bad time friend";
+        }
+
+        return stringBuilder.toString();
+    }
+
 }

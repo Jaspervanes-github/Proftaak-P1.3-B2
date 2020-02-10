@@ -31,4 +31,14 @@ public class Time {
     public String getEndTime() {
         return endTime.get();
     }
+
+    public int formatTime(String time){
+
+        int result = 0;
+        if(time.contains(":")){
+           result = Integer.parseInt(time.replaceAll(":",""));
+        }
+        return result;
+    }
+
 }
