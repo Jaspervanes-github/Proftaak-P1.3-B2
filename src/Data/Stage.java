@@ -10,24 +10,24 @@ import java.util.List;
 
 public class Stage {
 
-    private StringProperty stageName;
+    private String stageName;
     private int size;
 
-    public StringProperty stageNameProperty() {
+    public String stageNameProperty() {
         return stageName;
     }
 
     public Stage(String stageName, int size) {
-        this.stageName = new SimpleStringProperty(stageName);
+        this.stageName = stageName;
         this.size = size;
     }
 
     public String getStageName() {
-        return stageName.get();
+        return stageName;
     }
 
     public void setStageName(String stageName) {
-        this.stageName.set(stageName);
+        this.stageName = stageName;
     }
 
     public int getSize() {
