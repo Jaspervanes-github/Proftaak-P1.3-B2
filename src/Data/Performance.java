@@ -27,17 +27,11 @@ public class Performance implements Serializable {
     }
 
     public ObservableValue<String> getObservableString(int inputInteger){
-
-        ObservableValue result = new SimpleStringProperty(time.getTimeString(inputInteger));
-
-        return result;
+        return new SimpleStringProperty(time.getTimeString(inputInteger));
     }
 
     public ObservableValue<String> getObservableString(String inputString){
-
-        ObservableValue result = new SimpleStringProperty(inputString);
-
-        return result;
+        return new SimpleStringProperty(inputString);
     }
 
     public void setStartTime(int startTime) {
