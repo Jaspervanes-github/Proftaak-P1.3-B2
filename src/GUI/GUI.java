@@ -111,9 +111,6 @@ public class GUI extends Application {
 
             Button buttonSave = new Button("Save");
 
-            dialog.getDialogPane().getButtonTypes().add(new ButtonType("Quit", ButtonBar.ButtonData.CANCEL_CLOSE));
-
-
             gridPane.add(comboBoxStages, 1, 1);
             gridPane.add(new Label("Stage"), 0, 1);
 
@@ -167,7 +164,14 @@ public class GUI extends Application {
         buttonDel.setOnAction(event -> {
             Performance selectedPerformance = tableView.getSelectionModel().getSelectedItem();
             tableView.getItems().remove(selectedPerformance);
+            try {
+                file_io.writeFile("Performances.txt", this.performances);
+            } catch (IOException e){
+                System.out.println("IO Exception");
+                e.printStackTrace();
+            }
         });
+
 
         buttonEdit.setOnAction(event -> {
             Performance help = tableView.getSelectionModel().getSelectedItem();
@@ -260,6 +264,13 @@ public class GUI extends Application {
 //                    System.out.println(p.getEndTime());
                     System.out.println(p.getStartTime());
                 }
+                try {
+                    file_io.writeFile("Performances.txt", this.performances);
+                } catch (IOException e){
+                    System.out.println("IO Exception");
+                    e.printStackTrace();
+                }
+
             dialog.close();
             });
             Optional<String> result = dialog.showAndWait();
