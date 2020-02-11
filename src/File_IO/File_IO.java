@@ -30,7 +30,7 @@ public class File_IO implements Serializable{
 
     }
 
-    public ArrayList<Performance> readFile(String filename) throws FileNotFoundException {
+    public ArrayList<Performance> readFile(String filename) throws FileNotFoundException, EOFException {
 
         ArrayList performances = new ArrayList();
 
@@ -39,11 +39,13 @@ public class File_IO implements Serializable{
             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
             performances = (ArrayList<Performance>) objectInputStream.readObject();
             objectInputStream.close();
-        } catch (IOException e){
-            System.out.println("Exception in readFile()");
-            e.printStackTrace();
+        } catch (EOFException e){
+            System.out.println("File is empty");
         } catch (ClassNotFoundException e){
             System.out.println("Class not found in readFile()");
+            e.printStackTrace();
+        } catch (IOException e){
+            System.out.println("Exception in readFile()");
             e.printStackTrace();
         }
 

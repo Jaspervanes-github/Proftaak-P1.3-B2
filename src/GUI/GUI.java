@@ -14,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 
+import java.io.EOFException;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -35,6 +36,7 @@ public class GUI extends Application {
 
 
     public GUI() {
+
         this.stages = FXCollections.observableList(new ArrayList<>());
         this.artists = FXCollections.observableList(new ArrayList<>());
 
@@ -44,6 +46,8 @@ public class GUI extends Application {
             this.performances = FXCollections.observableList(file_io.readFile("Performances.txt"));
         }catch (FileNotFoundException e){
             e.printStackTrace();
+        }catch (EOFException e){
+            System.out.println("File is empty");
         }
 
         //Test Values
@@ -134,23 +138,13 @@ public class GUI extends Application {
                     if(a.getName().equals(comboBoxArtists.getValue())){
                         artist = a;
 
-                        System.out.println("artist:" + artist);
-                        System.out.println("getName: " + a.getName());
-                        System.out.println("artist.getName: " + artist.getName());
-
                         for (Stage s : stages){
                             if (s.getStageName().equals(comboBoxStages.getValue())){
-
-                                System.out.println("Stage: " + s);
-                                System.out.println("getStageName: " + s.getStageName());
 
                                 int startTime = time.formatTime(comboBoxStartingTime.getValue().toString());
                                 int endTime = time.formatTime(comboBoxEndingTime.getValue().toString());
 
                                 this.performances.add(new Performance(startTime, endTime, artist, s));
-                                System.out.println("Performances list: " + this.performances.size());
-                                System.out.println("cbx StartingTime: " + comboBoxStartingTime.getValue());
-                                System.out.println("cbx StartingTime.getValue.ToString: " + comboBoxStartingTime.getValue().toString());
 
                             }
                         }
@@ -182,7 +176,6 @@ public class GUI extends Application {
     public Node getButton() {
         FlowPane fp = new FlowPane();
 
-
         buttonDel = new Button("del");
         buttonEdit = new Button("edit");
         buttonAdd = new Button("Adding a performance");
@@ -203,11 +196,8 @@ public class GUI extends Application {
 
         tabLijst.setClosable(false);
 
-
         return tabPane;
     }
-
-
 
     private Node getTableView() {
         //Here we make a tableview and we can add podiums and numbers
@@ -231,8 +221,6 @@ public class GUI extends Application {
         tableView.setPlaceholder(new Label("No Performances"));
         tableView.setItems(this.performances);
 
-
         return tableView;
     }
-
 }
