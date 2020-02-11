@@ -1,16 +1,10 @@
 package Data;
 
-
-import javafx.beans.property.StringProperty;
-
-import java.sql.SQLOutput;
-import java.time.Duration;
-import java.time.LocalTime;
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.LongStream;
 
-public class Time {
+
+public class Time implements Serializable {
 
     private int startTime;
     private int endTime;
@@ -72,7 +66,11 @@ public class Time {
         String timeString = Integer.toString(time);
         StringBuilder stringBuilder = new StringBuilder(timeString);
 
-        if (timeString.length() == 1 || timeString.length() == 2) {
+        if(timeString.equals("0")){
+          return "00:" + timeString + "0";
+        } else if(timeString.equals("30")){
+            return "00:" + timeString;
+        } else if (timeString.length() == 1 || timeString.length() == 2) {
             return timeString;
         } else if (timeString.length() == 3) {
             stringBuilder.insert(1, ":");

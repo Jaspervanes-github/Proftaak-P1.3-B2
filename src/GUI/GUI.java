@@ -5,31 +5,28 @@ import Data.Performance;
 import Data.Person.Artist;
 import Data.Stage;
 import Data.Time;
+import File_IO.File_IO;
 import javafx.application.Application;
-import javafx.beans.binding.Bindings;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.*;
 
-import javax.naming.Binding;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Optional;
 
 public class GUI extends Application {
 
+    Time time = new Time();
+    File_IO file_io = new File_IO();
+
     private ObservableList<Stage> stages;
     private ObservableList<Artist> artists;
     private ObservableList<Performance> performances;
-
-    Time time = new Time();
-
 
     private TableView<Performance> tableView;
     private Button buttonDel;
@@ -40,8 +37,14 @@ public class GUI extends Application {
     public GUI() {
         this.stages = FXCollections.observableList(new ArrayList<>());
         this.artists = FXCollections.observableList(new ArrayList<>());
-        this.performances = FXCollections.observableList((new ArrayList<>()));
 
+        //Populates the observableList with data from file.
+        //if file is empty an EOFException is thrown in src/File_IO
+        try {
+            this.performances = FXCollections.observableList(file_io.readFile("Performances.txt"));
+        }catch (FileNotFoundException e){
+            e.printStackTrace();
+        }
 
         //Test Values
         this.addPodia(new Stage("Heldeep", 200));
@@ -53,7 +56,7 @@ public class GUI extends Application {
         this.addArtist(new Artist("Oliver heldens", 9, Genre.HOUSE));
         this.addArtist(new Artist("Charlotte de Witte", 7, Genre.TECHNO));
         this.addArtist(new Artist("Nina Kraviz", 8, Genre.TECHNO));
-        this.addArtist(new Artist("Oliver heldens", 9, Genre.HOUSE));
+
     }
 
     public void addPodia(Stage stage) {
@@ -103,14 +106,10 @@ public class GUI extends Application {
             comboBoxStartingTime.setItems(options);
             comboBoxEndingTime.setItems(options);
 
-
            // String startTime = comboBoxStartingTime.getValue().toString();
            // int startTime = Integer.parseInt(comboBoxStartingTime.getValue().toString());
 
             Button buttonSave = new Button("Save");
-
-
-
 
             gridPane.add(comboBoxStages, 1, 1);
             gridPane.add(new Label("Stage"), 0, 1);
@@ -153,18 +152,16 @@ public class GUI extends Application {
                                 System.out.println("cbx StartingTime: " + comboBoxStartingTime.getValue());
                                 System.out.println("cbx StartingTime.getValue.ToString: " + comboBoxStartingTime.getValue().toString());
 
-
                             }
                         }
                     }
-
                 }
-
-                for (Performance p : performances){
-//                    System.out.println(p.getArtist());
-//                    System.out.println(p.getStage());
-//                    System.out.println(p.getEndTime());
-                    System.out.println(p.getStartTime());
+                //Writes to Performances.txt
+                try {
+                    file_io.writeFile("Performances.txt", this.performances);
+                } catch (IOException e){
+                    System.out.println("IO Exception");
+                    e.printStackTrace();
                 }
             });
 
@@ -230,48 +227,9 @@ public class GUI extends Application {
         genre.setCellValueFactory(performances -> performances.getValue().getObservableString(performances.getValue().getArtist().getGenre().toString()));
         popularity.setCellValueFactory(performances -> performances.getValue().getObservableString(performances.getValue().getArtist().getPopularity()));
 
-
         tableView.getColumns().addAll(startingTime, endTime, stage, artistName, genre, popularity);
         tableView.setPlaceholder(new Label("No Performances"));
         tableView.setItems(this.performances);
-
-
-//
-//        TableColumn tcStartingTime = new TableColumn("Starting time");
-//        TableColumn tcStage = new TableColumn("Stage");
-//        TableColumn tcArtist = new TableColumn("Artist");
-//        TableColumn tcEndingTime = new TableColumn("Ending time");
-//        TableColumn tcGenre = new TableColumn("Genre");
-//        TableColumn tcPopularity = new TableColumn("Popularity");
-//
-//        tableView.getColumns().addAll(tcStage, tcArtist, tcPopularity, tcGenre, tcStartingTime, tcEndingTime);
-//
-//        tableView.setItems(this.performances);
-//
-//        tcStartingTime.setCellValueFactory(new PropertyValueFactory<Performance, String>("startingTime"));
-//        tcStage.setCellValueFactory(new PropertyValueFactory<Stage, String>("stageName"));
-//        tcArtist.setCellValueFactory(new PropertyValueFactory<Artist, String>("name"));
-//        tcEndingTime.setCellValueFactory(new PropertyValueFactory<Performance, String>("genre"));
-//        tcGenre.setCellValueFactory(new PropertyValueFactory<Artist, String>("popularity"));
-
-
-
-
-
-        // BUG: tableView.setItems(FXCollections.observableArrayList(this.persons));
-        // Let op: this.persons is een List => dus gebruik observableList!! en niet observableArrayList
-
-        //tableView.setItems(this.performances);
-//
-//        for (Performance p : this.performances){
-//            tableView.getItems().add(p.getArtist().getName());
-//            tableView.getItems().add(p.getStage().getStageName());
-//            tableView.getItems().add(p.getArtist().getPopularity());
-//            tableView.getItems().add(p.getArtist().getGenre());
-//            tableView.getItems().add(p.getStartTime());
-//            tableView.getItems().add(p.getEndTime());
-//
-//        }
 
 
         return tableView;

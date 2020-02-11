@@ -3,7 +3,9 @@ package Data.Person;
 import Data.Genre;
 import javafx.beans.property.IntegerProperty;
 
-public class Artist extends Person {
+import java.io.Serializable;
+
+public class Artist extends Person implements Serializable {
 
     private String name;
     private int popularity;
