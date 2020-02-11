@@ -115,6 +115,9 @@ public class GUI extends Application {
 
             Button buttonSave = new Button("Save");
 
+            dialog.getDialogPane().getButtonTypes().add(new ButtonType("Quit", ButtonBar.ButtonData.CANCEL_CLOSE));
+
+
             gridPane.add(comboBoxStages, 1, 1);
             gridPane.add(new Label("Stage"), 0, 1);
 
