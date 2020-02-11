@@ -45,7 +45,7 @@ public class GUI extends Application {
         try {
             this.performances = FXCollections.observableList(file_io.readFile("Performances.txt"));
         }catch (FileNotFoundException e){
-            e.printStackTrace();
+            System.out.println("File not found, generating new Performances.txt");
         }catch (EOFException e){
             System.out.println("File is empty");
         }
