@@ -232,37 +232,18 @@ public class GUI extends Application {
                     if (a.getName().equals(comboBoxArtists.getValue())) {
                         artist = a;
 
-                        System.out.println("artist:" + artist);
-                        System.out.println("getName: " + a.getName());
-                        System.out.println("artist.getName: " + artist.getName());
-
                         for (Stage s : stages) {
                             if (s.getStageName().equals(comboBoxStages.getValue())) {
-
-                                System.out.println("Stage: " + s);
-                                System.out.println("getStageName: " + s.getStageName());
 
                                 int startTime = time.formatTime(comboBoxStartingTime.getValue().toString());
                                 int endTime = time.formatTime(comboBoxEndingTime.getValue().toString());
 
                                 this.performances.add(new Performance(startTime, endTime, artist, s));
                                 this.performances.remove(help);
-                                System.out.println("Performances list: " + this.performances.size());
-                                System.out.println("cbx StartingTime: " + comboBoxStartingTime.getValue());
-                                System.out.println("cbx StartingTime.getValue.ToString: " + comboBoxStartingTime.getValue().toString());
-
-
                             }
                         }
                     }
 
-                }
-
-                for (Performance p : performances) {
-//                    System.out.println(p.getArtist());
-//                    System.out.println(p.getStage());
-//                    System.out.println(p.getEndTime());
-                    System.out.println(p.getStartTime());
                 }
                 try {
                     file_io.writeFile("Performances.txt", this.performances);
