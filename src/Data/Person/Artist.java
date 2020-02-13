@@ -1,7 +1,6 @@
 package Data.Person;
 
 import Data.Genre;
-import javafx.beans.property.IntegerProperty;
 
 import java.io.Serializable;
 
@@ -19,7 +18,7 @@ public class Artist extends Person implements Serializable {
 
 
     public void setName(String name) {
-        name = name;
+        this.name = name;
     }
 
     public int getPopularity() {
