@@ -29,7 +29,13 @@ public class GUI extends Application {
     private ObservableList<Artist> artists;
     private ObservableList<Performance> performances;
 
+<<<<<<< HEAD
     private TableView<Performance> tableView;
+=======
+
+
+    private TableView tableView;
+>>>>>>> Robin
     private Button buttonDel;
     private Button buttonEdit;
     private Button buttonAddPerformance;
@@ -61,6 +67,10 @@ public class GUI extends Application {
         this.addArtist(new Artist("Oliver heldens", 9, Genre.HOUSE));
         this.addArtist(new Artist("Charlotte de Witte", 7, Genre.TECHNO));
         this.addArtist(new Artist("Nina Kraviz", 8, Genre.TECHNO));
+<<<<<<< HEAD
+=======
+        this.addArtist(new Artist("Netsky", 7, Genre.DRUM_AND_BASS));
+>>>>>>> Robin
     }
 
     public void addPodia(Stage stage) {
@@ -78,12 +88,14 @@ public class GUI extends Application {
         //This is the general Agenda.GUI.GUI lay out
         BorderPane bp = new BorderPane();
 
-        bp.setCenter(getTabPane());
+        bp.setTop(getTabPane());
+        bp.setCenter(getDiscription());
         bp.setBottom(getButton());
 
 
         buttonAddPerformance.setOnAction(event -> {
             Dialog dialog = new Dialog();
+            dialog.getDialogPane().getButtonTypes().add(new ButtonType("Quit",ButtonBar.ButtonData.CANCEL_CLOSE));
 
             GridPane gridPane = new GridPane();
 
@@ -98,9 +110,20 @@ public class GUI extends Application {
             ComboBox comboBoxEndingTime = new ComboBox();
             ComboBox comboBoxStages = new ComboBox();
 
+<<<<<<< HEAD
             ObservableList<String> options = FXCollections.observableList(time.LoadListOfTime());
 
             for (Artist artist : artists) {
+=======
+
+
+            ObservableList<Integer> options =
+                    FXCollections.observableArrayList();
+
+            setItems(options);
+
+            for (Artist artist : artists){
+>>>>>>> Robin
                 comboBoxArtists.getItems().add(artist.getName());
             }
 
@@ -110,6 +133,12 @@ public class GUI extends Application {
             comboBoxStartingTime.setItems(options);
             comboBoxEndingTime.setItems(options);
 
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> Robin
             Button buttonSave = new Button("Save");
 
             gridPane.add(comboBoxStages, 1, 1);
@@ -128,12 +157,26 @@ public class GUI extends Application {
 
             dialog.getDialogPane().setContent(gridPane);
 
-// Traditional way to get the response value.
+            // Traditional way to get the response value.
             buttonSave.setOnAction(event1 -> {
+                /*String startTimeComboBox = comboBoxStartingTime.getSelectionModel().toString();
+                String replacementStartTime = "";
+                replacementStartTime += startTimeComboBox.substring(0, 1);
+                replacementStartTime += startTimeComboBox.substring(2);*/
+
+                Integer startTimeInt = options.get(comboBoxStartingTime.getSelectionModel().getSelectedIndex());
+                Integer endTime = options.get(comboBoxEndingTime.getSelectionModel().getSelectedIndex());
+
                 Artist artist;
                 for (Artist a : artists) {
                     if (a.getName().equals(comboBoxArtists.getValue())) {
                         artist = a;
+<<<<<<< HEAD
+=======
+                        for (Stage s : stages){
+                            if (s.getStageName().equals(comboBoxStages.getValue())){
+                                this.performances.add(new Performance(startTimeInt, endTime, artist, s));
+>>>>>>> Robin
 
                         for (Stage s : stages) {
                             if (s.getStageName().equals(comboBoxStages.getValue())) {
@@ -153,8 +196,10 @@ public class GUI extends Application {
                     System.out.println("IO Exception");
                     e.printStackTrace();
                 }
+                this.tableView.refresh();
             });
 
+<<<<<<< HEAD
             Optional<String> result = dialog.showAndWait();
             if (result.isPresent()) {
                 dialog.close();
@@ -200,6 +245,8 @@ public class GUI extends Application {
                     addArtist(new Artist(artistNameText.getText(), comboBoxPopularity.getValue(), comboBoxArtistGenre.getValue()));
                 }
             });
+=======
+>>>>>>> Robin
             Optional<String> result = dialog.showAndWait();
             if (result.isPresent()) {
                 dialog.close();
@@ -230,10 +277,30 @@ public class GUI extends Application {
                 dialog.setContentText("Please enter the data: ");
                 dialog.hide();
 
+<<<<<<< HEAD
                 ComboBox comboBoxArtists = new ComboBox();
                 ComboBox comboBoxStartingTime = new ComboBox();
                 ComboBox comboBoxEndingTime = new ComboBox();
                 ComboBox comboBoxStages = new ComboBox();
+=======
+    private Node getDiscription() {
+        tableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                
+                tableView.getSelectionModel().clearSelection();
+            }
+        });
+        TextArea textArea = new TextArea();
+        textArea.setText("Olivier L.J. (Oliver) Heldens (Rotterdam, 1 februari 1995) is een Nederlandse diskjockey " + "\n" +
+                "en muziekproducent in de genres Future House en Deep House. ");
+
+
+        return textArea;
+    }
+
+    public Node getButton() {
+        FlowPane fp = new FlowPane();
+>>>>>>> Robin
 
                 comboBoxArtists.setValue(help.getArtist().getName());
                 comboBoxEndingTime.setValue(time.getTimeString(help.getEndTime()));
@@ -297,6 +364,7 @@ public class GUI extends Application {
                         e.printStackTrace();
                     }
 
+<<<<<<< HEAD
                     dialog.close();
                 });
                 Optional<String> result = dialog.showAndWait();
@@ -305,6 +373,14 @@ public class GUI extends Application {
                 }
             });
             Scene scene = new Scene(bp, 1000, 650);
+=======
+        tcStartingTime.setCellValueFactory(new PropertyValueFactory<Performance, String>("startTime"));
+        tcStage.setCellValueFactory(new PropertyValueFactory<Stage, String>("stageName"));
+        tcArtist.setCellValueFactory(new PropertyValueFactory<Artist, String>("name"));
+        tcEndingTime.setCellValueFactory(new PropertyValueFactory<Performance, String>("endTime"));
+        tcGenre.setCellValueFactory(new PropertyValueFactory<Artist, String>("genre"));
+        tcPopularity.setCellValueFactory(new PropertyValueFactory<Artist, Integer>("popularity"));
+>>>>>>> Robin
 
             stage.setScene(scene);
             stage.setTitle("User interface: Agenda");
@@ -370,4 +446,27 @@ public class GUI extends Application {
             return tableView;
         }
 
+<<<<<<< HEAD
     }
+=======
+
+    public void setItems(ObservableList<Integer> options) {
+        String tijd = "0000";
+        for (int i = 10; i < 26; i++) {
+            tijd = i + tijd.substring(3);
+            for (int j = 0; j < 2; j++) {
+                if(j != 0) {
+                    tijd = tijd.substring(0, 2) + j * 30;
+                } else{
+                    tijd = tijd.substring(0,2) + "00";
+                }
+                options.add(Integer.parseInt(tijd));
+//                System.out.println(options);
+            }
+//            System.out.println(options.toString());
+        }
+    }
+
+
+}
+>>>>>>> Robin

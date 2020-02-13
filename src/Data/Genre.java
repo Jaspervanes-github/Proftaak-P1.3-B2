@@ -5,5 +5,6 @@ public enum Genre {
     HARDSTYLE,
     HOUSE,
     TECHNO,
-    TRANCE
+    TRANCE,
+    DRUM_AND_BASS
 }

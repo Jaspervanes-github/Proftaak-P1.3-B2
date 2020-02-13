@@ -1,20 +1,25 @@
 package Data;
 
 import Data.Person.Artist;
+<<<<<<< HEAD
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import java.io.Serializable;
+=======
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+>>>>>>> Robin
 
 
 public class Performance implements Serializable {
 
-    private int startTime;
-    private int endTime;
+    private Integer startTime;
+    private Integer endTime;
     private Artist artist;
     private Stage stage;
     private Time time;
 
-    public Performance(int startTime, int endTime, Artist artist, Stage stage) {
+    public Performance(Integer startTime, Integer endTime, Artist artist, Stage stage) {
         this.startTime = startTime;
         this.endTime = endTime;
         this.artist = artist;
@@ -22,10 +27,11 @@ public class Performance implements Serializable {
         this.time = new Time();
     }
 
-    public int getStartTime() {
+    public Integer getStartTime() {
         return startTime;
     }
 
+<<<<<<< HEAD
     public ObservableValue<String> getObservableString(int inputInteger){
         return new SimpleStringProperty(time.getTimeString(inputInteger));
     }
@@ -35,14 +41,17 @@ public class Performance implements Serializable {
     }
 
     public void setStartTime(int startTime) {
+=======
+    public void setStartTime(Integer startTime) {
+>>>>>>> Robin
         this.startTime = startTime;
     }
 
-    public int getEndTime() {
+    public Integer getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(int endTime) {
+    public void setEndTime(Integer endTime) {
         this.endTime = endTime;
     }
 
