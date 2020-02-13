@@ -44,12 +44,21 @@ public class GUI extends Application {
         //Populates the observableList with data from file.
         //if file is empty an EOFException is thrown in src/File_IO
         try {
-            this.performances = FXCollections.observableList(file_io.readFile("Performances.txt"));
+            this.performances = FXCollections.observableList(file_io.readFilePerformances("Performances.txt"));
         } catch (FileNotFoundException e) {
             System.out.println("File not found, generating new Performances.txt");
         } catch (EOFException e) {
             System.out.println("File is empty");
         }
+
+        try {
+            this.artists = FXCollections.observableList(file_io.readFileArtist("Artists.txt"));
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found, generating new Performances.txt");
+        } catch (EOFException e) {
+            System.out.println("File is empty");
+        }
+
 
         //Test Values
         this.addPodia(new Stage("Heldeep", 200));
@@ -58,9 +67,7 @@ public class GUI extends Application {
         this.addPodia(new Stage("Disco Snolly", 200));
         this.addPodia(new Stage("Techy Techno", 200));
 
-        this.addArtist(new Artist("Oliver heldens", 9, Genre.HOUSE));
-        this.addArtist(new Artist("Charlotte de Witte", 7, Genre.TECHNO));
-        this.addArtist(new Artist("Nina Kraviz", 8, Genre.TECHNO));
+
     }
 
     public void addPodia(Stage stage) {
@@ -141,14 +148,19 @@ public class GUI extends Application {
                                 int startTime = time.formatTime(comboBoxStartingTime.getValue().toString());
                                 int endTime = time.formatTime(comboBoxEndingTime.getValue().toString());
 
-                                this.performances.add(new Performance(startTime, endTime, artist, s));
+                                Performance performance = new Performance(startTime, endTime, artist, s);
+
+                                if (!this.performances.contains(performance)){
+                                    this.performances.add(performance);
+                                }
+
                             }
                         }
                     }
                 }
                 //Writes to Performances.txt
                 try {
-                    file_io.writeFile("Performances.txt", this.performances);
+                    file_io.writeFilePerformances("Performances.txt", this.performances);
                 } catch (IOException e) {
                     System.out.println("IO Exception");
                     e.printStackTrace();
@@ -198,6 +210,13 @@ public class GUI extends Application {
             buttonSave.setOnAction(event1 -> {
                 if(!artistNameText.getText().trim().isEmpty() || !comboBoxPopularity.getSelectionModel().isEmpty() || !comboBoxArtistGenre.getSelectionModel().isEmpty()) {
                     addArtist(new Artist(artistNameText.getText(), comboBoxPopularity.getValue(), comboBoxArtistGenre.getValue()));
+
+                }
+                try {
+                    file_io.writeFileArtist("Artists.txt", this.artists);
+                } catch (IOException e) {
+                    System.out.println("IO Exception");
+                    e.printStackTrace();
                 }
             });
             Optional<String> result = dialog.showAndWait();
@@ -210,7 +229,7 @@ public class GUI extends Application {
                 Performance selectedPerformance = tableView.getSelectionModel().getSelectedItem();
                 tableView.getItems().remove(selectedPerformance);
                 try {
-                    file_io.writeFile("Performances.txt", this.performances);
+                    file_io.writeFilePerformances("Performances.txt", this.performances);
                 } catch (IOException e) {
                     System.out.println("IO Exception");
                     e.printStackTrace();
@@ -291,7 +310,7 @@ public class GUI extends Application {
 
                     }
                     try {
-                        file_io.writeFile("Performances.txt", this.performances);
+                        file_io.writeFilePerformances("Performances.txt", this.performances);
                     } catch (IOException e) {
                         System.out.println("IO Exception");
                         e.printStackTrace();
