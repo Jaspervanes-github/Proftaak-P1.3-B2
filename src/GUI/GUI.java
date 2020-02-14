@@ -30,7 +30,8 @@ public class GUI extends Application {
     private ObservableList<Performance> performances;
 
     private TableView<Performance> tableView;
-    private Button buttonDel;
+    private Button buttonDelPerf;
+    private Button buttonDelArt;
     private Button buttonEdit;
     private Button buttonAddPerformance;
     private Button buttonAddArtist;
@@ -190,9 +191,9 @@ public class GUI extends Application {
             TextField artistNameText = new TextField();
             ComboBox<Integer> comboBoxPopularity = new ComboBox<>();
             ComboBox<Genre> comboBoxArtistGenre = new ComboBox<>();
-            Integer[] popularity = {1,2,3,4,5,6,7,8,9,10};
+            Integer[] popularity = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 
-            comboBoxArtistGenre.setItems( FXCollections.observableArrayList( Genre.values()));
+            comboBoxArtistGenre.setItems(FXCollections.observableArrayList(Genre.values()));
             comboBoxPopularity.getItems().addAll(popularity);
 
             Button buttonSave = new Button("Save");
@@ -211,7 +212,7 @@ public class GUI extends Application {
             dialog.getDialogPane().setContent(gridPane);
 
             buttonSave.setOnAction(event1 -> {
-                if(!artistNameText.getText().trim().isEmpty() || !comboBoxPopularity.getSelectionModel().isEmpty() || !comboBoxArtistGenre.getSelectionModel().isEmpty()) {
+                if (!artistNameText.getText().trim().isEmpty() || !comboBoxPopularity.getSelectionModel().isEmpty() || !comboBoxArtistGenre.getSelectionModel().isEmpty()) {
                     addArtist(new Artist(artistNameText.getText(), comboBoxPopularity.getValue(), comboBoxArtistGenre.getValue()));
 
                 }
@@ -228,168 +229,218 @@ public class GUI extends Application {
             }
         });
 
-            buttonDel.setOnAction(event -> {
-                Performance selectedPerformance = tableView.getSelectionModel().getSelectedItem();
-                tableView.getItems().remove(selectedPerformance);
+        buttonDelPerf.setOnAction(event -> {
+            Performance selectedPerformance = tableView.getSelectionModel().getSelectedItem();
+            tableView.getItems().remove(selectedPerformance);
+            try {
+                file_io.writeFilePerformances("Performances.txt", this.performances);
+            } catch (IOException e) {
+                System.out.println("IO Exception");
+                e.printStackTrace();
+            }
+        });
+
+        buttonDelArt.setOnAction(event -> {
+            Dialog dialog = new Dialog();
+
+            GridPane gridPane = new GridPane();
+
+            dialog.getDialogPane().getButtonTypes().add(new ButtonType("Quit", ButtonBar.ButtonData.CANCEL_CLOSE));
+            dialog.setTitle("Deleting an Artist");
+            dialog.setHeaderText("Deleting an Artist");
+            dialog.setContentText("Please enter the data: ");
+            dialog.hide();
+
+            ComboBox comboBoxArtistName = new ComboBox<>();
+            Button buttonDelArtist = new Button("Delete");
+
+            buttonDelArtist.setOnAction(event1 -> {
+                Artist artistHelp = new Artist("Help",3,Genre.TECHNO);
+                for (Artist a : artists) {
+                    if (a.getName().equals(comboBoxArtistName.getValue())) {
+                        artistHelp = a;
+                        try {
+                            file_io.writeFileArtist("Artists.txt", this.artists);
+                        } catch (IOException e) {
+                            System.out.println("IO Exception");
+                            e.printStackTrace();
+                        }
+                        for (Artist artist : artists) {
+                            comboBoxArtistName.getItems().add(artist.getName());
+                        }
+                    }
+                }
+                this.artists.remove(artistHelp);
+            });
+
+            for (Artist artist : artists) {
+                comboBoxArtistName.getItems().add(artist.getName());
+            }
+
+            gridPane.add(comboBoxArtistName, 1, 1);
+            gridPane.add(new Label("Artist Name "), 0, 1);
+
+            gridPane.add(buttonDelArtist, 2, 1);
+
+            dialog.getDialogPane().setContent(gridPane);
+
+            Optional<String> result = dialog.showAndWait();
+            if (result.isPresent()) {
+                dialog.close();
+            }
+        });
+
+        buttonEdit.setOnAction(event -> {
+            Performance help = tableView.getSelectionModel().getSelectedItem();
+            Dialog dialog = new Dialog();
+
+            GridPane gridPane = new GridPane();
+
+            dialog.getDialogPane().getButtonTypes().add(new ButtonType("Quit", ButtonBar.ButtonData.CANCEL_CLOSE));
+            dialog.setTitle("Editing a Performance");
+            dialog.setHeaderText("Editing a Performance");
+            dialog.setContentText("Please enter the data: ");
+            dialog.hide();
+
+            ComboBox comboBoxArtists = new ComboBox();
+            ComboBox comboBoxStartingTime = new ComboBox();
+            ComboBox comboBoxEndingTime = new ComboBox();
+            ComboBox comboBoxStages = new ComboBox();
+
+            comboBoxArtists.setValue(help.getArtist().getName());
+            comboBoxEndingTime.setValue(time.getTimeString(help.getEndTime()));
+            comboBoxStartingTime.setValue(time.getTimeString(help.getStartTime()));
+            comboBoxStages.setValue(help.getStage().getStageName());
+
+            ObservableList<String> options = FXCollections.observableList(time.LoadListOfTime());
+
+            for (Artist artist : artists) {
+                comboBoxArtists.getItems().add(artist.getName());
+            }
+
+            for (Stage stage2 : stages) {
+                comboBoxStages.getItems().add(stage2.getStageName());
+            }
+            comboBoxStartingTime.setItems(options);
+            comboBoxEndingTime.setItems(options);
+
+            Button buttonSave = new Button("Save");
+
+            gridPane.add(comboBoxStages, 1, 1);
+            gridPane.add(new Label("Stage"), 0, 1);
+
+            gridPane.add(comboBoxStartingTime, 1, 2);
+            gridPane.add(new Label("Starting time"), 0, 2);
+
+            gridPane.add(comboBoxEndingTime, 1, 3);
+            gridPane.add(new Label("Ending Time"), 0, 3);
+
+            gridPane.add(comboBoxArtists, 1, 4);
+            gridPane.add(new Label("Artist"), 0, 4);
+
+            gridPane.add(buttonSave, 0, 5);
+
+            dialog.getDialogPane().setContent(gridPane);
+
+// Traditional way to get the response value.
+            buttonSave.setOnAction(event1 -> {
+                Artist artist;
+                for (Artist a : artists) {
+                    if (a.getName().equals(comboBoxArtists.getValue())) {
+                        artist = a;
+
+                        for (Stage s : stages) {
+                            if (s.getStageName().equals(comboBoxStages.getValue())) {
+
+                                int startTime = time.formatTime(comboBoxStartingTime.getValue().toString());
+                                int endTime = time.formatTime(comboBoxEndingTime.getValue().toString());
+
+                                this.performances.add(new Performance(startTime, endTime, artist, s));
+                                this.performances.remove(help);
+                            }
+                        }
+                    }
+
+                }
                 try {
                     file_io.writeFilePerformances("Performances.txt", this.performances);
                 } catch (IOException e) {
                     System.out.println("IO Exception");
                     e.printStackTrace();
                 }
+
+                dialog.close();
             });
+            Optional<String> result = dialog.showAndWait();
+            if (result.isPresent()) {
+                dialog.close();
+            }
+        });
+        Scene scene = new Scene(bp, 1000, 650);
 
-
-            buttonEdit.setOnAction(event -> {
-                Performance help = tableView.getSelectionModel().getSelectedItem();
-                Dialog dialog = new Dialog();
-
-                GridPane gridPane = new GridPane();
-
-                dialog.getDialogPane().getButtonTypes().add(new ButtonType("Quit", ButtonBar.ButtonData.CANCEL_CLOSE));
-                dialog.setTitle("Editing a Performance");
-                dialog.setHeaderText("Editing a Performance");
-                dialog.setContentText("Please enter the data: ");
-                dialog.hide();
-
-                ComboBox comboBoxArtists = new ComboBox();
-                ComboBox comboBoxStartingTime = new ComboBox();
-                ComboBox comboBoxEndingTime = new ComboBox();
-                ComboBox comboBoxStages = new ComboBox();
-
-                comboBoxArtists.setValue(help.getArtist().getName());
-                comboBoxEndingTime.setValue(time.getTimeString(help.getEndTime()));
-                comboBoxStartingTime.setValue(time.getTimeString(help.getStartTime()));
-                comboBoxStages.setValue(help.getStage().getStageName());
-
-                ObservableList<String> options = FXCollections.observableList(time.LoadListOfTime());
-
-                for (Artist artist : artists) {
-                    comboBoxArtists.getItems().add(artist.getName());
-                }
-
-                for (Stage stage2 : stages) {
-                    comboBoxStages.getItems().add(stage2.getStageName());
-                }
-                comboBoxStartingTime.setItems(options);
-                comboBoxEndingTime.setItems(options);
-
-                Button buttonSave = new Button("Save");
-
-                gridPane.add(comboBoxStages, 1, 1);
-                gridPane.add(new Label("Stage"), 0, 1);
-
-                gridPane.add(comboBoxStartingTime, 1, 2);
-                gridPane.add(new Label("Starting time"), 0, 2);
-
-                gridPane.add(comboBoxEndingTime, 1, 3);
-                gridPane.add(new Label("Ending Time"), 0, 3);
-
-                gridPane.add(comboBoxArtists, 1, 4);
-                gridPane.add(new Label("Artist"), 0, 4);
-
-                gridPane.add(buttonSave, 0, 5);
-
-                dialog.getDialogPane().setContent(gridPane);
-
-// Traditional way to get the response value.
-                buttonSave.setOnAction(event1 -> {
-                    Artist artist;
-                    for (Artist a : artists) {
-                        if (a.getName().equals(comboBoxArtists.getValue())) {
-                            artist = a;
-
-                            for (Stage s : stages) {
-                                if (s.getStageName().equals(comboBoxStages.getValue())) {
-
-                                    int startTime = time.formatTime(comboBoxStartingTime.getValue().toString());
-                                    int endTime = time.formatTime(comboBoxEndingTime.getValue().toString());
-
-                                    this.performances.add(new Performance(startTime, endTime, artist, s));
-                                    this.performances.remove(help);
-                                }
-                            }
-                        }
-
-                    }
-                    try {
-                        file_io.writeFilePerformances("Performances.txt", this.performances);
-                    } catch (IOException e) {
-                        System.out.println("IO Exception");
-                        e.printStackTrace();
-                    }
-
-                    dialog.close();
-                });
-                Optional<String> result = dialog.showAndWait();
-                if (result.isPresent()) {
-                    dialog.close();
-                }
-            });
-            Scene scene = new Scene(bp, 1000, 650);
-
-            stage.setScene(scene);
-            stage.setTitle("User interface: Agenda");
-            stage.show();
-        }
-
-        public Node getButton () {
-            FlowPane fp = new FlowPane();
-
-
-            buttonDel = new Button("Delete");
-            buttonEdit = new Button("Edit");
-            buttonAddPerformance = new Button("Adding a performance");
-            buttonAddArtist = new Button("Adding a Artist");
-
-            fp.getChildren().addAll(buttonAddPerformance, buttonAddArtist, buttonDel, buttonEdit);
-            return fp;
-        }
-
-        private Node getTabPane () {
-            //Here we make the tabs above so you can navigate in between tabs
-
-            TabPane tabPane = new TabPane();
-            Tab tabLijst = new Tab("List");
-
-            tabPane.getTabs().addAll(tabLijst);
-
-            tabLijst.setContent(getTableView());
-
-            tabLijst.setClosable(false);
-
-            return tabPane;
-        }
-
-        private Node getTableView () {
-            //Here we make a tableview and we can add podiums and numbers
-            this.tableView = new TableView();
-
-            TableColumn<Performance, String> startingTime = new TableColumn<>("Start Time");
-            TableColumn<Performance, String> endTime = new TableColumn<>("End Time");
-            TableColumn<Performance, String> stage = new TableColumn<>("Stage");
-            TableColumn<Performance, String> artistName = new TableColumn<>("Artist");
-            TableColumn<Performance, String> genre = new TableColumn<>("Genre");
-            TableColumn<Performance, String> popularity = new TableColumn<>("Popularity");
-            startingTime.setMinWidth(100);
-            endTime.setMinWidth(100);
-            stage.setMinWidth(200);
-            artistName.setMinWidth(200);
-            genre.setMinWidth(100);
-            popularity.setMinWidth(50);
-
-            startingTime.setCellValueFactory(performances -> performances.getValue().getObservableString(performances.getValue().getStartTime()));
-            endTime.setCellValueFactory(performances -> performances.getValue().getObservableString(performances.getValue().getEndTime()));
-            stage.setCellValueFactory(performances -> performances.getValue().getObservableString(performances.getValue().getStage().getStageName()));
-            artistName.setCellValueFactory(performances -> performances.getValue().getObservableString(performances.getValue().getArtist().getName()));
-            genre.setCellValueFactory(performances -> performances.getValue().getObservableString(performances.getValue().getArtist().getGenre().toString()));
-            popularity.setCellValueFactory(performances -> performances.getValue().getObservableString(performances.getValue().getArtist().getPopularity()));
-
-            tableView.getColumns().addAll(startingTime, endTime, stage, artistName, genre, popularity);
-            tableView.setPlaceholder(new Label("No Performances"));
-            tableView.setItems(this.performances);
-
-            return tableView;
-        }
-
+        stage.setScene(scene);
+        stage.setTitle("User interface: Agenda");
+        stage.show();
     }
+
+    public Node getButton() {
+        FlowPane fp = new FlowPane();
+
+
+        buttonDelPerf = new Button("Delete Performance");
+        buttonDelArt = new Button("Delete Artist");
+        buttonEdit = new Button("Edit");
+        buttonAddPerformance = new Button("Adding a performance");
+        buttonAddArtist = new Button("Adding a Artist");
+
+        fp.getChildren().addAll(buttonAddPerformance, buttonAddArtist, buttonDelPerf, buttonDelArt, buttonEdit);
+        return fp;
+    }
+
+    private Node getTabPane() {
+        //Here we make the tabs above so you can navigate in between tabs
+
+        TabPane tabPane = new TabPane();
+        Tab tabLijst = new Tab("List");
+
+        tabPane.getTabs().addAll(tabLijst);
+
+        tabLijst.setContent(getTableView());
+
+        tabLijst.setClosable(false);
+
+        return tabPane;
+    }
+
+    private Node getTableView() {
+        //Here we make a tableview and we can add podiums and numbers
+        this.tableView = new TableView();
+
+        TableColumn<Performance, String> startingTime = new TableColumn<>("Start Time");
+        TableColumn<Performance, String> endTime = new TableColumn<>("End Time");
+        TableColumn<Performance, String> stage = new TableColumn<>("Stage");
+        TableColumn<Performance, String> artistName = new TableColumn<>("Artist");
+        TableColumn<Performance, String> genre = new TableColumn<>("Genre");
+        TableColumn<Performance, String> popularity = new TableColumn<>("Popularity");
+        startingTime.setMinWidth(100);
+        endTime.setMinWidth(100);
+        stage.setMinWidth(200);
+        artistName.setMinWidth(200);
+        genre.setMinWidth(100);
+        popularity.setMinWidth(50);
+
+        startingTime.setCellValueFactory(performances -> performances.getValue().getObservableString(performances.getValue().getStartTime()));
+        endTime.setCellValueFactory(performances -> performances.getValue().getObservableString(performances.getValue().getEndTime()));
+        stage.setCellValueFactory(performances -> performances.getValue().getObservableString(performances.getValue().getStage().getStageName()));
+        artistName.setCellValueFactory(performances -> performances.getValue().getObservableString(performances.getValue().getArtist().getName()));
+        genre.setCellValueFactory(performances -> performances.getValue().getObservableString(performances.getValue().getArtist().getGenre().toString()));
+        popularity.setCellValueFactory(performances -> performances.getValue().getObservableString(performances.getValue().getArtist().getPopularity()));
+
+        tableView.getColumns().addAll(startingTime, endTime, stage, artistName, genre, popularity);
+        tableView.setPlaceholder(new Label("No Performances"));
+        tableView.setItems(this.performances);
+
+        return tableView;
+    }
+
+}
