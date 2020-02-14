@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class File_IO implements Serializable{
 
-    public void writeFile(String filename, ObservableList<Performance> list) throws FileNotFoundException {
+    public void writePerformanceFile(String filename, ObservableList<Performance> list) throws FileNotFoundException {
 
         ArrayList<Performance> performances;
 

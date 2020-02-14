@@ -159,7 +159,7 @@ public class GUI extends Application {
                 }
                 //Writes to Performances.txt
                 try {
-                    file_io.writeFile("Performances.txt", this.performances);
+                    file_io.writePerformanceFile("Performances.txt", this.performances);
                 } catch (IOException e) {
                     System.out.println("IO Exception");
                     e.printStackTrace();
@@ -303,7 +303,6 @@ public class GUI extends Application {
 
             });
 
-
             buttonEditPerformance.setOnAction(event -> {
 
                 Performance help = performanceTableView.getSelectionModel().getSelectedItem();
@@ -377,7 +376,7 @@ public class GUI extends Application {
                         }
                     }
                     try {
-                        file_io.writeFile("Performances.txt", this.performances);
+                        file_io.writePerformanceFile("Performances.txt", this.performances);
                     } catch (IOException e) {
                         System.out.println("IO Exception");
                         e.printStackTrace();
@@ -390,7 +389,20 @@ public class GUI extends Application {
                     dialog.close();
                 }
             });
-            Scene scene = new Scene(bp, 1000, 650);
+
+        buttondDeletePerformance.setOnAction(event -> {
+            Performance selectedPerformance = performanceTableView.getSelectionModel().getSelectedItem();
+            performanceTableView.getItems().remove(selectedPerformance);
+            try {
+                file_io.writePerformanceFile("Performances.txt", this.performances);
+            } catch (IOException e) {
+                System.out.println("IO Exception");
+                e.printStackTrace();
+            }
+        });
+
+
+        Scene scene = new Scene(bp, 1000, 650);
 
             stage.setScene(scene);
             stage.setTitle("User interface: Agenda");
@@ -398,22 +410,6 @@ public class GUI extends Application {
         }
 
         //End of start() method
-
-//        public Node getButton () {
-//            FlowPane fp = new FlowPane();
-//
-//
-//       // buttonDeleteArtist = new Button("Delete Artist");
-//        buttonEditPerformance = new Button("Edit Performance");
-//
-//            buttonDeleteArtist = new Button("Delete Artist");
-//            buttonEditPerformance = new Button("Edit Performance");
-////            buttonAddPerformance = new Button("Adding a performance");
-////            buttonAddArtist = new Button("Adding a Artist");
-//
-//            fp.getChildren().addAll(buttonDeleteArtist, buttonEditPerformance);
-//            return fp;
-//        }
 
         private Node getPane () {
             //Here we make the tabs above so you can navigate in between tabs
@@ -439,11 +435,6 @@ public class GUI extends Application {
 
             artistPane.getChildren().addAll(getArtistTable(), buttonAddArtist, buttonEditArtist,buttonDeleteArtist);
             tabArtistList.setContent(artistPane);
-
-
-            //tabPerformanceList.setContent(getPerformanceTable());
-            //tabArtistList.setContent(getArtistTable());
-
 
             tabPerformanceList.setClosable(false);
             tabArtistList.setClosable(false);
@@ -472,7 +463,7 @@ public class GUI extends Application {
 
             startingTime.setMinWidth(100);
             endTime.setMinWidth(100);
-            stage.setMinWidth(200);
+            stage.setMinWidth(150);
             artistName.setMinWidth(200);
             genre.setMinWidth(100);
             popularity.setMinWidth(50);
