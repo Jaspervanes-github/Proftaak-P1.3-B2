@@ -154,8 +154,8 @@ public class GUI extends Application {
                                 if (startTime < endTime) {
                                     Performance performance = new Performance(startTime, endTime, artist, s);
 
-                                        System.out.println(this.performances);
-                                        this.performances.add(performance);
+                                    System.out.println(this.performances);
+                                    this.performances.add(performance);
                                 }
                             }
                         }
@@ -168,7 +168,6 @@ public class GUI extends Application {
                     System.out.println("IO Exception");
                     e.printStackTrace();
                 }
-                dialog.close();
             });
 
             Optional<String> result = dialog.showAndWait();
