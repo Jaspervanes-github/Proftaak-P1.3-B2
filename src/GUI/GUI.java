@@ -148,11 +148,14 @@ public class GUI extends Application {
                                 int startTime = time.formatTime(comboBoxStartingTime.getValue().toString());
                                 int endTime = time.formatTime(comboBoxEndingTime.getValue().toString());
 
-                                Performance performance = new Performance(startTime, endTime, artist, s);
-
-                                if (!this.performances.contains(performance)){
-                                    this.performances.add(performance);
+                                if (startTime < endTime){
+                                    Performance performance = new Performance(startTime, endTime, artist, s);
+                                    if (!this.performances.contains(performance)){
+                                        System.out.println(this.performances);
+                                        this.performances.add(performance);
+                                    }
                                 }
+
 
                             }
                         }
