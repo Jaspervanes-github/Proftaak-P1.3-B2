@@ -156,6 +156,7 @@ public class GUI extends Application {
 
                                     System.out.println(this.performances);
                                     this.performances.add(performance);
+                                    dialog.close();
                                 }
                             }
                         }
