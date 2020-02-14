@@ -143,21 +143,20 @@ public class GUI extends Application {
                     if (a.getName().equals(comboBoxArtists.getValue())) {
                         artist = a;
 
+                        boolean isInArrayList = false;
+
                         for (Stage s : stages) {
                             if (s.getStageName().equals(comboBoxStages.getValue())) {
 
                                 int startTime = time.formatTime(comboBoxStartingTime.getValue().toString());
                                 int endTime = time.formatTime(comboBoxEndingTime.getValue().toString());
 
-                                if (startTime < endTime){
+                                if (startTime < endTime) {
                                     Performance performance = new Performance(startTime, endTime, artist, s);
-                                    if (!this.performances.contains(performance)){
+
                                         System.out.println(this.performances);
                                         this.performances.add(performance);
-                                    }
                                 }
-
-
                             }
                         }
                     }
@@ -169,6 +168,7 @@ public class GUI extends Application {
                     System.out.println("IO Exception");
                     e.printStackTrace();
                 }
+                dialog.close();
             });
 
             Optional<String> result = dialog.showAndWait();
@@ -222,6 +222,7 @@ public class GUI extends Application {
                     System.out.println("IO Exception");
                     e.printStackTrace();
                 }
+                dialog.close();
             });
             Optional<String> result = dialog.showAndWait();
             if (result.isPresent()) {
@@ -255,7 +256,7 @@ public class GUI extends Application {
             Button buttonDelArtist = new Button("Delete");
 
             buttonDelArtist.setOnAction(event1 -> {
-                Artist artistHelp = new Artist("Help",3,Genre.TECHNO);
+                Artist artistHelp = new Artist("Help", 3, Genre.TECHNO);
                 for (Artist a : artists) {
                     if (a.getName().equals(comboBoxArtistName.getValue())) {
                         artistHelp = a;
@@ -271,6 +272,7 @@ public class GUI extends Application {
                     }
                 }
                 this.artists.remove(artistHelp);
+                dialog.close();
             });
 
             for (Artist artist : artists) {
@@ -349,14 +351,17 @@ public class GUI extends Application {
                     if (a.getName().equals(comboBoxArtists.getValue())) {
                         artist = a;
 
+                        int startTime = time.formatTime(comboBoxStartingTime.getValue().toString());
+                        int endTime = time.formatTime(comboBoxEndingTime.getValue().toString());
+
                         for (Stage s : stages) {
-                            if (s.getStageName().equals(comboBoxStages.getValue())) {
+                            if (startTime < endTime) {
+                                if (s.getStageName().equals(comboBoxStages.getValue())) {
 
-                                int startTime = time.formatTime(comboBoxStartingTime.getValue().toString());
-                                int endTime = time.formatTime(comboBoxEndingTime.getValue().toString());
 
-                                this.performances.add(new Performance(startTime, endTime, artist, s));
-                                this.performances.remove(help);
+                                    this.performances.add(new Performance(startTime, endTime, artist, s));
+                                    this.performances.remove(help);
+                                }
                             }
                         }
                     }
