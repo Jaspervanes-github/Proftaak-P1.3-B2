@@ -13,6 +13,8 @@ Ik heb samen met Jasper gekeken naar dialog's en hoe die zouden werken in onze c
 
 Ik heb ook gekeken naar de tabel en de daarbij behorende rijen en colummen.
 
+![Foto van onze GUI](image.jpg)
+
 ## Week 3
 Ik heb samen met Dave gekeken naar  File I/O we hebben het geprobeerd alleen was het niet gelukt om het werkend te krijgen bij de code die we even snel hadden gemaakt zodat we niet onze eigen code gingen gebruiken. 
 
