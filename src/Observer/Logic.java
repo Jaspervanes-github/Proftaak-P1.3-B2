@@ -197,66 +197,13 @@ public class Logic {
         });
 
         gui.buttonDelArt.setOnAction(event -> {
-            Dialog dialog = new Dialog();
-
-            GridPane gridPane = new GridPane();
-
-            dialog.getDialogPane().getButtonTypes().add(new ButtonType("Quit", ButtonBar.ButtonData.CANCEL_CLOSE));
-            dialog.setTitle("Deleting an Artist");
-            dialog.setHeaderText("Deleting an Artist");
-            dialog.setContentText("Please enter the data: ");
-            dialog.hide();
-
-            ComboBox comboBoxArtistName = new ComboBox<>();
-            Button buttonDelArtist = new Button("Delete");
-
-            buttonDelArtist.setOnAction(event1 -> {
-                Artist artistHelp = new Artist("Help", 3, Genre.TECHNO);
-                for (Artist a : this.data.getArtists()) {
-                    if (a.getName().equals(comboBoxArtistName.getValue())) {
-                        artistHelp = a;
-
-
-//                        for (Artist artist : artists) {
-//                            comboBoxArtistName.getItems().add(artist.getName());
-//                        }
-                    }
-                }
-                this.data.getArtists().remove(artistHelp);
-
-                ArrayList<Performance> toRemove = new ArrayList<>();
-                for (Performance p : data.getPerformances()) {
-                    if (p.getArtist().getName().equals(artistHelp.getName()) && p.getArtist().getGenre().equals(artistHelp.getGenre())
-                            && p.getArtist().getPopularity() == artistHelp.getPopularity()) {
-                        toRemove.add(p);
-                    }
-                }
-                data.getPerformances().removeAll(toRemove);
-
-                try {
-                    gui.file_io.writeFileArtist("Artists.txt", this.data.getArtists());
-                } catch (IOException e) {
-                    System.out.println("IO Exception");
-                    e.printStackTrace();
-                }
-
-                dialog.close();
-            });
-
-            for (Artist artist : this.data.getArtists()) {
-                comboBoxArtistName.getItems().add(artist.getName());
-            }
-
-            gridPane.add(comboBoxArtistName, 1, 1);
-            gridPane.add(new Label("Artist Name "), 0, 1);
-
-            gridPane.add(buttonDelArtist, 2, 1);
-
-            dialog.getDialogPane().setContent(gridPane);
-
-            Optional<String> result = dialog.showAndWait();
-            if (result.isPresent()) {
-                dialog.close();
+            Artist selectedArtist = gui.tableViewArtist.getSelectionModel().getSelectedItem();
+            gui.tableViewArtist.getItems().remove(selectedArtist);
+            try {
+                gui.file_io.writeFileArtist("Artist.txt", this.data.getArtists());
+            } catch (IOException e) {
+                System.out.println("IO Exception");
+                e.printStackTrace();
             }
         });
 
