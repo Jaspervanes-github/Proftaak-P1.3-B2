@@ -1,6 +1,6 @@
-package Data;
+package Objects;
 
-import Data.Person.Artist;
+import Objects.Person.Artist;
 
 import java.util.ArrayList;
 

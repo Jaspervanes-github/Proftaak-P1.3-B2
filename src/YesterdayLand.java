@@ -1,4 +1,4 @@
-import GUI.GUI;
+import Observer.GUI;
 import javafx.application.Application;
 
 public class YesterdayLand {
