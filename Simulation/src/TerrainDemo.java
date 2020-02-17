@@ -42,7 +42,7 @@ public class TerrainDemo extends Application {
 
     public void init()
     {
-        map = new Map("map.json");
+        map = new TerrainMap("map.json");
 
     }
 
@@ -66,7 +66,7 @@ public class TerrainDemo extends Application {
 
     public static void main(String[] args)
     {
-        launch(MapDemo.class);
+        launch(TerrainDemo.class);
     }
 
 }
