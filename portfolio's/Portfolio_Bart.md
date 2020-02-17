@@ -26,6 +26,6 @@ Het was een prettig begin van de studie, er was helaas pas toegang gegeven op de
 ## Week 3
 
 Er is deze week begonnen aan het toewijzen van een officiële taak in de groep, namelijk de evaluator. Bij de vergadering is genotuleerd en deze zijn later die dag meteen uitgewerkt met enkele to-do's voor de hele groep. Na de vergadering is een begin gemaakt met het maken van de plattegrond in Tiled. Later die week was er meer tijd om OGP opdrachten in te halen. Het was prettig meteen iets te kunnen doen voor de groep in plaats van mijn eigen kennis bij te werken. Een verbeterpunt is dat er door twee man aan Tiled aan het werken waren terwijl er maar één van gebruikt kon worden, betere communicatie hierover was nodig voor meer efficiëntie binnen de groep. Voor een impressie van wat mijn aandeel was deze week is in het plaatje hieronder mijn plattegrond te zien.
-![figuur 1]([https://github.com/Jaspervanes-github/Proftaak-P1.3-B2/blob/master/portfolio's/resources/Bart/Plattegrond.png](https://github.com/Jaspervanes-github/Proftaak-P1.3-B2/blob/master/portfolio's/resources/Bart/Plattegrond.png))
+![figuur 1](https://github.com/Jaspervanes-github/Proftaak-P1.3-B2/blob/master/portfolio's/resources/Bart/Plattegrond.png)
 ## Week 4
 
