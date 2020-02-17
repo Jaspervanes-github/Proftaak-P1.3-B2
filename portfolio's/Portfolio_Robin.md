@@ -13,7 +13,7 @@ Ik heb samen met Jasper gekeken naar dialog's en hoe die zouden werken in onze c
 
 Ik heb ook gekeken naar de tabel en de daarbij behorende rijen en colummen.
 
-![Foto van onze GUI](https://github.com/Jaspervanes-github/Proftaak-P1.3-B2/blob/master/portfolio's/portfolio's/resources/Robin/Agenda_GUI_voorbeeld.png)
+![Foto van onze GUI](https://github.com/Jaspervanes-github/Proftaak-P1.3-B2/blob/master/portfolio's/resources/Robin/Agenda_GUI_voorbeeld.png)
 
 ## Week 3
 Ik heb samen met Dave gekeken naar  File I/O we hebben het geprobeerd alleen was het niet gelukt om het werkend te krijgen bij de code die we even snel hadden gemaakt zodat we niet onze eigen code gingen gebruiken. 
