@@ -2,6 +2,7 @@ package Observer;
 
 import File_IO.File_IO;
 import Objects.Performance;
+import Objects.Person.Artist;
 import Objects.Time;
 import javafx.application.Application;
 import javafx.scene.Node;
@@ -19,7 +20,8 @@ public class GUI extends Application {
     File_IO file_io = new File_IO();
 
 
-    protected TableView<Performance> tableView;
+    protected TableView<Performance> tableViewPerformance;
+    protected TableView<Artist> tableViewArtist;
     protected Button buttonDelPerf;
     protected Button buttonDelArt;
     protected Button buttonEdit;
@@ -42,8 +44,10 @@ public class GUI extends Application {
 
         BorderPane bp = new BorderPane();
 
-        this.tableView = new TableView();
-        logic.setTableViewLogic();
+        this.tableViewPerformance = new TableView();
+        this.tableViewArtist = new TableView<>();
+        logic.setTableViewLogicPerformance();
+        logic.setTableViewLogicArtist();
 
         bp.setCenter(getTabPane());
         bp.setBottom(getButton());
@@ -74,13 +78,16 @@ public class GUI extends Application {
     private Node getTabPane() {
         //Here we make the tabs above so you can navigate in between tabs
         TabPane tabPane = new TabPane();
-        Tab tabLijst = new Tab("List");
+        Tab tabPerformances = new Tab("Performances");
+        Tab tabArtists = new Tab("Artists");
 
-        tabPane.getTabs().addAll(tabLijst);
+        tabPane.getTabs().addAll(tabPerformances, tabArtists);
 
-        tabLijst.setContent(this.tableView);
+        tabPerformances.setContent(this.tableViewPerformance);
+        tabArtists.setContent(this.tableViewArtist);
 
-        tabLijst.setClosable(false);
+        tabPerformances.setClosable(false);
+        tabArtists.setClosable(false);
 
         return tabPane;
     }

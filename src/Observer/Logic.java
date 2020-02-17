@@ -186,8 +186,8 @@ public class Logic {
         });
 
         gui.buttonDelPerf.setOnAction(event -> {
-            Performance selectedPerformance = gui.tableView.getSelectionModel().getSelectedItem();
-            gui.tableView.getItems().remove(selectedPerformance);
+            Performance selectedPerformance = gui.tableViewPerformance.getSelectionModel().getSelectedItem();
+            gui.tableViewPerformance.getItems().remove(selectedPerformance);
             try {
                 gui.file_io.writeFilePerformances("Performances.txt", this.data.getPerformances());
             } catch (IOException e) {
@@ -262,8 +262,8 @@ public class Logic {
 
 
         gui.buttonEdit.setOnAction(event -> {
-            if (gui.tableView.getSelectionModel().getSelectedItem() != null) {
-                Performance help = gui.tableView.getSelectionModel().getSelectedItem();
+            if (gui.tableViewPerformance.getSelectionModel().getSelectedItem() != null) {
+                Performance help = gui.tableViewPerformance.getSelectionModel().getSelectedItem();
                 Dialog dialog = new Dialog();
 
                 GridPane gridPane = new GridPane();
@@ -365,7 +365,24 @@ public class Logic {
         this.data.getArtists().add(artist);
     }
 
-    public void setTableViewLogic() {
+    public void setTableViewLogicArtist() {
+        TableColumn<Artist, String> artistName = new TableColumn<>("Artist Name");
+        TableColumn<Artist, String> popularity = new TableColumn<>("Popularity");
+        TableColumn<Artist, String> genre = new TableColumn<>("Genre");
+        artistName.setMinWidth(100);
+        popularity.setMinWidth(100);
+        genre.setMinWidth(200);
+
+        artistName.setCellValueFactory(artist -> artist.getValue().getObservableString(artist.getValue().getName()));
+        popularity.setCellValueFactory(artist -> artist.getValue().getObservableString(artist.getValue().getPopularity()));
+        genre.setCellValueFactory(artist -> artist.getValue().getObservableString(artist.getValue().getGenre().toString()));
+
+        gui.tableViewArtist.getColumns().addAll(artistName, popularity, genre);
+        gui.tableViewArtist.setPlaceholder(new Label("No Artists"));
+        gui.tableViewArtist.setItems(this.data.getArtists());
+    }
+
+    public void setTableViewLogicPerformance() {
         TableColumn<Performance, String> startingTime = new TableColumn<>("Start Time");
         TableColumn<Performance, String> endTime = new TableColumn<>("End Time");
         TableColumn<Performance, String> stage = new TableColumn<>("Stage");
@@ -386,8 +403,8 @@ public class Logic {
         genre.setCellValueFactory(performances -> performances.getValue().getObservableString(performances.getValue().getArtist().getGenre().toString()));
         popularity.setCellValueFactory(performances -> performances.getValue().getObservableString(performances.getValue().getArtist().getPopularity()));
 
-        gui.tableView.getColumns().addAll(startingTime, endTime, stage, artistName, genre, popularity);
-        gui.tableView.setPlaceholder(new Label("No Performances"));
-        gui.tableView.setItems(this.data.getPerformances());
+        gui.tableViewPerformance.getColumns().addAll(startingTime, endTime, stage, artistName, genre, popularity);
+        gui.tableViewPerformance.setPlaceholder(new Label("No Performances"));
+        gui.tableViewPerformance.setItems(this.data.getPerformances());
     }
 }
