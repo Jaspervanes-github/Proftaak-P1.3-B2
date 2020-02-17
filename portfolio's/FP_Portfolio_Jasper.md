@@ -18,7 +18,8 @@ In week 2 heb ik gewerkt aan de GUI van de Agenda module. Ik had gewerkt aan het
 Tijdens deze week hebben we aan aantal keuzes moeten maken, een van die keuzes was dat we een soort van opnieuw begonnen waren. Dit hebben we gedaan omdat we onze code niet zo goed snapte, en het makkelijker vonden om sommige dingen opnieuw te maken.
 ## Week 3
 ### Bijdrage
-Tijdens week 3 heb ik samen met Jin gewerkt aan het deleten en editten van performances. Ook hebben we gewerkt aan het toevoegen, deleten en editten van artiesten. Dit hebben we werkend kunnen krijgen. Aan het eind van de week heb ik nog geprobeerd om te voorkomen dat je dubbele performances kunt toevoegen. Dit is helaas niet gelukt. Verder heb ik deze week het klassendiagram bijhgewerkt.
+Tijdens week 3 heb ik samen met Jin gewerkt aan het deleten en editten van performances. Ook hebben we gewerkt aan het toevoegen, deleten en editten van artiesten. Dit hebben we werkend kunnen krijgen. Aan het eind van de week heb ik nog geprobeerd om te voorkomen dat je dubbele performances kunt toevoegen. Dit is helaas niet gelukt. Verder heb ik deze week het klassendiagram bijgewerkt.
+<img src="https://github.com/Jaspervanes-github/Proftaak-P1.3-B2/blob/master/portfolio's/resources/Jasper/Demo_code_Proftaak_p3_B2.jpg" width="500" height="500">
 ### Keuzes
 In deze week heb we samen met het groepje een beetje na zitten denken welke functies onze Agenda module nog meer moet hebben. Aan de hand daarvan hebben we deze functies gemaakt. We hebben ervoor gekozen om geen Stages toe te kunnen voegen, omdat we later in de map ook niet zo makkelijk een stage toe kunnen voegen.
 ## Week 4
