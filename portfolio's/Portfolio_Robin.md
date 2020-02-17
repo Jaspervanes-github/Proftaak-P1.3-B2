@@ -1,10 +1,10 @@
 
-## Portfolio Robin Koedood
+# Portfolio Robin Koedood
 
 ## Welkom op het portfolio van Robin Koedood!
 Dit portfolio is gemaakt voor de proftaak 1.3 Festival planner voor cijfer van de individuele opdracht. De opdracht luidt dat wij als groepje een festival planner moeten maken voor een bedrijf. Hierbij hoort een agenda, een simulatie en een plattegrond van de festival. In dit portfolio wordt omschreven welke keuzes in gemaakt heb en wat mijn bijdrage was aan het project.
 
-# Week 2
+## Week 2
 Ik had al wat code gemaakt voor de GUI van te voren en vanuit daar zijn wij verder gaan werken als groepje.
 
 Wij hebben met zn alle gezeten aan de verschillende klasses die nodig zijn voor onze GUI en daar hebben wij ook een klassen diagram van gemaakt.
