@@ -163,6 +163,7 @@ public class Logic {
                         for (Artist artist : this.data.getArtists()) {
                             if (artist.getName().equals(artistNameText.getText())) {
                                 isInList = true;
+                                break;
                             }
                         }
                         if (!isInList) {
