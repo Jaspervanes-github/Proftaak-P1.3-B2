@@ -13,6 +13,8 @@ Welkom op het portfolio van Jasper van Es, dit portfolio wordt gemaakt in opdrac
 In week 2 heb ik gewerkt aan de GUI van de Agenda module. Ik had gewerkt aan het toevoegen van de performances, en het laten zien in de tableview.
 
 <img src="https://github.com/Jaspervanes-github/Proftaak-P1.3-B2/blob/master/portfolio's/resources/Jasper/deel1_addPerformance.png" width="500" height="500"><img src="https://github.com/Jaspervanes-github/Proftaak-P1.3-B2/blob/master/portfolio's/resources/Jasper/deel2_addPerformance.png" width="500" height="500"><img src="https://github.com/Jaspervanes-github/Proftaak-P1.3-B2/blob/master/portfolio's/resources/Jasper/deel3_addPerformance.png" width="500" height="500">
+
+### Keuzes
 Tijdens deze week hebben we aan aantal keuzes moeten maken, een van die keuzes was dat we een soort van opnieuw begonnen waren. Dit hebben we gedaan omdat we onze code niet zo goed snapte, en het makkelijker vonden om sommige dingen opnieuw te maken.
 ## Week 3
 ### Bijdrage
