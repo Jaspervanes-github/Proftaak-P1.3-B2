@@ -30,7 +30,7 @@ public class Logic {
         this.addPodia(new Stage("Techy Techno", 200));
     }
 
-    public void setButtonLogic(){
+    public void setButtonLogic() {
         this.gui.buttonAddPerformance.setOnAction(event -> {
             Dialog dialog = new Dialog();
 
@@ -204,7 +204,6 @@ public class Logic {
                         artistHelp = a;
 
 
-
 //                        for (Artist artist : artists) {
 //                            comboBoxArtistName.getItems().add(artist.getName());
 //                        }
@@ -240,92 +239,94 @@ public class Logic {
 
 
         gui.buttonEdit.setOnAction(event -> {
-            Performance help = gui.tableView.getSelectionModel().getSelectedItem();
-            Dialog dialog = new Dialog();
+            if (gui.tableView.getSelectionModel().getSelectedItem() != null) {
+                Performance help = gui.tableView.getSelectionModel().getSelectedItem();
+                Dialog dialog = new Dialog();
 
-            GridPane gridPane = new GridPane();
+                GridPane gridPane = new GridPane();
 
-            dialog.getDialogPane().getButtonTypes().add(new ButtonType("Quit", ButtonBar.ButtonData.CANCEL_CLOSE));
-            dialog.setTitle("Editing a Performance");
-            dialog.setHeaderText("Editing a Performance");
-            dialog.setContentText("Please enter the data: ");
-            dialog.hide();
+                dialog.getDialogPane().getButtonTypes().add(new ButtonType("Quit", ButtonBar.ButtonData.CANCEL_CLOSE));
+                dialog.setTitle("Editing a Performance");
+                dialog.setHeaderText("Editing a Performance");
+                dialog.setContentText("Please enter the data: ");
+                dialog.hide();
 
-            ComboBox comboBoxArtists = new ComboBox();
-            ComboBox comboBoxStartingTime = new ComboBox();
-            ComboBox comboBoxEndingTime = new ComboBox();
-            ComboBox comboBoxStages = new ComboBox();
+                ComboBox comboBoxArtists = new ComboBox();
+                ComboBox comboBoxStartingTime = new ComboBox();
+                ComboBox comboBoxEndingTime = new ComboBox();
+                ComboBox comboBoxStages = new ComboBox();
 
-            comboBoxArtists.setValue(help.getArtist().getName());
-            comboBoxEndingTime.setValue(gui.time.getTimeString(help.getEndTime()));
-            comboBoxStartingTime.setValue(gui.time.getTimeString(help.getStartTime()));
-            comboBoxStages.setValue(help.getStage().getStageName());
+                comboBoxArtists.setValue(help.getArtist().getName());
+                comboBoxEndingTime.setValue(gui.time.getTimeString(help.getEndTime()));
+                comboBoxStartingTime.setValue(gui.time.getTimeString(help.getStartTime()));
+                comboBoxStages.setValue(help.getStage().getStageName());
 
-            ObservableList<String> options = FXCollections.observableList(gui.time.LoadListOfTime());
+                ObservableList<String> options = FXCollections.observableList(gui.time.LoadListOfTime());
 
-            for (Artist artist : this.data.getArtists()) {
-                comboBoxArtists.getItems().add(artist.getName());
-            }
+                for (Artist artist : this.data.getArtists()) {
+                    comboBoxArtists.getItems().add(artist.getName());
+                }
 
-            for (Stage stage2 : this.data.getStages()) {
-                comboBoxStages.getItems().add(stage2.getStageName());
-            }
-            comboBoxStartingTime.setItems(options);
-            comboBoxEndingTime.setItems(options);
+                for (Stage stage2 : this.data.getStages()) {
+                    comboBoxStages.getItems().add(stage2.getStageName());
+                }
+                comboBoxStartingTime.setItems(options);
+                comboBoxEndingTime.setItems(options);
 
-            Button buttonSave = new Button("Save");
+                Button buttonSave = new Button("Save");
 
-            gridPane.add(comboBoxStages, 1, 1);
-            gridPane.add(new Label("Stage"), 0, 1);
+                gridPane.add(comboBoxStages, 1, 1);
+                gridPane.add(new Label("Stage"), 0, 1);
 
-            gridPane.add(comboBoxStartingTime, 1, 2);
-            gridPane.add(new Label("Starting time"), 0, 2);
+                gridPane.add(comboBoxStartingTime, 1, 2);
+                gridPane.add(new Label("Starting time"), 0, 2);
 
-            gridPane.add(comboBoxEndingTime, 1, 3);
-            gridPane.add(new Label("Ending Time"), 0, 3);
+                gridPane.add(comboBoxEndingTime, 1, 3);
+                gridPane.add(new Label("Ending Time"), 0, 3);
 
-            gridPane.add(comboBoxArtists, 1, 4);
-            gridPane.add(new Label("Artist"), 0, 4);
+                gridPane.add(comboBoxArtists, 1, 4);
+                gridPane.add(new Label("Artist"), 0, 4);
 
-            gridPane.add(buttonSave, 0, 5);
+                gridPane.add(buttonSave, 0, 5);
 
-            dialog.getDialogPane().setContent(gridPane);
+                dialog.getDialogPane().setContent(gridPane);
 
 // Traditional way to get the response value.
-            buttonSave.setOnAction(event1 -> {
-                Artist artist;
-                for (Artist a : this.data.getArtists()) {
-                    if (a.getName().equals(comboBoxArtists.getValue())) {
-                        artist = a;
+                buttonSave.setOnAction(event1 -> {
+                    Artist artist;
+                    for (Artist a : this.data.getArtists()) {
+                        if (a.getName().equals(comboBoxArtists.getValue())) {
+                            artist = a;
 
-                        int startTime = gui.time.formatTime(comboBoxStartingTime.getValue().toString());
-                        int endTime = gui.time.formatTime(comboBoxEndingTime.getValue().toString());
+                            int startTime = gui.time.formatTime(comboBoxStartingTime.getValue().toString());
+                            int endTime = gui.time.formatTime(comboBoxEndingTime.getValue().toString());
 
-                        for (Stage s : this.data.getStages()) {
-                            if (startTime < endTime) {
-                                if (s.getStageName().equals(comboBoxStages.getValue())) {
+                            for (Stage s : this.data.getStages()) {
+                                if (startTime < endTime) {
+                                    if (s.getStageName().equals(comboBoxStages.getValue())) {
 
 
-                                    this.data.getPerformances().add(new Performance(startTime, endTime, artist, s));
-                                    this.data.getPerformances().remove(help);
+                                        this.data.getPerformances().add(new Performance(startTime, endTime, artist, s));
+                                        this.data.getPerformances().remove(help);
+                                    }
                                 }
                             }
                         }
+
+                    }
+                    try {
+                        gui.file_io.writeFilePerformances("Performances.txt", this.data.getPerformances());
+                    } catch (IOException e) {
+                        System.out.println("IO Exception");
+                        e.printStackTrace();
                     }
 
+                    dialog.close();
+                });
+                Optional<String> result = dialog.showAndWait();
+                if (result.isPresent()) {
+                    dialog.close();
                 }
-                try {
-                    gui.file_io.writeFilePerformances("Performances.txt", this.data.getPerformances());
-                } catch (IOException e) {
-                    System.out.println("IO Exception");
-                    e.printStackTrace();
-                }
-
-                dialog.close();
-            });
-            Optional<String> result = dialog.showAndWait();
-            if (result.isPresent()) {
-                dialog.close();
             }
         });
 
@@ -341,7 +342,7 @@ public class Logic {
         this.data.getArtists().add(artist);
     }
 
-    public void setTableViewLogic(){
+    public void setTableViewLogic() {
         TableColumn<Performance, String> startingTime = new TableColumn<>("Start Time");
         TableColumn<Performance, String> endTime = new TableColumn<>("End Time");
         TableColumn<Performance, String> stage = new TableColumn<>("Stage");
