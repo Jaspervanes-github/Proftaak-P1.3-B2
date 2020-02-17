@@ -24,9 +24,10 @@ public class GUI extends Application {
     protected TableView<Artist> tableViewArtist;
     protected Button buttonDelPerf;
     protected Button buttonDelArt;
-    protected Button buttonEdit;
+    protected Button buttonEditPerformance;
     protected Button buttonAddPerformance;
     protected Button buttonAddArtist;
+    protected Button buttonEditArtist;
 
     private Logic logic;
 
@@ -67,11 +68,12 @@ public class GUI extends Application {
 
         buttonDelPerf = new Button("Delete Performance");
         buttonDelArt = new Button("Delete Artist");
-        buttonEdit = new Button("Edit");
+        buttonEditPerformance = new Button("Edit Performance");
+        buttonEditArtist = new Button("Edit Artist");
         buttonAddPerformance = new Button("Adding a performance");
         buttonAddArtist = new Button("Adding a Artist");
 
-        fp.getChildren().addAll(buttonAddPerformance, buttonAddArtist, buttonDelPerf, buttonDelArt, buttonEdit);
+        fp.getChildren().addAll(buttonAddPerformance, buttonAddArtist, buttonDelPerf, buttonDelArt, buttonEditPerformance, buttonEditArtist);
         return fp;
     }
 
