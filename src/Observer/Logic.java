@@ -301,60 +301,62 @@ public class Logic {
         });
 
         gui.buttonEditArtist.setOnAction(event -> {
-            Artist help = gui.tableViewArtist.getSelectionModel().getSelectedItem();
-            Dialog dialog = new Dialog();
+            if(gui.tableViewArtist.getSelectionModel().getSelectedItem() != null) {
+                Artist help = gui.tableViewArtist.getSelectionModel().getSelectedItem();
+                Dialog dialog = new Dialog();
 
-            GridPane gridPane = new GridPane();
+                GridPane gridPane = new GridPane();
 
-            dialog.getDialogPane().getButtonTypes().add(new ButtonType("Quit", ButtonBar.ButtonData.CANCEL_CLOSE));
-            dialog.setTitle("Editing an Artist");
-            dialog.setHeaderText("Editing an Artist");
-            dialog.setContentText("Please enter the data: ");
-            dialog.hide();
+                dialog.getDialogPane().getButtonTypes().add(new ButtonType("Quit", ButtonBar.ButtonData.CANCEL_CLOSE));
+                dialog.setTitle("Editing an Artist");
+                dialog.setHeaderText("Editing an Artist");
+                dialog.setContentText("Please enter the data: ");
+                dialog.hide();
 
-            TextField artistNameText = new TextField();
-            ComboBox<Integer> comboBoxPopularity = new ComboBox<>();
-            ComboBox<Genre> comboBoxArtistGenre = new ComboBox<>();
-            Integer[] popularity = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+                TextField artistNameText = new TextField();
+                ComboBox<Integer> comboBoxPopularity = new ComboBox<>();
+                ComboBox<Genre> comboBoxArtistGenre = new ComboBox<>();
+                Integer[] popularity = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 
-            artistNameText.setText(help.getName());
-            comboBoxPopularity.setValue(help.getPopularity());
-            comboBoxArtistGenre.setValue(help.getGenre());
+                artistNameText.setText(help.getName());
+                comboBoxPopularity.setValue(help.getPopularity());
+                comboBoxArtistGenre.setValue(help.getGenre());
 
-            comboBoxArtistGenre.setItems(FXCollections.observableArrayList(Genre.values()));
-            comboBoxPopularity.getItems().addAll(popularity);
+                comboBoxArtistGenre.setItems(FXCollections.observableArrayList(Genre.values()));
+                comboBoxPopularity.getItems().addAll(popularity);
 
-            Button buttonSave = new Button("Save");
+                Button buttonSave = new Button("Save");
 
-            gridPane.add(artistNameText, 1, 1);
-            gridPane.add(new Label("Artist Name "), 0, 1);
+                gridPane.add(artistNameText, 1, 1);
+                gridPane.add(new Label("Artist Name "), 0, 1);
 
-            gridPane.add(comboBoxPopularity, 1, 2);
-            gridPane.add(new Label("Popularity "), 0, 2);
+                gridPane.add(comboBoxPopularity, 1, 2);
+                gridPane.add(new Label("Popularity "), 0, 2);
 
-            gridPane.add(comboBoxArtistGenre, 1, 3);
-            gridPane.add(new Label("Genre "), 0, 3);
+                gridPane.add(comboBoxArtistGenre, 1, 3);
+                gridPane.add(new Label("Genre "), 0, 3);
 
-            gridPane.add(buttonSave, 0, 5);
+                gridPane.add(buttonSave, 0, 5);
 
-            dialog.getDialogPane().setContent(gridPane);
+                dialog.getDialogPane().setContent(gridPane);
 
-            buttonSave.setOnAction(event1 -> {
-                if (!artistNameText.getText().trim().isEmpty()) {
-                   addArtist(new Artist(artistNameText.getText(), comboBoxPopularity.getValue(), comboBoxArtistGenre.getValue()));
-                   this.data.getArtists().remove(help);
+                buttonSave.setOnAction(event1 -> {
+                    if (!artistNameText.getText().trim().isEmpty()) {
+                        addArtist(new Artist(artistNameText.getText(), comboBoxPopularity.getValue(), comboBoxArtistGenre.getValue()));
+                        this.data.getArtists().remove(help);
+                    }
+                    try {
+                        gui.file_io.writeFileArtist("Artists.txt", this.data.getArtists());
+                    } catch (IOException e) {
+                        System.out.println("IO Exception");
+                        e.printStackTrace();
+                    }
+                    dialog.close();
+                });
+                Optional<String> result = dialog.showAndWait();
+                if (result.isPresent()) {
+                    dialog.close();
                 }
-                try {
-                    gui.file_io.writeFileArtist("Artists.txt", this.data.getArtists());
-                } catch (IOException e) {
-                    System.out.println("IO Exception");
-                    e.printStackTrace();
-                }
-                dialog.close();
-            });
-            Optional<String> result = dialog.showAndWait();
-            if (result.isPresent()) {
-                dialog.close();
             }
         });
     }
