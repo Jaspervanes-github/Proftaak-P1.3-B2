@@ -156,8 +156,19 @@ public class Logic {
 
             buttonSave.setOnAction(event1 -> {
                 if (!artistNameText.getText().trim().isEmpty() || !comboBoxPopularity.getSelectionModel().isEmpty() || !comboBoxArtistGenre.getSelectionModel().isEmpty()) {
-                    addArtist(new Artist(artistNameText.getText(), comboBoxPopularity.getValue(), comboBoxArtistGenre.getValue()));
-
+                    if (this.data.getArtists().isEmpty()) {
+                        addArtist(new Artist(artistNameText.getText(), comboBoxPopularity.getValue(), comboBoxArtistGenre.getValue()));
+                    } else {
+                        boolean isInList = false;
+                        for (Artist artist : this.data.getArtists()) {
+                            if (artist.getName().equals(artistNameText.getText())) {
+                                isInList = true;
+                            }
+                        }
+                        if (!isInList) {
+                            this.data.getArtists().add(new Artist(artistNameText.getText(), comboBoxPopularity.getValue(), comboBoxArtistGenre.getValue()));
+                        }
+                    }
                 }
                 try {
                     gui.file_io.writeFileArtist("Artists.txt", this.data.getArtists());
@@ -213,9 +224,9 @@ public class Logic {
                 this.data.getArtists().remove(artistHelp);
 
                 ArrayList<Performance> toRemove = new ArrayList<>();
-                for(Performance p: data.getPerformances()){
-                    if(p.getArtist().getName().equals(artistHelp.getName()) &&p.getArtist().getGenre().equals(artistHelp.getGenre())
-                            && p.getArtist().getPopularity() == artistHelp.getPopularity()){
+                for (Performance p : data.getPerformances()) {
+                    if (p.getArtist().getName().equals(artistHelp.getName()) && p.getArtist().getGenre().equals(artistHelp.getGenre())
+                            && p.getArtist().getPopularity() == artistHelp.getPopularity()) {
                         toRemove.add(p);
                     }
                 }
