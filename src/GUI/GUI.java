@@ -260,18 +260,22 @@ public class GUI extends Application {
                 for (Artist a : artists) {
                     if (a.getName().equals(comboBoxArtistName.getValue())) {
                         artistHelp = a;
-                        try {
-                            file_io.writeFileArtist("Artists.txt", this.artists);
-                        } catch (IOException e) {
-                            System.out.println("IO Exception");
-                            e.printStackTrace();
-                        }
-                        for (Artist artist : artists) {
-                            comboBoxArtistName.getItems().add(artist.getName());
-                        }
+
+
+
+//                        for (Artist artist : artists) {
+//                            comboBoxArtistName.getItems().add(artist.getName());
+//                        }
                     }
                 }
                 this.artists.remove(artistHelp);
+                try {
+                    file_io.writeFileArtist("Artists.txt", this.artists);
+                } catch (IOException e) {
+                    System.out.println("IO Exception");
+                    e.printStackTrace();
+                }
+
                 dialog.close();
             });
 
