@@ -10,6 +10,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Optional;
 
 public class Logic {
@@ -210,6 +211,16 @@ public class Logic {
                     }
                 }
                 this.data.getArtists().remove(artistHelp);
+
+                ArrayList<Performance> toRemove = new ArrayList<>();
+                for(Performance p: data.getPerformances()){
+                    if(p.getArtist().getName().equals(artistHelp.getName()) &&p.getArtist().getGenre().equals(artistHelp.getGenre())
+                            && p.getArtist().getPopularity() == artistHelp.getPopularity()){
+                        toRemove.add(p);
+                    }
+                }
+                data.getPerformances().removeAll(toRemove);
+
                 try {
                     gui.file_io.writeFileArtist("Artists.txt", this.data.getArtists());
                 } catch (IOException e) {

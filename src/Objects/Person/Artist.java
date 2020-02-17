@@ -16,6 +16,9 @@ public class Artist extends Person implements Serializable {
         this.genre = genre;
     }
 
+//    public boolean equals(Artist artist){
+//       return (this.name.equals(artist.name) && this.popularity == artist.popularity && this.genre.equals(artist.genre));
+//    }
 
     public void setName(String name) {
         name = name;

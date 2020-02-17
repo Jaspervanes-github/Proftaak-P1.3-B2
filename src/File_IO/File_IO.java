@@ -91,10 +91,10 @@ public class File_IO implements Serializable{
         } catch (FileNotFoundException e){
             System.out.println("File not found, generating a new one...");
         } catch (ClassNotFoundException e){
-            System.out.println("Class not found in readFilePerformances()");
+            System.out.println("Class not found in readFileArtist()");
             e.printStackTrace();
         } catch (IOException e){
-            System.out.println("Exception in readFilePerformances()");
+            System.out.println("Exception in readFileArtist()");
             e.printStackTrace();
         }
 
