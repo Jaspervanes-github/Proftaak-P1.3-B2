@@ -23,7 +23,7 @@ In deze week heb ik samen met robin gekeken naar het toevoegen van een performan
 ### Keuzes
 
 //To-Do: toevoegen foto van plattegrond.
-![alt text](./resources/Dave/map.jpg "Map")
+![alt text](../resources/Dave/map.jpg "Map")
 
 Bij het ontwerpen van het terrein heb ik rekening gehouden met de verschillende stages en de ruimtes die hiervoor benodigd waren. We hebben gekozen voor 5 stages waarvan 4 grote velden en 1 klein veld rechtsboven. De simulatie heeft ook een plaats waar de simulanten kunnen uitrusten/eten of toiletteren.
 Of de simulanten volledig gebruik gaan maken van de geplaatste faciliteiten is nog niet 100% zeker, maar we hebben er dus wel voor gekozen om het mogelijk te maken om deze te plaatsen.
