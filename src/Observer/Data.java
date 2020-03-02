@@ -2,12 +2,17 @@ package Observer;
 
 import Objects.Performance;
 import Objects.Person.Artist;
+import Objects.Person.Customer;
 import Objects.Stage;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import javax.imageio.ImageIO;
+import java.awt.geom.Point2D;
+import java.awt.image.BufferedImage;
 import java.io.EOFException;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Data {
@@ -17,11 +22,23 @@ public class Data {
     private ObservableList<Performance> performances;
     private GUI gui;
 
+    private ArrayList<Customer> customers;
+
+
     public Data(GUI gui) {
         this.stages = FXCollections.observableList(new ArrayList<Stage>());
         this.artists = FXCollections.observableList(new ArrayList<Artist>());
         this.performances = FXCollections.observableList(new ArrayList<Performance>());
         this.gui = gui;
+
+        this.customers = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            try {
+                this.customers.add(new Customer(new Point2D.Double(Math.random()* 1000, Math.random()*500), ImageIO.read(getClass().getResourceAsStream("/images/TestNPC.png"))));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 
