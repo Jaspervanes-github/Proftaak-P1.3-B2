@@ -183,6 +183,21 @@ public class Logic {
                         }
                         if (!isInList) {
                             this.data.getArtists().add(new Artist(artistNameText.getText(), comboBoxPopularity.getValue(), comboBoxArtistGenre.getValue()));
+                            dialog.close();
+
+                            Dialog dialogSaved = new Dialog();
+
+                            dialogSaved.getDialogPane().getButtonTypes().add(new ButtonType("OK", ButtonBar.ButtonData.CANCEL_CLOSE));
+                            dialogSaved.setTitle("Saved Artist");
+                            dialogSaved.setContentText("Saved Artist");
+                            dialogSaved.hide();
+
+
+                            Optional<String> result = dialogSaved.showAndWait();
+                            if (result.isPresent()) {
+                                dialogSaved.close();
+
+                            }
                         }
                     }
                 }
@@ -192,7 +207,7 @@ public class Logic {
                     System.out.println("IO Exception");
                     e.printStackTrace();
                 }
-                dialog.close();
+
             });
             Optional<String> result = dialog.showAndWait();
             if (result.isPresent()) {
