@@ -37,4 +37,6 @@ Ik ben bij het opstart college geweest van Johan waar hij uitleg gaf over de sim
 
 Ik ben daarna bezig geweest met het toevoegen van de simulatie in onze agenda module hiervoor heb ik een aparte tab gemaakt voor de simulatie. Dit ging goed. Ik heb de code van Johan kunnen overnemen en kunnen gebruiken maar ik moest nog wel het een en het ander aanpassen.
 
+![Foto van onze GUI](https://github.com/Jaspervanes-github/proftaak-P1.3-B2/blob/master/portfolio's/resources/Robin/Simulatie_Voorbeeld.png)
+
 
