@@ -350,6 +350,20 @@ public class Logic {
                     }
 
                     dialog.close();
+
+                    Dialog dialogEdited = new Dialog();
+
+                    dialogEdited.getDialogPane().getButtonTypes().add(new ButtonType("OK", ButtonBar.ButtonData.CANCEL_CLOSE));
+                    dialogEdited.setTitle("Edited Performance");
+                    dialogEdited.setContentText("Edited Performance");
+                    dialogEdited.hide();
+
+
+                    Optional<String> result = dialogEdited.showAndWait();
+                    if (result.isPresent()) {
+                        dialogEdited.close();
+
+                    }
                 });
                 Optional<String> result = dialog.showAndWait();
                 if (result.isPresent()) {
