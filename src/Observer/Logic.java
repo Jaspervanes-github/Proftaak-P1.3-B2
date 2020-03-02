@@ -224,6 +224,20 @@ public class Logic {
                 System.out.println("IO Exception");
                 e.printStackTrace();
             }
+
+            Dialog dialogDeleted = new Dialog();
+
+            dialogDeleted.getDialogPane().getButtonTypes().add(new ButtonType("OK", ButtonBar.ButtonData.CANCEL_CLOSE));
+            dialogDeleted.setTitle("Deleted Performance");
+            dialogDeleted.setContentText("Deleted Performance");
+            dialogDeleted.hide();
+
+
+            Optional<String> result = dialogDeleted.showAndWait();
+            if (result.isPresent()) {
+                dialogDeleted.close();
+
+            }
         });
 
         gui.buttonDelArt.setOnAction(event -> {
