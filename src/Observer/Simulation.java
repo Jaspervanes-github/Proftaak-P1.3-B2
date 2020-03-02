@@ -67,8 +67,6 @@ public class Simulation extends Application {
             }
         }.start();
 
-        stage.setScene(new Scene(mainPane, 1500, 800));
-        draw(g2d);
 
         canvas.setOnMouseMoved(e ->
         {
@@ -84,23 +82,6 @@ public class Simulation extends Application {
                 e.printStackTrace();
             }
         });
-    }
-
-
-
-
-
-    public void init() {
-        BufferedImage image = null;
-        try {
-            image = ImageIO.read(this.getClass().getResourceAsStream("/images/TestNPC.png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        for(int i = 0; i < 10; i++) {
-            this.data.getCustomers().add(new Customer(new Point2D.Double(Math.random()*1800, Math.random()*1000), image));
-        }
     }
 
 

@@ -34,7 +34,8 @@ public class Data {
         this.customers = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             try {
-                this.customers.add(new Customer(new Point2D.Double(Math.random()* 1000, Math.random()*500), ImageIO.read(getClass().getResourceAsStream("/images/TestNPC.png"))));
+                this.customers.add(new Customer(new Point2D.Double(Math.random()* 1000, Math.random()*500),
+                        ImageIO.read(getClass().getResourceAsStream("/images/TestNPC.png"))));
             } catch (IOException e) {
                 e.printStackTrace();
             }
