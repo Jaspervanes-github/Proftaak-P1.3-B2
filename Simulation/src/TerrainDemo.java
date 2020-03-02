@@ -7,6 +7,7 @@ import org.jfree.fx.FXGraphics2D;
 import org.jfree.fx.ResizableCanvas;
 
 import java.awt.*;
+import java.io.IOException;
 
 public class TerrainDemo extends Application {
 
@@ -39,7 +40,12 @@ public class TerrainDemo extends Application {
 
     public void init()
     {
-        map = new TerrainMap("/Terrain/Map.json");
+
+        try {
+            map = new TerrainMap("/Terrain/Map.json");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void draw(Graphics2D g)
