@@ -217,50 +217,55 @@ public class Logic {
 
         gui.buttonDelPerf.setOnAction(event -> {
             Performance selectedPerformance = gui.tableViewPerformance.getSelectionModel().getSelectedItem();
-            gui.tableViewPerformance.getItems().remove(selectedPerformance);
-            try {
-                gui.file_io.writeFilePerformances("Performances.txt", this.data.getPerformances());
-            } catch (IOException e) {
-                System.out.println("IO Exception");
-                e.printStackTrace();
+            if (selectedPerformance != null){
+                gui.tableViewPerformance.getItems().remove(selectedPerformance);
+                try {
+                    gui.file_io.writeFilePerformances("Performances.txt", this.data.getPerformances());
+                } catch (IOException e) {
+                    System.out.println("IO Exception");
+                    e.printStackTrace();
+                }
+
+                Dialog dialogDeleted = new Dialog();
+
+                dialogDeleted.getDialogPane().getButtonTypes().add(new ButtonType("OK", ButtonBar.ButtonData.CANCEL_CLOSE));
+                dialogDeleted.setTitle("Deleted Performance");
+                dialogDeleted.setContentText("Deleted Performance");
+                dialogDeleted.hide();
+
+
+                Optional<String> result = dialogDeleted.showAndWait();
+                if (result.isPresent()) {
+                    dialogDeleted.close();
+
+                }
             }
 
-            Dialog dialogDeleted = new Dialog();
-
-            dialogDeleted.getDialogPane().getButtonTypes().add(new ButtonType("OK", ButtonBar.ButtonData.CANCEL_CLOSE));
-            dialogDeleted.setTitle("Deleted Performance");
-            dialogDeleted.setContentText("Deleted Performance");
-            dialogDeleted.hide();
-
-
-            Optional<String> result = dialogDeleted.showAndWait();
-            if (result.isPresent()) {
-                dialogDeleted.close();
-
-            }
         });
 
         gui.buttonDelArt.setOnAction(event -> {
             Artist selectedArtist = gui.tableViewArtist.getSelectionModel().getSelectedItem();
-            gui.tableViewArtist.getItems().remove(selectedArtist);
-            try {
-                gui.file_io.writeFileArtist("Artists.txt", this.data.getArtists());
-            } catch (IOException e) {
-                System.out.println("IO Exception");
-                e.printStackTrace();
-            }
-            Dialog dialogDeleted = new Dialog();
+            if (selectedArtist != null){
+                gui.tableViewArtist.getItems().remove(selectedArtist);
+                try {
+                    gui.file_io.writeFileArtist("Artists.txt", this.data.getArtists());
+                } catch (IOException e) {
+                    System.out.println("IO Exception");
+                    e.printStackTrace();
+                }
+                Dialog dialogDeleted = new Dialog();
 
-            dialogDeleted.getDialogPane().getButtonTypes().add(new ButtonType("OK", ButtonBar.ButtonData.CANCEL_CLOSE));
-            dialogDeleted.setTitle("Deleted Artist");
-            dialogDeleted.setContentText("Deleted Artist");
-            dialogDeleted.hide();
+                dialogDeleted.getDialogPane().getButtonTypes().add(new ButtonType("OK", ButtonBar.ButtonData.CANCEL_CLOSE));
+                dialogDeleted.setTitle("Deleted Artist");
+                dialogDeleted.setContentText("Deleted Artist");
+                dialogDeleted.hide();
 
 
-            Optional<String> result = dialogDeleted.showAndWait();
-            if (result.isPresent()) {
-                dialogDeleted.close();
+                Optional<String> result = dialogDeleted.showAndWait();
+                if (result.isPresent()) {
+                    dialogDeleted.close();
 
+                }
             }
 
         });
@@ -424,6 +429,20 @@ public class Logic {
                         e.printStackTrace();
                     }
                     dialog.close();
+
+                    Dialog dialogEdited = new Dialog();
+
+                    dialogEdited.getDialogPane().getButtonTypes().add(new ButtonType("OK", ButtonBar.ButtonData.CANCEL_CLOSE));
+                    dialogEdited.setTitle("Edited Artist");
+                    dialogEdited.setContentText("Edited Artist");
+                    dialogEdited.hide();
+
+
+                    Optional<String> result = dialogEdited.showAndWait();
+                    if (result.isPresent()) {
+                        dialogEdited.close();
+
+                    }
                 });
                 Optional<String> result = dialog.showAndWait();
                 if (result.isPresent()) {
