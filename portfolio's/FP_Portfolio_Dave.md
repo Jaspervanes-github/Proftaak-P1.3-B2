@@ -5,7 +5,8 @@ Welkom op het portfolio van Dave Visser, dit portfolio wordt gemaakt in opdracht
 # Inhoudsopgave
 1. [Week 2](#Week2)
 2. [Week 3](#Week3)
-3. 
+3. [Week 4](#Week4)
+4. [Week 5](#Week5)
 
 ## Week 2 <a name="Week2"></a>
 ### Bijdrage
@@ -46,5 +47,10 @@ Ook heb ik deze week nog gewerkt aan het ontwerp van de simulatie, dit heb ik bi
 Het werken met Jin ging goed we hebben samen gekeken naar het probleem ondanks dat het uiteindelijk nog niet 100% gelukt was. We hebben elkaar goed ondersteund door online te zoeken naar eventuele voorbeelden. Bij het maken van de modules heeft Jin mij ook proberen te helpen door voorbeelden op te zoeken. Dit waardeerde ik erg en ik vond het dus ook fijn om deze week met Jin samen te werken.
 
 Het maken van het ontwerp is vrij gemakkelijk gegaan, balsamiq is een gemakkelijk programma, het enige probleem nu is dat de licentie verlopen is en ik dus niks meer aan kan passen aan het bestand.
+
+## Week 5
+### Bijdrage
+### Keuzes
+### Reflectie
 
 
