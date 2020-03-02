@@ -34,7 +34,7 @@ Of de simulanten volledig gebruik gaan maken van de geplaatste faciliteiten is n
 Het verwerken van de Tiled map was leuk werk maar de terrain editor werkte niet, Om die reden heeft het ontwerpen hiervan iets meer tijd gekost dan de bedoeling was.
 
 
-## Week 4
+## Week 4 <a name="Week4"></a>
 ### Bijdrage
 In deze week heb ik samen met Jin gekeken naar het uitlezen van de Json map, het inladen van dit bestand ging nog niet zo gemakkelijk als er in eerste instantie gedacht was.
 Verder heb ik deze week een begin gemaakt om het project onder te verdelen in verschillende modules, aldus de agenda en simulatie module. Dit heb ik gezien bij een les van Etienne en wilde dit zelf ook toepassen echter heeft dit nogal wat problemen veroorzaakt waardoor het oplossen hiervan niet zo gemakkelijk bleek te zijn.
@@ -48,7 +48,7 @@ Het werken met Jin ging goed we hebben samen gekeken naar het probleem ondanks d
 
 Het maken van het ontwerp is vrij gemakkelijk gegaan, balsamiq is een gemakkelijk programma, het enige probleem nu is dat de licentie verlopen is en ik dus niks meer aan kan passen aan het bestand.
 
-## Week 5
+## Week 5 <a name="Week5"></a>
 ### Bijdrage
 ### Keuzes
 ### Reflectie
