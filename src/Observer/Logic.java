@@ -200,7 +200,7 @@ public class Logic {
             Artist selectedArtist = gui.tableViewArtist.getSelectionModel().getSelectedItem();
             gui.tableViewArtist.getItems().remove(selectedArtist);
             try {
-                gui.file_io.writeFileArtist("Artist.txt", this.data.getArtists());
+                gui.file_io.writeFileArtist("Artists.txt", this.data.getArtists());
             } catch (IOException e) {
                 System.out.println("IO Exception");
                 e.printStackTrace();

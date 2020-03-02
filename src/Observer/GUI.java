@@ -3,9 +3,7 @@ package Observer;
 import File_IO.File_IO;
 import Objects.Performance;
 import Objects.Person.Artist;
-import Objects.Person.Customer;
 import Objects.Time;
-import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -16,11 +14,6 @@ import javafx.scene.control.TabPane;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
-
-import org.jfree.fx.FXGraphics2D;
-
-import java.awt.*;
-import java.awt.geom.AffineTransform;
 
 public class GUI extends Application {
 
@@ -65,7 +58,7 @@ public class GUI extends Application {
         logic.setTableViewLogicArtist();
 
         bp.setCenter(getTabPane());
-        bp.setBottom(getButton());
+
 
         logic.setButtonLogic();
 
@@ -76,18 +69,28 @@ public class GUI extends Application {
         stage.show();
     }
 
-    public Node getButton() {
+    public Node getButtonPerformance() {
         FlowPane fp = new FlowPane();
 
 
         buttonDelPerf = new Button("Delete Performance");
-        buttonDelArt = new Button("Delete Artist");
         buttonEditPerformance = new Button("Edit Performance");
-        buttonEditArtist = new Button("Edit Artist");
         buttonAddPerformance = new Button("Adding a performance");
+
+        fp.getChildren().addAll(buttonAddPerformance, buttonDelPerf, buttonEditPerformance);
+
+        return fp;
+    }
+
+    public Node getButtonArtist(){
+        FlowPane fp = new FlowPane();
+
+        buttonDelArt = new Button("Delete Artist");
+        buttonEditArtist = new Button("Edit Artist");
         buttonAddArtist = new Button("Adding a Artist");
 
-        fp.getChildren().addAll(buttonAddPerformance, buttonAddArtist, buttonDelPerf, buttonDelArt, buttonEditPerformance, buttonEditArtist);
+        fp.getChildren().addAll(buttonAddArtist, buttonDelArt,  buttonEditArtist);
+
         return fp;
     }
 
@@ -100,8 +103,12 @@ public class GUI extends Application {
 
         tabPane.getTabs().addAll(tabPerformances, tabArtists, tabSimulation);
 
-        tabPerformances.setContent(this.tableViewPerformance);
-        tabArtists.setContent(this.tableViewArtist);
+        tabPerformances.setContent(getBorderPanePerformance());
+
+
+        tabArtists.setContent(getBorderPaneArtist());
+
+
         tabSimulation.setContent(this.simulation.getCanvas());
 
         tabPerformances.setClosable(false);
@@ -114,4 +121,33 @@ public class GUI extends Application {
         return tabPane;
     }
 
+    private Node getBorderPaneArtist() {
+        BorderPane borderPane = new BorderPane();
+
+        borderPane.setCenter(this.tableViewArtist);
+        borderPane.setBottom(getButtonArtist());
+
+        return borderPane;
+    }
+
+    private Node getBorderPanePerformance() {
+        BorderPane borderPane = new BorderPane();
+
+        borderPane.setCenter(this.tableViewPerformance);
+        borderPane.setBottom(getButtonPerformance());
+
+        return borderPane;
+    }
+
+    public void setButtonsPerformanceVisable(boolean visable){
+        buttonAddPerformance.setVisible(visable);
+        buttonDelPerf.setVisible(visable);
+        buttonEditPerformance.setVisible(visable);
+    }
+
+    public void setButtonsArtistVisable(boolean visable){
+        buttonAddArtist.setVisible(visable);
+        buttonDelArt.setVisible(visable);
+        buttonEditArtist.setVisible(visable);
+    }
 }
