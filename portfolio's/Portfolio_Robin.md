@@ -27,6 +27,8 @@ Ik heb vooral gekeken naar een andere manier van notatie en andere manieren van 
 
 Uiteindelijk hebben we de keuze gemaakt om door te gaan met onze eerste agenda omdat ze het probleem toch opgelost kregen.
 
+![Foto van de Backup](https://github.com/Jaspervanes-github/proftaak-P1.3-B2/blob/master/portfolio's/resources/Robin/Agenda_andere_versie.png)
+
 ## Week 5
 Vooral vakantie gevierd eigenlijk. Er is niet veel vooruitgang geboekt.
 
