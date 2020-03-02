@@ -10,9 +10,9 @@ Dave: [here](portfolio's/FP_Portfolio_Dave.md)
 
 Robin: [here](portfolio's/FP_Portfolio_Robin.md)
 
-Jasper:[here](portfolio's/FP_Portfolio_Jasper.md)
+Jasper: [here](portfolio's/FP_Portfolio_Jasper.md)
 
-Bart:[here](portfolio's/FP_Portfolio_Bart.md)
+Bart: [here](portfolio's/FP_Portfolio_Bart.md)
 
-Jin:[here](portfolio's/FP_Portfolio_Jin.md)
+Jin: [here](portfolio's/FP_Portfolio_Jin.md)
 
