@@ -24,7 +24,7 @@ public class File_IO implements Serializable{
             ObjectOutputStream objectInputStream = new ObjectOutputStream(fileOutputStream);
             objectInputStream.writeObject(performances);
             fileOutputStream.close();
-        } catch(IOException e){
+        } catch (IOException e){
             System.out.println("Exception in writeFilePerformances()");
             e.printStackTrace();
         }

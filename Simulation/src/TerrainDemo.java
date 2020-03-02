@@ -35,18 +35,12 @@ public class TerrainDemo extends Application {
         stage.setTitle("Fading image");
         stage.show();
         draw(g2d);
-
-
     }
-
 
     public void init()
     {
-        map = new TerrainMap("res/Map.json");
-
+        map = new TerrainMap("/Terrain/Map.json");
     }
-
-
 
     public void draw(Graphics2D g)
     {
@@ -58,11 +52,7 @@ public class TerrainDemo extends Application {
     public void update(double deltaTime)
     {
 
-
     }
-
-
-
 
     public static void main(String[] args)
     {
