@@ -27,7 +27,7 @@ Tijdens week 3 heb ik samen met Jin gewerkt aan het deleten en editten van perfo
 In deze week heb we samen met het groepje een beetje na zitten denken welke functies onze Agenda module nog meer moet hebben. Aan de hand daarvan hebben we deze functies gemaakt. We hebben ervoor gekozen om geen Stages toe te kunnen voegen, omdat we later in de map ook niet zo makkelijk een stage toe kunnen voegen.
 ## Week 4
 ### Bijdrage
-Deze week heb ik samen met Robin de code opgeschoond. Eerst stond bijna alles in één klasse, nadat wij het hadden opgeschoond hadden we de GUI klasse gesplitsts in 3 klassen. Hierdoor was de code een stuk overzichtelijker en duidelijker. Nadat Robin en ik samen de code hadden opgeschoond hebben we een Artist tabje gemaakt. In dit tabje zie je een overzicht van alle artiesten en hun attributen. Ook heb ik Add, Delete en edit buttons gemaakt. 
+Deze week heb ik samen met Robin de code opgeschoond. Eerst stond bijna alles in één klasse, nadat wij het hadden opgeschoond hadden we de GUI klasse gesplitsts in 3 klassen. Hierdoor was de code een stuk overzichtelijker en duidelijker. Nadat Robin en ik samen de code hadden opgeschoond hebben we een Artist tabje gemaakt. In dit tabje zie je een overzicht van alle artiesten en hun attributen. Ook heb ik Add, Delete en Edit buttons gemaakt. 
 
 <img src="https://github.com/Jaspervanes-github/Proftaak-P1.3-B2/blob/master/portfolio's/resources/Jasper/artist tabje.png" width="1000" height="500">
 
@@ -36,7 +36,7 @@ Ik heb deze week gekozen om een Artist tabje te maken. De reden waarom ik hiervo
 
 ## Week 5
 ### Bijdrage
-Deze week ben ik begonnenn met het werken aan het PvA. Ik ben begonnen aan hoofdstuk 6, en heb later nog wat hoofdstukken nagekeken. Toen ik eenmaal klaar was heb ik gevraagd aan de rest van de groep of ik ergens kon helpen. Ik ben toen RObin gaan helpen met de feedback verwerken van de demo. Wij hebben samen gefixt dat er nu een pop-up verschijnt op het scherm als je een handeling doet.(add, delete, edit) Ook hebben we geregeld dat de add, delete en edit buttons van performance weg zijn als je op het Artist tabje bent, en andersom. 
+Deze week ben ik begonnen met het werken aan het PvA. Ik ben begonnen aan hoofdstuk 6, en heb later nog wat hoofdstukken nagekeken. Toen ik eenmaal klaar was heb ik gevraagd aan de rest van de groep of ik ergens kon helpen. Ik ben toen Robin gaan helpen met de feedback verwerken van de demo. Wij hebben samen gefixt dat er nu een pop-up verschijnt op het scherm als je een handeling doet.(add, delete, edit) Ook hebben we geregeld dat de add, delete en edit buttons van performance weg zijn als je op het Artist tabje bent, en andersom. 
 
 ### Keuzes
 Deze week waren er niet veel keuzes om te maken. Alles was vrij duidelijk, iedereen wist wat er moest gebeuren, en hoe wij dat wilde hebben. Ik heb wel de keuze gemaakt om een pop-up te laten verschijnen als je een handeling doet in plaats van dat je niks te zien krijgt.
