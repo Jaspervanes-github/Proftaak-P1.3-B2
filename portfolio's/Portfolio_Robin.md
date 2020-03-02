@@ -27,7 +27,12 @@ Ik heb vooral gekeken naar een andere manier van notatie en andere manieren van 
 
 Uiteindelijk hebben we de keuze gemaakt om door te gaan met onze eerste agenda omdat ze het probleem toch opgelost kregen.
 
-
 ## Week 5
+Vooral vakantie gevierd eigenlijk. Er is niet veel vooruitgang geboekt.
+
+## Week 6
+Ik ben bij het opstart college geweest van Johan waar hij uitleg gaf over de simulatie en hoe dat te werk ging. Hij had hier een voorbeeld van genomen waarbij er pacmans achter zijn muis aan gingen lopen. Het was allemaal goed te volgen maar ik had wel het gevoel dat ik er zelf nooit op gekomen was.
+
+Ik ben daarna bezig geweest met het toevoegen van de simulatie in onze agenda module hiervoor heb ik een aparte tab gemaakt voor de simulatie. Dit ging goed. Ik heb de code van Johan kunnen overnemen en kunnen gebruiken maar ik moest nog wel het een en het ander aanpassen.
 
 
