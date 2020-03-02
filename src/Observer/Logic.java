@@ -99,6 +99,21 @@ public class Logic {
                                     System.out.println(this.data.getPerformances());
                                     this.data.getPerformances().add(performance);
                                     dialog.close();
+
+                                    Dialog dialogSaved = new Dialog();
+
+                                    dialogSaved.getDialogPane().getButtonTypes().add(new ButtonType("OK", ButtonBar.ButtonData.CANCEL_CLOSE));
+                                    dialogSaved.setTitle("Saved Performance");
+                                    dialogSaved.setContentText("Saved Performance");
+                                    dialogSaved.hide();
+
+
+                                    Optional<String> result = dialogSaved.showAndWait();
+                                    if (result.isPresent()) {
+                                        dialogSaved.close();
+
+                                    }
+
                                 }
                             }
                         }
