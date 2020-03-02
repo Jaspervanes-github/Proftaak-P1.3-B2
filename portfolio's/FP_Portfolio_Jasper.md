@@ -31,3 +31,11 @@ Deze week heb ik samen met Robin de code opgeschoond. Eerst stond bijna alles in
 
 ### Keuzes
 Ik heb deze week gekozen om een Artist tabje te maken. De reden waarom ik hiervoor heb gekozen is dat het voor de gebruiker nu een stuk duidelijker is welke artiesten hij/zij heeft toegevoegd.
+
+## Week 5
+### Bijdrage
+Deze week ben ik begonnenn met het werken aan het PvA. Ik ben begonnen aan hoofdstuk 6, en heb later nog wat hoofdstukken nagekeken. Toen ik eenmaal klaar was heb ik gevraagd aan de rest van de groep of ik ergens kon helpen. Ik ben toen RObin gaan helpen met de feedback verwerken van de demo. Wij hebben samen gefixt dat er nu een pop-up verschijnt op het scherm als je een handeling doet.(add, delete, edit) Ook hebben we geregeld dat de add, delete en edit buttons van performance weg zijn als je op het Artist tabje bent, en andersom. 
+
+### Keuzes
+Deze week waren er niet veel keuzes om te maken. Alles was vrij duidelijk, iedereen wist wat er moest gebeuren, en hoe wij dat wilde hebben. Ik heb wel de keuze gemaakt om een pop-up te laten verschijnen als je een handeling doet in plaats van dat je niks te zien krijgt.
+
