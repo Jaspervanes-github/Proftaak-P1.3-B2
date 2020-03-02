@@ -7,12 +7,18 @@ import Objects.Time;
 import javafx.application.Application;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
+
+import org.jfree.fx.FXGraphics2D;
+
+import java.awt.*;
+import java.awt.geom.AffineTransform;
 
 public class GUI extends Application {
 
@@ -29,6 +35,8 @@ public class GUI extends Application {
     protected Button buttonAddArtist;
     protected Button buttonEditArtist;
 
+    protected Canvas canvas;
+
     private Logic logic;
 
 
@@ -39,6 +47,10 @@ public class GUI extends Application {
     @Override
     public void start(javafx.stage.Stage stage) throws Exception {
         //This is the general Agenda.Observer.Observer lay out
+        this.canvas = new Canvas(1200, 800);
+        FXGraphics2D g2d = new FXGraphics2D(canvas.getGraphicsContext2D());
+        draw(g2d);
+
         Data data = new Data(this);
         Logic logic = new Logic(data, this);
         data.init();
@@ -82,17 +94,31 @@ public class GUI extends Application {
         TabPane tabPane = new TabPane();
         Tab tabPerformances = new Tab("Performances");
         Tab tabArtists = new Tab("Artists");
+        Tab tabSimulation = new Tab("Simulation");
 
-        tabPane.getTabs().addAll(tabPerformances, tabArtists);
+        tabPane.getTabs().addAll(tabPerformances, tabArtists, tabSimulation);
 
         tabPerformances.setContent(this.tableViewPerformance);
         tabArtists.setContent(this.tableViewArtist);
+        tabSimulation.setContent(this.canvas);
 
         tabPerformances.setClosable(false);
         tabArtists.setClosable(false);
+        tabSimulation.setClosable(false);
+
+
+
 
         return tabPane;
     }
 
+    public void draw(FXGraphics2D g2d)
+    {
+        g2d.setBackground(Color.BLACK);
+        g2d.clearRect(0,0,1920,1080);
+        g2d.setTransform(new AffineTransform());
+
+
+    }
 
 }

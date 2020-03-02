@@ -29,7 +29,7 @@ public class Customer extends Person {
     }
 
     public void draw (Graphics2D g){
-        
+
     }
 
     public void update(ArrayList<Customer> customers){
