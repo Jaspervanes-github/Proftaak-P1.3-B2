@@ -5,8 +5,9 @@ Welkom op het portfolio van Jasper van Es, dit portfolio wordt gemaakt in opdrac
 
 # InhoudsOpgave
 1. [Week2](#Week-2)
-2. [Week3](Week%203)
-3. 
+2. [Week3](#Week-3)
+3. [Week4](#Week-4)
+4. [Week5](#Week-5)
 
 ## Week 2
 ### Bijdrage
