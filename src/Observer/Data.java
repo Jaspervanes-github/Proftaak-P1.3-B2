@@ -66,6 +66,10 @@ public class Data {
         this.performances = performances;
     }
 
+    public ArrayList<Customer> getCustomers() {
+        return customers;
+    }
+
     public void init(){
         //Populates the observableList with data from file.
         //if file is empty an EOFException is thrown in src/File_IO
@@ -84,5 +88,21 @@ public class Data {
         } catch (EOFException e) {
             System.out.println("File is empty");
         }
+
+
+            this.customers = new ArrayList<>();
+
+            BufferedImage image = null;
+            try {
+                image = ImageIO.read(this.getClass().getResourceAsStream("/images/TestNPC.png"));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            for(int i = 0; i < 50; i++) {
+                this.customers.add(new Customer(new Point2D.Double(Math.random()*1800, Math.random()*1000), image));
+            }
     }
+
+
 }

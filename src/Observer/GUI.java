@@ -3,7 +3,9 @@ package Observer;
 import File_IO.File_IO;
 import Objects.Performance;
 import Objects.Person.Artist;
+import Objects.Person.Customer;
 import Objects.Time;
+import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -38,6 +40,7 @@ public class GUI extends Application {
     protected Canvas canvas;
 
     private Logic logic;
+    private Simulation simulation;
 
 
     public GUI() {
@@ -47,13 +50,12 @@ public class GUI extends Application {
     @Override
     public void start(javafx.stage.Stage stage) throws Exception {
         //This is the general Agenda.Observer.Observer lay out
-        this.canvas = new Canvas(1200, 800);
-        FXGraphics2D g2d = new FXGraphics2D(canvas.getGraphicsContext2D());
-        draw(g2d);
 
         Data data = new Data(this);
         Logic logic = new Logic(data, this);
+        simulation = new Simulation();
         data.init();
+        simulation.init();
 
         BorderPane bp = new BorderPane();
 
@@ -67,7 +69,7 @@ public class GUI extends Application {
 
         logic.setButtonLogic();
 
-        Scene scene = new Scene(bp, 1000, 650);
+        Scene scene = new Scene(bp, 1600, 900);
 
         stage.setScene(scene);
         stage.setTitle("User interface: Agenda");
@@ -100,7 +102,7 @@ public class GUI extends Application {
 
         tabPerformances.setContent(this.tableViewPerformance);
         tabArtists.setContent(this.tableViewArtist);
-        tabSimulation.setContent(this.canvas);
+        tabSimulation.setContent(this.simulation.getCanvas());
 
         tabPerformances.setClosable(false);
         tabArtists.setClosable(false);
@@ -110,15 +112,6 @@ public class GUI extends Application {
 
 
         return tabPane;
-    }
-
-    public void draw(FXGraphics2D g2d)
-    {
-        g2d.setBackground(Color.BLACK);
-        g2d.clearRect(0,0,1920,1080);
-        g2d.setTransform(new AffineTransform());
-
-
     }
 
 }
