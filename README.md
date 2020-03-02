@@ -8,7 +8,7 @@ Onderstaand zijn de portfolio's te vinden van de groepsleden:
 
 Dave: [here](portfolio's/FP_Portfolio_Dave.md)
 
-Robin: [here](portfolio's/FP_Portfolio_Robin.md)
+Robin: [here](portfolio's/Portfolio_Robin.md)
 
 Jasper: [here](portfolio's/FP_Portfolio_Jasper.md)
 
