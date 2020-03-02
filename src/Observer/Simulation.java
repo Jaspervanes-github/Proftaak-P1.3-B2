@@ -76,14 +76,21 @@ public class Simulation extends Application {
                 customer.setTarget(new Point2D.Double(e.getX(), e.getY()));
             }
         });
+
+        canvas.setOnMouseClicked( event -> {
+            try {
+                data.getCustomers().add(new Customer(new Point2D.Double(event.getX(), event.getY()), ImageIO.read(getClass().getResourceAsStream("/images/TestNPC.png"))));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
 
-    ArrayList<Customer> customers;
+
 
 
     public void init() {
-        this.customers = new ArrayList<>();
         BufferedImage image = null;
         try {
             image = ImageIO.read(this.getClass().getResourceAsStream("/images/TestNPC.png"));
@@ -91,7 +98,7 @@ public class Simulation extends Application {
             e.printStackTrace();
         }
 
-        for(int i = 0; i < 50; i++) {
+        for(int i = 0; i < 10; i++) {
             this.data.getCustomers().add(new Customer(new Point2D.Double(Math.random()*1800, Math.random()*1000), image));
         }
     }
@@ -112,7 +119,7 @@ public class Simulation extends Application {
 
     public void update(double frameTime) {
         for(Customer customer : data.getCustomers()) {
-            customer.update(customers);
+            customer.update(data.getCustomers());
         }
     }
 

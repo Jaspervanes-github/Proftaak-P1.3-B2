@@ -1,6 +1,8 @@
 package Objects.Person;
 
 import Objects.Genre;
+import Observer.Data;
+import Observer.GUI;
 
 import java.awt.*;
 import java.awt.geom.AffineTransform;
