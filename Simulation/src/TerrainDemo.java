@@ -17,7 +17,7 @@ public class TerrainDemo extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         BorderPane mainPane = new BorderPane();
-        canvas = new ResizableCanvas(g -> draw(g), mainPane);
+        this.canvas = new ResizableCanvas(g -> draw(g), mainPane);
         mainPane.setCenter(canvas);
         FXGraphics2D g2d = new FXGraphics2D(canvas.getGraphicsContext2D());
         new AnimationTimer() {
@@ -33,19 +33,14 @@ public class TerrainDemo extends Application {
         }.start();
 
         stage.setScene(new Scene(mainPane));
-        stage.setTitle("Fading image");
+        stage.setTitle("Festival Planner");
         stage.show();
         draw(g2d);
     }
 
     public void init()
     {
-
-        try {
             map = new TerrainMap("/Terrain/Map.json");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     public void draw(Graphics2D g)
