@@ -1,4 +1,4 @@
-//import javax.imageio.ImageIO;
+package Simulation;//import javax.imageio.ImageIO;
 //import javax.json.*;
 //import java.awt.*;
 //import java.awt.geom.AffineTransform;
@@ -170,7 +170,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 
-
 public class TerrainMap {
     private int width;
     private int height;
@@ -210,7 +209,6 @@ public class TerrainMap {
                     tiles.add(null);
                 }
 
-
                 for (int y = 0; y < tilemap.getHeight(); y += tileHeight) {
                     for (int x = 0; x < tilemap.getWidth(); x += tileWidth) {
                         tiles.set(gid, tilemap.getSubimage(x, y, tileWidth, tileHeight));
@@ -226,7 +224,6 @@ public class TerrainMap {
         }
 
         JsonArray layers = root.getJsonArray("layers");
-
 
         for(int i = 0; i < layers.size(); i++) {
             JsonObject layerInfo = layers.getJsonObject(i);
