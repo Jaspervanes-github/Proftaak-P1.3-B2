@@ -246,5 +246,28 @@ public class TerrainMap {
 
     }
 
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public int getTileHeight() {
+        return tileHeight;
+    }
+
+    public int getTileWidth() {
+        return tileWidth;
+    }
+
+    public ArrayList<BufferedImage> getTiles() {
+        return tiles;
+    }
+
+    public ArrayList<TiledLayer> getLayers() {
+        return layers;
+    }
 }
 
