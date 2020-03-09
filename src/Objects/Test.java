@@ -1,6 +1,6 @@
-package Data;
+package Objects;
 
-import Data.Person.Artist;
+import Objects.Person.Artist;
 
 import java.util.ArrayList;
 
@@ -22,12 +22,11 @@ public class Test {
         performances.add(new Performance(1500,1700,new Artist("Armin van Buuren",9,Genre.TECHNO),new Stage("Test",200)));
         performances.add(new Performance(1400,1700,new Artist("besti",9,Genre.TECHNO),new Stage("Test",200)));
 
+        Time time = new Time();
 
-        System.out.println(performances.get(0).getArtist().getName());
-        System.out.println(performances.get(1).getArtist().getName());
+        time.LoadListOfTime();
 
-        System.out.println(performances.get(0).getStage());
-        System.out.println(performances.get(1).getStage());
+
 
     }
 }

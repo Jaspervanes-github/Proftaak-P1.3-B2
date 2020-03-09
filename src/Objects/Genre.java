@@ -1,4 +1,4 @@
-package Data;
+package Objects;
 
 public enum Genre {
     DANCE,
@@ -6,5 +6,7 @@ public enum Genre {
     HOUSE,
     TECHNO,
     TRANCE,
+    POP,
+    ROCK,
     DRUM_AND_BASS
 }
