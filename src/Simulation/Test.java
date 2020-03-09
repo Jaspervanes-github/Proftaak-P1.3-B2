@@ -10,7 +10,7 @@ public class Test {
 
     public void test() {
         try {
-            fr = new FileReader("Simulation/res/Terrain/Map.json");
+            fr = new FileReader("Simulation/res/Terrain/Target.json");
         } catch (
                 FileNotFoundException e) {
             e.printStackTrace();
