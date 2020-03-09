@@ -22,9 +22,6 @@ public class TerrainDemo extends Application {
     private ResizableCanvas canvas;
     private BufferedImage imageMap = null;
     private AffineTransform tx;
-    private Camera camera;
-    private MousePicker mousePicker;
-    private World world;
 
 
     @Override
@@ -35,14 +32,12 @@ public class TerrainDemo extends Application {
 
         FXGraphics2D g2d = new FXGraphics2D(canvas.getGraphicsContext2D());
 
-        camera = new Camera(canvas, g -> draw(g), g2d);
-        mousePicker = new MousePicker(canvas);
-
         new AnimationTimer() {
             long last = -1;
+
             @Override
             public void handle(long now) {
-                if(last == -1)
+                if (last == -1)
                     last = now;
                 update((now - last) / 1000000000.0);
                 last = now;
@@ -50,51 +45,44 @@ public class TerrainDemo extends Application {
             }
         }.start();
 
-//      stage.setScene(new Scene(mainPane, imageMap.getWidth(),imageMap.getHeight()));
-        stage.setScene(new Scene(mainPane));
+        stage.setScene(new Scene(mainPane, imageMap.getWidth(), imageMap.getHeight()));
+        //stage.setScene(new Scene(mainPane));
 
         stage.setTitle("Festival Planner");
         stage.show();
         draw(g2d);
     }
 
-    public void init()
-    {
-        world = new World();
-            map = new TerrainMap("/Terrain/Map.json");
-//        try {
-//            imageMap = ImageIO.read(getClass().getResource("/Map.png"));
-////            imageMap = ImageIO.read(new File("src/File_IO/Map.png"));
-//
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+    public void init() {
+        map = new TerrainMap("/Terrain/Target.json");
+        try {
+            imageMap = ImageIO.read(getClass().getResource("/Map.png"));
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 
     }
 
-    public void draw(Graphics2D g)
-    {
+    public void draw(Graphics2D g) {
         g.setBackground(Color.black);
-        g.clearRect(0,0,(int)canvas.getWidth(), (int)canvas.getHeight());
- //      tx = AffineTransform.getScaleInstance(canvas.getWidth()/imageMap.getWidth(),canvas.getHeight()/ima  geMap.getHeight());
+        g.clearRect(0, 0, (int) canvas.getWidth(), (int) canvas.getHeight());
+        tx = AffineTransform.getScaleInstance(canvas.getWidth() / imageMap.getWidth(), canvas.getHeight() / imageMap.getHeight());
+        g.transform(tx);
         map.draw(g);
         AffineTransform originalTransform = g.getTransform();
 
-        g.setTransform(camera.getTransform(0, 0));
-//       g.drawImage(imageMap, tx,null);
+        g.drawImage(imageMap, tx, null);
 
         g.setTransform(originalTransform);
     }
 
-    public void update(double deltaTime)
-    {
-        mousePicker.update(world, camera.getTransform((int) canvas.getWidth(), (int) canvas.getHeight()), 100);
-        world.update(deltaTime);
+    public void update(double deltaTime) {
+
     }
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         launch(TerrainDemo.class);
     }
 
