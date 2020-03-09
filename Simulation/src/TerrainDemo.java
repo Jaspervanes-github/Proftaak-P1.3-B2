@@ -39,7 +39,7 @@ public class TerrainDemo extends Application {
             }
         }.start();
 
-        stage.setScene(new Scene(mainPane));
+        stage.setScene(new Scene(mainPane, imageMap.getWidth(),imageMap.getHeight()));
         stage.setTitle("Festival Planner");
         stage.show();
         draw(g2d);
