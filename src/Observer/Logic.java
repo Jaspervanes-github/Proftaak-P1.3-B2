@@ -24,11 +24,11 @@ public class Logic {
         this.gui = gui;
 
         //Test Values
-        this.addPodia(new Stage("Heldeep", 200));
-        this.addPodia(new Stage("Rampage", 200));
-        this.addPodia(new Stage("Boiler Room", 200));
-        this.addPodia(new Stage("Disco Snolly", 200));
-        this.addPodia(new Stage("Techy Techno", 200));
+//        this.addPodia(new Stage("Heldeep", 200));
+//        this.addPodia(new Stage("Rampage", 200));
+//        this.addPodia(new Stage("Boiler Room", 200));
+//        this.addPodia(new Stage("Disco Snolly", 200));
+//        this.addPodia(new Stage("Techy Techno", 200));
     }
 
     public void setButtonLogic() {
@@ -215,6 +215,78 @@ public class Logic {
             }
         });
 
+        gui.buttonAddStage.setOnAction(event -> {
+            Dialog dialog = new Dialog();
+
+            GridPane gridPane = new GridPane();
+
+            dialog.getDialogPane().getButtonTypes().add(new ButtonType("Quit", ButtonBar.ButtonData.CANCEL_CLOSE));
+            dialog.setTitle("Adding a new Stage");
+            dialog.setHeaderText("Adding a new Stage");
+            dialog.setContentText("Please enter the data: ");
+            dialog.hide();
+
+            TextField stageNameText = new TextField();
+            TextField stageSizeText = new TextField();
+
+            Button buttonSave = new Button("Save");
+
+            gridPane.add(stageNameText, 1, 1);
+            gridPane.add(new Label("Stage Name "), 0, 1);
+
+            gridPane.add(stageSizeText, 1, 2);
+            gridPane.add(new Label("Stage Size "), 0, 2);
+
+            gridPane.add(buttonSave, 0, 5);
+
+            dialog.getDialogPane().setContent(gridPane);
+
+            buttonSave.setOnAction(event1 -> {
+                if (!stageNameText.getText().trim().isEmpty() || !stageSizeText.getText().trim().isEmpty()) {
+                    if (this.data.getStages().isEmpty()) {
+                        addPodia(new Stage(stageNameText.getText(), (Integer.parseInt(stageSizeText.getText()))));
+                    } else {
+                        boolean isInList = false;
+                        for (Stage stage : this.data.getStages()) {
+                            if (stage.getStageName().equals(stageNameText.getText())) {
+                                isInList = true;
+                                break;
+                            }
+                        }
+                        if (!isInList) {
+                            this.data.getStages().add(new Stage(stageNameText.getText(), Integer.parseInt(stageSizeText.getText())));
+                            dialog.close();
+
+                            Dialog dialogSaved = new Dialog();
+
+                            dialogSaved.getDialogPane().getButtonTypes().add(new ButtonType("OK", ButtonBar.ButtonData.CANCEL_CLOSE));
+                            dialogSaved.setTitle("Saved Stage");
+                            dialogSaved.setContentText("Saved Stage");
+                            dialogSaved.hide();
+
+
+                            Optional<String> result = dialogSaved.showAndWait();
+                            if (result.isPresent()) {
+                                dialogSaved.close();
+
+                            }
+                        }
+                    }
+                }
+                try {
+                    gui.file_io.writeFileStage("Stages.txt", this.data.getStages());
+                } catch (IOException e) {
+                    System.out.println("IO Exception");
+                    e.printStackTrace();
+                }
+
+            });
+            Optional<String> result = dialog.showAndWait();
+            if (result.isPresent()) {
+                dialog.close();
+            }
+        });
+
         gui.buttonDelPerf.setOnAction(event -> {
             Performance selectedPerformance = gui.tableViewPerformance.getSelectionModel().getSelectedItem();
             if (selectedPerformance != null){
@@ -260,6 +332,33 @@ public class Logic {
                 dialogDeleted.setContentText("Deleted Artist");
                 dialogDeleted.hide();
 
+
+                Optional<String> result = dialogDeleted.showAndWait();
+                if (result.isPresent()) {
+                    dialogDeleted.close();
+
+                }
+            }
+
+        });
+
+        gui.buttonDelStage.setOnAction(event -> {
+            Stage selectedStage = gui.tableViewStages.getSelectionModel().getSelectedItem();
+            if (selectedStage != null){
+                gui.tableViewStages.getItems().remove(selectedStage);
+                try {
+                    gui.file_io.writeFileStage("Stages.txt", this.data.getStages());
+                } catch (IOException e) {
+                    System.out.println("IO Exception");
+                    e.printStackTrace();
+                }
+
+                Dialog dialogDeleted = new Dialog();
+
+                dialogDeleted.getDialogPane().getButtonTypes().add(new ButtonType("OK", ButtonBar.ButtonData.CANCEL_CLOSE));
+                dialogDeleted.setTitle("Deleted Stage");
+                dialogDeleted.setContentText("Deleted Stage");
+                dialogDeleted.hide();
 
                 Optional<String> result = dialogDeleted.showAndWait();
                 if (result.isPresent()) {
@@ -450,12 +549,76 @@ public class Logic {
                 }
             }
         });
+        gui.buttonEditStage.setOnAction(event -> {
+            if(gui.tableViewStages.getSelectionModel().getSelectedItem() != null) {
+                Stage help = gui.tableViewStages.getSelectionModel().getSelectedItem();
+                Dialog dialog = new Dialog();
+
+                GridPane gridPane = new GridPane();
+
+                dialog.getDialogPane().getButtonTypes().add(new ButtonType("Quit", ButtonBar.ButtonData.CANCEL_CLOSE));
+                dialog.setTitle("Editing an Stage");
+                dialog.setHeaderText("Editing an Stage");
+                dialog.setContentText("Please enter the data: ");
+                dialog.hide();
+
+                TextField stageNameText = new TextField();
+                TextField stageSize = new TextField();
+
+                stageNameText.setText(help.getStageName());
+                stageSize.setText(help.getSize() + "");
+
+                Button buttonSave = new Button("Save");
+
+                gridPane.add(stageNameText, 1, 1);
+                gridPane.add(new Label("Stage name "), 0, 1);
+
+                gridPane.add(stageSize, 1, 2);
+                gridPane.add(new Label("Stage Size "), 0, 2);
+
+                gridPane.add(buttonSave, 0, 5);
+
+                dialog.getDialogPane().setContent(gridPane);
+
+                buttonSave.setOnAction(event1 -> {
+                    if (!stageNameText.getText().trim().isEmpty()) {
+                        addPodia(new Stage(stageNameText.getText(), Integer.parseInt(stageSize.getText())));
+                        this.data.getStages().remove(help);
+                    }
+                    try {
+                        gui.file_io.writeFileStage("Stages.txt", this.data.getStages());
+                    } catch (IOException e) {
+                        System.out.println("IO Exception");
+                        e.printStackTrace();
+                    }
+                    dialog.close();
+
+                    Dialog dialogEdited = new Dialog();
+
+                    dialogEdited.getDialogPane().getButtonTypes().add(new ButtonType("OK", ButtonBar.ButtonData.CANCEL_CLOSE));
+                    dialogEdited.setTitle("Edited Stage");
+                    dialogEdited.setContentText("Edited Stage");
+                    dialogEdited.hide();
+
+
+                    Optional<String> result = dialogEdited.showAndWait();
+                    if (result.isPresent()) {
+                        dialogEdited.close();
+
+                    }
+                });
+                Optional<String> result = dialog.showAndWait();
+                if (result.isPresent()) {
+                    dialog.close();
+                }
+            }
+        });
     }
+
 
     public void addPodia(Stage stage) {
         this.data.getStages().add(stage);
     }
-
 
     public void addArtist(Artist artist) {
         this.data.getArtists().add(artist);
@@ -502,5 +665,19 @@ public class Logic {
         gui.tableViewPerformance.getColumns().addAll(startingTime, endTime, stage, artistName, genre, popularity);
         gui.tableViewPerformance.setPlaceholder(new Label("No Performances"));
         gui.tableViewPerformance.setItems(this.data.getPerformances());
+    }
+
+    public void setTableViewLogicStage() {
+        TableColumn<Stage, String> stageName = new TableColumn<>("Stage Name");
+        TableColumn<Stage, String> stageSize = new TableColumn<>("Stage Size");
+        stageName.setMinWidth(100);
+        stageSize.setMinWidth(100);
+
+        stageName.setCellValueFactory(stage -> stage.getValue().getObservableString(stage.getValue().getStageName()));
+        stageSize.setCellValueFactory(stage -> stage.getValue().getObservableString(stage.getValue().getSize()));
+
+        gui.tableViewStages.getColumns().addAll(stageName, stageSize);
+        gui.tableViewStages.setPlaceholder(new Label("No Stages"));
+        gui.tableViewStages.setItems(this.data.getStages());
     }
 }

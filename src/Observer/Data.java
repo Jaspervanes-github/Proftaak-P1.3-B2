@@ -34,7 +34,7 @@ public class Data {
         this.customers = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             try {
-                this.customers.add(new Customer(new Point2D.Double(Math.random()* 1000, Math.random()*500),
+                this.customers.add(new Customer(new Point2D.Double(Math.random() * 1000, Math.random() * 500),
                         ImageIO.read(getClass().getResourceAsStream("/images/TestNPC.png"))));
             } catch (IOException e) {
                 e.printStackTrace();
@@ -71,7 +71,7 @@ public class Data {
         return customers;
     }
 
-    public void init(){
+    public void init() {
         //Populates the observableList with data from file.
         //if file is empty an EOFException is thrown in src/File_IO
         try {
@@ -85,7 +85,15 @@ public class Data {
         try {
             this.artists = FXCollections.observableList(gui.file_io.readFileArtist("Artists.txt"));
         } catch (FileNotFoundException e) {
-            System.out.println("File not found, generating new Performances.txt");
+            System.out.println("File not found, generating new Artists.txt");
+        } catch (EOFException e) {
+            System.out.println("File is empty");
+        }
+
+        try {
+            this.stages = FXCollections.observableList(gui.file_io.readFileStage("Stages.txt"));
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found, generating new Stages.txt");
         } catch (EOFException e) {
             System.out.println("File is empty");
         }
