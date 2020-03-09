@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Proftaak P1.3.iml" filepath="$PROJECT_DIR$/Proftaak P1.3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Simulation/Simulation.iml" filepath="$PROJECT_DIR$/Simulation/Simulation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Simulation/Simulator.iml" filepath="$PROJECT_DIR$/Simulation/Simulator.iml" />
     </modules>
   </component>
 </project>
