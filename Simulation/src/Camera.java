@@ -11,7 +11,7 @@ import java.awt.geom.Point2D;
 
 
 /**
- * Created by Johan on 15-2-2017.
+ * Created by johan on 15-2-2017.
  */
 public class Camera {
 	private Point2D centerPoint = new Point2D.Double(0,0);
@@ -44,24 +44,18 @@ public class Camera {
 	}
 
 	public void mouseDragged(MouseEvent e) {
-			if (e.getButton() == MouseButton.PRIMARY) {
-				centerPoint = new Point2D.Double(
-						centerPoint.getX() - (lastMousePos.getX() - e.getX()) / zoom,
-						centerPoint.getY() - (lastMousePos.getY() - e.getY()) / zoom
-				);
-				System.out.println("CenterPoint: " + centerPoint.toString() + " " + lastMousePos.toString() + " " + e.getX() + e.getY());
-//			if(centerPoint != new Point2D.Double(0,0)){
-//			}
-				lastMousePos = new Point2D.Double(e.getX(), e.getY());
-				resizable.draw(g2d);
-			}
+		if(e.getButton() == MouseButton.MIDDLE) {
+			centerPoint = new Point2D.Double(
+					centerPoint.getX() - (lastMousePos.getX() - e.getX()) / zoom,
+					centerPoint.getY() - (lastMousePos.getY() - e.getY()) / zoom
+			);
+			lastMousePos = new Point2D.Double(e.getX(), e.getY());
+			resizable.draw(g2d);
+		}
 	}
 
 	public void mouseScroll(ScrollEvent e) {
 		zoom *= (1 + e.getDeltaY()/250.0f);
-		if(zoom <1) {
-			zoom = 1;
-		}
 		resizable.draw(g2d);
 	}
 }
