@@ -1,4 +1,4 @@
-//import java.awt.image.BufferedImage;
+package Simulation;//import java.awt.image.BufferedImage;
 //
 //
 //public class Tile {

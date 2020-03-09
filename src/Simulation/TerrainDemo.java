@@ -1,3 +1,5 @@
+package Simulation;
+
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -11,6 +13,7 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 
 public class TerrainDemo extends Application {
@@ -47,7 +50,9 @@ public class TerrainDemo extends Application {
             }
         }.start();
 
-        stage.setScene(new Scene(mainPane, imageMap.getWidth(),imageMap.getHeight()));
+//      stage.setScene(new Scene(mainPane, imageMap.getWidth(),imageMap.getHeight()));
+        stage.setScene(new Scene(mainPane));
+
         stage.setTitle("Festival Planner");
         stage.show();
         draw(g2d);
@@ -57,11 +62,13 @@ public class TerrainDemo extends Application {
     {
         world = new World();
             map = new TerrainMap("/Terrain/Map.json");
-        try {
-            imageMap = ImageIO.read(getClass().getResource("/Map.png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            imageMap = ImageIO.read(getClass().getResource("/Map.png"));
+////            imageMap = ImageIO.read(new File("src/File_IO/Map.png"));
+//
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
 
     }
@@ -70,12 +77,12 @@ public class TerrainDemo extends Application {
     {
         g.setBackground(Color.black);
         g.clearRect(0,0,(int)canvas.getWidth(), (int)canvas.getHeight());
-        tx = AffineTransform.getScaleInstance(canvas.getWidth()/imageMap.getWidth(),canvas.getHeight()/imageMap.getHeight());
-
+ //      tx = AffineTransform.getScaleInstance(canvas.getWidth()/imageMap.getWidth(),canvas.getHeight()/ima  geMap.getHeight());
+        map.draw(g);
         AffineTransform originalTransform = g.getTransform();
 
         g.setTransform(camera.getTransform(0, 0));
-        g.drawImage(imageMap, tx,null);
+//       g.drawImage(imageMap, tx,null);
 
         g.setTransform(originalTransform);
     }
