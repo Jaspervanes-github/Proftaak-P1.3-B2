@@ -1,7 +1,7 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Proftaak P1.3" type="Application" factoryName="Application">
     <option name="MAIN_CLASS_NAME" value="YesterdayLand" />
-    <module name="Proftaak P1.3" />
+    <module name="Proftaak-P1.3-B2" />
     <method v="2">
       <option name="Make" enabled="true" />
     </method>

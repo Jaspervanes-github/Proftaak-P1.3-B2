@@ -8,12 +8,15 @@ import javafx.application.Application;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.control.*;
 import javafx.scene.control.Button;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
-import javafx.scene.control.TableView;
+import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
+
+import java.awt.*;
 
 public class GUI extends Application {
 
@@ -29,6 +32,14 @@ public class GUI extends Application {
     protected Button buttonAddPerformance;
     protected Button buttonAddArtist;
     protected Button buttonEditArtist;
+    protected Button buttonPausePlay;
+    protected Button buttonSlowSpeed;
+    protected Button buttonMediumSpeed;
+    protected Button buttonFastSpeed;
+    protected Button buttonBackwards;
+    protected Button buttonForward;
+    protected Button buttonSave;
+    protected Button buttonOpen;
 
     protected Canvas canvas;
 
@@ -108,8 +119,7 @@ public class GUI extends Application {
 
         tabArtists.setContent(getBorderPaneArtist());
 
-
-        tabSimulation.setContent(this.simulation.getCanvas());
+        tabSimulation.setContent(getBorderPaneSimulation());
 
         tabPerformances.setClosable(false);
         tabArtists.setClosable(false);
@@ -119,6 +129,32 @@ public class GUI extends Application {
 
 
         return tabPane;
+    }
+
+    private Node getBorderPaneSimulation() {
+        BorderPane borderPane = new BorderPane();
+
+        borderPane.setCenter(this.simulation.getCanvas());
+        borderPane.setBottom(getButtonSimulation());
+
+        return borderPane;
+    }
+
+    private Node getButtonSimulation() {
+        FlowPane fp = new FlowPane();
+
+        buttonSave = new Button("Save");
+        buttonOpen = new Button("Open");
+        buttonBackwards = new Button("Backwards");
+        buttonForward = new Button("Forward");
+        buttonPausePlay = new Button("Pause/Play");
+        buttonSlowSpeed = new Button(">");
+        buttonMediumSpeed = new Button(">>");
+        buttonFastSpeed = new Button(">>>");
+
+        fp.getChildren().addAll(buttonSave,buttonOpen,buttonBackwards,buttonForward,buttonPausePlay,buttonSlowSpeed,buttonMediumSpeed,buttonFastSpeed);
+
+        return fp;
     }
 
     private Node getBorderPaneArtist() {
