@@ -34,12 +34,6 @@ public class GUI extends Application {
     protected Button buttonDelPerf, buttonEditPerformance, buttonAddPerformance;
     protected Button buttonDelArt, buttonAddArtist, buttonEditArtist;
     protected Button buttonDelStage, buttonEditStage, buttonAddStage;
-    protected Button buttonDelPerf;
-    protected Button buttonDelArt;
-    protected Button buttonEditPerformance;
-    protected Button buttonAddPerformance;
-    protected Button buttonAddArtist;
-    protected Button buttonEditArtist;
     protected Button buttonPausePlay;
     protected Button buttonSlowSpeed;
     protected Button buttonMediumSpeed;
