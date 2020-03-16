@@ -9,7 +9,10 @@ Onderstaand zijn de portfolio's te vinden van de groepsleden:
 Dave: [here](portfolio's/FP_Portfolio_Dave.md)
 
 Robin: [here](portfolio's/Portfolio_Robin.md)
-Jasper:
-Bart:
-Jin:
+
+Jasper: [here](portfolio's/FP_Portfolio_Jasper.md)
+
+Bart: [here](portfolio's/Portfolio_Bart.md)
+
+Jin: [here](portfolio's/FP_Portfolio_Jin.md)
 

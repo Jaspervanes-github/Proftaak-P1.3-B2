@@ -7,12 +7,16 @@ import Objects.Time;
 import javafx.application.Application;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.control.*;
 import javafx.scene.control.Button;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
-import javafx.scene.control.TableView;
+import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
+
+import java.awt.*;
 
 public class GUI extends Application {
 
@@ -28,8 +32,19 @@ public class GUI extends Application {
     protected Button buttonAddPerformance;
     protected Button buttonAddArtist;
     protected Button buttonEditArtist;
+    protected Button buttonPausePlay;
+    protected Button buttonSlowSpeed;
+    protected Button buttonMediumSpeed;
+    protected Button buttonFastSpeed;
+    protected Button buttonBackwards;
+    protected Button buttonForward;
+    protected Button buttonSave;
+    protected Button buttonOpen;
+
+    protected Canvas canvas;
 
     private Logic logic;
+    private Simulation simulation;
 
 
     public GUI() {
@@ -39,9 +54,12 @@ public class GUI extends Application {
     @Override
     public void start(javafx.stage.Stage stage) throws Exception {
         //This is the general Agenda.Observer.Observer lay out
+
         Data data = new Data(this);
         Logic logic = new Logic(data, this);
+        simulation = new Simulation();
         data.init();
+        simulation.init();
 
         BorderPane bp = new BorderPane();
 
@@ -51,29 +69,39 @@ public class GUI extends Application {
         logic.setTableViewLogicArtist();
 
         bp.setCenter(getTabPane());
-        bp.setBottom(getButton());
+
 
         logic.setButtonLogic();
 
-        Scene scene = new Scene(bp, 1000, 650);
+        Scene scene = new Scene(bp, 1600, 900);
 
         stage.setScene(scene);
         stage.setTitle("User interface: Agenda");
         stage.show();
     }
 
-    public Node getButton() {
+    public Node getButtonPerformance() {
         FlowPane fp = new FlowPane();
 
 
         buttonDelPerf = new Button("Delete Performance");
-        buttonDelArt = new Button("Delete Artist");
         buttonEditPerformance = new Button("Edit Performance");
-        buttonEditArtist = new Button("Edit Artist");
         buttonAddPerformance = new Button("Adding a performance");
+
+        fp.getChildren().addAll(buttonAddPerformance, buttonDelPerf, buttonEditPerformance);
+
+        return fp;
+    }
+
+    public Node getButtonArtist(){
+        FlowPane fp = new FlowPane();
+
+        buttonDelArt = new Button("Delete Artist");
+        buttonEditArtist = new Button("Edit Artist");
         buttonAddArtist = new Button("Adding a Artist");
 
-        fp.getChildren().addAll(buttonAddPerformance, buttonAddArtist, buttonDelPerf, buttonDelArt, buttonEditPerformance, buttonEditArtist);
+        fp.getChildren().addAll(buttonAddArtist, buttonDelArt,  buttonEditArtist);
+
         return fp;
     }
 
@@ -82,17 +110,80 @@ public class GUI extends Application {
         TabPane tabPane = new TabPane();
         Tab tabPerformances = new Tab("Performances");
         Tab tabArtists = new Tab("Artists");
+        Tab tabSimulation = new Tab("Simulation");
 
-        tabPane.getTabs().addAll(tabPerformances, tabArtists);
+        tabPane.getTabs().addAll(tabPerformances, tabArtists, tabSimulation);
 
-        tabPerformances.setContent(this.tableViewPerformance);
-        tabArtists.setContent(this.tableViewArtist);
+        tabPerformances.setContent(getBorderPanePerformance());
+
+
+        tabArtists.setContent(getBorderPaneArtist());
+
+        tabSimulation.setContent(getBorderPaneSimulation());
 
         tabPerformances.setClosable(false);
         tabArtists.setClosable(false);
+        tabSimulation.setClosable(false);
+
+
+
 
         return tabPane;
     }
 
+    private Node getBorderPaneSimulation() {
+        BorderPane borderPane = new BorderPane();
 
+        borderPane.setCenter(this.simulation.getCanvas());
+        borderPane.setBottom(getButtonSimulation());
+
+        return borderPane;
+    }
+
+    private Node getButtonSimulation() {
+        FlowPane fp = new FlowPane();
+
+        buttonSave = new Button("Save");
+        buttonOpen = new Button("Open");
+        buttonBackwards = new Button("Backwards");
+        buttonForward = new Button("Forward");
+        buttonPausePlay = new Button("Pause/Play");
+        buttonSlowSpeed = new Button(">");
+        buttonMediumSpeed = new Button(">>");
+        buttonFastSpeed = new Button(">>>");
+
+        fp.getChildren().addAll(buttonSave,buttonOpen,buttonBackwards,buttonForward,buttonPausePlay,buttonSlowSpeed,buttonMediumSpeed,buttonFastSpeed);
+
+        return fp;
+    }
+
+    private Node getBorderPaneArtist() {
+        BorderPane borderPane = new BorderPane();
+
+        borderPane.setCenter(this.tableViewArtist);
+        borderPane.setBottom(getButtonArtist());
+
+        return borderPane;
+    }
+
+    private Node getBorderPanePerformance() {
+        BorderPane borderPane = new BorderPane();
+
+        borderPane.setCenter(this.tableViewPerformance);
+        borderPane.setBottom(getButtonPerformance());
+
+        return borderPane;
+    }
+
+    public void setButtonsPerformanceVisable(boolean visable){
+        buttonAddPerformance.setVisible(visable);
+        buttonDelPerf.setVisible(visable);
+        buttonEditPerformance.setVisible(visable);
+    }
+
+    public void setButtonsArtistVisable(boolean visable){
+        buttonAddArtist.setVisible(visable);
+        buttonDelArt.setVisible(visable);
+        buttonEditArtist.setVisible(visable);
+    }
 }
