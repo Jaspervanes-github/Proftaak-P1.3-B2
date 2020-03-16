@@ -73,8 +73,8 @@ public class TerrainDemo extends Application {
         this.targets = map.getTarget().get(0).getTargets();
 
         for(int i = 0;i<this.targets.size();i++) {
-            this.directionMaps.put(this.targets.get(i),this.directionMap.generateDirectionMap
-                    (new Tile(new Point2D.Double(this.targets.get(i).getInt("x"),this.targets.get(i).getInt("y")))));
+            ArrayList<Tile> result = this.directionMap.generateDirectionMap(new Tile(new Point2D.Double(this.targets.get(i).getInt("x"),this.targets.get(i).getInt("y"))));
+            this.directionMaps.put(this.targets.get(i),result);
             System.out.println(this.directionMaps);
         }
     }
