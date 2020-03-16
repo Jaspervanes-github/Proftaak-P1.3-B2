@@ -228,6 +228,11 @@ public class TerrainMap {
     private ArrayList<BufferedImage> tiles = new ArrayList<>();
 
     private ArrayList<TiledLayer> layers = new ArrayList<>();
+    private ArrayList<TargetLayer> target = new ArrayList<>();
+
+    public ArrayList<TargetLayer> getTarget() {
+        return target;
+    }
 
     public TerrainMap(String fileName)
     {
@@ -276,7 +281,9 @@ public class TerrainMap {
         for(int i = 0; i < layers.size(); i++) {
             JsonObject layerInfo = layers.getJsonObject(i);
             if(layerInfo.getString("name").equals("Object Layer")){
-                new TiledLayer(layerInfo); //? misschien werkt dit
+                this.target.add(new TargetLayer(layerInfo));
+
+//                System.out.println("In if statement map");
             }else if(layerInfo.getString("type").equals("tilelayer")) {
                 this.layers.add(new TiledLayer(layerInfo));
             }

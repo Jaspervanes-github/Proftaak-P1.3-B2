@@ -28,8 +28,8 @@ public class TerrainDemo extends Application {
     private AffineTransform tx = new AffineTransform();
     private boolean isFullScreen = false;
     private DirectionMap directionMap;
-    private HashMap<JsonObject,Tile[]> directionMaps;
-    private ArrayList<JsonObject> targets;
+    private HashMap<JsonObject,ArrayList<Tile>> directionMaps;
+    private ArrayList<JsonObject> targets = new ArrayList<>();
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -70,7 +70,7 @@ public class TerrainDemo extends Application {
         }
         this.directionMap = new DirectionMap(this.map);
         this.directionMaps = new HashMap<>();
-        this.targets = map.getLayers().get(0).getTargets();
+        this.targets = map.getTarget().get(0).getTargets();
 
         for(int i = 0;i<this.targets.size();i++) {
             this.directionMaps.put(this.targets.get(i),this.directionMap.generateDirectionMap
