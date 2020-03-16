@@ -174,6 +174,54 @@ public class TerrainMap {
     private int width;
     private int height;
 
+    public int getWidth() {
+        return width;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public int getTileHeight() {
+        return tileHeight;
+    }
+
+    public void setTileHeight(int tileHeight) {
+        this.tileHeight = tileHeight;
+    }
+
+    public int getTileWidth() {
+        return tileWidth;
+    }
+
+    public void setTileWidth(int tileWidth) {
+        this.tileWidth = tileWidth;
+    }
+
+    public ArrayList<BufferedImage> getTiles() {
+        return tiles;
+    }
+
+    public void setTiles(ArrayList<BufferedImage> tiles) {
+        this.tiles = tiles;
+    }
+
+    public ArrayList<TiledLayer> getLayers() {
+        return layers;
+    }
+
+    public void setLayers(ArrayList<TiledLayer> layers) {
+        this.layers = layers;
+    }
+
     private int tileHeight;
     private int tileWidth;
 
@@ -227,9 +275,12 @@ public class TerrainMap {
 
         for(int i = 0; i < layers.size(); i++) {
             JsonObject layerInfo = layers.getJsonObject(i);
-            if(layerInfo.getString("type").equals("tilelayer")) {
+            if(layerInfo.getString("name").equals("Object Layer")){
+                new TiledLayer(layerInfo); //? misschien werkt dit
+            }else if(layerInfo.getString("type").equals("tilelayer")) {
                 this.layers.add(new TiledLayer(layerInfo));
             }
+
         }
     }
 

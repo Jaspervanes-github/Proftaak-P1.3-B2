@@ -1,16 +1,19 @@
-import java.util.HashMap;
+package Simulation;
+
+
+import java.awt.geom.Point2D;
 
 public class Tile {
     private int width;
     private int height;
-    private HashMap<Float, Float> position;
-    private int distance;
+    private Point2D position;
+    private Direction direction;
 
-    public Tile(HashMap<Float, Float> position) {
+    public Tile(Point2D position) {
         this.width = 16;
         this.height = 16;
         this.position = position;
-        this.distance = 0;
+        this.direction = Direction.UP;
     }
 
     public int getWidth() {
@@ -29,19 +32,19 @@ public class Tile {
         this.height = height;
     }
 
-    public HashMap<Float, Float> getPosition() {
+    public Point2D getPosition() {
         return position;
     }
 
-    public void setPosition(HashMap<Float, Float> position) {
+    public void setPosition(Point2D position) {
         this.position = position;
     }
 
-    public int getDistance() {
-        return distance;
+    public Direction getDirection() {
+        return direction;
     }
 
-    public void setDistance(int distance) {
-        this.distance = distance;
+    public void setDirection(Direction direction) {
+        this.direction = direction;
     }
 }

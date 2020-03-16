@@ -10,11 +10,15 @@ import org.jfree.fx.FXGraphics2D;
 import org.jfree.fx.ResizableCanvas;
 
 import javax.imageio.ImageIO;
+import javax.json.JsonObject;
 import java.awt.*;
 import java.awt.geom.AffineTransform;
+import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class TerrainDemo extends Application {
 
@@ -23,7 +27,9 @@ public class TerrainDemo extends Application {
     private BufferedImage imageMap = null;
     private AffineTransform tx = new AffineTransform();
     private boolean isFullScreen = false;
-
+    private DirectionMap directionMap;
+    private HashMap<JsonObject,Tile[]> directionMaps;
+    private ArrayList<JsonObject> targets;
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -62,8 +68,15 @@ public class TerrainDemo extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        this.directionMap = new DirectionMap(this.map);
+        this.directionMaps = new HashMap<>();
+        this.targets = map.getLayers().get(0).getTargets();
 
-
+        for(int i = 0;i<this.targets.size();i++) {
+            this.directionMaps.put(this.targets.get(i),this.directionMap.generateDirectionMap
+                    (new Tile(new Point2D.Double(this.targets.get(i).getInt("x"),this.targets.get(i).getInt("y")))));
+            System.out.println(this.directionMaps);
+        }
     }
 
     public void draw(Graphics2D g) {
@@ -72,7 +85,7 @@ public class TerrainDemo extends Application {
 
         g.setTransform(tx);
         map.draw(g);
-        g.drawImage(imageMap, tx, null);
+//        g.drawImage(imageMap, tx, null);
     }
 
     public void update(double deltaTime) {
