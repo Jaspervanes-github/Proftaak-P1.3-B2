@@ -21,7 +21,8 @@ public class TerrainDemo extends Application {
     private TerrainMap map;
     private ResizableCanvas canvas;
     private BufferedImage imageMap = null;
-    private AffineTransform tx;
+    private AffineTransform tx = new AffineTransform();
+    private boolean isFullScreen = false;
 
 
     @Override
@@ -68,18 +69,20 @@ public class TerrainDemo extends Application {
     public void draw(Graphics2D g) {
         g.setBackground(Color.black);
         g.clearRect(0, 0, (int) canvas.getWidth(), (int) canvas.getHeight());
-        tx = AffineTransform.getScaleInstance(canvas.getWidth() / imageMap.getWidth(), canvas.getHeight() / imageMap.getHeight());
-        g.transform(tx);
+
+        g.setTransform(tx);
         map.draw(g);
-        AffineTransform originalTransform = g.getTransform();
-
         g.drawImage(imageMap, tx, null);
-
-        g.setTransform(originalTransform);
     }
 
     public void update(double deltaTime) {
-
+        if (canvas.getWidth() > 1000 && !isFullScreen) {
+            tx = AffineTransform.getScaleInstance(canvas.getWidth() / imageMap.getWidth(), canvas.getHeight() / imageMap.getHeight());
+            isFullScreen = true;
+        } else if (canvas.getWidth() < 1000) {
+            tx = AffineTransform.getScaleInstance(canvas.getWidth() / imageMap.getWidth(), canvas.getHeight() / imageMap.getHeight());
+            isFullScreen = false;
+        }
     }
 
     public static void main(String[] args) {
