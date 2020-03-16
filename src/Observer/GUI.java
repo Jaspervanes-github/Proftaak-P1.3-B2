@@ -3,6 +3,7 @@ package Observer;
 import File_IO.File_IO;
 import Objects.Performance;
 import Objects.Person.Artist;
+import Objects.Stage;
 import Objects.Time;
 import javafx.application.Application;
 import javafx.scene.Node;
@@ -11,6 +12,9 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
@@ -26,6 +30,10 @@ public class GUI extends Application {
 
     protected TableView<Performance> tableViewPerformance;
     protected TableView<Artist> tableViewArtist;
+    protected TableView<Stage> tableViewStages;
+    protected Button buttonDelPerf, buttonEditPerformance, buttonAddPerformance;
+    protected Button buttonDelArt, buttonAddArtist, buttonEditArtist;
+    protected Button buttonDelStage, buttonEditStage, buttonAddStage;
     protected Button buttonDelPerf;
     protected Button buttonDelArt;
     protected Button buttonEditPerformance;
@@ -65,8 +73,10 @@ public class GUI extends Application {
 
         this.tableViewPerformance = new TableView();
         this.tableViewArtist = new TableView<>();
+        this.tableViewStages = new TableView<>();
         logic.setTableViewLogicPerformance();
         logic.setTableViewLogicArtist();
+        logic.setTableViewLogicStage();
 
         bp.setCenter(getTabPane());
 
@@ -105,28 +115,41 @@ public class GUI extends Application {
         return fp;
     }
 
+    public Node getButtonStages(){
+        FlowPane fp = new FlowPane();
+
+        buttonDelStage = new Button("Delete Stage");
+        buttonEditStage = new Button("Edit Stage");
+        buttonAddStage = new Button("Adding a Stage");
+
+        fp.getChildren().addAll(buttonAddStage, buttonDelStage,  buttonEditStage);
+
+        return fp;
+    }
+
     private Node getTabPane() {
         //Here we make the tabs above so you can navigate in between tabs
         TabPane tabPane = new TabPane();
         Tab tabPerformances = new Tab("Performances");
         Tab tabArtists = new Tab("Artists");
+        Tab tabStages = new Tab("Stages");
         Tab tabSimulation = new Tab("Simulation");
 
-        tabPane.getTabs().addAll(tabPerformances, tabArtists, tabSimulation);
+        tabPane.getTabs().addAll(tabPerformances, tabArtists, tabStages, tabSimulation);
 
         tabPerformances.setContent(getBorderPanePerformance());
 
-
         tabArtists.setContent(getBorderPaneArtist());
 
+        tabStages.setContent(getBorderPaneStages());
+
+        tabSimulation.setContent(this.simulation.getCanvas());
         tabSimulation.setContent(getBorderPaneSimulation());
 
         tabPerformances.setClosable(false);
         tabArtists.setClosable(false);
+        tabStages.setClosable(false);
         tabSimulation.setClosable(false);
-
-
-
 
         return tabPane;
     }
@@ -171,6 +194,15 @@ public class GUI extends Application {
 
         borderPane.setCenter(this.tableViewPerformance);
         borderPane.setBottom(getButtonPerformance());
+
+        return borderPane;
+    }
+
+    private Node getBorderPaneStages() {
+        BorderPane borderPane = new BorderPane();
+
+        borderPane.setCenter(this.tableViewStages);
+        borderPane.setBottom(getButtonStages());
 
         return borderPane;
     }

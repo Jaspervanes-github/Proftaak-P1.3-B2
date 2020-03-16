@@ -2,6 +2,7 @@ package File_IO;
 
 import Objects.Performance;
 import Objects.Person.Artist;
+import Objects.Stage;
 import javafx.collections.ObservableList;
 
 import java.io.*;
@@ -99,5 +100,51 @@ public class File_IO implements Serializable{
         }
 
         return artists;
+    }
+
+    public void writeFileStage(String filename, ObservableList<Stage> list) throws FileNotFoundException {
+
+        ArrayList<Stage> stages;
+
+        if(list instanceof ArrayList<?>){
+            stages = (ArrayList<Stage>) list;
+        } else {
+            stages = new ArrayList<>(list);
+        }
+
+        try {
+            FileOutputStream fileOutputStream = new FileOutputStream("src/File_IO/" + filename);
+            ObjectOutputStream objectInputStream = new ObjectOutputStream(fileOutputStream);
+            objectInputStream.writeObject(stages);
+            fileOutputStream.close();
+        } catch(IOException e){
+            System.out.println("Exception in writeFilePerformances()");
+            e.printStackTrace();
+        }
+
+    }
+
+    public ArrayList<Stage> readFileStage(String filename) throws FileNotFoundException, EOFException {
+
+        ArrayList stages = new ArrayList();
+
+        try {
+            FileInputStream fileInputStream = new FileInputStream("src/File_IO/" + filename);
+            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+            stages = (ArrayList<Performance>) objectInputStream.readObject();
+            objectInputStream.close();
+        } catch (EOFException e){
+            System.out.println("File is empty");
+        } catch (FileNotFoundException e){
+            System.out.println("File not found, generating a new one...");
+        } catch (ClassNotFoundException e){
+            System.out.println("Class not found in readFileArtist()");
+            e.printStackTrace();
+        } catch (IOException e){
+            System.out.println("Exception in readFileArtist()");
+            e.printStackTrace();
+        }
+
+        return stages;
     }
 }
