@@ -1,6 +1,7 @@
 package Data;
 
-import Data.Person.Artist;
+import Objects.Person.Artist;
+import Objects.Stage;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 

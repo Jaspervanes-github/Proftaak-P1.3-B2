@@ -1,9 +1,9 @@
 package GUI;
 
-import Data.Genre;
 import Data.Performance;
-import Data.Person.Artist;
-import Data.Stage;
+import Objects.Genre;
+import Objects.Person.Artist;
+import Objects.Stage;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
