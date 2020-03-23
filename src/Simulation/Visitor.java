@@ -68,7 +68,7 @@ public class Visitor {
             case STAY:
                 break;
             default:
-                this.pos = new Point2D.Double(this.pos.getX(), this.pos.getY());c
+                this.pos = new Point2D.Double(this.pos.getX(), this.pos.getY());
         }
 
     }
