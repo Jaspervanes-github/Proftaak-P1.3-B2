@@ -15,6 +15,12 @@ public class Tile {
         this.position = position;
         this.direction = Direction.UP;
     }
+    public Tile(){
+        this.width = 16;
+        this.height = 16;
+        this.position = null;
+        this.direction = null;
+    }
 
     public int getWidth() {
         return width;

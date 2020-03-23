@@ -79,9 +79,11 @@ public class TerrainDemo extends Application {
             System.out.println(this.directionMaps);
         }
 
-        for (int i = 0; i < 10; i++) {
-            Visitor visitor = new Visitor(new Point2D.Double( (500 - 100) + (i * 20), (400 - 200) + (i * 20)));
+        for (int i = 0; i < 1; i++) {
+//            Visitor visitor = new Visitor(new Point2D.Double( (500 - 100) + (i * 20), (400 - 200) + (i * 20)),this.directionMaps.get(this.targets.get(0)));
+            Visitor visitor = new Visitor(new Point2D.Double((int)600.0, (int)256.0),this.directionMaps.get(this.targets.get(1)));
             visitors.add(visitor);
+
         }
     }
 

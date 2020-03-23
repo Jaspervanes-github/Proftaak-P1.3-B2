@@ -5,132 +5,46 @@ import Simulation.TerrainMap;
 import Simulation.Tile;
 
 import java.awt.geom.Point2D;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.Queue;
+import java.util.*;
 
 public class DirectionMap {
 
     private Queue<Tile> toDo;
     private ArrayList<Tile> finished;
-    private ArrayList<Tile> next = new ArrayList<>();
+    private ArrayList<Tile> next = new ArrayList<Tile>();
     private TerrainMap tiledMap;
     private ArrayList<Point2D> collision;
 
     public DirectionMap(TerrainMap tiledMap) {
-        this.toDo = new Queue<Tile>() {
-            @Override
-            public int size() {
-                return 0;
-            }
-
-            @Override
-            public boolean isEmpty() {
-                return false;
-            }
-
-            @Override
-            public boolean contains(Object o) {
-                return false;
-            }
-
-            @Override
-            public Iterator<Tile> iterator() {
-                return null;
-            }
-
-            @Override
-            public Object[] toArray() {
-                return new Object[0];
-            }
-
-            @Override
-            public <T> T[] toArray(T[] a) {
-                return null;
-            }
-
-            @Override
-            public boolean add(Tile tile) {
-                return false;
-            }
-
-            @Override
-            public boolean remove(Object o) {
-                return false;
-            }
-
-            @Override
-            public boolean containsAll(Collection<?> c) {
-                return false;
-            }
-
-            @Override
-            public boolean addAll(Collection<? extends Tile> c) {
-                return false;
-            }
-
-            @Override
-            public boolean removeAll(Collection<?> c) {
-                return false;
-            }
-
-            @Override
-            public boolean retainAll(Collection<?> c) {
-                return false;
-            }
-
-            @Override
-            public void clear() {
-
-            }
-
-            @Override
-            public boolean offer(Tile tile) {
-                return false;
-            }
-
-            @Override
-            public Tile remove() {
-                return null;
-            }
-
-            @Override
-            public Tile poll() {
-                return null;
-            }
-
-            @Override
-            public Tile element() {
-                return null;
-            }
-
-            @Override
-            public Tile peek() {
-                return null;
-            }
-        };
+        this.toDo = new LinkedList<Tile>();
         this.finished = new ArrayList<>();
         this.tiledMap = tiledMap;
         this.collision = tiledMap.getLayers().get(0).getCollision();
-        System.out.println(collision);
-        System.out.println("Out of constructor");
+//        System.out.println(collision);
+//        System.out.println("Out of constructor");
+        this.next.add(new Tile());
+        this.next.add(new Tile());
+        this.next.add(new Tile());
+        this.next.add(new Tile());
+
     }
 
     public ArrayList<Tile> generateDirectionMap(Tile startPoint) {
-        System.out.println("in method generate");
+//        System.out.println("in method generate");
         Tile current = startPoint;
         this.finished.add(startPoint);
-        this.toDo.offer(startPoint);
+        this.toDo.add(startPoint);
         current.setDirection(Direction.STAY);
-//        System.out.println(this.toDo.element());
-        System.out.println("Still no error");
+////        System.out.println(this.toDo.element());
+//        System.out.println("Still no error");
 
-        while (!this.toDo.isEmpty() && this.toDo.size()>0) {
+        while (!this.toDo.isEmpty() && this.toDo.size() > 0) {
+//            System.out.println("in while");
             current = this.toDo.element();
+//            System.out.println(current);
 
-            if (current == null) {
-                this.toDo.offer(current);
+            if (current == null && current != startPoint) {
+                this.toDo.add(current);
                 continue;
             }
 
@@ -139,29 +53,40 @@ public class DirectionMap {
             this.next.set(2, new Tile(new Point2D.Double(current.getPosition().getX(), current.getPosition().getY() + current.getHeight())));
             this.next.set(3, new Tile(new Point2D.Double(current.getPosition().getX(), current.getPosition().getY() - current.getHeight())));
 
-            if (!contains(this.finished, this.next.get(0)) && this.next.get(0).getPosition().getX() * this.next.get(0).getWidth() < this.tiledMap.getWidth() &&
-                    this.next.get(0).getPosition().getY() * this.next.get(0).getHeight() < this.tiledMap.getHeight() && !this.collision.contains(this.next.get(0).getPosition())) {
+            if (!contains(this.finished, this.next.get(0)) && this.next.get(0).getPosition().getX() < this.tiledMap.getWidth() * this.tiledMap.getTileWidth() &&
+                    this.next.get(0).getPosition().getY() < this.tiledMap.getHeight() * this.tiledMap.getTileHeight()
+                    && !this.collision.contains(this.next.get(0).getPosition()) && this.next.get(0).getPosition().getX() >=0 && this.next.get(0).getPosition().getY() >=0) {
                 this.finished.add(this.next.get(0));
-                this.toDo.offer(this.next.get(0));
+                this.toDo.add(this.next.get(0));
                 this.next.get(0).setDirection(Direction.LEFT);
+//                System.out.println("Left");
             }
-            if (!contains(this.finished, this.next.get(1)) && this.next.get(1).getPosition().getX() * this.next.get(1).getWidth() < this.tiledMap.getWidth() &&
-                    this.next.get(1).getPosition().getY() * this.next.get(1).getHeight() < this.tiledMap.getHeight() && !this.collision.contains(this.next.get(1).getPosition())) {
+            if (!contains(this.finished, this.next.get(1)) && this.next.get(1).getPosition().getX() < this.tiledMap.getWidth()  * this.tiledMap.getTileWidth() &&
+                    this.next.get(1).getPosition().getY() < this.tiledMap.getHeight()  * this.tiledMap.getTileHeight() && !this.collision.contains(this.next.get(1).getPosition())
+                    && this.next.get(0).getPosition().getX() >=0 && this.next.get(0).getPosition().getY() >=0) {
                 this.finished.add(this.next.get(1));
-                this.toDo.offer(this.next.get(1));
+                this.toDo.add(this.next.get(1));
                 this.next.get(1).setDirection(Direction.RIGHT);
+//                System.out.println("right");
+
             }
-            if (!contains(this.finished, this.next.get(2)) && this.next.get(2).getPosition().getX() * this.next.get(2).getWidth() < this.tiledMap.getWidth() &&
-                    this.next.get(2).getPosition().getY() * this.next.get(2).getHeight() < this.tiledMap.getHeight() && !this.collision.contains(this.next.get(2).getPosition())) {
+            if (!contains(this.finished, this.next.get(2)) && this.next.get(2).getPosition().getX() < this.tiledMap.getWidth() * this.tiledMap.getTileWidth() &&
+                    this.next.get(2).getPosition().getY() < this.tiledMap.getHeight() * this.tiledMap.getTileHeight() && !this.collision.contains(this.next.get(2).getPosition())
+                    && this.next.get(0).getPosition().getX() >=0 && this.next.get(0).getPosition().getY() >=0) {
                 this.finished.add(this.next.get(2));
-                this.toDo.offer(this.next.get(2));
+                this.toDo.add(this.next.get(2));
                 this.next.get(2).setDirection(Direction.DOWN);
+//                System.out.println("down");
+
             }
-            if (!contains(this.finished, this.next.get(3)) && this.next.get(3).getPosition().getX() * this.next.get(3).getWidth() < this.tiledMap.getWidth() &&
-                    this.next.get(3).getPosition().getY() * this.next.get(3).getHeight() < this.tiledMap.getHeight() && !this.collision.contains(this.next.get(3).getPosition())) {
+            if (!contains(this.finished, this.next.get(3)) && this.next.get(3).getPosition().getX() < this.tiledMap.getWidth() * this.tiledMap.getTileWidth() &&
+                    this.next.get(3).getPosition().getY() < this.tiledMap.getHeight() * this.tiledMap.getTileHeight() && !this.collision.contains(this.next.get(3).getPosition())
+                    && this.next.get(0).getPosition().getX() >=0 && this.next.get(0).getPosition().getY() >=0) {
                 this.finished.add(this.next.get(3));
-                this.toDo.offer(this.next.get(3));
+                this.toDo.add(this.next.get(3));
                 this.next.get(3).setDirection(Direction.UP);
+//                System.out.println("up");
+
             }
             this.toDo.poll();
         }
@@ -172,7 +97,7 @@ public class DirectionMap {
         boolean result = false;
 
         for (Tile i : arrayList) {
-            if (i.getPosition() == tile.getPosition()) {
+            if (i.getPosition().getX() == tile.getPosition().getX() && i.getPosition().getY() == tile.getPosition().getY()) {
                 result = true;
                 break;
             }
