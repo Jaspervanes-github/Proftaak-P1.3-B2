@@ -80,7 +80,7 @@ public class TerrainDemo extends Application {
         }
 
         for (int i = 0; i < 10; i++) {
-            Visitor visitor = new Visitor(new Point2D.Double( (1000 - 100) * (i * 20), (800 - 200) * (i * 20)));
+            Visitor visitor = new Visitor(new Point2D.Double( (500 - 100) + (i * 20), (400 - 200) + (i * 20)));
             visitors.add(visitor);
         }
     }
@@ -93,7 +93,7 @@ public class TerrainDemo extends Application {
         map.draw(g);
 
         for (Visitor v : visitors) {
-            //v.draw(g);
+            v.draw(g);
         }
 //        g.drawImage(imageMap, tx, null);
     }

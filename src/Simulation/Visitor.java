@@ -19,7 +19,7 @@ public class Visitor {
     public Visitor(Point2D pos) {
         init();
         this.pos = pos;
-        this.speed = new Point2D.Double(2,0);
+        this.speed = new Point2D.Double(200,100);
 
     }
 
@@ -36,15 +36,16 @@ public class Visitor {
     }
 
     public void draw(Graphics2D g) {
-        Point2D oldPos = pos;
-
+        Point2D oldPos = new Point2D.Double(pos.getX() - speed.getX(), pos.getY() - speed.getY());
+        direction = Direction.DOWN;
         switch (direction) {
             case UP:
                 g.drawImage(imageUP, (int) (oldPos.getX() - speed.getX()), (int) (oldPos.getX() - speed.getX()), null);
                 break;
 
             case DOWN:
-                g.drawImage(imageDOWN, (int) (oldPos.getX() - speed.getX()), (int) (oldPos.getX() - speed.getX()), null);
+                g.drawImage(imageDOWN, (int) (oldPos.getX()), (int) (oldPos.getX()), null);
+
                 break;
 
             case LEFT:
