@@ -30,6 +30,7 @@ public class TerrainDemo extends Application {
     private DirectionMap directionMap;
     private HashMap<JsonObject,ArrayList<Tile>> directionMaps;
     private ArrayList<JsonObject> targets = new ArrayList<>();
+    private ArrayList<Visitor> visitors = new ArrayList<>();
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -77,6 +78,11 @@ public class TerrainDemo extends Application {
             this.directionMaps.put(this.targets.get(i),result);
             System.out.println(this.directionMaps);
         }
+
+        for (int i = 0; i < 10; i++) {
+            Visitor visitor = new Visitor(new Point2D.Double( (1000 - 100) * (i * 20), (800 - 200) * (i * 20)));
+            visitors.add(visitor);
+        }
     }
 
     public void draw(Graphics2D g) {
@@ -85,6 +91,10 @@ public class TerrainDemo extends Application {
 
         g.setTransform(tx);
         map.draw(g);
+
+        for (Visitor v : visitors) {
+            //v.draw(g);
+        }
 //        g.drawImage(imageMap, tx, null);
     }
 
