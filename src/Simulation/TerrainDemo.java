@@ -106,6 +106,9 @@ public class TerrainDemo extends Application {
             tx = AffineTransform.getScaleInstance(canvas.getWidth() / imageMap.getWidth(), canvas.getHeight() / imageMap.getHeight());
             isFullScreen = false;
         }
+        for(Visitor v:visitors){
+           v.update();
+        }
     }
 
     public static void main(String[] args) {

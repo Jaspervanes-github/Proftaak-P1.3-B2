@@ -15,15 +15,20 @@ public class Visitor {
     private Direction direction;
     private Point2D pos;
     private Point2D speed;
+    private Point2D targetPos;
+    private BufferedImage image;
+    private Tile[] tiles;
 
     public Visitor(Point2D pos) {
         init();
         this.pos = pos;
-        this.speed = new Point2D.Double(200,100);
-
+        this.speed = new Point2D.Double(200, 100);
+        this.targetPos = null;
+        this.tiles = null;
+        this.image = null;
     }
 
-    public void init(){
+    public void init() {
         try {
             this.imageDOWN = ImageIO.read(getClass().getResource("/images/DOWN.png"));
             this.imageUP = ImageIO.read(getClass().getResource("/images/UP.png"));
@@ -35,32 +40,41 @@ public class Visitor {
         }
     }
 
-    public void draw(Graphics2D g) {
+    public void update() {
         Point2D oldPos = new Point2D.Double(pos.getX() - speed.getX(), pos.getY() - speed.getY());
         direction = Direction.DOWN;
+
         switch (direction) {
             case UP:
-                g.drawImage(imageUP, (int) (oldPos.getX() - speed.getX()), (int) (oldPos.getX() - speed.getX()), null);
+                this.image = imageUP;
+                this.pos = new Point2D.Double(this.pos.getX(), this.pos.getY() + 16);
                 break;
 
             case DOWN:
-                g.drawImage(imageDOWN, (int) (oldPos.getX()), (int) (oldPos.getX()), null);
-
+                this.image = imageDOWN;
+                this.pos = new Point2D.Double(this.pos.getX(), this.pos.getY() - 16);
                 break;
 
             case LEFT:
-                g.drawImage(imageLEFT, (int) (oldPos.getX() - speed.getX()), (int) (oldPos.getX() - speed.getX()), null);
+                this.image = imageLEFT;
+                this.pos = new Point2D.Double(this.pos.getX() - 16, this.pos.getY());
                 break;
 
             case RIGHT:
-                g.drawImage(imageRIGHT, (int) (oldPos.getX() - speed.getX()), (int) (oldPos.getX() - speed.getX()), null);
+                this.image = imageRIGHT;
+                this.pos = new Point2D.Double(this.pos.getX() + 16, this.pos.getY());
                 break;
 
             case STAY:
                 break;
             default:
-                g.drawImage(imageUP, (int) (oldPos.getX() - speed.getX()), (int) (oldPos.getX() - speed.getX()), null);
+                this.pos = new Point2D.Double(this.pos.getX(), this.pos.getY());c
         }
+
+    }
+
+    public void draw(Graphics2D g) {
+        g.drawImage(this.image, (int) this.pos.getX(), (int) this.pos.getY(), null);
 
 
     }
