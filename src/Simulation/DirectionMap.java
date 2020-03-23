@@ -1,9 +1,5 @@
 package Simulation;
 
-import Simulation.Direction;
-import Simulation.TerrainMap;
-import Simulation.Tile;
-
 import java.awt.geom.Point2D;
 import java.util.*;
 
@@ -31,6 +27,7 @@ public class DirectionMap {
 
     public ArrayList<Tile> generateDirectionMap(Tile startPoint) {
 //        System.out.println("in method generate");
+        ArrayList<Tile> tiles;
         Tile current = startPoint;
         this.finished.add(startPoint);
         this.toDo.add(startPoint);
@@ -53,17 +50,18 @@ public class DirectionMap {
             this.next.set(2, new Tile(new Point2D.Double(current.getPosition().getX(), current.getPosition().getY() + current.getHeight())));
             this.next.set(3, new Tile(new Point2D.Double(current.getPosition().getX(), current.getPosition().getY() - current.getHeight())));
 
+
             if (!contains(this.finished, this.next.get(0)) && this.next.get(0).getPosition().getX() < this.tiledMap.getWidth() * this.tiledMap.getTileWidth() &&
                     this.next.get(0).getPosition().getY() < this.tiledMap.getHeight() * this.tiledMap.getTileHeight()
-                    && !this.collision.contains(this.next.get(0).getPosition()) && this.next.get(0).getPosition().getX() >=0 && this.next.get(0).getPosition().getY() >=0) {
+                    && !checkCollision(this.next.get(0)) && this.next.get(0).getPosition().getX() >= 0 && this.next.get(0).getPosition().getY() >= 0) {
                 this.finished.add(this.next.get(0));
                 this.toDo.add(this.next.get(0));
                 this.next.get(0).setDirection(Direction.LEFT);
 //                System.out.println("Left");
             }
-            if (!contains(this.finished, this.next.get(1)) && this.next.get(1).getPosition().getX() < this.tiledMap.getWidth()  * this.tiledMap.getTileWidth() &&
-                    this.next.get(1).getPosition().getY() < this.tiledMap.getHeight()  * this.tiledMap.getTileHeight() && !this.collision.contains(this.next.get(1).getPosition())
-                    && this.next.get(0).getPosition().getX() >=0 && this.next.get(0).getPosition().getY() >=0) {
+            if (!contains(this.finished, this.next.get(1)) && this.next.get(1).getPosition().getX() < this.tiledMap.getWidth() * this.tiledMap.getTileWidth() &&
+                    this.next.get(1).getPosition().getY() < this.tiledMap.getHeight() * this.tiledMap.getTileHeight() && !checkCollision(this.next.get(1))
+                    && this.next.get(0).getPosition().getX() >= 0 && this.next.get(0).getPosition().getY() >= 0) {
                 this.finished.add(this.next.get(1));
                 this.toDo.add(this.next.get(1));
                 this.next.get(1).setDirection(Direction.RIGHT);
@@ -71,26 +69,46 @@ public class DirectionMap {
 
             }
             if (!contains(this.finished, this.next.get(2)) && this.next.get(2).getPosition().getX() < this.tiledMap.getWidth() * this.tiledMap.getTileWidth() &&
-                    this.next.get(2).getPosition().getY() < this.tiledMap.getHeight() * this.tiledMap.getTileHeight() && !this.collision.contains(this.next.get(2).getPosition())
-                    && this.next.get(0).getPosition().getX() >=0 && this.next.get(0).getPosition().getY() >=0) {
+                    this.next.get(2).getPosition().getY() < this.tiledMap.getHeight() * this.tiledMap.getTileHeight() && !checkCollision(this.next.get(2))
+                    && this.next.get(0).getPosition().getX() >= 0 && this.next.get(0).getPosition().getY() >= 0) {
                 this.finished.add(this.next.get(2));
                 this.toDo.add(this.next.get(2));
-                this.next.get(2).setDirection(Direction.DOWN);
+                this.next.get(2).setDirection(Direction.UP);
 //                System.out.println("down");
 
             }
             if (!contains(this.finished, this.next.get(3)) && this.next.get(3).getPosition().getX() < this.tiledMap.getWidth() * this.tiledMap.getTileWidth() &&
-                    this.next.get(3).getPosition().getY() < this.tiledMap.getHeight() * this.tiledMap.getTileHeight() && !this.collision.contains(this.next.get(3).getPosition())
-                    && this.next.get(0).getPosition().getX() >=0 && this.next.get(0).getPosition().getY() >=0) {
+                    this.next.get(3).getPosition().getY() < this.tiledMap.getHeight() * this.tiledMap.getTileHeight() && !checkCollision(this.next.get(3))
+                    && this.next.get(0).getPosition().getX() >= 0 && this.next.get(0).getPosition().getY() >= 0) {
                 this.finished.add(this.next.get(3));
                 this.toDo.add(this.next.get(3));
-                this.next.get(3).setDirection(Direction.UP);
+                this.next.get(3).setDirection(Direction.DOWN);
 //                System.out.println("up");
 
             }
             this.toDo.poll();
+
         }
-        return this.finished;
+        tiles = new ArrayList<>(this.finished);
+        this.finished.clear();
+        this.next.clear();
+        this.next.add(new Tile());
+        this.next.add(new Tile());
+        this.next.add(new Tile());
+        this.next.add(new Tile());
+        this.toDo.clear();
+        return tiles;
+    }
+
+    public boolean checkCollision(Tile tile) {
+
+        for (Point2D c : this.collision) {
+            if (tile.getPosition().getX() >= c.getX() && tile.getPosition().getX() <= c.getX() + 16
+                    && tile.getPosition().getY() <= c.getY() && tile.getPosition().getY() >= c.getY() - 16) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public static boolean contains(final ArrayList<Tile> arrayList, Tile tile) {

@@ -74,16 +74,14 @@ public class TerrainDemo extends Application {
         this.targets = map.getTarget().get(0).getTargets();
 
         for(int i = 0;i<this.targets.size();i++) {
-            ArrayList<Tile> result = this.directionMap.generateDirectionMap(new Tile(new Point2D.Double(this.targets.get(i).getInt("x"),this.targets.get(i).getInt("y"))));
-            this.directionMaps.put(this.targets.get(i),result);
+//            ArrayList<Tile> result = ;
+            this.directionMaps.put(this.targets.get(i),this.directionMap.generateDirectionMap(new Tile(new Point2D.Double(this.targets.get(i).getInt("x"),this.targets.get(i).getInt("y")))));
             System.out.println(this.directionMaps);
         }
 
-        for (int i = 0; i < 1; i++) {
-//            Visitor visitor = new Visitor(new Point2D.Double( (500 - 100) + (i * 20), (400 - 200) + (i * 20)),this.directionMaps.get(this.targets.get(0)));
-            Visitor visitor = new Visitor(new Point2D.Double((int)600.0, (int)256.0),this.directionMaps.get(this.targets.get(1)));
-            visitors.add(visitor);
-
+            for(int i =0;i<10;i++) {
+                Visitor visitor = new Visitor(new Point2D.Double((int) 400+i*20, (int) 400), this.directionMaps.get(this.targets.get(i)));
+                visitors.add(visitor);
         }
     }
 
@@ -94,10 +92,12 @@ public class TerrainDemo extends Application {
         g.setTransform(tx);
         map.draw(g);
 
+
+        g.drawImage(imageMap, tx, null);
+
         for (Visitor v : visitors) {
             v.draw(g);
         }
-//        g.drawImage(imageMap, tx, null);
     }
 
     public void update(double deltaTime) {

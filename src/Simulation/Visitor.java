@@ -22,7 +22,7 @@ public class Visitor {
 
     public Visitor(Point2D pos, ArrayList<Tile> tiles) {
         this.pos = pos;
-        this.speed = new Point2D.Double(16, 16);
+        this.speed = new Point2D.Double(0, 0);
         this.tiles = tiles;
         this.targetPos = new Point2D.Double(this.tiles.get(0).getPosition().getX(), this.tiles.get(0).getPosition().getY());
         this.image = null;
@@ -33,8 +33,8 @@ public class Visitor {
 
     public void init() {
         try {
-            this.imageDOWN = ImageIO.read(getClass().getResource("/images/DOWN.png"));
-            this.imageUP = ImageIO.read(getClass().getResource("/images/UP.png"));
+            this.imageUP = ImageIO.read(getClass().getResource("/images/DOWN.png"));
+            this.imageDOWN = ImageIO.read(getClass().getResource("/images/UP.png"));
             this.imageRIGHT = ImageIO.read(getClass().getResource("/images/RIGHT.png"));
             this.imageLEFT = ImageIO.read(getClass().getResource("/images/LEFT.png"));
             //this.imageDOWN.getSubimage(0,0,32,32);
@@ -59,28 +59,27 @@ public class Visitor {
         if (this.direction != null) {
 
             switch (direction) {
-                case UP:
+                case DOWN:
                     this.image = imageUP;
-                    this.pos = new Point2D.Double(this.pos.getX(), this.pos.getY() - 16);
+                    this.pos = new Point2D.Double(this.pos.getX(), this.pos.getY() + 1);
                     break;
 
-                case DOWN:
+                case UP:
                     this.image = imageDOWN;
-                    this.pos = new Point2D.Double(this.pos.getX(), this.pos.getY() + 16);
+                    this.pos = new Point2D.Double(this.pos.getX(), this.pos.getY() - 1);
                     break;
 
                 case LEFT:
                     this.image = imageLEFT;
-                    this.pos = new Point2D.Double(this.pos.getX() + 16, this.pos.getY());
+                    this.pos = new Point2D.Double(this.pos.getX() - 1, this.pos.getY());
                     break;
 
                 case RIGHT:
                     this.image = imageRIGHT;
-                    this.pos = new Point2D.Double(this.pos.getX() - 16, this.pos.getY());
+                    this.pos = new Point2D.Double(this.pos.getX() + 1, this.pos.getY());
                     break;
 
                 case STAY:
-                    System.out.println("Stay");
                     break;
                 default:
                     this.pos = new Point2D.Double(this.pos.getX(), this.pos.getY());
@@ -97,7 +96,9 @@ public class Visitor {
             if (this.pos.getX() >= t.getPosition().getX() && this.pos.getX() <= t.getPosition().getX() + t.getWidth()
                     && this.pos.getY() >= t.getPosition().getY() - t.getHeight() && this.pos.getY() <= t.getPosition().getY()) {
                 direction = t.getDirection();
-                System.out.println(direction);
+//                if(direction != Direction.STAY) {
+//                    System.out.println(direction);
+//                }
                 break;
             }
         }
