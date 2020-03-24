@@ -51,6 +51,7 @@ public class Visitor {
                 break;
             }
         }
+
     }
 
     public void update() {
@@ -109,4 +110,8 @@ public class Visitor {
         g.drawImage(this.image, (int) this.pos.getX(), (int) this.pos.getY(), null);
     }
 
+
+    public ArrayList<Tile> getTiles() {
+        return tiles;
+    }
 }

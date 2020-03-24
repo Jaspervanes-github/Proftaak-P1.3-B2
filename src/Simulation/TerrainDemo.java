@@ -76,11 +76,11 @@ public class TerrainDemo extends Application {
         for(int i = 0;i<this.targets.size();i++) {
 //            ArrayList<Tile> result = ;
             this.directionMaps.put(this.targets.get(i),this.directionMap.generateDirectionMap(new Tile(new Point2D.Double(this.targets.get(i).getInt("x"),this.targets.get(i).getInt("y")))));
-            System.out.println(this.directionMaps);
+//            System.out.println(this.directionMaps);
         }
 
-            for(int i =0;i<10;i++) {
-                Visitor visitor = new Visitor(new Point2D.Double((int) 400+i*20, (int) 400), this.directionMaps.get(this.targets.get(i)));
+            for(int i =0;i<1;i++) {
+                Visitor visitor = new Visitor(new Point2D.Double((int) 400+(i*20)%100, (int) 400), this.directionMaps.get(this.targets.get(i%14)));
                 visitors.add(visitor);
         }
     }
@@ -97,6 +97,10 @@ public class TerrainDemo extends Application {
 
         for (Visitor v : visitors) {
             v.draw(g);
+
+            for(Tile t:v.getTiles()){
+                g.drawString(t.getDirection()+ "",(int)t.getPosition().getX(),(int)t.getPosition().getY());
+            }
         }
     }
 

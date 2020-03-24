@@ -219,7 +219,7 @@ public class TerrainMap {
                        // System.out.println(gid);
                     }
                 }
-                System.out.println(this.tiles.size());
+//                System.out.println(this.tiles.size());
             } catch (IOException e) {
                 e.printStackTrace();
             }

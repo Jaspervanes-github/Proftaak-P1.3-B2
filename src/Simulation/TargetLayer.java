@@ -33,8 +33,8 @@ public class TargetLayer {
     public void setTargets() {
         for (int j = 0; j < 14; j++) {
             this.targets.add(this.jsondata.getJsonArray("objects").getJsonObject(j));
-            System.out.println(this.targets);
-            System.out.println("SIze: " + this.jsondata.size());
+//            System.out.println(this.targets);
+//            System.out.println("SIze: " + this.jsondata.size());
         }
     }
 
