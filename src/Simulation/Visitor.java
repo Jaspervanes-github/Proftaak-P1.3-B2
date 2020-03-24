@@ -28,7 +28,6 @@ public class Visitor {
         this.image = null;
         this.direction = null;
         init();
-
     }
 
     public void init() {
@@ -37,7 +36,6 @@ public class Visitor {
             this.imageDOWN = ImageIO.read(getClass().getResource("/images/UP.png"));
             this.imageRIGHT = ImageIO.read(getClass().getResource("/images/RIGHT.png"));
             this.imageLEFT = ImageIO.read(getClass().getResource("/images/LEFT.png"));
-            //this.imageDOWN.getSubimage(0,0,32,32);
 
             this.image = imageUP;
         } catch (IOException e) {
@@ -90,16 +88,10 @@ public class Visitor {
 
     private Direction getDirection() {
         Direction direction = null;
-//        System.out.println("In here");
         for (Tile t : this.tiles) {
-//            System.out.println(t.getDirection());
-//            System.out.println("This.pos: " + this.pos + " Tile.pos: " + t.getPosition());
             if (this.pos.getX() >= t.getPosition().getX() && this.pos.getX() <= t.getPosition().getX() + t.getWidth()
                     && this.pos.getY() >= t.getPosition().getY() - t.getHeight() && this.pos.getY() <= t.getPosition().getY()) {
                 direction = t.getDirection();
-//                if(direction != Direction.STAY) {
-//                    System.out.println(direction);
-//                }
                 break;
             }
         }
@@ -109,7 +101,6 @@ public class Visitor {
     public void draw(Graphics2D g) {
         g.drawImage(this.image, (int) this.pos.getX(), (int) this.pos.getY(), null);
     }
-
 
     public ArrayList<Tile> getTiles() {
         return tiles;

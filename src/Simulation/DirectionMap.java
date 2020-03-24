@@ -52,7 +52,7 @@ public class DirectionMap {
 
             if (!contains(this.finished, this.next.get(0)) && this.next.get(0).getPosition().getX() < this.tiledMap.getWidth() * this.tiledMap.getTileWidth() &&
                     this.next.get(0).getPosition().getY() < this.tiledMap.getHeight() * this.tiledMap.getTileHeight()
-                    && this.next.get(0).getPosition().getX() >= 0 && this.next.get(0).getPosition().getY() >= 0&& !checkCollision(this.next.get(0)) ) {
+                    && this.next.get(0).getPosition().getX() >= 0 && this.next.get(0).getPosition().getY() >= 0 && !checkCollision(this.next.get(0))) {
                 this.next.get(0).setDirection(Direction.LEFT);
                 this.finished.add(this.next.get(0));
                 this.toDo.add(this.next.get(0));
@@ -60,7 +60,7 @@ public class DirectionMap {
             }
             if (!contains(this.finished, this.next.get(1)) && this.next.get(1).getPosition().getX() < this.tiledMap.getWidth() * this.tiledMap.getTileWidth() &&
                     this.next.get(1).getPosition().getY() < this.tiledMap.getHeight() * this.tiledMap.getTileHeight() &&
-                    this.next.get(1).getPosition().getX() >= 0 && this.next.get(1).getPosition().getY() >= 0&& !checkCollision(this.next.get(1)) ) {
+                    this.next.get(1).getPosition().getX() >= 0 && this.next.get(1).getPosition().getY() >= 0 && !checkCollision(this.next.get(1))) {
                 this.next.get(1).setDirection(Direction.RIGHT);
                 this.finished.add(this.next.get(1));
                 this.toDo.add(this.next.get(1));
@@ -69,7 +69,7 @@ public class DirectionMap {
             }
             if (!contains(this.finished, this.next.get(2)) && this.next.get(2).getPosition().getX() < this.tiledMap.getWidth() * this.tiledMap.getTileWidth() &&
                     this.next.get(2).getPosition().getY() < this.tiledMap.getHeight() * this.tiledMap.getTileHeight()
-                    && this.next.get(2).getPosition().getX() >= 0 && this.next.get(2).getPosition().getY() >= 0&& !checkCollision(this.next.get(2)) ) {
+                    && this.next.get(2).getPosition().getX() >= 0 && this.next.get(2).getPosition().getY() >= 0 && !checkCollision(this.next.get(2))) {
                 this.next.get(2).setDirection(Direction.UP);
                 this.finished.add(this.next.get(2));
                 this.toDo.add(this.next.get(2));
@@ -78,7 +78,7 @@ public class DirectionMap {
             }
             if (!contains(this.finished, this.next.get(3)) && this.next.get(3).getPosition().getX() < this.tiledMap.getWidth() * this.tiledMap.getTileWidth() &&
                     this.next.get(3).getPosition().getY() < this.tiledMap.getHeight() * this.tiledMap.getTileHeight()
-                    && this.next.get(3).getPosition().getX() >= 0 && this.next.get(3).getPosition().getY() >= 0&& !checkCollision(this.next.get(3)) ) {
+                    && this.next.get(3).getPosition().getX() >= 0 && this.next.get(3).getPosition().getY() >= 0 && !checkCollision(this.next.get(3))) {
                 this.next.get(3).setDirection(Direction.DOWN);
                 this.finished.add(this.next.get(3));
                 this.toDo.add(this.next.get(3));
@@ -101,8 +101,8 @@ public class DirectionMap {
 
     public boolean checkCollision(Tile tile) {
         for (Point2D c : this.collision) {
-            if (tile.getPosition().getX() >= c.getX() && tile.getPosition().getX() <= c.getX() + 16
-                    && tile.getPosition().getY() <= c.getY() && tile.getPosition().getY() >= c.getY() - 16) {
+            if (tile.getPosition().getX() >= c.getX()*16 && tile.getPosition().getX() <= c.getX()*16 + 16
+                    && tile.getPosition().getY() <= c.getY()*16 && tile.getPosition().getY() >= c.getY()*16 - 16) {
                 return true;
             }
         }
