@@ -147,11 +147,16 @@ public class TerrainDemo extends Application {
         g.setBackground(Color.black);
         g.clearRect(0, 0, (int) canvas.getWidth(), (int) canvas.getHeight());
 
-        g.setTransform(tx);
+        AffineTransform affineTransformImage = g.getTransform();
+
+        tx.scale(1.7,1);
+        //System.out.println("Wifhts: " + canvas.getWidth() / (map.getWidth() * map.getTileWidth()) + "  +  Height: "  + canvas.getHeight() / (map.getHeight() * map.getTileHeight()));
+        //System.out.println();
+
         map.draw(g);
 
-
-        g.drawImage(imageMap, tx, null);
+        g.transform(affineTransformImage);
+        g.drawImage(imageMap, affineTransformImage, null);
 
         for (Visitor v : visitors) {
             v.draw(g);
