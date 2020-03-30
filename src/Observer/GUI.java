@@ -25,7 +25,7 @@ import java.awt.*;
 public class GUI extends Application {
 
     Time time = new Time();
-    File_IO file_io = new File_IO();
+    public File_IO file_io = new File_IO();
 
 
     protected TableView<Performance> tableViewPerformance;

@@ -1,8 +1,10 @@
 package Simulation;
 
+import Objects.Performance;
 import Objects.Person.Artist;
 
 import javax.imageio.ImageIO;
+import javax.json.JsonObject;
 import java.awt.*;
 import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
@@ -23,8 +25,16 @@ public class Visitor {
     private BufferedImage image;
     private ArrayList<Tile> tiles;
     private Artist artist;
+    private Performance performance;
 
-    public Visitor(Point2D pos, ArrayList<Tile> tiles) {
+    private double hungerValue;
+    private double peeValue;
+    private double thirstValue;
+
+    private boolean isDoingIdle = false;
+    private TerrainDemo td = new TerrainDemo();
+
+    public Visitor(Point2D pos, ArrayList<Tile> tiles, Performance performance) {
         this.pos = pos;
         this.speed = new Point2D.Double(0, 0);
         this.tiles = tiles;
@@ -32,10 +42,16 @@ public class Visitor {
         this.image = null;
         this.direction = null;
         this.artist = null;
+        this.performance = performance;
+
+        this.hungerValue = (Math.random() * 100);
+        this.thirstValue = (Math.random() * 100);
+        this.peeValue = (Math.random() * 100);
+
         init();
     }
 
-    public Visitor(Point2D pos, ArrayList<Tile> tiles, Artist artist) {
+    public Visitor(Point2D pos, ArrayList<Tile> tiles, Artist artist, Performance performance) {
         this.pos = pos;
         this.speed = new Point2D.Double(0, 0);
         this.tiles = tiles;
@@ -43,10 +59,14 @@ public class Visitor {
         this.image = null;
         this.direction = null;
         this.artist = artist;
+        this.performance = performance;
         init();
     }
 
     public void init() {
+        td.init(true);
+        for (int i = 0; i < td.getTargets().size(); i++) {
+        }
         try {
             this.imageUP = ImageIO.read(getClass().getResource("/images/DOWN.png"));
             this.imageDOWN = ImageIO.read(getClass().getResource("/images/UP.png"));
@@ -96,20 +116,32 @@ public class Visitor {
                     break;
 
                 case STAY:
-                    Random random = new Random();
-                    int num = random.nextInt(100);
-                    if (num < 25) {
-                        this.image = imageRIGHT;
-                    } else if (num < 50) {
-                        this.image = imageLEFT;
-                    } else if (num < 75) {
-                        this.image = imageUP;
-                    } else {
-                        this.image = imageUP;
+                    if (!isDoingIdle) {
+                        Random random = new Random();
+                        int num = random.nextInt(100);
+                        if (num < 25) {
+                            this.image = imageRIGHT;
+                        } else if (num < 50) {
+                            this.image = imageLEFT;
+                        } else if (num < 75) {
+                            this.image = imageUP;
+                        } else {
+                            this.image = imageUP;
+                        }
+                        break;
+                    } else if (isDoingIdle) {
+                        isDoingIdle = !isDoingIdle;
+                        if (this.artist == null) {
+                            this.performance = td.getRandomPerformance();
+                            this.tiles = td.getTiles(this.performance, false);
+                        } else if (this.artist != null) {
+                            this.performance = td.getRandomPerformance(this.artist);
+                            this.tiles = td.getTiles(this.performance, true);
+                        }
                     }
-                    break;
                 default:
                     this.pos = new Point2D.Double(this.pos.getX(), this.pos.getY());
+
             }
 
             for (Visitor v : visitors) {
@@ -125,6 +157,25 @@ public class Visitor {
                 }
             }
         }
+        this.hungerValue += 0.01;
+        this.thirstValue += 0.01;
+        this.peeValue += 0.01;
+//        System.out.println("Hunger: " + hungerValue + " + Thirst: " + thirstValue + " + Pee: " + peeValue);
+
+        if (this.peeValue >= 100 && !isDoingIdle) {
+            this.peeValue = 0;
+            this.tiles = td.getWCLocation();
+            isDoingIdle = true;
+        } else if (this.hungerValue >= 100 && !isDoingIdle) {
+            this.hungerValue = 0;
+            this.tiles = td.getFoodLocation();
+            isDoingIdle = true;
+        } else if (this.thirstValue >= 100 && !isDoingIdle) {
+            this.thirstValue = 0;
+            this.tiles = td.getThirstLocation();
+            isDoingIdle = true;
+        }
+
     }
 
     private Direction getDirection() {
