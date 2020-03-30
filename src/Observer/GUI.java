@@ -19,6 +19,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import Simulation.*;
 
 import java.awt.*;
 
@@ -47,6 +48,7 @@ public class GUI extends Application {
 
     private Logic logic;
     private Simulation simulation;
+    private TerrainDemo terrainDemo;
 
 
     public GUI() {
@@ -60,8 +62,10 @@ public class GUI extends Application {
         Data data = new Data(this);
         Logic logic = new Logic(data, this);
         simulation = new Simulation();
+        terrainDemo = new TerrainDemo();
         data.init();
         simulation.init();
+        terrainDemo.init();
 
         BorderPane bp = new BorderPane();
 
@@ -77,7 +81,8 @@ public class GUI extends Application {
 
         logic.setButtonLogic();
 
-        Scene scene = new Scene(bp, 1600, 900);
+        Scene scene = new Scene(bp, terrainDemo.getMap().getWidth() * terrainDemo.getMap().getTileWidth(), terrainDemo.getMap().getHeight() * terrainDemo.getMap().getTileHeight());
+        stage.setResizable(false);
 
         stage.setScene(scene);
         stage.setTitle("User interface: Agenda");
@@ -97,26 +102,26 @@ public class GUI extends Application {
         return fp;
     }
 
-    public Node getButtonArtist(){
+    public Node getButtonArtist() {
         FlowPane fp = new FlowPane();
 
         buttonDelArt = new Button("Delete Artist");
         buttonEditArtist = new Button("Edit Artist");
         buttonAddArtist = new Button("Adding a Artist");
 
-        fp.getChildren().addAll(buttonAddArtist, buttonDelArt,  buttonEditArtist);
+        fp.getChildren().addAll(buttonAddArtist, buttonDelArt, buttonEditArtist);
 
         return fp;
     }
 
-    public Node getButtonStages(){
+    public Node getButtonStages() {
         FlowPane fp = new FlowPane();
 
         buttonDelStage = new Button("Delete Stage");
         buttonEditStage = new Button("Edit Stage");
         buttonAddStage = new Button("Adding a Stage");
 
-        fp.getChildren().addAll(buttonAddStage, buttonDelStage,  buttonEditStage);
+        fp.getChildren().addAll(buttonAddStage, buttonDelStage, buttonEditStage);
 
         return fp;
     }
@@ -137,7 +142,7 @@ public class GUI extends Application {
 
         tabStages.setContent(getBorderPaneStages());
 
-        tabSimulation.setContent(this.simulation.getCanvas());
+        tabSimulation.setContent(this.terrainDemo.getCanvas());
         tabSimulation.setContent(getBorderPaneSimulation());
 
         tabPerformances.setClosable(false);
@@ -151,7 +156,7 @@ public class GUI extends Application {
     private Node getBorderPaneSimulation() {
         BorderPane borderPane = new BorderPane();
 
-        borderPane.setCenter(this.simulation.getCanvas());
+        borderPane.setCenter(this.terrainDemo.getCanvas());
         borderPane.setBottom(getButtonSimulation());
 
         return borderPane;
@@ -169,7 +174,7 @@ public class GUI extends Application {
         buttonMediumSpeed = new Button(">>");
         buttonFastSpeed = new Button(">>>");
 
-        fp.getChildren().addAll(buttonSave,buttonOpen,buttonBackwards,buttonForward,buttonPausePlay,buttonSlowSpeed,buttonMediumSpeed,buttonFastSpeed);
+        fp.getChildren().addAll(buttonSave, buttonOpen, buttonBackwards, buttonForward, buttonPausePlay, buttonSlowSpeed, buttonMediumSpeed, buttonFastSpeed);
 
         return fp;
     }
@@ -201,15 +206,19 @@ public class GUI extends Application {
         return borderPane;
     }
 
-    public void setButtonsPerformanceVisable(boolean visable){
+    public void setButtonsPerformanceVisable(boolean visable) {
         buttonAddPerformance.setVisible(visable);
         buttonDelPerf.setVisible(visable);
         buttonEditPerformance.setVisible(visable);
     }
 
-    public void setButtonsArtistVisable(boolean visable){
+    public void setButtonsArtistVisable(boolean visable) {
         buttonAddArtist.setVisible(visable);
         buttonDelArt.setVisible(visable);
         buttonEditArtist.setVisible(visable);
+    }
+
+    public Canvas getCanvas() {
+        return canvas;
     }
 }

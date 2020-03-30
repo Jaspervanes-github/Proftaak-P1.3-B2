@@ -31,6 +31,17 @@ public class TerrainDemo extends Application {
     private HashMap<JsonObject,ArrayList<Tile>> directionMaps;
     private ArrayList<JsonObject> targets = new ArrayList<>();
     private ArrayList<Visitor> visitors = new ArrayList<>();
+    private Stage stage = new Stage();
+
+    public TerrainDemo() {
+
+        try {
+            start(stage);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -53,12 +64,6 @@ public class TerrainDemo extends Application {
             }
         }.start();
 
-        stage.setScene(new Scene(mainPane, imageMap.getWidth(), imageMap.getHeight()));
-        //stage.setScene(new Scene(mainPane));
-
-        stage.setTitle("Festival Planner");
-        stage.show();
-        draw(g2d);
     }
 
     public void init() {
@@ -87,11 +92,16 @@ public class TerrainDemo extends Application {
         g.setBackground(Color.black);
         g.clearRect(0, 0, (int) canvas.getWidth(), (int) canvas.getHeight());
 
-        g.setTransform(tx);
+        AffineTransform affineTransformImage = g.getTransform();
+
+        tx.scale(1.7,1);
+        //System.out.println("Wifhts: " + canvas.getWidth() / (map.getWidth() * map.getTileWidth()) + "  +  Height: "  + canvas.getHeight() / (map.getHeight() * map.getTileHeight()));
+        //System.out.println();
+
         map.draw(g);
 
-
-        g.drawImage(imageMap, tx, null);
+        g.transform(affineTransformImage);
+        g.drawImage(imageMap, affineTransformImage, null);
 
         for (Visitor v : visitors) {
             v.draw(g);
@@ -113,6 +123,14 @@ public class TerrainDemo extends Application {
         for(Visitor v:visitors){
            v.update();
         }
+    }
+
+    public ResizableCanvas getCanvas() {
+        return canvas;
+    }
+
+    public TerrainMap getMap() {
+        return map;
     }
 
     public static void main(String[] args) {
