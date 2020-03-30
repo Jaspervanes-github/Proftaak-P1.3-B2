@@ -1,5 +1,7 @@
 package Simulation;
 
+import Objects.Genre;
+import Objects.Person.Artist;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -19,6 +21,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 
 public class TerrainDemo extends Application {
 
@@ -31,6 +34,8 @@ public class TerrainDemo extends Application {
     private HashMap<JsonObject,ArrayList<Tile>> directionMaps;
     private ArrayList<JsonObject> targets = new ArrayList<>();
     private ArrayList<Visitor> visitors = new ArrayList<>();
+    private ArrayList<Visitor> artists = new ArrayList<>();
+    private Random r = new Random();
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -72,15 +77,27 @@ public class TerrainDemo extends Application {
         this.directionMap = new DirectionMap(this.map);
         this.directionMaps = new HashMap<>();
         this.targets = map.getTarget().get(0).getTargets();
-
         for(int i = 0;i<this.targets.size();i++) {
             this.directionMaps.put(this.targets.get(i),this.directionMap.generateDirectionMap(new Tile(new Point2D.Double(this.targets.get(i).getInt("x"),this.targets.get(i).getInt("y")))));
         }
 
-            for(int i =0;i<10;i++) {
-                Visitor visitor = new Visitor(new Point2D.Double((int) 100, (int) 300), this.directionMaps.get(this.targets.get(i%14)));
-                visitors.add(visitor);
-        }
+//            for(int i =0;i<10;i++) {
+//                Visitor visitor = new Visitor(new Point2D.Double((int) 450, (int) 800-(i*30)), this.directionMaps.get(this.targets.get(i%14)));
+////                Visitor visitor1 = new Visitor(new Point2D.Double((int) 450, (int) 800-(i*50)), this.directionMaps.get(this.targets.get(i%14)),new Artist("Piet",10, Genre.TECHNO));
+//                visitors.add(visitor);
+////                visitors.add(visitor1);
+//            }
+
+        int lowBound = 6;
+        int highBound = 10;
+
+            for(int i = 0; i< 5;i++){
+                int num = r.nextInt(highBound-lowBound)+lowBound;
+                System.out.println(num);
+                Visitor artist = new Visitor(new Point2D.Double(450,800-(i*30)),this.directionMaps.get(this.targets.get(num)));
+
+                artists.add(artist);
+            }
     }
 
     public void draw(Graphics2D g) {
@@ -100,6 +117,9 @@ public class TerrainDemo extends Application {
 //                g.drawString(t.getDirection()+ "",(int)t.getPosition().getX(),(int)t.getPosition().getY());
 //            }
         }
+        for(Visitor a: artists){
+            a.draw(g);
+        }
     }
 
     public void update(double deltaTime) {
@@ -111,9 +131,13 @@ public class TerrainDemo extends Application {
             isFullScreen = false;
         }
         for(Visitor v:visitors){
-           v.update();
+           v.update(this.visitors);
+        }
+        for(Visitor a:artists){
+            a.update(this.artists);
         }
     }
+
 
     public static void main(String[] args) {
         launch(TerrainDemo.class);

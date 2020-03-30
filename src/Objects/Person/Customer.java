@@ -74,7 +74,6 @@ public class Customer extends Person {
             }
         }
 
-
         if(!collided) {
             this.position = newPosition;
         } else {
