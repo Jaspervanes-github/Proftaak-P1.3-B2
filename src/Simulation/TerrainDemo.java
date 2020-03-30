@@ -38,8 +38,18 @@ public class TerrainDemo extends Application {
     private Random r = new Random();
     private double timer = 0;
 
+    private Stage stage = new Stage();
+
     private Data data = new Data(new GUI());
 
+
+    public TerrainDemo() {
+        try {
+            start(stage);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -61,13 +71,6 @@ public class TerrainDemo extends Application {
                 draw(g2d);
             }
         }.start();
-
-        stage.setScene(new Scene(mainPane, imageMap.getWidth(), imageMap.getHeight()));
-        //stage.setScene(new Scene(mainPane));
-
-        stage.setTitle("Festival Planner");
-        stage.show();
-        draw(g2d);
     }
 
     public TerrainMap getMap() {
@@ -289,5 +292,9 @@ public class TerrainDemo extends Application {
 
     public void setDirectionMaps(HashMap<JsonObject, ArrayList<Tile>> directionMaps) {
         this.directionMaps = directionMaps;
+    }
+
+    public ResizableCanvas getCanvas() {
+        return canvas;
     }
 }

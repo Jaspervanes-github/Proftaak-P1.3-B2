@@ -20,6 +20,8 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 
+import Simulation.*;
+
 import java.awt.*;
 
 public class GUI extends Application {
@@ -47,6 +49,7 @@ public class GUI extends Application {
 
     private Logic logic;
     private Simulation simulation;
+    private TerrainDemo terrainDemo;
 
 
     public GUI() {
@@ -60,8 +63,10 @@ public class GUI extends Application {
         Data data = new Data(this);
         Logic logic = new Logic(data, this);
         simulation = new Simulation();
+        terrainDemo = new TerrainDemo();
         data.init();
         simulation.init();
+        terrainDemo.init();
 
         BorderPane bp = new BorderPane();
 
@@ -137,7 +142,7 @@ public class GUI extends Application {
 
         tabStages.setContent(getBorderPaneStages());
 
-        tabSimulation.setContent(this.simulation.getCanvas());
+        tabSimulation.setContent(this.terrainDemo.getCanvas());
         tabSimulation.setContent(getBorderPaneSimulation());
 
         tabPerformances.setClosable(false);
@@ -151,7 +156,7 @@ public class GUI extends Application {
     private Node getBorderPaneSimulation() {
         BorderPane borderPane = new BorderPane();
 
-        borderPane.setCenter(this.simulation.getCanvas());
+        borderPane.setCenter(this.terrainDemo.getCanvas());
         borderPane.setBottom(getButtonSimulation());
 
         return borderPane;
