@@ -82,7 +82,7 @@ public class GUI extends Application {
 
         logic.setButtonLogic();
 
-        Scene scene = new Scene(bp, 1600, 900);
+        Scene scene = new Scene(bp, terrainDemo.getMap().getWidth() * terrainDemo.getMap().getTileWidth(), terrainDemo.getMap().getHeight() * terrainDemo.getMap().getTileHeight());
 
         stage.setScene(scene);
         stage.setTitle("User interface: Agenda");
