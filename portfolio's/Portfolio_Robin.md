@@ -51,3 +51,5 @@ Dan zouden de poppetjes lopen op onze distance map en dan laden wij onze echte m
 ## Week 8
 Wij hebben opstart college gehad online via teams. Daar konden we een beetje praten over hoe het zou gaan en wat het plan nu was in verband met de corona.
 
+Ik ging nu samen met Jasper aan de slag met de visitors maken. We hebben ervoor gezorg
+
