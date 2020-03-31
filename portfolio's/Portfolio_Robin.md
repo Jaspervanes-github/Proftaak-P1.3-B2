@@ -1,4 +1,5 @@
 
+
 # Portfolio Robin Koedood
 Welkom op het portfolio van Robin Koedood, Dit portfolio is gemaakt voor de proftaak 1.3 Festival planner voor cijfer van de individuele opdracht. De opdracht luidt dat wij als groepje een festival planner moeten maken voor een bedrijf. Hierbij hoort een agenda, een simulatie en een plattegrond van de festival. In dit portfolio wordt omschreven welke keuzes in gemaakt heb en wat mijn bijdrage was aan het project.
 
@@ -30,8 +31,10 @@ Uiteindelijk hebben we de keuze gemaakt om door te gaan met onze eerste agenda o
 ![Foto van de Backup](https://github.com/Jaspervanes-github/proftaak-P1.3-B2/blob/master/portfolio's/resources/Robin/Agenda_andere_versie.png)
 
 ## Week 5
-Vooral vakantie gevierd eigenlijk. Er is niet veel vooruitgang geboekt.
+Ik heb samen met Jasper gekeken naar de feedback van de demo. Wij hebben hier dan ook het commentaar van onze Senior erin betrokken en vanuit daar zijn we de dingen gaan toevoegen die we nog niet hadden. Onze knoppen stonden ook nog een lelijk en onoverzichtelijk van onder. Er stonden 6 knoppen en in het tabje voor Artiesten stonden ook nog de knoppen voor Performance en vice versa. Jasper en ik hebben dit dus samen opgelost en zo gemaakt dat het op dezelfde manier staat in Artist en ook in Performance, nu staan dus de knoppen in het goede tabje.
 
+Ook hebben wij aan pop-ups gezeten. Wij hebben ervoor gekozen om een pop-up te maken zodat de gebruiker straks weet wat hij gedaan heeft. Wij hebben een pop-up gemaakt voor het toevoegen, verwijderen en het aanpassen van een Artist of Performance.
+ 
 ## Week 6
 Ik ben bij het opstart college geweest van Johan waar hij uitleg gaf over de simulatie en hoe dat te werk ging. Hij had hier een voorbeeld van genomen waarbij er pacmans achter zijn muis aan gingen lopen. Het was allemaal goed te volgen maar ik had wel het gevoel dat ik er zelf nooit op gekomen was.
 
@@ -39,4 +42,12 @@ Ik ben daarna bezig geweest met het toevoegen van de simulatie in onze agenda mo
 
 ![Foto van onze GUI](https://github.com/Jaspervanes-github/proftaak-P1.3-B2/blob/master/portfolio's/resources/Robin/Simulatie_Voorbeeld.png)
 
+## Week 7
+Ik ben bij het opstart college geweest van Johan waar hij uitleg gaf over path finding en hoe dat te werk ging. Hij had hiervoor een website gevonden waar wij later ook in gekeken hebben die pseudocode had die wij konden gebruiken. Johan had eigenlijk een eindproduct op het scherm gezet en het was erg indrukwekkend.
+
+Hierna kwamen wij als groep bij elkaar en heb ik taken verdeeld. Jasper en Jin zouden verder gaan zitten aan de JSON file, Davy zou verder gaan werken aan het Plan van Aanpak en Bart en ik zouden een soort distance map gaan maken met minder layers zodat het minder moeite was om die in te laden. Ik bedacht me toen dat het een goed idee zou zijn om van ons echte map een screenshot te maken. Zodat wij deze kunnen inladen zonder moeite.
+Dan zouden de poppetjes lopen op onze distance map en dan laden wij onze echte map waarvan we een screenshot hebben gemaakt later in zodat het lijkt alsof ze op de echte map lopen maar dat is helemaal niet zo. We hebben hiervoor gekozen zodat het minder performance kost van je computer. Een andere mogelijke was om ze allebij te laden maar we dachten dat het te veel zou vragen van je computer terwijl het helemaal niet spanned is om die echte map te laden. Bart en ik hebben ook objecten gemaakt in die tiled map zodat we die makkelijk konden pakken later in de JSON file. Toen Jasper en Jin klaar waren met het JSON konden we het testen en het werkte wel. 
+
+## Week 8
+Wij hebben opstart college gehad online via teams. Daar konden we een beetje praten over hoe het zou gaan en wat het plan nu was in verband met de corona.
 
