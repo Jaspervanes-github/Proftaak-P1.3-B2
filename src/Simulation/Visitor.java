@@ -89,7 +89,7 @@ public class Visitor {
 
     }
 
-    public void update(ArrayList<Visitor> visitors) {
+    public void update(ArrayList<Visitor> visitors, int speed) {
 
         this.direction = getDirection();
         if (this.direction != null) {
@@ -97,22 +97,22 @@ public class Visitor {
             switch (direction) {
                 case DOWN:
                     this.image = imageUP;
-                    this.pos = new Point2D.Double(this.pos.getX(), this.pos.getY() + 1);
+                    this.pos = new Point2D.Double(this.pos.getX(), this.pos.getY() + speed);
                     break;
 
                 case UP:
                     this.image = imageDOWN;
-                    this.pos = new Point2D.Double(this.pos.getX(), this.pos.getY() - 1);
+                    this.pos = new Point2D.Double(this.pos.getX(), this.pos.getY() - speed);
                     break;
 
                 case LEFT:
                     this.image = imageLEFT;
-                    this.pos = new Point2D.Double(this.pos.getX() - 1, this.pos.getY());
+                    this.pos = new Point2D.Double(this.pos.getX() - speed, this.pos.getY());
                     break;
 
                 case RIGHT:
                     this.image = imageRIGHT;
-                    this.pos = new Point2D.Double(this.pos.getX() + 1, this.pos.getY());
+                    this.pos = new Point2D.Double(this.pos.getX() + speed, this.pos.getY());
                     break;
 
                 case STAY:
@@ -144,18 +144,18 @@ public class Visitor {
 
             }
 
-            for (Visitor v : visitors) {
-                if (v != this) {
-                    if (Math.abs(v.getPos().getX() - this.pos.getX()) < 30) {
-                        //change position
-//                        this.pos = new Point2D.Double(this.pos.getX()+(30-(this.pos.getX()-v.getPos().getX())),this.pos.getY());
-                    }
-                    if (Math.abs(v.getPos().getY() - this.pos.getY()) < 30) {
-                        //change position
-//                        this.pos = new Point2D.Double(this.pos.getX(),this.pos.getY()+(30-(this.pos.getY()-v.getPos().getY())));
-                    }
-                }
-            }
+//            for (Visitor v : visitors) {
+//                if (v != this) {
+//                    if (Math.abs(v.getPos().getX() - this.pos.getX()) < 30) {
+//                        //change position
+////                        this.pos = new Point2D.Double(this.pos.getX()+(30-(this.pos.getX()-v.getPos().getX())),this.pos.getY());
+//                    }
+//                    if (Math.abs(v.getPos().getY() - this.pos.getY()) < 30) {
+//                        //change position
+////                        this.pos = new Point2D.Double(this.pos.getX(),this.pos.getY()+(30-(this.pos.getY()-v.getPos().getY())));
+//                    }
+//                }
+//            }
         }
         this.hungerValue += 0.01;
         this.thirstValue += 0.01;

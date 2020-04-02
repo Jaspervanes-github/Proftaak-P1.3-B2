@@ -56,6 +56,10 @@ public class GUI extends Application {
     }
 
 
+    public TerrainDemo getTerrainDemo() {
+        return terrainDemo;
+    }
+
     @Override
     public void start(javafx.stage.Stage stage) throws Exception {
         //This is the general Agenda.Observer.Observer lay out

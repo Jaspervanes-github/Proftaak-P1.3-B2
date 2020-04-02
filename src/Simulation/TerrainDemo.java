@@ -37,6 +37,9 @@ public class TerrainDemo extends Application {
     private ArrayList<Visitor> artists = new ArrayList<>();
     private Random r = new Random();
     private double timer = 0;
+    private int timerSpeed = 1;
+    private boolean isPaused = false;
+    private boolean isForward = true;
 
     private Stage stage = new Stage();
 
@@ -149,7 +152,7 @@ public class TerrainDemo extends Application {
 
         AffineTransform affineTransformImage = g.getTransform();
 
-        tx.scale(1.7,1);
+        tx.scale(1.7, 1);
         //System.out.println("Wifhts: " + canvas.getWidth() / (map.getWidth() * map.getTileWidth()) + "  +  Height: "  + canvas.getHeight() / (map.getHeight() * map.getTileHeight()));
         //System.out.println();
 
@@ -178,13 +181,26 @@ public class TerrainDemo extends Application {
             tx = AffineTransform.getScaleInstance(canvas.getWidth() / imageMap.getWidth(), canvas.getHeight() / imageMap.getHeight());
             isFullScreen = false;
         }
-        for (Visitor v : visitors) {
-            v.update(this.visitors);
+        if (!isPaused) {
+            if (isForward) {
+                for (Visitor v : visitors) {
+                    v.update(this.visitors, timerSpeed);
+                }
+                for (Visitor a : artists) {
+                    a.update(this.artists, timerSpeed);
+                }
+                timer += 0.1 * timerSpeed;
+            } else {
+                for (Visitor v : visitors) {
+                    v.update(this.visitors, timerSpeed * -1);
+                }
+                for (Visitor a : artists) {
+                    a.update(this.artists, timerSpeed * -1);
+                }
+                timer -= 0.1 * timerSpeed;
+            }
+
         }
-        for (Visitor a : artists) {
-            a.update(this.artists);
-        }
-        timer += 0.1;
 //        System.out.println(timer);
     }
 
@@ -301,5 +317,37 @@ public class TerrainDemo extends Application {
 
     public ResizableCanvas getCanvas() {
         return canvas;
+    }
+
+    public double getTimer() {
+        return timer;
+    }
+
+    public void setTimer(double timer) {
+        this.timer = timer;
+    }
+
+    public int getTimerSpeed() {
+        return timerSpeed;
+    }
+
+    public void setTimerSpeed(int timerSpeed) {
+        this.timerSpeed = timerSpeed;
+    }
+
+    public boolean isPaused() {
+        return isPaused;
+    }
+
+    public void setPaused(boolean paused) {
+        isPaused = paused;
+    }
+
+    public boolean isForward() {
+        return isForward;
+    }
+
+    public void setForward(boolean forward) {
+        isForward = forward;
     }
 }

@@ -288,7 +288,7 @@ public class Logic {
 
         gui.buttonDelPerf.setOnAction(event -> {
             Performance selectedPerformance = gui.tableViewPerformance.getSelectionModel().getSelectedItem();
-            if (selectedPerformance != null){
+            if (selectedPerformance != null) {
                 gui.tableViewPerformance.getItems().remove(selectedPerformance);
                 try {
                     gui.file_io.writeFilePerformances("Performances.txt", this.data.getPerformances());
@@ -316,7 +316,7 @@ public class Logic {
 
         gui.buttonDelArt.setOnAction(event -> {
             Artist selectedArtist = gui.tableViewArtist.getSelectionModel().getSelectedItem();
-            if (selectedArtist != null){
+            if (selectedArtist != null) {
                 gui.tableViewArtist.getItems().remove(selectedArtist);
                 try {
                     gui.file_io.writeFileArtist("Artists.txt", this.data.getArtists());
@@ -343,7 +343,7 @@ public class Logic {
 
         gui.buttonDelStage.setOnAction(event -> {
             Stage selectedStage = gui.tableViewStages.getSelectionModel().getSelectedItem();
-            if (selectedStage != null){
+            if (selectedStage != null) {
                 gui.tableViewStages.getItems().remove(selectedStage);
                 try {
                     gui.file_io.writeFileStage("Stages.txt", this.data.getStages());
@@ -476,7 +476,7 @@ public class Logic {
         });
 
         gui.buttonEditArtist.setOnAction(event -> {
-            if(gui.tableViewArtist.getSelectionModel().getSelectedItem() != null) {
+            if (gui.tableViewArtist.getSelectionModel().getSelectedItem() != null) {
                 Artist help = gui.tableViewArtist.getSelectionModel().getSelectedItem();
                 Dialog dialog = new Dialog();
 
@@ -549,7 +549,7 @@ public class Logic {
             }
         });
         gui.buttonEditStage.setOnAction(event -> {
-            if(gui.tableViewStages.getSelectionModel().getSelectedItem() != null) {
+            if (gui.tableViewStages.getSelectionModel().getSelectedItem() != null) {
                 Stage help = gui.tableViewStages.getSelectionModel().getSelectedItem();
                 Dialog dialog = new Dialog();
 
@@ -612,6 +612,38 @@ public class Logic {
                 }
             }
         });
+
+        this.gui.buttonPausePlay.setOnAction(e -> {
+            this.gui.getTerrainDemo().setPaused(!this.gui.getTerrainDemo().isPaused());
+            //set isPaused to !isPaused
+        });
+
+        this.gui.buttonSlowSpeed.setOnAction(e -> {
+            //set timerSpeed to 1
+            this.gui.getTerrainDemo().setTimerSpeed(1);
+        });
+
+        this.gui.buttonMediumSpeed.setOnAction(e -> {
+            //set timerSpeed to 2
+            this.gui.getTerrainDemo().setTimerSpeed(2);
+        });
+
+        this.gui.buttonFastSpeed.setOnAction(e -> {
+            //set timerSpeed to 3
+            this.gui.getTerrainDemo().setTimerSpeed(3);
+        });
+
+        this.gui.buttonForward.setOnAction(e -> {
+            //set isForward to true
+            this.gui.getTerrainDemo().setForward(true);
+        });
+
+        this.gui.buttonBackwards.setOnAction(e -> {
+            //set isForward to false
+            this.gui.getTerrainDemo().setForward(false);
+            System.out.println("set to false");
+        });
+
     }
 
 
