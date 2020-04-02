@@ -20,8 +20,6 @@ public class Visitor {
     private BufferedImage imageLEFT = null;
     private Direction direction;
     private Point2D pos;
-    private Point2D speed;
-    private Point2D targetPos;
     private BufferedImage image;
     private ArrayList<Tile> tiles;
     private Artist artist;
@@ -36,9 +34,7 @@ public class Visitor {
 
     public Visitor(Point2D pos, ArrayList<Tile> tiles, Performance performance) {
         this.pos = pos;
-        this.speed = new Point2D.Double(0, 0);
         this.tiles = tiles;
-        this.targetPos = new Point2D.Double(this.tiles.get(0).getPosition().getX(), this.tiles.get(0).getPosition().getY());
         this.image = null;
         this.direction = null;
         this.artist = null;
@@ -53,9 +49,7 @@ public class Visitor {
 
     public Visitor(Point2D pos, ArrayList<Tile> tiles, Artist artist, Performance performance) {
         this.pos = pos;
-        this.speed = new Point2D.Double(0, 0);
         this.tiles = tiles;
-        this.targetPos = new Point2D.Double(this.tiles.get(0).getPosition().getX(), this.tiles.get(0).getPosition().getY());
         this.image = null;
         this.direction = null;
         this.artist = artist;
@@ -68,11 +62,18 @@ public class Visitor {
         for (int i = 0; i < td.getTargets().size(); i++) {
         }
         try {
-            this.imageUP = ImageIO.read(getClass().getResource("/images/DOWN.png"));
-            this.imageDOWN = ImageIO.read(getClass().getResource("/images/UP.png"));
-            this.imageRIGHT = ImageIO.read(getClass().getResource("/images/RIGHT.png"));
-            this.imageLEFT = ImageIO.read(getClass().getResource("/images/LEFT.png"));
-
+            if(this.artist == null) {
+                this.imageUP = ImageIO.read(getClass().getResource("/images/DOWN.png"));
+                this.imageDOWN = ImageIO.read(getClass().getResource("/images/UP.png"));
+                this.imageRIGHT = ImageIO.read(getClass().getResource("/images/RIGHT.png"));
+                this.imageLEFT = ImageIO.read(getClass().getResource("/images/LEFT.png"));
+            }
+            else{
+                this.imageUP = ImageIO.read(getClass().getResource("/images/TestNPC.png"));
+                this.imageDOWN = ImageIO.read(getClass().getResource("/images/TestNPC.png"));
+                this.imageRIGHT = ImageIO.read(getClass().getResource("/images/TestNPC.png"));
+                this.imageLEFT = ImageIO.read(getClass().getResource("/images/TestNPC.png"));
+            }
             this.image = imageUP;
         } catch (IOException e) {
             e.printStackTrace();
@@ -143,24 +144,10 @@ public class Visitor {
                     this.pos = new Point2D.Double(this.pos.getX(), this.pos.getY());
 
             }
-
-//            for (Visitor v : visitors) {
-//                if (v != this) {
-//                    if (Math.abs(v.getPos().getX() - this.pos.getX()) < 30) {
-//                        //change position
-////                        this.pos = new Point2D.Double(this.pos.getX()+(30-(this.pos.getX()-v.getPos().getX())),this.pos.getY());
-//                    }
-//                    if (Math.abs(v.getPos().getY() - this.pos.getY()) < 30) {
-//                        //change position
-////                        this.pos = new Point2D.Double(this.pos.getX(),this.pos.getY()+(30-(this.pos.getY()-v.getPos().getY())));
-//                    }
-//                }
-//            }
         }
         this.hungerValue += 0.01;
         this.thirstValue += 0.01;
         this.peeValue += 0.01;
-//        System.out.println("Hunger: " + hungerValue + " + Thirst: " + thirstValue + " + Pee: " + peeValue);
 
         if (this.peeValue >= 100 && !isDoingIdle) {
             this.peeValue = 0;

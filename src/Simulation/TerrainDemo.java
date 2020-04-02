@@ -37,8 +37,8 @@ public class TerrainDemo extends Application {
     private ArrayList<Visitor> artists = new ArrayList<>();
     private Random r = new Random();
     private double timer = 0;
-    private int timerSpeed = 1;
-    private boolean isPaused = false;
+    private int timerSpeed = 2;
+    private boolean isPaused = true;
     private boolean isForward = true;
 
     private Stage stage = new Stage();
@@ -153,8 +153,6 @@ public class TerrainDemo extends Application {
         AffineTransform affineTransformImage = g.getTransform();
 
         tx.scale(1.7, 1);
-        //System.out.println("Wifhts: " + canvas.getWidth() / (map.getWidth() * map.getTileWidth()) + "  +  Height: "  + canvas.getHeight() / (map.getHeight() * map.getTileHeight()));
-        //System.out.println();
 
         map.draw(g);
 
@@ -164,9 +162,6 @@ public class TerrainDemo extends Application {
         for (Visitor v : visitors) {
             v.draw(g);
 
-//            for(Tile t:v.getTiles()){
-//                g.drawString(t.getDirection()+ "",(int)t.getPosition().getX(),(int)t.getPosition().getY());
-//            }
         }
         for (Visitor a : artists) {
             a.draw(g);
@@ -201,7 +196,6 @@ public class TerrainDemo extends Application {
             }
 
         }
-//        System.out.println(timer);
     }
 
 
@@ -225,7 +219,6 @@ public class TerrainDemo extends Application {
             som += p.getArtist().getPopularity();
         }
         int random = r.nextInt(som + 1);
-//        System.out.println("Som: " + som + " radnom: " + random);
         if (random < data.getArtists().get(0).getPopularity()) {
             for (Performance p : data.getPerformances()) {
                 if (p.getArtist().getName().equals(data.getArtists().get(0).getName())) {
