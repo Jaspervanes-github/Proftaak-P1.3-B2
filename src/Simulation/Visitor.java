@@ -70,8 +70,8 @@ public class Visitor {
         }
         try {
             if (this.artist == null) {
-                this.imageUP1 = ImageIO.read(getClass().getResource("/images/UP.png"));
-                this.imageDOWN1 = ImageIO.read(getClass().getResource("/images/DOWN.png"));
+                this.imageUP1 = ImageIO.read(getClass().getResource("/images/DOWN.png"));
+                this.imageDOWN1 = ImageIO.read(getClass().getResource("/images/UP.png"));
                 this.imageRIGHT1 = ImageIO.read(getClass().getResource("/images/RIGHT.png"));
                 this.imageLEFT1 = ImageIO.read(getClass().getResource("/images/LEFT.png"));
 
