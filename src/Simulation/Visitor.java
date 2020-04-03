@@ -13,10 +13,14 @@ import java.util.Random;
 
 public class Visitor {
 
-    private BufferedImage imageDOWN = null;
-    private BufferedImage imageUP = null;
-    private BufferedImage imageRIGHT = null;
-    private BufferedImage imageLEFT = null;
+    private BufferedImage imageDOWN1 = null;
+    private BufferedImage imageUP1 = null;
+    private BufferedImage imageRIGHT1 = null;
+    private BufferedImage imageLEFT1 = null;
+    private BufferedImage imageDOWN2 = null;
+    private BufferedImage imageUP2 = null;
+    private BufferedImage imageRIGHT2 = null;
+    private BufferedImage imageLEFT2 = null;
     private Direction direction;
     private Point2D pos;
     private BufferedImage image;
@@ -49,8 +53,8 @@ public class Visitor {
     }
 
     public Visitor(Point2D pos, ArrayList<Tile> tiles, Artist artist, Performance performance) {
-        this.pos = pos;
         this.tiles = tiles;
+        this.pos = new Point2D.Double(this.tiles.get(0).getPosition().getX(), this.tiles.get(0).getPosition().getY());
         this.image = null;
         this.direction = null;
         this.artist = artist;
@@ -66,17 +70,27 @@ public class Visitor {
         }
         try {
             if (this.artist == null) {
-                this.imageUP = ImageIO.read(getClass().getResource("/images/DOWN.png"));
-                this.imageDOWN = ImageIO.read(getClass().getResource("/images/UP.png"));
-                this.imageRIGHT = ImageIO.read(getClass().getResource("/images/RIGHT.png"));
-                this.imageLEFT = ImageIO.read(getClass().getResource("/images/LEFT.png"));
+                this.imageUP1 = ImageIO.read(getClass().getResource("/images/UP.png"));
+                this.imageDOWN1 = ImageIO.read(getClass().getResource("/images/DOWN.png"));
+                this.imageRIGHT1 = ImageIO.read(getClass().getResource("/images/RIGHT.png"));
+                this.imageLEFT1 = ImageIO.read(getClass().getResource("/images/LEFT.png"));
+
+                this.imageDOWN2 = ImageIO.read(getClass().getResource("/images/VisitorDown.png"));
+                this.imageUP2 = ImageIO.read(getClass().getResource("/images/VisitorUp.png"));
+                this.imageRIGHT2 = ImageIO.read(getClass().getResource("/images/VisitorRight.png"));
+                this.imageLEFT2 = ImageIO.read(getClass().getResource("/images/VisitorLeft.png"));
             } else {
-                this.imageUP = ImageIO.read(getClass().getResource("/images/ArtistDown.png"));
-                this.imageDOWN = ImageIO.read(getClass().getResource("/images/ArtistUp.png"));
-                this.imageRIGHT = ImageIO.read(getClass().getResource("/images/ArtistRight.png"));
-                this.imageLEFT = ImageIO.read(getClass().getResource("/images/ArtistLeft.png"));
+                this.imageUP1 = ImageIO.read(getClass().getResource("/images/ArtistUp.png"));
+                this.imageDOWN1 = ImageIO.read(getClass().getResource("/images/ArtistDown.png"));
+                this.imageRIGHT1 = ImageIO.read(getClass().getResource("/images/ArtistRight.png"));
+                this.imageLEFT1 = ImageIO.read(getClass().getResource("/images/ArtistLeft.png"));
+
+                this.imageUP2 = ImageIO.read(getClass().getResource("/images/ArtistUpRight.png"));
+                this.imageDOWN2 = ImageIO.read(getClass().getResource("/images/ArtistDownRight.png"));
+                this.imageRIGHT2 = ImageIO.read(getClass().getResource("/images/ArtistRightRight.png"));
+                this.imageLEFT2 = ImageIO.read(getClass().getResource("/images/ArtistLeftRight.png"));
             }
-            this.image = imageUP;
+            this.image = imageUP1;
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -93,29 +107,25 @@ public class Visitor {
     }
 
     public void update(ArrayList<Visitor> visitors, int speed, double timer) {
-        System.out.println(timer);
+//        System.out.println(timer);
         this.direction = getDirection();
         if (this.direction != null) {
 
             switch (direction) {
                 case DOWN:
-                    this.image = imageUP;
-                    this.pos = new Point2D.Double(this.pos.getX(), this.pos.getY() + speed);
+                    offsetDown(speed);
                     break;
 
                 case UP:
-                    this.image = imageDOWN;
-                    this.pos = new Point2D.Double(this.pos.getX(), this.pos.getY() - speed);
+                    offsetUp(speed);
                     break;
 
                 case LEFT:
-                    this.image = imageLEFT;
-                    this.pos = new Point2D.Double(this.pos.getX() - speed, this.pos.getY());
+                    offsetLeft(speed);
                     break;
 
                 case RIGHT:
-                    this.image = imageRIGHT;
-                    this.pos = new Point2D.Double(this.pos.getX() + speed, this.pos.getY());
+                    offsetRight(speed);
                     break;
 
                 case STAY:
@@ -128,25 +138,38 @@ public class Visitor {
                             this.tiles = td.getTiles(this.performance, true);
                         }
                     } else if (this.performance.getEndTime() < timer) {
-                        System.out.println("I AM HERE");
                         if (this.artist == null) {
                             this.performance = td.getRandomPerformance(timer);
                             this.tiles = td.getTiles(this.performance, false);
+
                         } else if (this.artist != null) {
+                            System.out.println("Performance over");
+
                             this.performance = td.getRandomPerformance(this.artist, timer);
                             this.tiles = td.getTiles(this.performance, true);
+
+                            System.out.println(this.tiles);
+                            System.out.println(this.getDirection());
                         }
                     } else if (!isDoingIdle) {
                         Random random = new Random();
                         int num = random.nextInt(100);
-                        if (num < 25) {
-                            this.image = imageRIGHT;
-                        } else if (num < 50) {
-                            this.image = imageLEFT;
-                        } else if (num < 75) {
-                            this.image = imageUP;
+                        if (this.artist == null) {
+                            if (num < 25) {
+                                offsetRight(speed);
+                            } else if (num < 50) {
+                                offsetLeft(speed);
+                            } else if (num < 75) {
+                                offsetUp(speed);
+                            } else {
+                                offsetDown(speed);
+                            }
                         } else {
-                            this.image = imageUP;
+                            if (num < 50) {
+                                offsetRight(speed);
+                            } else {
+                                offsetLeft(speed);
+                            }
                         }
                         break;
                     } else if (isDoingIdle) {
@@ -161,12 +184,32 @@ public class Visitor {
                     }
                 default:
                     this.pos = new Point2D.Double(this.pos.getX(), this.pos.getY());
-
+                    break;
+            }
+        } else {
+            Random random = new Random();
+            int num = random.nextInt(100);
+            if(this.artist == null) {
+                if (num < 25) {
+                    offsetRight(speed);
+                } else if (num < 50) {
+                    offsetLeft(speed);
+                } else if (num < 75) {
+                    offsetUp(speed);
+                } else {
+                    offsetDown(speed);
+                }
+            } else{
+                if (num < 50) {
+                    offsetRight(speed);
+                } else{
+                    offsetLeft(speed);
+                }
             }
         }
-        this.hungerValue += 0.01;
-        this.thirstValue += 0.01;
-        this.peeValue += 0.01;
+        this.hungerValue += Math.random()/10;
+        this.thirstValue += Math.random()/10;
+        this.peeValue += Math.random()/10;
 
         if (this.peeValue >= 100 && !isDoingIdle) {
             this.peeValue = 0;
@@ -184,6 +227,81 @@ public class Visitor {
 
     }
 
+    public void offsetLeft(int speed) {
+        if (this.image.equals(imageLEFT1)) {
+            this.image = imageLEFT2;
+        } else {
+            this.image = imageLEFT1;
+        }
+
+        this.pos = new Point2D.Double(this.pos.getX() - speed, this.pos.getY());
+        if (this.pos.getX() < 0) {
+            this.pos = new Point2D.Double(5, this.pos.getY());
+        } else if (this.pos.getX() > td.getMap().getWidth() * td.getMap().getTileWidth()) {
+            this.pos = new Point2D.Double((td.getMap().getWidth() * td.getMap().getTileWidth()) - 5, this.pos.getY());
+        } else if (this.pos.getY() < 0) {
+            this.pos = new Point2D.Double(this.pos.getX(), 5);
+        } else if (this.pos.getY() > td.getMap().getHeight() * td.getMap().getTileHeight()) {
+            this.pos = new Point2D.Double(this.pos.getX(), (td.getMap().getHeight() * td.getMap().getTileHeight()) - 5);
+        }
+    }
+
+    public void offsetRight(int speed) {
+        if (this.image.equals(imageRIGHT1)) {
+            this.image = imageRIGHT2;
+        } else {
+            this.image = imageRIGHT1;
+        }
+
+        this.pos = new Point2D.Double(this.pos.getX() + speed, this.pos.getY());
+        if (this.pos.getX() < 0) {
+            this.pos = new Point2D.Double(5, this.pos.getY());
+        } else if (this.pos.getX() > td.getMap().getWidth() * td.getMap().getTileWidth()) {
+            this.pos = new Point2D.Double((td.getMap().getWidth() * td.getMap().getTileWidth()) - 5, this.pos.getY());
+        } else if (this.pos.getY() < 0) {
+            this.pos = new Point2D.Double(this.pos.getX(), 5);
+        } else if (this.pos.getY() > td.getMap().getHeight() * td.getMap().getTileHeight()) {
+            this.pos = new Point2D.Double(this.pos.getX(), (td.getMap().getHeight() * td.getMap().getTileHeight()) - 5);
+        }
+    }
+
+    public void offsetDown(int speed) {
+        if (this.image.equals(imageDOWN1)) {
+            this.image = imageDOWN2;
+        } else {
+            this.image = imageDOWN1;
+        }
+
+        this.pos = new Point2D.Double(this.pos.getX(), this.pos.getY() + speed);
+        if (this.pos.getX() < 0) {
+            this.pos = new Point2D.Double(5, this.pos.getY());
+        } else if (this.pos.getX() > td.getMap().getWidth() * td.getMap().getTileWidth()) {
+            this.pos = new Point2D.Double((td.getMap().getWidth() * td.getMap().getTileWidth()) - 5, this.pos.getY());
+        } else if (this.pos.getY() < 0) {
+            this.pos = new Point2D.Double(this.pos.getX(), 5);
+        } else if (this.pos.getY() > td.getMap().getHeight() * td.getMap().getTileHeight()) {
+            this.pos = new Point2D.Double(this.pos.getX(), (td.getMap().getHeight() * td.getMap().getTileHeight()) - 5);
+        }
+    }
+
+    public void offsetUp(int speed) {
+        if (this.image.equals(imageUP1)) {
+            this.image = imageUP2;
+        } else {
+            this.image = imageUP1;
+        }
+        this.pos = new Point2D.Double(this.pos.getX(), this.pos.getY() - speed);
+        if (this.pos.getX() < 0) {
+            this.pos = new Point2D.Double(5, this.pos.getY());
+        } else if (this.pos.getX() > td.getMap().getWidth() * td.getMap().getTileWidth()) {
+            this.pos = new Point2D.Double((td.getMap().getWidth() * td.getMap().getTileWidth()) - 5, this.pos.getY());
+        } else if (this.pos.getY() < 0) {
+            this.pos = new Point2D.Double(this.pos.getX(), 5);
+        } else if (this.pos.getY() > td.getMap().getHeight() * td.getMap().getTileHeight()) {
+            this.pos = new Point2D.Double(this.pos.getX(), (td.getMap().getHeight() * td.getMap().getTileHeight()) - 5);
+        }
+    }
+
     private Direction getDirection() {
         Direction direction = null;
         for (Tile t : this.tiles) {
@@ -198,6 +316,13 @@ public class Visitor {
 
     public void draw(Graphics2D g) {
         g.drawImage(this.image, (int) this.pos.getX(), (int) this.pos.getY(), null);
+//        if(this.performance != null) {
+//            if (this.performance.getStage().getStageName().equals("Links boven")) {
+//                for (int i = 0; i < this.tiles.size(); i++) {
+//                    g.drawString("" + this.tiles.get(i).getDirection(), (int) this.tiles.get(i).getPosition().getX(), (int) this.tiles.get(i).getPosition().getY());
+//                }
+//            }
+//        }
     }
 
     public ArrayList<Tile> getTiles() {

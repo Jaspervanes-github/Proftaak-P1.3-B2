@@ -5,24 +5,16 @@ import Objects.Performance;
 import Objects.Person.Artist;
 import Objects.Stage;
 import Objects.Time;
+import Simulation.TerrainDemo;
+import javafx.scene.layout.FlowPane;
 import javafx.application.Application;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.*;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
-import javafx.scene.control.TableView;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
-
-import Simulation.*;
-
-import java.awt.*;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 
 public class GUI extends Application {
 
@@ -44,6 +36,7 @@ public class GUI extends Application {
     protected Button buttonForward;
     protected Button buttonSave;
     protected Button buttonOpen;
+    protected Label timerLabel;
 
     protected Canvas canvas;
 
@@ -67,7 +60,7 @@ public class GUI extends Application {
         Logic logic = new Logic(data, this);
         terrainDemo = new TerrainDemo();
         data.init();
-        terrainDemo.init();
+        terrainDemo.init(this);
 
         BorderPane bp = new BorderPane();
 
@@ -87,6 +80,7 @@ public class GUI extends Application {
 
         stage.setScene(scene);
         stage.setTitle("User interface: Agenda");
+        stage.setResizable(false);
         stage.show();
     }
 
@@ -103,26 +97,26 @@ public class GUI extends Application {
         return fp;
     }
 
-    public Node getButtonArtist(){
+    public Node getButtonArtist() {
         FlowPane fp = new FlowPane();
 
         buttonDelArt = new Button("Delete Artist");
         buttonEditArtist = new Button("Edit Artist");
         buttonAddArtist = new Button("Adding a Artist");
 
-        fp.getChildren().addAll(buttonAddArtist, buttonDelArt,  buttonEditArtist);
+        fp.getChildren().addAll(buttonAddArtist, buttonDelArt, buttonEditArtist);
 
         return fp;
     }
 
-    public Node getButtonStages(){
+    public Node getButtonStages() {
         FlowPane fp = new FlowPane();
 
         buttonDelStage = new Button("Delete Stage");
         buttonEditStage = new Button("Edit Stage");
         buttonAddStage = new Button("Adding a Stage");
 
-        fp.getChildren().addAll(buttonAddStage, buttonDelStage,  buttonEditStage);
+        fp.getChildren().addAll(buttonAddStage, buttonDelStage, buttonEditStage);
 
         return fp;
     }
@@ -174,8 +168,10 @@ public class GUI extends Application {
         buttonSlowSpeed = new Button(">");
         buttonMediumSpeed = new Button(">>");
         buttonFastSpeed = new Button(">>>");
+        timerLabel = new Label();
+        this.setTimerLabelText(0);
 
-        fp.getChildren().addAll(buttonSave,buttonOpen,buttonBackwards,buttonForward,buttonPausePlay,buttonSlowSpeed,buttonMediumSpeed,buttonFastSpeed);
+        fp.getChildren().addAll(buttonSave, buttonOpen, buttonBackwards, buttonForward, buttonPausePlay, buttonSlowSpeed, buttonMediumSpeed, buttonFastSpeed, timerLabel);
 
         return fp;
     }
@@ -207,15 +203,24 @@ public class GUI extends Application {
         return borderPane;
     }
 
-    public void setButtonsPerformanceVisable(boolean visable){
+    public void setButtonsPerformanceVisable(boolean visable) {
         buttonAddPerformance.setVisible(visable);
         buttonDelPerf.setVisible(visable);
         buttonEditPerformance.setVisible(visable);
     }
 
-    public void setButtonsArtistVisable(boolean visable){
+    public void setButtonsArtistVisable(boolean visable) {
         buttonAddArtist.setVisible(visable);
         buttonDelArt.setVisible(visable);
         buttonEditArtist.setVisible(visable);
+    }
+
+    public Label getTimerLabel() {
+        return timerLabel;
+    }
+
+    public void setTimerLabelText(double text) {
+        this.timerLabel.setFont(Font.font("Times New Roman", FontWeight.BOLD, 20));
+        this.timerLabel.setText("Time: " + Math.round(text));
     }
 }

@@ -101,5 +101,7 @@ public class Data {
 
     }
 
-
+    public GUI getGui() {
+        return gui;
+    }
 }

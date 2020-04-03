@@ -42,7 +42,7 @@ public class TerrainDemo extends Application {
     private boolean isForward = true;
 
     private Stage stage = new Stage();
-
+    private GUI gui;
     private Data data = new Data(new GUI());
 
 
@@ -80,7 +80,8 @@ public class TerrainDemo extends Application {
         return map;
     }
 
-    public void init() {
+    public void init(GUI gui) {
+        this.gui = gui;
         data.init();
 
         map = new TerrainMap("/Terrain/Target.json");
@@ -97,7 +98,7 @@ public class TerrainDemo extends Application {
             this.directionMaps.put(this.targets.get(i), this.directionMap.generateDirectionMap(new Tile(new Point2D.Double(this.targets.get(i).getInt("x"), this.targets.get(i).getInt("y")))));
         }
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 15; i++) {
             Performance p = getRandomPerformance(timer);
             Visitor visitor = new Visitor(new Point2D.Double((int) 450, (int) 800 - (i * 30)), getTiles(p, false), p);
 //                Visitor visitor1 = new Visitor(new Point2D.Double((int) 450, (int) 800-(i*50)), this.directionMaps.get(this.targets.get(i%14)),new Artist("Piet",10, Genre.TECHNO));
@@ -176,7 +177,6 @@ public class TerrainDemo extends Application {
                     a.update(this.artists, timerSpeed, timer);
                 }
                 timer += 0.1 * timerSpeed;
-
             } else {
                 for (Visitor v : visitors) {
                     v.update(this.visitors, timerSpeed * -1, timer);
@@ -186,7 +186,7 @@ public class TerrainDemo extends Application {
                 }
                 timer -= 0.1 * timerSpeed;
             }
-
+            this.gui.setTimerLabelText(timer);
         }
     }
 
