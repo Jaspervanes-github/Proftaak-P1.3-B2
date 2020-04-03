@@ -279,13 +279,13 @@ public class TerrainDemo extends Application {
             } else {
                 switch (p.getStage().getStageName()) {
                     case "WOWOW":
-                        return this.directionMaps.get(this.targets.get(6));
-                    case "WOW":
-                        return this.directionMaps.get(this.targets.get(7));
-                    case "WOWO":
-                        return this.directionMaps.get(this.targets.get(8));
-                    case "WO":
                         return this.directionMaps.get(this.targets.get(9));
+                    case "WOW":
+                        return this.directionMaps.get(this.targets.get(8));
+                    case "WOWO":
+                        return this.directionMaps.get(this.targets.get(7));
+                    case "WO":
+                        return this.directionMaps.get(this.targets.get(6));
                     default:
                         return null;
                 }

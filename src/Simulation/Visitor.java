@@ -4,7 +4,6 @@ import Objects.Performance;
 import Objects.Person.Artist;
 
 import javax.imageio.ImageIO;
-import javax.json.JsonObject;
 import java.awt.*;
 import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
@@ -72,10 +71,10 @@ public class Visitor {
                 this.imageRIGHT = ImageIO.read(getClass().getResource("/images/RIGHT.png"));
                 this.imageLEFT = ImageIO.read(getClass().getResource("/images/LEFT.png"));
             } else {
-                this.imageUP = ImageIO.read(getClass().getResource("/images/TestNPC.png"));
-                this.imageDOWN = ImageIO.read(getClass().getResource("/images/TestNPC.png"));
-                this.imageRIGHT = ImageIO.read(getClass().getResource("/images/TestNPC.png"));
-                this.imageLEFT = ImageIO.read(getClass().getResource("/images/TestNPC.png"));
+                this.imageUP = ImageIO.read(getClass().getResource("/images/ArtistDown.png"));
+                this.imageDOWN = ImageIO.read(getClass().getResource("/images/ArtistUp.png"));
+                this.imageRIGHT = ImageIO.read(getClass().getResource("/images/ArtistRight.png"));
+                this.imageLEFT = ImageIO.read(getClass().getResource("/images/ArtistLeft.png"));
             }
             this.image = imageUP;
         } catch (IOException e) {
