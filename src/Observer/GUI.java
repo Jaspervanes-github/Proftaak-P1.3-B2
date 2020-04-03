@@ -48,7 +48,6 @@ public class GUI extends Application {
     protected Canvas canvas;
 
     private Logic logic;
-    private Simulation simulation;
     private TerrainDemo terrainDemo;
 
 
@@ -66,10 +65,8 @@ public class GUI extends Application {
 
         Data data = new Data(this);
         Logic logic = new Logic(data, this);
-        simulation = new Simulation();
         terrainDemo = new TerrainDemo();
         data.init();
-        simulation.init();
         terrainDemo.init();
 
         BorderPane bp = new BorderPane();

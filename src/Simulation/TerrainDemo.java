@@ -135,20 +135,6 @@ public class TerrainDemo extends Application {
             this.directionMaps.put(this.targets.get(i), this.directionMap.generateDirectionMap(new Tile(new Point2D.Double(this.targets.get(i).getInt("x"), this.targets.get(i).getInt("y")))));
         }
 
-//        for (int i = 0; i < 10; i++) {
-//            Performance p = getRandomPerformance();
-//            Visitor visitor = new Visitor(new Point2D.Double((int) 450, (int) 800 - (i * 30)), getTiles(p, false), p);
-////                Visitor visitor1 = new Visitor(new Point2D.Double((int) 450, (int) 800-(i*50)), this.directionMaps.get(this.targets.get(i%14)),new Artist("Piet",10, Genre.TECHNO));
-//            visitors.add(visitor);
-////                visitors.add(visitor1);
-//        }
-//
-//        for (int i = 0; i < data.getArtists().size(); i++) {
-//            Performance p = getRandomPerformance(data.getArtists().get(i));
-//
-//            Visitor artist = new Visitor(new Point2D.Double(450, 800 - (i * 30)), getTiles(p, true), p.getArtist(),p);
-//            artists.add(artist);
-//        }
     }
 
     public void draw(Graphics2D g) {
@@ -215,7 +201,6 @@ public class TerrainDemo extends Application {
                 return p;
             }
         }
-//        return data.getPerformances().get(0);
         return null;
     }
 
@@ -260,13 +245,13 @@ public class TerrainDemo extends Application {
                 return getThirstLocation();
             } else {
                 switch (p.getStage().getStageName()) {
-                    case "WOWOW":
+                    case "Links boven":
                         return this.directionMaps.get(this.targets.get(10));
-                    case "WOW":
+                    case "Rechts boven":
                         return this.directionMaps.get(this.targets.get(11));
-                    case "WOWO":
+                    case "Rechts onder":
                         return this.directionMaps.get(this.targets.get(12));
-                    case "WO":
+                    case "Links onder":
                         return this.directionMaps.get(this.targets.get(13));
                     default:
                         return null;
@@ -274,17 +259,18 @@ public class TerrainDemo extends Application {
             }
         } else {
             if (p == null) {
+                System.out.println("Artist thirst");
                 return getThirstLocation();
 
             } else {
                 switch (p.getStage().getStageName()) {
-                    case "WOWOW":
+                    case "Links boven":
                         return this.directionMaps.get(this.targets.get(9));
-                    case "WOW":
+                    case "Rechts boven":
                         return this.directionMaps.get(this.targets.get(8));
-                    case "WOWO":
+                    case "Rechts onder":
                         return this.directionMaps.get(this.targets.get(7));
-                    case "WO":
+                    case "Links onder":
                         return this.directionMaps.get(this.targets.get(6));
                     default:
                         return null;
