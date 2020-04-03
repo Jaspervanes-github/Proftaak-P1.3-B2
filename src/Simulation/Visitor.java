@@ -38,7 +38,9 @@ public class Visitor {
         this.image = null;
         this.direction = null;
         this.artist = null;
-        this.performance = performance;
+        if (performance != null) {
+            this.performance = performance;
+        }
 
         this.hungerValue = (Math.random() * 100);
         this.thirstValue = (Math.random() * 100);
@@ -53,7 +55,9 @@ public class Visitor {
         this.image = null;
         this.direction = null;
         this.artist = artist;
-        this.performance = performance;
+        if (performance != null) {
+            this.performance = performance;
+        }
         init();
     }
 
@@ -62,13 +66,12 @@ public class Visitor {
         for (int i = 0; i < td.getTargets().size(); i++) {
         }
         try {
-            if(this.artist == null) {
+            if (this.artist == null) {
                 this.imageUP = ImageIO.read(getClass().getResource("/images/DOWN.png"));
                 this.imageDOWN = ImageIO.read(getClass().getResource("/images/UP.png"));
                 this.imageRIGHT = ImageIO.read(getClass().getResource("/images/RIGHT.png"));
                 this.imageLEFT = ImageIO.read(getClass().getResource("/images/LEFT.png"));
-            }
-            else{
+            } else {
                 this.imageUP = ImageIO.read(getClass().getResource("/images/TestNPC.png"));
                 this.imageDOWN = ImageIO.read(getClass().getResource("/images/TestNPC.png"));
                 this.imageRIGHT = ImageIO.read(getClass().getResource("/images/TestNPC.png"));
@@ -90,8 +93,8 @@ public class Visitor {
 
     }
 
-    public void update(ArrayList<Visitor> visitors, int speed) {
-
+    public void update(ArrayList<Visitor> visitors, int speed, double timer) {
+        System.out.println(timer);
         this.direction = getDirection();
         if (this.direction != null) {
 
@@ -117,7 +120,24 @@ public class Visitor {
                     break;
 
                 case STAY:
-                    if (!isDoingIdle) {
+                    if (this.performance == null) {
+                        if (this.artist == null) {
+                            this.performance = td.getRandomPerformance(timer);
+                            this.tiles = td.getTiles(this.performance, false);
+                        } else if (this.artist != null) {
+                            this.performance = td.getRandomPerformance(this.artist, timer);
+                            this.tiles = td.getTiles(this.performance, true);
+                        }
+                    } else if (this.performance.getEndTime() < timer) {
+                        System.out.println("I AM HERE");
+                        if (this.artist == null) {
+                            this.performance = td.getRandomPerformance(timer);
+                            this.tiles = td.getTiles(this.performance, false);
+                        } else if (this.artist != null) {
+                            this.performance = td.getRandomPerformance(this.artist, timer);
+                            this.tiles = td.getTiles(this.performance, true);
+                        }
+                    } else if (!isDoingIdle) {
                         Random random = new Random();
                         int num = random.nextInt(100);
                         if (num < 25) {
@@ -133,10 +153,10 @@ public class Visitor {
                     } else if (isDoingIdle) {
                         isDoingIdle = !isDoingIdle;
                         if (this.artist == null) {
-                            this.performance = td.getRandomPerformance();
+                            this.performance = td.getRandomPerformance(timer);
                             this.tiles = td.getTiles(this.performance, false);
                         } else if (this.artist != null) {
-                            this.performance = td.getRandomPerformance(this.artist);
+                            this.performance = td.getRandomPerformance(this.artist, timer);
                             this.tiles = td.getTiles(this.performance, true);
                         }
                     }

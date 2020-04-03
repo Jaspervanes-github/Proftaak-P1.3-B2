@@ -36,7 +36,7 @@ public class TerrainDemo extends Application {
     private ArrayList<Visitor> visitors = new ArrayList<>();
     private ArrayList<Visitor> artists = new ArrayList<>();
     private Random r = new Random();
-    private double timer = 0;
+    private double timer = 40;
     private int timerSpeed = 2;
     private boolean isPaused = true;
     private boolean isForward = true;
@@ -98,7 +98,7 @@ public class TerrainDemo extends Application {
         }
 
         for (int i = 0; i < 10; i++) {
-            Performance p = getRandomPerformance();
+            Performance p = getRandomPerformance(timer);
             Visitor visitor = new Visitor(new Point2D.Double((int) 450, (int) 800 - (i * 30)), getTiles(p, false), p);
 //                Visitor visitor1 = new Visitor(new Point2D.Double((int) 450, (int) 800-(i*50)), this.directionMaps.get(this.targets.get(i%14)),new Artist("Piet",10, Genre.TECHNO));
             visitors.add(visitor);
@@ -106,10 +106,15 @@ public class TerrainDemo extends Application {
         }
 
         for (int i = 0; i < data.getArtists().size(); i++) {
-            Performance p = getRandomPerformance(data.getArtists().get(i));
+            Performance p = getRandomPerformance(data.getArtists().get(i), timer);
+            if (p != null) {
+                Visitor artist = new Visitor(new Point2D.Double(450, 800 - (i * 30)), getTiles(p, true), p.getArtist(), p);
+                artists.add(artist);
 
-            Visitor artist = new Visitor(new Point2D.Double(450, 800 - (i * 30)), getTiles(p, true), p.getArtist(), p);
-            artists.add(artist);
+            } else {
+                Visitor artist = new Visitor(new Point2D.Double(450, 800 - (i * 30)), getTiles(p, true), null, p);
+                artists.add(artist);
+            }
         }
     }
 
@@ -179,18 +184,19 @@ public class TerrainDemo extends Application {
         if (!isPaused) {
             if (isForward) {
                 for (Visitor v : visitors) {
-                    v.update(this.visitors, timerSpeed);
+                    v.update(this.visitors, timerSpeed, timer);
                 }
                 for (Visitor a : artists) {
-                    a.update(this.artists, timerSpeed);
+                    a.update(this.artists, timerSpeed, timer);
                 }
                 timer += 0.1 * timerSpeed;
+
             } else {
                 for (Visitor v : visitors) {
-                    v.update(this.visitors, timerSpeed * -1);
+                    v.update(this.visitors, timerSpeed * -1, timer);
                 }
                 for (Visitor a : artists) {
-                    a.update(this.artists, timerSpeed * -1);
+                    a.update(this.artists, timerSpeed * -1, timer);
                 }
                 timer -= 0.1 * timerSpeed;
             }
@@ -203,16 +209,17 @@ public class TerrainDemo extends Application {
         launch(TerrainDemo.class);
     }
 
-    public Performance getRandomPerformance(Artist artist) {
+    public Performance getRandomPerformance(Artist artist, double timer) {
         for (Performance p : data.getPerformances()) {
-            if (p.getArtist().getName().equals(artist.getName())) {
+            if (p.getArtist().getName().equals(artist.getName()) && timer >= p.getStartTime() && timer < p.getEndTime()) {
                 return p;
             }
         }
+//        return data.getPerformances().get(0);
         return null;
     }
 
-    public Performance getRandomPerformance() {
+    public Performance getRandomPerformance(double timer) {
         int som = 0;
 
         for (Performance p : data.getPerformances()) {
@@ -221,25 +228,25 @@ public class TerrainDemo extends Application {
         int random = r.nextInt(som + 1);
         if (random < data.getArtists().get(0).getPopularity()) {
             for (Performance p : data.getPerformances()) {
-                if (p.getArtist().getName().equals(data.getArtists().get(0).getName())) {
+                if (p.getArtist().getName().equals(data.getArtists().get(0).getName()) && timer >= p.getStartTime() && timer < p.getEndTime()) {
                     return p;
                 }
             }
         } else if (random < data.getArtists().get(1).getPopularity() + data.getArtists().get(0).getPopularity()) {
             for (Performance p : data.getPerformances()) {
-                if (p.getArtist().getName().equals(data.getArtists().get(1).getName())) {
+                if (p.getArtist().getName().equals(data.getArtists().get(1).getName()) && timer >= p.getStartTime() && timer < p.getEndTime()) {
                     return p;
                 }
             }
         } else if (random < data.getArtists().get(2).getPopularity() + data.getArtists().get(0).getPopularity() + data.getArtists().get(1).getPopularity()) {
             for (Performance p : data.getPerformances()) {
-                if (p.getArtist().getName().equals(data.getArtists().get(2).getName())) {
+                if (p.getArtist().getName().equals(data.getArtists().get(2).getName()) && timer >= p.getStartTime() && timer < p.getEndTime()) {
                     return p;
                 }
             }
         } else if (random <= data.getArtists().get(3).getPopularity() + data.getArtists().get(0).getPopularity() + data.getArtists().get(1).getPopularity() + data.getArtists().get(2).getPopularity()) {
             for (Performance p : data.getPerformances()) {
-                if (p.getArtist().getName().equals(data.getArtists().get(3).getName())) {
+                if (p.getArtist().getName().equals(data.getArtists().get(3).getName()) && timer >= p.getStartTime() && timer < p.getEndTime()) {
                     return p;
                 }
             }
@@ -249,30 +256,39 @@ public class TerrainDemo extends Application {
 
     public ArrayList<Tile> getTiles(Performance p, boolean isArtist) {
         if (!isArtist) {
-            switch (p.getStage().getStageName()) {
-                case "WOWOW":
-                    return this.directionMaps.get(this.targets.get(10));
-                case "WOW":
-                    return this.directionMaps.get(this.targets.get(11));
-                case "WOWO":
-                    return this.directionMaps.get(this.targets.get(12));
-                case "WO":
-                    return this.directionMaps.get(this.targets.get(13));
-                default:
-                    return null;
+            if (p == null) {
+                return getThirstLocation();
+            } else {
+                switch (p.getStage().getStageName()) {
+                    case "WOWOW":
+                        return this.directionMaps.get(this.targets.get(10));
+                    case "WOW":
+                        return this.directionMaps.get(this.targets.get(11));
+                    case "WOWO":
+                        return this.directionMaps.get(this.targets.get(12));
+                    case "WO":
+                        return this.directionMaps.get(this.targets.get(13));
+                    default:
+                        return null;
+                }
             }
         } else {
-            switch (p.getStage().getStageName()) {
-                case "WOWOW":
-                    return this.directionMaps.get(this.targets.get(6));
-                case "WOW":
-                    return this.directionMaps.get(this.targets.get(7));
-                case "WOWO":
-                    return this.directionMaps.get(this.targets.get(8));
-                case "WO":
-                    return this.directionMaps.get(this.targets.get(9));
-                default:
-                    return null;
+            if (p == null) {
+                return getThirstLocation();
+
+            } else {
+                switch (p.getStage().getStageName()) {
+                    case "WOWOW":
+                        return this.directionMaps.get(this.targets.get(6));
+                    case "WOW":
+                        return this.directionMaps.get(this.targets.get(7));
+                    case "WOWO":
+                        return this.directionMaps.get(this.targets.get(8));
+                    case "WO":
+                        return this.directionMaps.get(this.targets.get(9));
+                    default:
+                        return null;
+                }
             }
         }
     }
