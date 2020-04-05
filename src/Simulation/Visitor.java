@@ -129,46 +129,28 @@ public class Visitor {
                     break;
 
                 case STAY:
-                    if (this.performance == null) {
-                        if (this.artist == null) {
-                            this.performance = td.getRandomPerformance(timer);
-                            this.tiles = td.getTiles(this.performance, false);
-                        } else if (this.artist != null) {
-                            this.performance = td.getRandomPerformance(this.artist, timer);
-                            this.tiles = td.getTiles(this.performance, true);
-                        }
-                    } else if (this.performance.getEndTime() < timer) {
-                        if (this.artist == null) {
-                            this.performance = td.getRandomPerformance(timer);
-                            this.tiles = td.getTiles(this.performance, false);
-
-                        } else if (this.artist != null) {
-                            System.out.println("Performance over");
-
-                            this.performance = td.getRandomPerformance(this.artist, timer);
-                            this.tiles = td.getTiles(this.performance, true);
-
-                            System.out.println(this.tiles);
-                            System.out.println(this.getDirection());
-                        }
-                    } else if (!isDoingIdle) {
+                     if (!isDoingIdle) {
                         Random random = new Random();
                         int num = random.nextInt(100);
                         if (this.artist == null) {
-                            if (num < 25) {
+                            if (num < 2 * speed) {
                                 offsetRight(speed);
-                            } else if (num < 50) {
+                            } else if (num < 4 * speed) {
                                 offsetLeft(speed);
-                            } else if (num < 75) {
+                            } else if (num < 6 * speed) {
                                 offsetUp(speed);
-                            } else {
+                            } else if (num < 8 * speed) {
                                 offsetDown(speed);
+                            } else {
+                                //Nothing
                             }
                         } else {
-                            if (num < 50) {
+                            if (num < 2 * speed) {
                                 offsetRight(speed);
-                            } else {
+                            } else if (num < 4 * speed) {
                                 offsetLeft(speed);
+                            } else {
+                                //Nothing
                             }
                         }
                         break;
@@ -182,34 +164,62 @@ public class Visitor {
                             this.tiles = td.getTiles(this.performance, true);
                         }
                     }
+                    break;
                 default:
                     this.pos = new Point2D.Double(this.pos.getX(), this.pos.getY());
                     break;
             }
+            if (this.performance == null) {
+                if (this.artist == null) {
+                    this.performance = td.getRandomPerformance(timer);
+                    this.tiles = td.getTiles(this.performance, false);
+                } else if (this.artist != null) {
+                    this.performance = td.getRandomPerformance(this.artist, timer);
+                    this.tiles = td.getTiles(this.performance, true);
+                }
+            } else if (this.performance.getEndTime() < timer) {
+                if (this.artist == null) {
+                    this.performance = td.getRandomPerformance(timer);
+                    this.tiles = td.getTiles(this.performance, false);
+
+                } else if (this.artist != null) {
+//                            System.out.println("Performance over");
+
+                    this.performance = td.getRandomPerformance(this.artist, timer);
+                    this.tiles = td.getTiles(this.performance, true);
+
+//                            System.out.println(this.tiles);
+//                            System.out.println(this.getDirection());
+                }
+            }
         } else {
             Random random = new Random();
             int num = random.nextInt(100);
-            if(this.artist == null) {
-                if (num < 25) {
+            if (this.artist == null) {
+                if (num < 2 * speed) {
                     offsetRight(speed);
-                } else if (num < 50) {
+                } else if (num < 4 * speed) {
                     offsetLeft(speed);
-                } else if (num < 75) {
+                } else if (num < 6 * speed) {
                     offsetUp(speed);
-                } else {
+                } else if (num < 8 * speed) {
                     offsetDown(speed);
+                } else {
+                    //Nothing
                 }
-            } else{
-                if (num < 50) {
+            } else {
+                if (num < 2 * speed) {
                     offsetRight(speed);
-                } else{
+                } else if (num < 4 * speed) {
                     offsetLeft(speed);
+                } else {
+                    //Nothing
                 }
             }
         }
-        this.hungerValue += Math.random()/10;
-        this.thirstValue += Math.random()/10;
-        this.peeValue += Math.random()/10;
+        this.hungerValue += Math.random() / 100;
+        this.thirstValue += Math.random() / 100;
+        this.peeValue += Math.random() / 100;
 
         if (this.peeValue >= 100 && !isDoingIdle) {
             this.peeValue = 0;

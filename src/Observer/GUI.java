@@ -6,13 +6,13 @@ import Objects.Person.Artist;
 import Objects.Stage;
 import Objects.Time;
 import Simulation.TerrainDemo;
-import javafx.scene.layout.FlowPane;
 import javafx.application.Application;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
@@ -36,12 +36,13 @@ public class GUI extends Application {
     protected Button buttonForward;
     protected Button buttonSave;
     protected Button buttonOpen;
+    protected Button resetButton;
     protected Label timerLabel;
 
     protected Canvas canvas;
 
     private Logic logic;
-    private TerrainDemo terrainDemo;
+    protected TerrainDemo terrainDemo;
 
 
     public GUI() {
@@ -168,10 +169,11 @@ public class GUI extends Application {
         buttonSlowSpeed = new Button(">");
         buttonMediumSpeed = new Button(">>");
         buttonFastSpeed = new Button(">>>");
+        resetButton = new Button("Reset");
         timerLabel = new Label();
         this.setTimerLabelText(0);
 
-        fp.getChildren().addAll(buttonSave, buttonOpen, buttonBackwards, buttonForward, buttonPausePlay, buttonSlowSpeed, buttonMediumSpeed, buttonFastSpeed, timerLabel);
+        fp.getChildren().addAll(buttonSave, buttonOpen, buttonBackwards, buttonForward, buttonPausePlay, buttonSlowSpeed, buttonMediumSpeed, buttonFastSpeed,resetButton, timerLabel);
 
         return fp;
     }

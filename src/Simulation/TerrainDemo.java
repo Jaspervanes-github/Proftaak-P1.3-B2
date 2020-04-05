@@ -6,7 +6,6 @@ import Observer.Data;
 import Observer.GUI;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
-import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import org.jfree.fx.FXGraphics2D;
@@ -36,8 +35,8 @@ public class TerrainDemo extends Application {
     private ArrayList<Visitor> visitors = new ArrayList<>();
     private ArrayList<Visitor> artists = new ArrayList<>();
     private Random r = new Random();
-    private double timer = 40;
-    private int timerSpeed = 2;
+    private double timer = 0;
+    private int timerSpeed = 1;
     private boolean isPaused = true;
     private boolean isForward = true;
 
@@ -98,9 +97,9 @@ public class TerrainDemo extends Application {
             this.directionMaps.put(this.targets.get(i), this.directionMap.generateDirectionMap(new Tile(new Point2D.Double(this.targets.get(i).getInt("x"), this.targets.get(i).getInt("y")))));
         }
 
-        for (int i = 0; i < 15; i++) {
+        for (int i = 0; i < 30; i++) {
             Performance p = getRandomPerformance(timer);
-            Visitor visitor = new Visitor(new Point2D.Double((int) 450, (int) 800 - (i * 30)), getTiles(p, false), p);
+            Visitor visitor = new Visitor(new Point2D.Double((int) 450, (int) 800 - (i * 10)), getTiles(p, false), p);
 //                Visitor visitor1 = new Visitor(new Point2D.Double((int) 450, (int) 800-(i*50)), this.directionMaps.get(this.targets.get(i%14)),new Artist("Piet",10, Genre.TECHNO));
             visitors.add(visitor);
 //                visitors.add(visitor1);
@@ -138,6 +137,40 @@ public class TerrainDemo extends Application {
 
     }
 
+    public void init(int nothing){
+        this.isPaused = true;
+        this.timer = 0;
+        this.timerSpeed = 1;
+        this.isForward = true;
+
+        data.init();
+
+        this.visitors.clear();
+        this.artists.clear();
+
+        for (int i = 0; i < 30; i++) {
+            Performance p = getRandomPerformance(timer);
+            Visitor visitor = new Visitor(new Point2D.Double((int) 450, (int) 800 - (i * 10)), getTiles(p, false), p);
+//                Visitor visitor1 = new Visitor(new Point2D.Double((int) 450, (int) 800-(i*50)), this.directionMaps.get(this.targets.get(i%14)),new Artist("Piet",10, Genre.TECHNO));
+            visitors.add(visitor);
+//                visitors.add(visitor1);
+        }
+
+        for (int i = 0; i < data.getArtists().size(); i++) {
+            Performance p = getRandomPerformance(data.getArtists().get(i), timer);
+            if (p != null) {
+                Visitor artist = new Visitor(new Point2D.Double(450, 800 - (i * 30)), getTiles(p, true), p.getArtist(), p);
+                artists.add(artist);
+
+            } else {
+                Visitor artist = new Visitor(new Point2D.Double(450, 800 - (i * 30)), getTiles(p, true), null, p);
+                artists.add(artist);
+            }
+            this.gui.setTimerLabelText(timer);
+        }
+
+    }
+
     public void draw(Graphics2D g) {
         g.setBackground(Color.black);
         g.clearRect(0, 0, (int) canvas.getWidth(), (int) canvas.getHeight());
@@ -146,7 +179,7 @@ public class TerrainDemo extends Application {
 
         tx.scale(1.7, 1);
 
-        map.draw(g);
+//        map.draw(g);
 
         g.transform(affineTransformImage);
         g.drawImage(imageMap, affineTransformImage, null);
@@ -177,6 +210,10 @@ public class TerrainDemo extends Application {
                     a.update(this.artists, timerSpeed, timer);
                 }
                 timer += 0.1 * timerSpeed;
+                if(timer>=2400){
+                    timer = 2359;
+                    setPaused(true);
+                }
             } else {
                 for (Visitor v : visitors) {
                     v.update(this.visitors, timerSpeed * -1, timer);
@@ -185,6 +222,10 @@ public class TerrainDemo extends Application {
                     a.update(this.artists, timerSpeed * -1, timer);
                 }
                 timer -= 0.1 * timerSpeed;
+                if(timer<=0){
+                    timer = 0;
+                    setPaused(true);
+                }
             }
             this.gui.setTimerLabelText(timer);
         }
@@ -259,7 +300,7 @@ public class TerrainDemo extends Application {
             }
         } else {
             if (p == null) {
-                System.out.println("Artist thirst");
+//                System.out.println("Artist thirst");
                 return getThirstLocation();
 
             } else {
@@ -345,4 +386,5 @@ public class TerrainDemo extends Application {
     public void setForward(boolean forward) {
         isForward = forward;
     }
+
 }

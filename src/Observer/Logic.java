@@ -625,12 +625,12 @@ public class Logic {
 
         this.gui.buttonMediumSpeed.setOnAction(e -> {
             //set timerSpeed to 2
-            this.gui.getTerrainDemo().setTimerSpeed(2);
+            this.gui.getTerrainDemo().setTimerSpeed(3);
         });
 
         this.gui.buttonFastSpeed.setOnAction(e -> {
             //set timerSpeed to 3
-            this.gui.getTerrainDemo().setTimerSpeed(3);
+            this.gui.getTerrainDemo().setTimerSpeed(5);
         });
 
         this.gui.buttonForward.setOnAction(e -> {
@@ -641,7 +641,11 @@ public class Logic {
         this.gui.buttonBackwards.setOnAction(e -> {
             //set isForward to false
             this.gui.getTerrainDemo().setForward(false);
-            System.out.println("set to false");
+//            System.out.println("set to false");
+        });
+
+        this.gui.resetButton.setOnAction(e->{
+            this.gui.terrainDemo.init(0);
         });
 
     }
