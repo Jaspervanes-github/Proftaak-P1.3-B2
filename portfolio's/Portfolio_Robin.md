@@ -182,6 +182,12 @@ Ik ben van mening dat een simulatie een visualisatie programma is. Je laat zien 
 Ik denk dat het goed is om een simulatie te hebben en te maken voordat je een idee of grote beslissing maakt.
 Het is niet slecht om een simulatie te maken. Het kan geen kwaad, alleen maar goed. Het enige wat er kan gebeuren als je een simulatie hebt is dat je je dan voorgbereid op alles wat er kan komen. Als je je voorbereid op alles wat er kan komen dan heb je ook automatisch een beter product. 
 
+**Bronvermelding**
+https://timeware.nl/simulatie-wat-en-hoe/?doing_wp_cron=1586096218.1094620227813720703125
+https://www.logistiek.nl/warehousing/blog/2009/09/simulatie-waardevol-hulpmiddel-bij-dynamische-processen-101129258
+https://www.computable.nl/artikel/achtergrond/management/1340405/1444691/simulatie-onderschat-hulpmiddel-bij-veranderingen.html
+
+
 ---
 
 # JSON
