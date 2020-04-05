@@ -4,15 +4,15 @@
 Welkom op het portfolio van Jasper van Es, dit portfolio wordt gemaakt in opdracht van Avans hogeschool voor de proftaak in periode 1.3. Dit portfolio is ontworpen voor de individuele opdracht.
 
 # InhoudsOpgave
-1. [Week2](#Week-2)
-2. [Week3](#Week-3)
-3. [Week4](#Week-4)
-4. [Week5](#Week-5)
-4. [Week6](#Week-6)
-4. [Week7](#Week-7)
-4. [Week8](#Week-8)
-4. [Week9](#Week-9)
-4. [Stelling](#Stelling)
+[Week2](#Week-2)
+[Week3](#Week-3)
+[Week4](#Week-4)
+[Week5](#Week-5)
+[Week6](#Week-6)
+[Week7](#Week-7)
+[Week8](#Week-8)
+[Week9](#Week-9)
+[Stelling](#Stelling)
 
 
 ## Week 2
