@@ -106,8 +106,11 @@ Het is niet slecht om een simulatie te maken. Het kan geen kwaad, alleen maar go
 **Wat is JSON?**
 JSON is een manier van data weergegeven zodat het leesbaar is voor de mensen. Json is oorspronkelijk ontstaan uit de programmeertaal javascript maar nu is het een dataformaat die velen bedrijven en mensen gebruiken voor hun code.
 
+JSON staat voor JavaScript Object Notation. JSON is een protocol voor het formatteren en structureren van data die je wilt opslaan/uitwisselen. Iedereen weet dat data heel belangrijk is of dit nou binnen een bedrijf is of je een game schrijft. Het is dus heel handig als je deze data gemakkelijk kunt benaderen en aanpassen.
 
+Er werden standaarden bedacht hoe data geformatteerd en gestructureerd moest worden. Hierbij werd er rekening mee gehouden dat dit flexibel ingezet kon worden. Voorbeelden hiervan zijn XML, CSV, of JSON. De nadruk bij JSON ligt op simpel en minimalistisch. Het idee hierachter is dat als iemand een library schrijft die data kan formatteren en structureren, dat andere mensen niet het wiel opnieuw hoeven uit te vinden en ook gewoon deze library kunnen gebruiken zodat het veel sneller gaat.
 
+Ik denk dat een van de grootste redenen is dat websites gebruik maken van Json is omdat Json makkelijk leesbaar is. Het is ook wel fijn dat het onafhankelijk is van een programmeer taal dus kan je het bij meerdere talen gebruiken. Json wordt ook al veel gebruikt door veel websites dus is het alleen maar makkelijk om het ook te doen.
 
 
 
