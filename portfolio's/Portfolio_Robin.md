@@ -124,16 +124,29 @@ Dan zouden de poppetjes lopen op onze distance map en dan laden wij onze echte m
 ## Week 8
 Wij hebben opstart college gehad online via teams. Daar konden we een beetje praten over hoe het zou gaan en wat het plan nu was in verband met de corona.
 
-Ik ging nu samen met Jasper aan de slag met de visitors maken. We hebben ervoor gezorg
+Ik ging nu samen met Jasper aan de slag met de visitors maken. We hebben ervoor gezorgd dat de mensen naar hun doelen kunnen lopen en ook gaan lopen. Het is zelfs gelukt om ervoor te zorgen dat ze de kortste route pakten. Het plaatje verandert daar ook bij. Het ligt er dus aan welke kant hij opmoet welk plaatje er getekend wordt.
+
+Hierna heb ik ook nog even gekeken naar het PvA want die moest ook ingeleverd worden.
 
 
 **Wat is de situatie (context)?**
+We hadden een keuze om het kraampje rechts boven nog een stage te benoemen of daarvan een eetkraam te maken.
 
 **Welke keuzemogelijkheden heb je?**
+* Om van dat plekje een apart podium te maken.
+* Om van dat plekje een cafe te maken.
+* Om van dat plekje een eetkraam te maken.
 
 **Welke keuze heb je gemaakt?**
+We hebben gekozen om er een eetkraam van te maken, we wilde drinken en eten toch scheiden van plekken.
 
 **Waarom heb je deze keuze gemaakt?**
+Nu is er meer beweging in onze simulatie en is het niet zo super druk bij de café's
+
+
+## Week 9
+
+
 
 
 ---
