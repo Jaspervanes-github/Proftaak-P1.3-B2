@@ -145,9 +145,22 @@ Nu is er meer beweging in onze simulatie en is het niet zo super druk bij de caf
 
 
 ## Week 9
+In deze week hebben wij de laatste lootjes gelegd van het project. Ik heb samen met Jasper weer gekeken naar Visitors en wat die doen als er geen optreden meer is. Ook hebben we ervoor gezorgd dat de mensen naar de wc gaan, en wat te drinken gaan halen en wat te eten gaan halen als ze honger hebben. We hebben dit gedaan doormiddel van dat elke update, de visitor een random waarde krijg die dan bij het percentage komt. Als het percentage 100 is dan gaat hij het gene doen waarvan hij vol zit. Om ervoor te zorgen dat niet iedereen tegelijk gaat hebben iedere visitor ook een eigen waarde om mee te beginnen.
 
+Het is ons ook gelukt om ervoor te zorgen dat de gasten niet stil staan als ze bij een optreden zijn. Ze bewegen echt steeds doormiddel van een offset.
 
+**Wat is de situatie (context)?**
+We kwamen nog een bug tegen. Er waren dus bezoekers die soms om een of andere redenen door de hekken heen gaan.
 
+**Welke keuzemogelijkheden heb je?**
+* Het proberen op te lossen
+* Het erbij laten
+
+**Welke keuze heb je gemaakt?**
+We hebben het erbij gelaten.
+
+**Waarom heb je deze keuze gemaakt?**
+We konden het niet meer oplossen in de tijd die we hadden. We denken dat het te maken had met de directie map maar om daar naar te gaan kijken om het misschien op te kunnen lossen dan zouden we bijna weer opnieuw moeten beginnen en daar hebben we geen tijd meer voor.
 
 ---
 ## Stelling
