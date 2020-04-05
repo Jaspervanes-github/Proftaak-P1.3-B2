@@ -213,6 +213,8 @@ public class TerrainDemo extends Application {
                 if(timer>=2400){
                     timer = 2359;
                     setPaused(true);
+                    init(0);
+
                 }
             } else {
                 for (Visitor v : visitors) {
@@ -225,6 +227,7 @@ public class TerrainDemo extends Application {
                 if(timer<=0){
                     timer = 0;
                     setPaused(true);
+                    init(0);
                 }
             }
             this.gui.setTimerLabelText(timer);
