@@ -89,8 +89,12 @@ Enkele applicaties waar Json voor wordt gebruikt zijn:
 [https://stackshare.io/javafx](https://stackshare.io/javafx)
 
 https://www.sitepoint.com/google-maps-json-file/
+
 https://www.sitepoint.com/youtube-json-example/
+
 https://www.sitepoint.com/twitter-json-example/
+
 https://www.sitepoint.com/wordpress-json-example/
+
 https://www.sitepoint.com/database-json-file/
 
