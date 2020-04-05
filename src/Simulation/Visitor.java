@@ -322,13 +322,7 @@ public class Visitor {
 
     public void draw(Graphics2D g) {
         g.drawImage(this.image, (int) this.pos.getX(), (int) this.pos.getY(), null);
-//        if(this.performance != null) {
-//            if (this.performance.getStage().getStageName().equals("Links boven")) {
-//                for (int i = 0; i < this.tiles.size(); i++) {
-//                    g.drawString("" + this.tiles.get(i).getDirection(), (int) this.tiles.get(i).getPosition().getX(), (int) this.tiles.get(i).getPosition().getY());
-//                }
-//            }
-//        }
+
     }
 
     public ArrayList<Tile> getTiles() {

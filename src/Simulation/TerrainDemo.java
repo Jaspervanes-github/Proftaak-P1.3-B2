@@ -100,9 +100,7 @@ public class TerrainDemo extends Application {
         for (int i = 0; i < 30; i++) {
             Performance p = getRandomPerformance(timer);
             Visitor visitor = new Visitor(new Point2D.Double((int) 450, (int) 800 - (i * 10)), getTiles(p, false), p);
-//                Visitor visitor1 = new Visitor(new Point2D.Double((int) 450, (int) 800-(i*50)), this.directionMaps.get(this.targets.get(i%14)),new Artist("Piet",10, Genre.TECHNO));
             visitors.add(visitor);
-//                visitors.add(visitor1);
         }
 
         for (int i = 0; i < data.getArtists().size(); i++) {

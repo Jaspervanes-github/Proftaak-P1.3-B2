@@ -22,12 +22,6 @@ public class Logic {
         this.data = data;
         this.gui = gui;
 
-        //Test Values
-//        this.addPodia(new Stage("Heldeep", 200));
-//        this.addPodia(new Stage("Rampage", 200));
-//        this.addPodia(new Stage("Boiler Room", 200));
-//        this.addPodia(new Stage("Disco Snolly", 200));
-//        this.addPodia(new Stage("Techy Techno", 200));
     }
 
     public void setButtonLogic() {
