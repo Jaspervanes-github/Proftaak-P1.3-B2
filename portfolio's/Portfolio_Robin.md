@@ -12,6 +12,19 @@ Ik heb samen met Jasper gekeken naar dialog's en hoe die zouden werken in onze c
 
 Ik heb ook gekeken naar de tabel en de daarbij behorende rijen en colummen.
 
+**Wat is de situatie (context)?** 
+Ik had al wat code gemaakt voor de groep.
+
+**Welke keuzemogelijkheden heb je?**
+We konden ervoor kiezen om helemaal opnieuw te beginnen of we konden dit al gaan gebruiken
+
+**Welke keuze heb je gemaakt?**
+We hebben ervoor gekozen om het al te gebruiken
+
+**Waarom heb je deze keuze gemaakt?**
+We hebben die keuze gemaakt omdat het er al was. We wilde het gebruiken omdat het tijd scheelde.
+
+
 ![Foto van onze GUI](https://github.com/Jaspervanes-github/proftaak-P1.3-B2/blob/master/portfolio's/resources/Robin/Agenda_GUI_voorbeeld.png)
 
 ## Week 3
@@ -19,14 +32,40 @@ Ik heb samen met Dave gekeken naar  File I/O we hebben het geprobeerd alleen was
 
 Wij hebben ook gekeken naar het toevoegen van een performance waar artiesten/stages en tijden aan toegevoegd moesten worden, in eerste instantie werkte alleen de tijden maar aan het einde van deze week is het gelukt om de gehele performances toe te voegen. 
 
+**Wat is de situatie (context)?**
+File I/O en hoe we dat gaan gebruiken
+
+**Welke keuzemogelijkheden heb je?**
+* Om gelijk te beginnen met File I/O bij ons programma.
+* Om eerst een ander simpel programma te schrijven om het daar eerst uit te testen.
+
+**Welke keuze heb je gemaakt?**
+Om eerst een ander programma te maken en het daar te proberen.
+
+**Waarom heb je deze keuze gemaakt?**
+Dit leek ons makkelijker want zo konden de rest van de groep doorgaan met het maken van de agenda module.
+
 ## Week 4
 Ik ben bij het opstart college geweest en heb daar geluisterd naar Johan die het over het invoegen van een JSON file had. Hij nam hier het voorbeeld van een pacman map. Het was allemaal goed te volgen alleen vond ik het wel een grote stap. Maar vooral een goede en leuke uitdaging.
 
 Ik heb ook mijn portfolio bijgewerkt en alles in Markdown gezet. Ik gebruik hiervoor de internet web browser stackedit.io ik heb hiervoor gekozen omdat het erg makkelijk is te gebruiken en ook hoef ik hiervoor geen aparte applicatie te downloaden zoals visual studio.
 
-Ik heb vooral gekeken naar een andere manier van notatie en andere manieren van voorbeelden van de agenda. Ik heb daarvoor gekozen omdat onze eigen agenda module niet helemaal lekker liep. Ik kon beter een andere manier bedenken hoe we het konden oplossen en dan een andere module te maken die wel zou gaan werken bij de demo. Ik had er eentje gemaakt voor de demo en terwijl ik bezig was gingen Jasper en Jin te werk aan onze eigen agenda. Als uiteindelijk onze agenda gefixt was dan gingen we die gebruiken en niet mijn agenda. Dit vond ik niet erg omdat de agenda dan wel van ons alle was.
+Samen met Dave heb ik vooral gekeken naar een andere manier van notatie en andere manieren van voorbeelden van de agenda. Ik heb daarvoor gekozen omdat onze eigen agenda module niet helemaal lekker liep. Ik kon beter een andere manier bedenken hoe we het konden oplossen en dan een andere module te maken die wel zou gaan werken bij de demo. Ik had er eentje gemaakt voor de demo en terwijl ik bezig was gingen Jasper en Jin te werk aan onze eigen agenda. Als uiteindelijk onze agenda gefixt was dan gingen we die gebruiken en niet mijn agenda. Dit vond ik niet erg omdat de agenda dan wel van ons alle was.
 
 Uiteindelijk hebben we de keuze gemaakt om door te gaan met onze eerste agenda omdat ze het probleem toch opgelost kregen.
+
+**Wat is de situatie (context)?**
+Ik ben samen met Dave gaan kijken naar een andere manier van een agenda module. De andere liepen vast bij het de agenda module die we al hadden.
+
+**Welke keuzemogelijkheden heb je?**
+*  Door gaan werken aan de gene die we al hadden.
+* Aan een andere manier gaan kijken hoe we het kunnen doen.
+
+**Welke keuze heb je gemaakt?**
+Dave en ik zijn gaan kijken naar een andere manier.
+
+**Waarom heb je deze keuze gemaakt?**
+Het leek ons een goed idee om te kijken naar andere mogelijkheden in plaats van vast lopen bij de bestaande.
 
 ![Foto van de Backup](https://github.com/Jaspervanes-github/proftaak-P1.3-B2/blob/master/portfolio's/resources/Robin/Agenda_andere_versie.png)
 
@@ -34,11 +73,37 @@ Uiteindelijk hebben we de keuze gemaakt om door te gaan met onze eerste agenda o
 Ik heb samen met Jasper gekeken naar de feedback van de demo. Wij hebben hier dan ook het commentaar van onze Senior erin betrokken en vanuit daar zijn we de dingen gaan toevoegen die we nog niet hadden. Onze knoppen stonden ook nog een lelijk en onoverzichtelijk van onder. Er stonden 6 knoppen en in het tabje voor Artiesten stonden ook nog de knoppen voor Performance en vice versa. Jasper en ik hebben dit dus samen opgelost en zo gemaakt dat het op dezelfde manier staat in Artist en ook in Performance, nu staan dus de knoppen in het goede tabje.
 
 Ook hebben wij aan pop-ups gezeten. Wij hebben ervoor gekozen om een pop-up te maken zodat de gebruiker straks weet wat hij gedaan heeft. Wij hebben een pop-up gemaakt voor het toevoegen, verwijderen en het aanpassen van een Artist of Performance.
+
+**Wat is de situatie (context)?**
+Jasper en ik hebben gekeken om een pop-up toe te voegen wanneer je iets toevoegd of iets veranderd in de agenda module.
+
+**Welke keuzemogelijkheden heb je?**
+* We konden kiezen voor een pop-up
+* We konden ook kiezen voor een Label waar dan de aanpassing stond.
+
+**Welke keuze heb je gemaakt?**
+We hebben gekozen voor een Pop-up.
+
+**Waarom heb je deze keuze gemaakt?**
+We hebben daarvoor gekozen omdat het overzichtelijker is dan een Label, dit kopmt echt in je scherm dus je kan het niet missen.
  
 ## Week 6
 Ik ben bij het opstart college geweest van Johan waar hij uitleg gaf over de simulatie en hoe dat te werk ging. Hij had hier een voorbeeld van genomen waarbij er pacmans achter zijn muis aan gingen lopen. Het was allemaal goed te volgen maar ik had wel het gevoel dat ik er zelf nooit op gekomen was.
 
 Ik ben daarna bezig geweest met het toevoegen van de simulatie in onze agenda module hiervoor heb ik een aparte tab gemaakt voor de simulatie. Dit ging goed. Ik heb de code van Johan kunnen overnemen en kunnen gebruiken maar ik moest nog wel het een en het ander aanpassen.
+
+**Wat is de situatie (context)?**
+We wilde de simulatie maken maar we wisten nog niet hoe we die gingen implementeren
+
+**Welke keuzemogelijkheden heb je?**
+* De simulatie bij de rest te doen.
+* De simulatie op een apart programma te runnen.
+
+**Welke keuze heb je gemaakt?**
+We hebben gekozen om eerst de simulatie te maken zonder het agenda module, en daarna zouden we het gaan samenvoegen.
+
+**Waarom heb je deze keuze gemaakt?**
+Dit gaf ons rust om eerst op een ding te focussen en daarna de bestaande dingen samen te voegen.
 
 ![Foto van onze GUI](https://github.com/Jaspervanes-github/proftaak-P1.3-B2/blob/master/portfolio's/resources/Robin/Simulatie_Voorbeeld.png)
 
@@ -48,10 +113,27 @@ Ik ben bij het opstart college geweest van Johan waar hij uitleg gaf over path f
 Hierna kwamen wij als groep bij elkaar en heb ik taken verdeeld. Jasper en Jin zouden verder gaan zitten aan de JSON file, Davy zou verder gaan werken aan het Plan van Aanpak en Bart en ik zouden een soort distance map gaan maken met minder layers zodat het minder moeite was om die in te laden. Ik bedacht me toen dat het een goed idee zou zijn om van ons echte map een screenshot te maken. Zodat wij deze kunnen inladen zonder moeite.
 Dan zouden de poppetjes lopen op onze distance map en dan laden wij onze echte map waarvan we een screenshot hebben gemaakt later in zodat het lijkt alsof ze op de echte map lopen maar dat is helemaal niet zo. We hebben hiervoor gekozen zodat het minder performance kost van je computer. Een andere mogelijke was om ze allebij te laden maar we dachten dat het te veel zou vragen van je computer terwijl het helemaal niet spanned is om die echte map te laden. Bart en ik hebben ook objecten gemaakt in die tiled map zodat we die makkelijk konden pakken later in de JSON file. Toen Jasper en Jin klaar waren met het JSON konden we het testen en het werkte wel. 
 
+**Wat is de situatie (context)?**
+
+**Welke keuzemogelijkheden heb je?**
+
+**Welke keuze heb je gemaakt?**
+
+**Waarom heb je deze keuze gemaakt?**
+
 ## Week 8
 Wij hebben opstart college gehad online via teams. Daar konden we een beetje praten over hoe het zou gaan en wat het plan nu was in verband met de corona.
 
 Ik ging nu samen met Jasper aan de slag met de visitors maken. We hebben ervoor gezorg
+
+
+**Wat is de situatie (context)?**
+
+**Welke keuzemogelijkheden heb je?**
+
+**Welke keuze heb je gemaakt?**
+
+**Waarom heb je deze keuze gemaakt?**
 
 
 ---
