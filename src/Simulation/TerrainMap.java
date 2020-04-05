@@ -267,10 +267,8 @@ public class TerrainMap {
                         tiles.set(gid, tilemap.getSubimage(x, y, tileWidth, tileHeight));
 
                         gid++;
-                       // System.out.println(gid);
                     }
                 }
-//                System.out.println(this.tiles.size());
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -283,7 +281,6 @@ public class TerrainMap {
             if(layerInfo.getString("name").equals("Object Layer")){
                 this.target.add(new TargetLayer(layerInfo));
 
-//                System.out.println("In if statement map");
             }else if(layerInfo.getString("type").equals("tilelayer")) {
                 this.layers.add(new TiledLayer(layerInfo));
             }

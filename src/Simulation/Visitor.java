@@ -70,8 +70,8 @@ public class Visitor {
         }
         try {
             if (this.artist == null) {
-                this.imageUP1 = ImageIO.read(getClass().getResource("/images/UP.png"));
-                this.imageDOWN1 = ImageIO.read(getClass().getResource("/images/DOWN.png"));
+                this.imageUP1 = ImageIO.read(getClass().getResource("/images/DOWN.png"));
+                this.imageDOWN1 = ImageIO.read(getClass().getResource("/images/UP.png"));
                 this.imageRIGHT1 = ImageIO.read(getClass().getResource("/images/RIGHT.png"));
                 this.imageLEFT1 = ImageIO.read(getClass().getResource("/images/LEFT.png"));
 
@@ -107,7 +107,6 @@ public class Visitor {
     }
 
     public void update(ArrayList<Visitor> visitors, int speed, double timer) {
-//        System.out.println(timer);
         this.direction = getDirection();
         if (this.direction != null) {
 
@@ -183,13 +182,10 @@ public class Visitor {
                     this.tiles = td.getTiles(this.performance, false);
 
                 } else if (this.artist != null) {
-//                            System.out.println("Performance over");
 
                     this.performance = td.getRandomPerformance(this.artist, timer);
                     this.tiles = td.getTiles(this.performance, true);
 
-//                            System.out.println(this.tiles);
-//                            System.out.println(this.getDirection());
                 }
             }
         } else {

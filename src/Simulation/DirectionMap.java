@@ -16,8 +16,7 @@ public class DirectionMap {
         this.finished = new ArrayList<>();
         this.tiledMap = tiledMap;
         this.collision = tiledMap.getLayers().get(0).getCollision();
-//        System.out.println(collision);
-//        System.out.println("Out of constructor");
+
         this.next.add(new Tile());
         this.next.add(new Tile());
         this.next.add(new Tile());
@@ -26,19 +25,14 @@ public class DirectionMap {
     }
 
     public ArrayList<Tile> generateDirectionMap(Tile startPoint) {
-//        System.out.println("in method generate");
         ArrayList<Tile> tiles;
         Tile current = startPoint;
         this.finished.add(startPoint);
         this.toDo.add(startPoint);
         current.setDirection(Direction.STAY);
-////        System.out.println(this.toDo.element());
-//        System.out.println("Still no error");
 
         while (!this.toDo.isEmpty() && this.toDo.size() > 0) {
-//            System.out.println("in while");
             current = this.toDo.element();
-//            System.out.println(current);
 
             if (current == null && current != startPoint) {
                 this.toDo.add(current);
@@ -56,7 +50,6 @@ public class DirectionMap {
                 this.next.get(0).setDirection(Direction.LEFT);
                 this.finished.add(this.next.get(0));
                 this.toDo.add(this.next.get(0));
-//                System.out.println("Left");
             }
             if (!contains(this.finished, this.next.get(1)) && this.next.get(1).getPosition().getX() < this.tiledMap.getWidth() * this.tiledMap.getTileWidth() &&
                     this.next.get(1).getPosition().getY() < this.tiledMap.getHeight() * this.tiledMap.getTileHeight() &&
@@ -64,7 +57,6 @@ public class DirectionMap {
                 this.next.get(1).setDirection(Direction.RIGHT);
                 this.finished.add(this.next.get(1));
                 this.toDo.add(this.next.get(1));
-//                System.out.println("right");
 
             }
             if (!contains(this.finished, this.next.get(2)) && this.next.get(2).getPosition().getX() < this.tiledMap.getWidth() * this.tiledMap.getTileWidth() &&
@@ -73,7 +65,6 @@ public class DirectionMap {
                 this.next.get(2).setDirection(Direction.UP);
                 this.finished.add(this.next.get(2));
                 this.toDo.add(this.next.get(2));
-//                System.out.println("down");
 
             }
             if (!contains(this.finished, this.next.get(3)) && this.next.get(3).getPosition().getX() < this.tiledMap.getWidth() * this.tiledMap.getTileWidth() &&
@@ -82,7 +73,6 @@ public class DirectionMap {
                 this.next.get(3).setDirection(Direction.DOWN);
                 this.finished.add(this.next.get(3));
                 this.toDo.add(this.next.get(3));
-//                System.out.println("up");
 
             }
             this.toDo.poll();

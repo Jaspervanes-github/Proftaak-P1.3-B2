@@ -303,7 +303,6 @@ public class TerrainDemo extends Application {
             }
         } else {
             if (p == null) {
-//                System.out.println("Artist thirst");
                 return getThirstLocation();
 
             } else {

@@ -95,7 +95,6 @@ public class Logic {
                                 if (startTime < endTime) {
                                     Performance performance = new Performance(startTime, endTime, artist, s);
 
-                                    System.out.println(this.data.getPerformances());
                                     this.data.getPerformances().add(performance);
                                     dialog.close();
 
@@ -122,7 +121,6 @@ public class Logic {
                 try {
                     gui.file_io.writeFilePerformances("Performances.txt", this.data.getPerformances());
                 } catch (IOException e) {
-                    System.out.println("IO Exception");
                     e.printStackTrace();
                 }
             });
@@ -203,7 +201,6 @@ public class Logic {
                 try {
                     gui.file_io.writeFileArtist("Artists.txt", this.data.getArtists());
                 } catch (IOException e) {
-                    System.out.println("IO Exception");
                     e.printStackTrace();
                 }
 
@@ -275,7 +272,6 @@ public class Logic {
                 try {
                     gui.file_io.writeFileStage("Stages.txt", this.data.getStages());
                 } catch (IOException e) {
-                    System.out.println("IO Exception");
                     e.printStackTrace();
                 }
 
@@ -293,7 +289,6 @@ public class Logic {
                 try {
                     gui.file_io.writeFilePerformances("Performances.txt", this.data.getPerformances());
                 } catch (IOException e) {
-                    System.out.println("IO Exception");
                     e.printStackTrace();
                 }
 
@@ -321,7 +316,6 @@ public class Logic {
                 try {
                     gui.file_io.writeFileArtist("Artists.txt", this.data.getArtists());
                 } catch (IOException e) {
-                    System.out.println("IO Exception");
                     e.printStackTrace();
                 }
                 Dialog dialogDeleted = new Dialog();
@@ -348,7 +342,6 @@ public class Logic {
                 try {
                     gui.file_io.writeFileStage("Stages.txt", this.data.getStages());
                 } catch (IOException e) {
-                    System.out.println("IO Exception");
                     e.printStackTrace();
                 }
 
@@ -448,7 +441,6 @@ public class Logic {
                     try {
                         gui.file_io.writeFilePerformances("Performances.txt", this.data.getPerformances());
                     } catch (IOException e) {
-                        System.out.println("IO Exception");
                         e.printStackTrace();
                     }
 
@@ -523,7 +515,6 @@ public class Logic {
                     try {
                         gui.file_io.writeFileArtist("Artists.txt", this.data.getArtists());
                     } catch (IOException e) {
-                        System.out.println("IO Exception");
                         e.printStackTrace();
                     }
                     dialog.close();
@@ -587,7 +578,6 @@ public class Logic {
                     try {
                         gui.file_io.writeFileStage("Stages.txt", this.data.getStages());
                     } catch (IOException e) {
-                        System.out.println("IO Exception");
                         e.printStackTrace();
                     }
                     dialog.close();
@@ -641,7 +631,6 @@ public class Logic {
         this.gui.buttonBackwards.setOnAction(e -> {
             //set isForward to false
             this.gui.getTerrainDemo().setForward(false);
-//            System.out.println("set to false");
         });
 
         this.gui.resetButton.setOnAction(e->{

@@ -1,38 +1,4 @@
-package Simulation;//import java.awt.image.BufferedImage;
-//
-//
-//public class Tile {
-//
-//    private int width;
-//    private int height;
-//    private BufferedImage image;
-//    private int gid;
-//
-//    public Tile(BufferedImage image, int gid) {
-//        this.image = image;
-//        this.gid = gid;
-//        if (image != null) {
-//            this.width = image.getWidth();
-//            this.height = image.getHeight();
-//        }
-//    }
-//
-//    public int getWidth() {
-//        return width;
-//    }
-//
-//    public int getHeight() {
-//        return height;
-//    }
-//
-//    public BufferedImage getImage() {
-//        return image;
-//    }
-//
-//    public int getGid() {
-//        return gid;
-//    }
-//}
+package Simulation;
 
 import javax.json.JsonArray;
 import javax.json.JsonObject;
@@ -82,8 +48,7 @@ public class TiledLayer {
                 }else{
                     map[y][x] = 1222;
                 }
-//                map[y][x] = jsonData.getJsonArray("data").getInt(i);
-                //System.out.println(jsonData.getJsonArray("data").getInt(i));
+
                 i++;
             }
         }
@@ -99,7 +64,6 @@ public class TiledLayer {
                 if(map[y][x] == 0)
                     continue;
 
- //               System.out.println(tiles.get(map[x][y]));
 
                 g.drawImage(
                         tiles.get(map[y][x]),
