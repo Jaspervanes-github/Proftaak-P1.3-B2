@@ -103,5 +103,22 @@ Het is niet slecht om een simulatie te maken. Het kan geen kwaad, alleen maar go
 ---
 
 # JSON
+**Wat is JSON?**
+JSON is een manier van data weergegeven zodat het leesbaar is voor de mensen. Json is oorspronkelijk ontstaan uit de programmeertaal javascript maar nu is het een dataformaat die velen bedrijven en mensen gebruiken voor hun code.
 
 
+
+
+
+
+## Voorbeelden van websites
+
+Twitter maakt gebruik van JSON
+[Dit is een link van twitter zelf waar ze laten zien dat ze het gebruiken](https://developer.twitter.com/en)
+
+Reddit maakt ook gebruikt van JSON
+[Dit is een link van reddit zelf waar ze laten zien dat ze het gebruiken](https://www.reddit.com/dev/api)
+
+Imgur maakt ook gebruikt van JSON
+[Dit is een link van imgur zelf waar ze zeggen dat ze JSON gebruiken](https://api.imgur.com/)
+[Hier is een link die imgur zelf ook geeft](https://api.imgur.com/3/gallery.json)
