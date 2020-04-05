@@ -5,14 +5,23 @@ Welkom op het portfolio van Jasper van Es, dit portfolio wordt gemaakt in opdrac
 
 # InhoudsOpgave
 [Week2](#Week-2)
+
 [Week3](#Week-3)
+
 [Week4](#Week-4)
+
 [Week5](#Week-5)
+
 [Week6](#Week-6)
+
 [Week7](#Week-7)
+
 [Week8](#Week-8)
+
 [Week9](#Week-9)
+
 [Stelling](#Stelling)
+
 
 
 ## Week 2
@@ -49,12 +58,16 @@ Deze week ben ik begonnen met het werken aan het PvA. Ik ben begonnen aan hoofds
 ### Keuzes
 Deze week waren er niet veel keuzes om te maken. Alles was vrij duidelijk, iedereen wist wat er moest gebeuren, en hoe wij dat wilde hebben. Ik heb wel de keuze gemaakt om een pop-up te laten verschijnen als je een handeling doet in plaats van dat je niks te zien krijgt.
 
+<img src="https://github.com/Jaspervanes-github/Proftaak-P1.3-B2/blob/master/portfolio's/resources/Jasper/Pop-Up.png" width="400" height="200">
+
 ## Week 6
 ### Bijdrage
 Deze week ben ik begonnen met het maken van de distancemap. Deze ochtend hadden we bij de opstart een link naar een site gekregen, waar psuedocode staat voor het maken van zo'n map. Ik heb dit zo goed mogelijk proberen om te zetten naar java code. Hiermee kwam ik een aardig eind, ik had het gedeeltelijk werken, maar nog niet helemaal. Ook heb ik deze week Dave geholpen met het maken van een extra tabje voor de stages. De bedoeling was dat we net als voor artiesten, en performances ook stages konden toevoegen, deleten en editten. Dit is uiteindelijk gelukt, we hebben ook de file IO hieraan kunnen koppelen.
 
 ### Keuzes
 We hebben gekozen om een extra tabje toe te voegen voor stages, omdat  dit een vereiste was. We doen verder niks met de stages, omdat we anders ook heel de map aan moeten passen. Ook hebben we gekozen om een distance map te maken, omdat wij hiervoor psuedo code gekregen hadden, en het ons dus makkelijker leek. 
+
+<img src="https://github.com/Jaspervanes-github/Proftaak-P1.3-B2/blob/master/portfolio's/resources/Jasper/tab stage.png" width="600" height="800">
 
 ## Week 7
 ### Bijdrage
@@ -63,6 +76,8 @@ Deze week heb ik de distancemap omgegooid naar een directionmap, hier heb ik eig
 ### Keuzes
 Deze week hadden we een aantal keuzes om te maken. Allereerst hebben we overlegd hoe we het aan gaan pakken met het project nu we allemaal thuis zitten door het coronavirus. We hebben besloten om met zn allen in een call in Microsoft Teams te gaan, en zo te communiceren. Ook hebben we besloten om elke maandag en vrijdag een projectdag te houden. Meestal duurt die projectdag van 11:00-17:00. Daarnaast heb ik ook de groep overgehaald om in plaats van een distancemap, een directionmap te gebruiken. Hier heb ik voor gekozen, omdat dit een hoop rekenkracht scheelt tijdens het runnen van het programma. Het voordeel van een directionmap ten opzichte van een distancemap, is dat je bij de directionmap van te voren alles inlaad, en tijdens het runnen alleen maar hoeft te kijken welke kant je op moet. Bij een distancemap moet je namelijk de tegels van de buren vergelijken met de tegel waar je op dit moment opstaat, en kijken welke buur de kleinste distnace tot de target heeft.
 
+<img src="https://github.com/Jaspervanes-github/Proftaak-P1.3-B2/blob/master/portfolio's/resources/Jasper/Directionmap.png" width="800" height="400">
+
 ## Week 8
 ### Bijdrage
 In deze week heb ik gewerkt aan de pathfinding. Bij de pathfinding was het de bedoeling dat de simulant keek naar de directie vaan de tegel waar hij op dat moment op staat, en die kant op begon te lopen, en ook zijn image aanpaste aan de hand van de richting die hij op liep. Tijdens het testen van de pathfinding kwam ik erachter dat de collisionmap niet helemaal goed gegenereed was, hier zaten dus nog een aantal bugs in. Deze bugs heb ik eruit kunnen krijgen, en toen werkte de pathfinding prima. Ook heb ik deze week de knoppen voor de simulatie gemaakt, en redelijk werkend kunnen krijgen.
@@ -70,12 +85,17 @@ In deze week heb ik gewerkt aan de pathfinding. Bij de pathfinding was het de be
 ### Keuzes
 Deze week waren er eigenlijk geen belangrijke keuzes.
 
+<img src="https://github.com/Jaspervanes-github/Proftaak-P1.3-B2/blob/master/portfolio's/resources/Jasper/directie bepalen.png" width="800" height="400">
+
 ## Week 9
 ### Bijdrage
 Deze week heb ik gewerkt aan het samenvoegen van de Agenda module en de Simulatie module, ook heb ik verder gewerkt aan het pathfinding. Het samenvoegen koste niet zo heel veel tijd, omdat we al een tabje hadden voor de simulatie, en we dus alleen maar de inhoud van de tabje hoefde te wijzigen. Wat de pathfinding betreft kooste het wel veel tijd. Ik heb ervoor gezorgd dat de simulanten nu naar de juiste plek gaan op de het juiste tijdstip. De beginnen op de stage waar zij hun eerste performance hebben, en gaan weg als de performance klaar is. De visitors gaan naar een random performance gebaseerd op de populariteit van een artiest. Een artiest met populariteit 10 moet dus theoretisch 10x zoveel mensen hebben als een artiest met populariteit 1. Als er geen performances zijn op dit moment, of de artiest hoeft op dit moment niet op te treden, dan gaan ze drinken halen bij 1 van de 3 cafés. Deze week heb ik ook geimplementeerd dat de artiesten en visitors op een random moment eten of drinken gaan halen, en naar de wc gaan. Dit doen ze als de hunger-, thirst- of peevalue 100 heeft bereikt. Als laatst heb ik er nog voor gezorgd dat de artiesten visitors heen en weer lopen als zij op hun targetpositie zijn, en heb ik ervoor gezorgd dat de artiesten nu een andere image hebben dan de visitors, en dat de animatie van het lopen er nu ook soepel uitziet. 
 
 ### Keuzes
 Deze week hadden we best wat keuzes te maken. We hebben er bijvoorbeeld voor gekozen om de simulanten gewoon door elkaar heen te kunnen laten lopen. Hier hebben we voor gekozen, omdat als wij het zouden maken dat dit niet kan, dit weer nieuwe problemen zou brengen. Bijvoorbeeld dat simulanten vast komen te zitten in muren, en aangezien de tijd die we nog hadden hebben we dit dus niet gedaan. Ook was er nog iets kleins dat de simulanten op het hek kunnen lopen, dit is een klein foutje bij het genereren van de collisionmap. Maar aangezien de tijd hebben we ook deze bug laten zitten, omdat het verder geen problemen veroorzaakt, maar er alleen soms een beetje gek uitziet.
+
+<img src="https://github.com/Jaspervanes-github/Proftaak-P1.3-B2/blob/master/portfolio's/resources/Jasper/random performance.png" width="800" height="400">
+<img src="https://github.com/Jaspervanes-github/Proftaak-P1.3-B2/blob/master/portfolio's/resources/Jasper/values.png" width="800" height="400">
 
 ## Stelling
 
