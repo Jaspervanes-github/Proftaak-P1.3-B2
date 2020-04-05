@@ -7,7 +7,6 @@ Dit portfolio zal reflecteren op de geleverde bijdrage en mogelijke verbeterpunt
 [Introductie](#introductie)
 
 [Week 2](#week-2)
-
 [Week 3](#week-3)
 
 [Week 4](#week-4)
