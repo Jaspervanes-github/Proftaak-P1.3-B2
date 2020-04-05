@@ -25,7 +25,7 @@ Het begin van deze periode verliep al een stuk gemakkelijker en socialer dan de 
 
 Op de eerste dag is er een goede rolverdeling gemaakt waaruit is gebleken dat ik de planner van het groepje ben geworden. Dus heb ik een planning gemaakt voor de eerste week. Het projectkantoor is ingericht met Jin. Ook is er een Style Guide gemaakt. Het ontwerp van de agenda heb ik binnen Balsamique gemaakt. Wij hebben ook alvast de keuze gemaakt om te oefenen met GIT en wij hebben een PVA gemaakt op deze dag.
 
-![Foto van de agenda](./Resources/Dave/Agenda.png "Agenda ontwerp")
+![Foto van de agenda](https://github.com/Jaspervanes-github/Proftaak-P1.3-B2/blob/master/portfolio's/resources/Dave/Agenda.png "Agenda ontwerp")
 
 ### Keuzes
 Uiteraard had ik aan het begin van de periode kunnen afwachten tot er vanuit hun iets gestuurd werd. Maar ik had zelf geen zin in een groepje wat alleen maar af blijkt te wachten op de reactie van anderen. Om deze reden heb ik de groepsgenoten zelf een mail gestuurd met de vraag om alvast een succesvolle start te maken. Daarmee heb ik ook gelijk de agenda voor de volgende vergadering gemaakt.
@@ -55,7 +55,7 @@ Allereerst vond ik het klassendiagram niet heel erg goed en na het seniorgesprek
 ### Bijdrage
 In deze week heb ik samen met robin gekeken naar het toevoegen van een performance waar artiesten/stages en tijden aan toegevoegd moesten worden, in eerste instantie werkte alleen de tijden maar aan het einde van deze week is het gelukt om de performances toe te voegen. Ook heb ik mij gericht op het maken van de plattegrond met Tiled, hieronder zul je meer zien van deze creatie. Hierna hebben Robin en ik een poging gedaan om een foto 
 ### Keuzes
-![Foto van de plattegrond](./Resources/Dave/Map.jpg "Terrain")
+![Foto van de plattegrond](https://github.com/Jaspervanes-github/Proftaak-P1.3-B2/blob/master/portfolio's/resources/Dave/Map.jpg "Terrain")
 
 Bij het ontwerpen van het terrein heb ik rekening gehouden met de verschillende stages en de ruimtes die hiervoor benodigd waren. We hebben gekozen voor 4 stages bijbehorende bij de 4 grote velden. De simulatie heeft ook een plaats waar de simulanten kunnen uitrusten/eten of toiletteren.
 Of de simulanten volledig gebruik gaan maken van de geplaatste faciliteiten is nog niet 100% zeker, maar we hebben er dus wel voor gekozen om het mogelijk te maken om deze te plaatsen.
@@ -78,7 +78,7 @@ Ook heb ik deze week nog gewerkt aan het ontwerp van de simulatie, dit heb ik bi
 ### Keuzes
 Binnen deze week hebben wij een keuze moeten maken voor het gebruiken van 2 verschillende applicaties of 1 all-in-one. Allereerst hebben wij gekozen om gebruik te maken van 2 verschillende applicaties. De bedoeling was om met twee modulen te werken zoals Etienne bij 2D graphics heeft laten zien dat dat mogelijk is. Later op de projectdag hebben wij gezien dat het best wel lastig gaat en dat de uitleg op internet niet voldoende was om dit succesvol te implementeren. Dan komen wij uit op het punt van het simulatie ontwerp. Hierin hebben wij vervolgens al besloten het programma toch uit te gaan voeren binnen 1 applicatie doormiddel van verschillende tabjes. Dit is gekozen omdat de uitwerking hiervan toch gemakkelijker is voor nu.
 
-![foto van simulatie ontwerp](./Resources/Dave/Simulatie-Ontwerp.png "Simulatie ontwerp")
+![foto van simulatie ontwerp](https://github.com/Jaspervanes-github/Proftaak-P1.3-B2/blob/master/portfolio's/resources/Dave/Simulatie-Ontwerp.png "Simulatie ontwerp")
 
 ### Reflectie
 
@@ -214,12 +214,12 @@ Alvorens het onderzoeken van deze stelling is mijn eerste mening dat JavaFX niet
 
 Om te onderzoeken of bedrijven gebruik maken van JavaFX ben ik als volgt aan de slag gegaan, allereerst heb ik op internet gezocht naar "real-world" applicaties die gemaakt zijn op basis van JavaFX componenten. In dit onderzoek wordt gekeken naar verschillende applicaties uit [deze link](https://jaxenter.com/20-javafx-real-world-applications-123653.html). Het bedrijf Ai-solutions heeft voor ruimte reis organisaties het programma "Deep Space Trajectory Explorer" ontwikkelt, hierin hebben zij eigen JavaFX tools gebouwdt die met hoge snelheid en grote datasets kan werken. In de video fragmenten op de site is een menu te zien die doormiddel van het JavaFX framework in elkaar is gezet. hieruit blijkt dat grote organisaties weldegelijk gebruik maken van JavaFX.
 
-![foto van simulatie ontwerp](./Resources/Dave/DSTE-PIC-ONE.png "Deep Space Trajectory Explorer")
+![foto van simulatie ontwerp](https://github.com/Jaspervanes-github/Proftaak-P1.3-B2/blob/master/portfolio's/resources/Dave/DSTE-PIC-ONE.png "Deep Space Trajectory Explorer")
 
 Ook in de gezondheidssector wordt er gebruik gemaakt van het framework, een voorbeeld hiervan is het programma FORUM, dit programma wordt gebruikt door het bedrijf Carl Zeiss Meditec AG. Het is ontwikkelt door Saxonia Systems AG en het is een mix tussen Swing en JavaFX die gemigreerd wordt.
 Voor dit pgramma was het belangrijk dat beiden technologien samen gebruikt konden worden zolang de migratie nog niet afgerond is. Dit programma is ontworpen om een duidelijk beeld te geven van de ooggezondheid van patienten. Binnen het programma kunnen verschillende documenten van patienten geopend worden via een mix van Swing en JavaFX aspecten. 
 
-![foto van simulatie ontwerp](./Resources/Dave/FORUM-PIC-ONE.jpg "FORUM")
+![foto van simulatie ontwerp](https://github.com/Jaspervanes-github/Proftaak-P1.3-B2/blob/master/portfolio's/resources/Dave/FORUM-PIC-ONE.jpg "FORUM")
 
 Bij het onderzoeken van deze stelling is naar boven gekomen dat meer bedrijven gebruik maken van JavaFX dan aan het begin van het onderzoek mijn mening was.
 
