@@ -22,7 +22,7 @@ Welkom op het portfolio van Jasper van Es, dit portfolio wordt gemaakt in opdrac
 
 [Stelling](#Stelling)
 
-[Json Applicaties](#Json Applicaties)
+[Json Applicaties](#Json_Applicaties)
 
 
 
@@ -103,26 +103,54 @@ Deze week hadden we best wat keuzes te maken. We hebben er bijvoorbeeld voor gek
 ## Stelling
 
 ### Introductie
-
+Voor deze opdracht was het de bedoeling dat de student over één van de stellingen een mening zou uiten, en zou onderbouwen door middel van een aantal artikelen. Aan het eind zal de student terugkijken op de eerst gegeven mening. Mijn stelling is: "In het bedrijfsleven wordt gebruik gemaakt van JavaFX". Ik denk zelf dat bedrijven weining gebruik maken van JavaFX, en dat ze hun eigen framework maken. Ik denk dit, omdat het framework hierdoor perfect past bij het product wat het bedrijf aan het ontwikkelen is, omdat zij dit zelf ontworpen hebben.
 
 ### Onderzoek
+Ik ben op de volgende manier te werk gegaan, allereerst ben ik op internet gaan zoeken naar goede en betrouwbare bronnen. Daarna heb ik de informatie die ik nodig had uit de bronnen gehaald, en kort opgeschreven. Toen ben ik begonnen met het onderbouwen van mijn mening.
 
+Uit [dit artikel](https://www.transfer-solutions.com/javafx-is-growing/) blijkt dat met JavaFX heel efficiënt robuuste en gebruiksvriendelijke applicaties te bouwen zijn met allerlei componenten: grafieken, tabellen, 3D-figuren en animaties, voortgangsbalkjes, etc. Voor een bedrijf is het dus erg goedkoop om een applicatie te bowuen en daarbij gebruik te maken van JavaFX.
 
 ### Conclusie
-
+Bedrijven gebruiken weldegelijk JavaFX, maar zullen hier vaak een uitbereiding op maken. Dit doen zij zodat het dan helemaal naar hun zin is.
 
 ### Bronvermelding
-
+https://www.transfer-solutions.com/javafx-is-growing/
 
 ## Json Applicaties
 
 ### Introductie
+Binnen dit hoofdstuk wordt er door de student onderzocht welke applicaties gebruik maken van het Json formaat. 
+Allereerst zal ik uitleggen wat Json is, JSON of JavaScript Object Notation, is een gestandaardiseerd gegevensformaat. JSON maakt gebruik van voor de mens leesbare tekst in de vorm van data-objecten die bestaan uit een of meer attributen met bijbehorende waarden. Het wordt hoofdzakelijk gebruikt voor uitwisseling van data tussen server en webapplicatie, als een alternatief voor XML.
 
+Een voorbeeld van Json code:
+ {
+      "Naam":"JavaScript",
+      "Type":"Programmeertaal",
+      "isProgrammeertaal":true,
+      "Jaar":1995
+   }
 
 ### Applicaties
+De onderstaande applicaties maken gebruik van het Json formaat. Hieronder zal ook vermeld worden waarvoor de applicaties dit formaat gebruiken.
 
+- Minecraft 
+    - Binnen Minecraft wordt er gebruik gemaakt om verschillende typen data op te slaan. Denk hierbij aan de tekst in boek objecten voor in het spel. De data voor het gebruikersprofiel.
+    Informatie over gedownloadde versies van het spel.
+    - Voor meer informatie: https://minecraft.gamepedia.com/JSON#cite_note-1
+
+- Office
+    - De apps van het office pakket maken ook allemaal gebruik van Json. Het wordt bijvoorbeeld gebruikt voor de opmaak van lijsten.
+    
+- Twitter
+  - Twitter zelf heeft een tweet gemaakt waarin ze laten zien dat ze Json gebruiken om de data van tweets op te slaan.
 
 ### Conclusie
+Er zijn een hoop applicaties die gerbuik maken van Jsom, maar ze zullen dit allemaal net op een andere manier gebruiken
 
 
 ### Bronvermelding
+https://nl.wikipedia.org/wiki/JSON
+https://minecraft.gamepedia.com/JSON#cite_note-1
+https://support.microsoft.com/nl-nl/office/opmaken-van-lijstweergaven-met-json-f737fb8b-afb7-45b9-b9b5-4505d4427dd1?ui=nl-nl&rs=nl-nl&ad=nl
+https://developer.twitter.com/en
+
