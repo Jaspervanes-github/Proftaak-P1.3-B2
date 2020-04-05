@@ -1,6 +1,6 @@
 # Portfolio Bart van Gool
 
-Dit portfolio zal reflecteren op de geleverde bijdrage en mogelijke verbeterpunten door Bart van gool bij het project dat door Avans Hogeschool wordt aangeboden. Dit project zal plaatsvinden in periode 1.3 van het collegejaar 2019.
+Dit portfolio zal reflecteren op de geleverde bijdrage en mogelijke verbeterpunten door Bart van gool bij het project dat door Avans Hogeschool wordt aangeboden. Dit project zal plaatsvinden in periode 1.3 van het collegejaar 2019 en zal bestaan uit een agenda module met een simulatie voor een festivalplanner.
 
 # Inhoudsopgave
 
