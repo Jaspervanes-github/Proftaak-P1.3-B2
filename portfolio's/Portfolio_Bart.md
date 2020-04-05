@@ -46,6 +46,7 @@ Week 6 stond in het teken van pathfinding. Omdat hier weer met tiled gewerkt moc
 ## Week 7
 
 In week zeven konden we niet meer fysiek samenzitten, wel hebben we de hele maandag aan project gezeten alsof het een projectdag was. Hier heb ik de json file die gelinked is aan de targetlayer toegevoegd en aan de hand van de waarden van de tiles binnen de gebruikte tileset bepaald op welke tiles een object wel en op welke niet gelopen mag worden. Bij deze tiles hebben we ook onderscheid gemaakt tussen artiesten en bezoekers. In deze week had ik de keuze om de targetlayer te perfectioneren of eerst te proberen deze te implementeren in de code. In samenwerking met de groep heb ik de targetlayer geïmplementeerd, hieronder is een voorbeeld van de array van de verschillende tiles  uit de targetlayer, Later in deze array zullen de waarden wel van elkaar verschillen om aan te geven welke target op welke tile ligt.
+
 ![figuur 3](https://github.com/Jaspervanes-github/Proftaak-P1.3-B2/blob/master/portfolio's/resources/Bart/code.png)
 
 ## Week 8
@@ -71,15 +72,22 @@ Json, ook wel JavaScript Object Notation genoemd, is een gestandaardiseerde gege
 In de volgende [link]((https://stackshare.io/json)) is te zien dat er enorm veel bedrijven gebruik maken van Json en dat het een welbekende format is voor bedrijven.
 Enkele applicaties waar Json voor wordt gebruikt zijn:
 [Google maps](https://www.sitepoint.com/google-maps-json-file/)
+
 [Youtube](https://www.sitepoint.com/youtube-json-example/)
+
 [Twitter](https://www.sitepoint.com/twitter-json-example/)
+
 [Wordpress](https://www.sitepoint.com/wordpress-json-example/)
+
 [Database](https://www.sitepoint.com/database-json-file/)
 
 ## Bronvermelding
 [https://www.oracle.com/technical-resources/articles/java/casa.html](https://www.oracle.com/technical-resources/articles/java/casa.html)
+
 [https://openjfx.io/](https://openjfx.io/)
+
 [https://stackshare.io/javafx](https://stackshare.io/javafx)
+
 https://www.sitepoint.com/google-maps-json-file/
 https://www.sitepoint.com/youtube-json-example/
 https://www.sitepoint.com/twitter-json-example/
