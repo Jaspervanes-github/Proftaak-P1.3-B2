@@ -22,6 +22,9 @@ Welkom op het portfolio van Jasper van Es, dit portfolio wordt gemaakt in opdrac
 
 [Stelling](#Stelling)
 
+[Json Applicaties](#Json Applicaties)
+
+
 
 
 ## Week 2
@@ -80,7 +83,7 @@ Deze week hadden we een aantal keuzes om te maken. Allereerst hebben we overlegd
 
 ## Week 8
 ### Bijdrage
-In deze week heb ik gewerkt aan de pathfinding. Bij de pathfinding was het de bedoeling dat de simulant keek naar de directie vaan de tegel waar hij op dat moment op staat, en die kant op begon te lopen, en ook zijn image aanpaste aan de hand van de richting die hij op liep. Tijdens het testen van de pathfinding kwam ik erachter dat de collisionmap niet helemaal goed gegenereed was, hier zaten dus nog een aantal bugs in. Deze bugs heb ik eruit kunnen krijgen, en toen werkte de pathfinding prima. Ook heb ik deze week de knoppen voor de simulatie gemaakt, en redelijk werkend kunnen krijgen.
+In deze week heb ik gewerkt aan de pathfinding. Bij de pathfinding was het de bedoeling dat de simulant keek naar de directie van de tegel waar hij op dat moment op staat, en die kant op begon te lopen, en ook zijn image aanpaste aan de hand van de richting die hij op liep. Tijdens het testen van de pathfinding kwam ik erachter dat de collisionmap niet helemaal goed gegenereed was, hier zaten dus nog een aantal bugs in. Deze bugs heb ik eruit kunnen krijgen, en toen werkte de pathfinding prima. Ook heb ik deze week de knoppen voor de simulatie gemaakt, en redelijk werkend kunnen krijgen.
 
 ### Keuzes
 Deze week waren er eigenlijk geen belangrijke keuzes.
@@ -99,4 +102,27 @@ Deze week hadden we best wat keuzes te maken. We hebben er bijvoorbeeld voor gek
 
 ## Stelling
 
+### Introductie
 
+
+### Onderzoek
+
+
+### Conclusie
+
+
+### Bronvermelding
+
+
+## Json Applicaties
+
+### Introductie
+
+
+### Applicaties
+
+
+### Conclusie
+
+
+### Bronvermelding
