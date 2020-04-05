@@ -53,3 +53,55 @@ Wij hebben opstart college gehad online via teams. Daar konden we een beetje pra
 
 Ik ging nu samen met Jasper aan de slag met de visitors maken. We hebben ervoor gezorg
 
+
+---
+## Stelling
+“In het bedrijfsleven wordt steeds meer in software gesimuleerd”
+Door: Robin Koedood
+Opleiding: Technische Informatica
+Klas: B
+Studentnummer: 2151018
+E-mail adres: [jj.koedood1@student.avans.nl](mailto:jj.koedood1@student.avans.nl)
+
+Ik ga het over deze stelling hebben. 
+Ik denk dat in het bedrijfsleven inderdaad steeds meer gebruik gaan maken van simulaties. 
+
+**Inleiding**
+Wij moeten voor school een individueel verslag maken met daarin een reflectie, inclusief onderbouwing, op één van de volgende stellingen:
+* “In het bedrijfsleven wordt gebruik gemaakt van JavaFX”,
+* "In het bedrijfsleven wordt steeds meer in software gesimuleerd”
+
+Ik heb gekozen voor de stelling "In het bedrijfsleven wordt steeds meer in software gesimuleerd”.
+Ik heb hiervoor een soort onderzoek gedaan naar simulaties, ik dacht na over wanneer je een simulatie kan gebruiken, ik dacht na over andere vakgebieden en waarop een simulatie lijkt, en ook heb ik gekeken naar de voordelen en nadelen van de simulaties.
+
+**Wat is een simulatie?**
+Een simulatie is een voorbeeld van hoe het kan zijn in het echt. Meestal is het ook visueel. Een simulatie laat zien wat er allemaal gaat gebeuren en wat er gaat veranderen. Een simulatie hoeft niet per se een computer simulatie te zijn. Een simulatie kan meerdere dingen zijn. Als je kijkt naar het weer bericht op het nieuws dan denk je niet gauw dat het een voorspelling is. Eigenlijk is het geen voorspelling wat je ziet maar een simulatie. Simulaties zijn er dus meer dan dat we denken.
+
+Wij moesten ook een simulatie maken voor ons product. Als wij dit product nu laten zien. Dan kunnen we ook laten zien wat er gaat gebeuren. We kunnen laten zien wat er gebeurt als de klant gegevens invult. Op deze manier kan de klant zien waar er misschien problemen kunnen ontstaan voor in het echt.
+
+Architecten hebben een visualisatie programma's om te laten zien aan de klant hoe het er in het echt uitkomt te zien. Dit hebben de architecten zodat de klant kan zien hoe het eruit gaat zien.
+
+Formule 1 teams maken gebruik van een simulatie om te kijken hoe aerodynamisch hun wagen is.
+
+Ik ben van mening dat een simulatie een visualisatie programma is. Je laat zien waar het fout kan gaan en wat je kan met weinig kosten of problemen, potentiele oplossingen toe passen om te kijken of de fouten en problemen dan nog steeds voorkomen. Doordat je de fouten en problemen kan voorkomen door de potentiele oplossingen toe te passen maak je automatisch een beter product. 
+
+**Voordelen**
+
+* Een simulatie kan ervoor zorgen dat je voor alles voorbereid bent omdat je het eigenlijk al gedaan hebt.
+* Een simulatie kan ervoor zorgen dat je het gene al een keer hebt gedaan in een gecontroleerde omgeving en dat kan dan uitgevoerd worden zonder de werkelijkheid te beïnvloeden. De lessen die uit een simulaite worden geleerd kunnen dan worden gebruikt om in de werkelijkheid verstandige beslissingen te nemen en fouten te voorkomen
+
+**Nadelen**
+* Een goede simulatie maken kost veel tijd.
+* Een goede simulatie maken kost ook veel geld.
+* Een simulatie kan er misschien wel voor zorgen dat je duizenden scenario's hebt gedaan en geoefend maar er kan er maar eentje afspelen en soms is dan de moeite voor niks geweest.
+
+
+**Conclusie**
+Ik denk dat het goed is om een simulatie te hebben en te maken voordat je een idee of grote beslissing maakt.
+Het is niet slecht om een simulatie te maken. Het kan geen kwaad, alleen maar goed. Het enige wat er kan gebeuren als je een simulatie hebt is dat je je dan voorgbereid op alles wat er kan komen. Als je je voorbereid op alles wat er kan komen dan heb je ook automatisch een beter product. 
+
+---
+
+# JSON
+
+
