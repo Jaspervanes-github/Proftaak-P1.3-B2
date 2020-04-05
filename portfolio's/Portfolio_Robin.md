@@ -143,6 +143,8 @@ We hebben gekozen om er een eetkraam van te maken, we wilde drinken en eten toch
 **Waarom heb je deze keuze gemaakt?**
 Nu is er meer beweging in onze simulatie en is het niet zo super druk bij de café's
 
+![De bezoekers](https://github.com/Jaspervanes-github/proftaak-P1.3-B2/blob/master/portfolio's/resources/Robin/TestVisitors.png)
+
 
 ## Week 9
 In deze week hebben wij de laatste lootjes gelegd van het project. Ik heb samen met Jasper weer gekeken naar Visitors en wat die doen als er geen optreden meer is. Ook hebben we ervoor gezorgd dat de mensen naar de wc gaan, en wat te drinken gaan halen en wat te eten gaan halen als ze honger hebben. We hebben dit gedaan doormiddel van dat elke update, de visitor een random waarde krijg die dan bij het percentage komt. Als het percentage 100 is dan gaat hij het gene doen waarvan hij vol zit. Om ervoor te zorgen dat niet iedereen tegelijk gaat hebben iedere visitor ook een eigen waarde om mee te beginnen.
